@@ -1,0 +1,68 @@
+<!--page/pack-mine/mine-settings/mine-settings.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" status-bar-height="{{statusBarHeight}}" title-name="关于" hover-class="none" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='logo-v'>
+      <image src='/pic/icon.png'>
+      </image>
+      <view>八分钟运动</view>
+      <text>{{version}}</text>
+    </view>
+    <view class='about-us'>
+      当时间被填满，生活的必选项里是否会出现“健身”两个字？每天24小时，留出1/180的时间给健身。8分钟，什么都不想，只有运动。8分钟，更积极的生活态度，对自己更好的生活方式。8分钟，更多更美好......
+    </view>
+    <view style='height:21rpx;background:#F4F4F4'></view>
+    <!-- <navigator url='/page/pack-mine/about-us/about-us'>
+      <view id='about' class='item-v'>
+        <view>关于我们</view>
+        <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+      </view>
+    </navigator> -->
+    <view style='height:2rpx;background:#F4F4F4;width:750rpx;'></view>
+    <button open-type='openSetting' bindopensetting="bindopensetting" class='item-but'>
+      <view>微信授权设置</view>
+      <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+    </button>
+    <view style='height:2rpx;background:#F4F4F4;width:750rpx;'></view>
+    <navigator url='/page/pack-mine/version-description/version-description'>
+      <view id='about' class='item-v'>
+        <view>版本说明</view>
+        <!-- <text>></text> -->
+        <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+      </view>
+    </navigator>
+    <view style='height:2rpx;background:#F4F4F4;width:750rpx;'></view>
+    <view catchtap='onProtocol' id='about' class='item-v'>
+      <view>用户协议</view>
+      <!-- <text>></text> -->
+      <!-- <image class='arrow' mode='aspectFill' src='/pic/gray_arrow.png'></image> -->
+      <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+    </view>
+    <view style='height:2rpx;background:#F4F4F4'></view>
+    <view class='item-v' catchtap='callPhone'>
+      <view>联系我们</view>
+      <text>028-87750193</text>
+      <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+    </view>
+    <view style='height:2rpx;background:#F4F4F4'></view>
+    <view wx:if="{{true}}" id='cache' class='item-v-1' bindtap='empty'>
+      <button class='contact-but' hover-class='none' open-type='contact' session-from="weapp">
+        <!-- <image mode='aspectFill' style='width:24rpx;height: 24rpx;' src='/pic/service.png'></image> -->
+        <text style='font-size:26rpx;color:#ffd100;margin-left:6rpx;'>在线客服</text>
+      </button>
+    </view>
+    <view style='height:2rpx;background:#F4F4F4'></view>
+    <view hidden='true' id='about' class='item-v' catchtap='update'>
+      <view>检查更新</view>
+      <!-- <text>></text> -->
+      <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+    </view>
+    <!-- <navigator target="miniProgram" app-id="wxcf29725aa2a471cd" path="/pages/index/index">跳转小程序 </navigator> -->
+    <!-- <navigator target="miniProgram" app-id="wx3364fdd72ab374dd" path="/pages/index/serviceclass/serviceclass?filter=50">跳转小程序</navigator> -->
+    <view style='height:2rpx;background:#F4F4F4'></view>
+    <view class='bottom'>
+      <text>copyright@2016-2026</text>
+      <text>四川大榕树数据技术有限公司</text>
+    </view>
+  </view>
+</view>

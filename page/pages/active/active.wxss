@@ -1,0 +1,67 @@
+.page {
+  height: 100%;
+}
+
+.v2 image {
+  display: block;
+  width: 85%;
+  height: 217rpx;
+  margin: auto;
+}
+
+.v2-btn {
+  width: 85%;
+  margin: auto;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.v2-btn .v2-active {
+  font-size: 34rpx;
+  color: #ffcd27;
+  width: 150rpx;
+  height: 50rpx;
+  background-color: #f6f6f6;
+  border-radius: 22rpx;
+  line-height: 50rpx;
+  padding: 0 30rpx;
+}
+
+.active-contain {
+  margin-top: 20rpx;
+}
+
+.active-contain image {
+  width: 100%;
+  height: 555rpx;
+}
+
+.active-btn {
+  width: 307rpx;
+  height: 77rpx;
+  border: 2rpx solid rgba(255, 209, 16, 1);
+  border-radius: 39rpx;
+  font-size: 35rpx;
+  line-height: 77rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #feb900;
+  margin: auto;
+  margin-top: 50rpx;
+}
+
+/* .active-end {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 30rpx;
+} */
+
+.active-end image {
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30rpx;
+}

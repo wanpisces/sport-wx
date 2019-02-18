@@ -1,0 +1,181 @@
+/* page/tabBar/about-movement/about-movement.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/yd/yd.wxss";
+@import "/libs/icon.wxss";
+
+page {
+  display: flex;
+  flex-flow: column;
+  background: #fff;
+}
+
+.onNavBar {
+  width: 750rpx;
+  position: fixed;
+  z-index: 1000;
+}
+
+.title {
+  /* width: 460rpx; */
+  height: 30px;
+  margin-left: 7px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  padding-left: 15px;
+  /* box-sizing: border-box; */
+}
+
+.title-address {
+  font-size: 28rpx;
+  color: #353535;
+  margin: 0 0 0 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40%;
+}
+
+.search-image {
+  width: 30rpx;
+  height: 30rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.placeholder-class {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.search-input {
+  margin-left: 18rpx;
+  font-size: 26rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  color: #353535;
+}
+
+.swiper-box {
+  z-index: 1;
+}
+
+/* .swiper-box .wx-swiper-dot {
+  margin-bottom: 0rpx;
+} */
+
+.banner-image {
+  width: 690rpx;
+  /* height: 300rpx; */
+  margin: 0 10rpx;
+  border-radius: 10rpx 10rpx 10rpx 10rpx;
+  z-index: 1;
+}
+
+.filter-view {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* padding: 20rpx 0; */
+  margin-top: 20rpx;
+}
+
+.filter-item .txt {
+  font-size: 34rpx;
+  color: #000;
+}
+
+.filter-item .sjx-view {
+  margin-top: 10rpx;
+  margin-left: 13rpx;
+  width: 0;
+  height: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+  border-radius: 6rpx;
+}
+
+.emptyView2 {
+  display: flex;
+  width: 690rpx;
+  background: #fff;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx;
+  flex-grow: 1;
+}
+
+/* 修改指示点的样式 */
+
+.dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 18rpx;
+}
+
+.dots .dot {
+  width: 12rpx;
+  height: 12rpx;
+  margin-left: 12rpx;
+  background: #eee;
+  border-radius: 50%;
+}
+
+/* 调用的css效果 */
+
+.dots .actives {
+  background-color: #ffd100;
+  opacity: 1;
+}
+
+.fixed-yd {
+  width: 212rpx;
+  height: 76rpx;
+  background: linear-gradient(142deg, rgba(255, 206, 0, 1) 0%, rgba(255, 178, 0, 1) 100%);
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.16);
+  opacity: 1;
+  border-radius: 38rpx;
+  position: fixed;
+  bottom: 28rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-content {
+  width: 100%;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+}
+
+.fixed-yd .text {
+  display: inline-block;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 76rpx;
+  margin-left: 10rpx;
+}
+
+/* 滚动播放 */
+
+.about-play {
+  margin: 0 20rpx;
+  height: 82rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.yd-match {
+  height: 300rpx;
+}

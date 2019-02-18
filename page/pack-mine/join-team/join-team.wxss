@@ -1,0 +1,116 @@
+/* page/pack-find/find-team/find-team.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/team2/team2.wxss";
+@import "/libs/icon.wxss";
+
+page {
+  background: #fff;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1001;
+  background: #282828;
+}
+
+.filter-wrap {
+  padding: 0 12rpx;
+  height: 90rpx;
+  z-index: 1001;
+  background: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.find-search {
+  background: #202020;
+  padding: 30rpx;
+}
+
+.find-search view {
+  width: 100%;
+  border-radius: 40rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx 0;
+  font-size: 30rpx;
+  color: #8f8f8f;
+}
+
+.find-search  image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.filter-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 80rpx;
+  height: 100%;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.filter-item image {
+  position: relative;
+  margin-left: 13rpx;
+  width: 25rpx;
+  height: 25rpx;
+  top: 5rpx;
+}
+
+.sjx-name {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.sjx-view {
+  margin-top: 10rpx;
+  margin-left: 13rpx;
+  width: 0;
+  height: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.find-team-fixed {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  background: #fff;
+  z-index: 1000;
+}
+
+.team-dynamic {
+  font-size: 24rpx;
+  color: #666;
+  margin: 5rpx 0 10rpx 0;
+}
+
+.team-adress {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.team-module {
+  position: relative;
+  margin-bottom: 23rpx;
+}
+
+.team-wrapper {
+  background-color: #fff;
+}

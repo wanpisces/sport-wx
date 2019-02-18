@@ -1,0 +1,137 @@
+/* page/pack-index/pages/team-manage/team-manage.wxss */
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.team_name {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  width: 100%;
+}
+
+.team_name text {
+  font-size: 30rpx;
+  color: #353535;
+  margin-right: 10rpx;
+}
+
+.team_name image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.dian {
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 16rpx;
+  background: #ed1548;
+  right: 100rpx;
+  top: 50rpx;
+}
+
+.team_num {
+  font-size: 26rpx;
+  color: #999;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  width: 100%;
+}
+
+.team_item {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.item {
+  width: 50%;
+  height: 238rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+}
+
+.item::after {
+  border: 0;
+}
+
+.item image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.item view {
+  font-size: 28rpx;
+  color: #515151;
+  margin-top: 20rpx;
+}
+
+.next {
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00);
+  color: #282828;
+  font-weight: bolder;
+  font-size: 35rpx;
+  margin: 80rpx 0rpx;
+  padding: 0rpx 150rpx;
+  box-shadow: 0rpx 0rpx 16rpx rgba(179, 33, 36, 0.24);
+}
+
+.next::after {
+  border: 0;
+}

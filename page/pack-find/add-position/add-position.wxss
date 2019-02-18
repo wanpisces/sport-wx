@@ -1,0 +1,49 @@
+@import "/libs/icon.wxss";
+@import "/my-template/position/position.wxss";
+
+.pages {
+  min-height: 100%;
+  position: relative;
+  background: #f0f0f5;
+}
+
+.searchListItemed3 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0rpx 30rpx;
+  justify-content: center;
+  height: 130rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+.item view {
+  font-size: 30rpx;
+  color: #101010;
+  line-height: 1;
+}
+
+.item text {
+  font-size: 26rpx;
+  color: #acacad;
+  line-height: 1;
+  margin-top: 20rpx;
+}
+
+.add-view {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 130rpx;
+  background: #fff;
+}

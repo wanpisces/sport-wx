@@ -1,0 +1,246 @@
+/* page/pack-find/yue-move/yue-move.wxss */
+@import "/my-template/load/listTemplate.wxss";
+
+page {
+  background: #fff;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 10001;
+  background: #202020;
+}
+
+.filter-wrap {
+  padding: 0 12rpx;
+  height: 90rpx;
+  background: #202020;
+  border-bottom: 2px solid #f2f2f2;
+  z-index: 10001;
+}
+
+.filter-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80rpx;
+  height: 100%;
+  border-bottom: 1px solid #fff;
+}
+
+.filter-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 45px;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.filter-item image {
+  position: relative;
+  top: -3rpx;
+  margin-left: 13rpx;
+  width: 15rpx;
+  height: 10rpx;
+}
+
+.sjx-name {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.sjx-view {
+  margin-top: 10rpx;
+  margin-left: 13rpx;
+  width: 0;
+  height: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.find-team-fixed {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  background: #fff;
+  z-index: 1000;
+}
+
+.match-wrapper {
+  margin-bottom: 30rpx;
+  background: #fff;
+}
+
+.match {
+  height: 260rpx;
+  box-shadow: 0rpx 0rpx 6rpx #e2e2e2;
+  border-radius: 8rpx;
+  margin: 0 30rpx 30rpx 30rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  background: linear-gradient(#fff, #f2f2f2);
+  padding: 15rpx 0;
+  border: 1px solid #000;
+}
+
+.match_team {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rpx 20rpx 20rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+}
+
+.match_team .team1 {
+  width: 220rpx;
+}
+
+.match_team .to {
+  width: 150rpx;
+}
+
+.match_team .team2 {
+  width: 220rpx;
+}
+
+.match_team .team1, .match_team .team2 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.match_team .team1 image, .match_team .team2 image {
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 30rpx;
+  background: #f4f4f4;
+}
+
+.match_team .team1 view, .match_team .team2 view {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #353535;
+  width: 100%;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.match_team .to {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 22%;
+}
+
+.match_team .to image {
+  width: 35rpx;
+  height: 35rpx;
+  /* background: #f4f4f4; */
+}
+
+.match_team .to view {
+  line-height: 40rpx;
+  background: #ffd100;
+  font-size: 22rpx;
+  color: #282828;
+  border-radius: 20rpx;
+  padding: 0 20rpx;
+  margin-top: 25rpx;
+}
+
+.match_details {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  margin-top: 18rpx;
+}
+
+.match_details text {
+  font-size: 24rpx;
+  color: #353535;
+}
+
+.match_details text:nth-child(2) {
+  margin-left: 20rpx;
+}
+
+.match_details text:nth-child(3) {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.match_addr {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 20rpx;
+  padding: 0 40rpx;
+}
+
+.match_addr image {
+  width: 22rpx;
+  height: 22rpx;
+  /* background: #f4f4f4; */
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.match_addr view {
+  font-size: 22rpx;
+  color: #228abf;
+  margin-left: 8rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.yue-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 55rpx;
+  width: 100rpx;
+  height: 100rpx;
+  box-shadow: 0rpx 0rpx 16rpx rgba(238, 238, 238, 1);
+  border-radius: 100rpx;
+  z-index: 10001;
+}
+
+.find-search {
+  background: #202020;
+  padding: 30rpx;
+}
+
+.find-search view {
+  width: 100%;
+  border-radius: 40rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx 0;
+  font-size: 30rpx;
+  color: #8f8f8f;
+}
+
+.find-search  image {
+  width: 45rpx;
+  height: 45rpx;
+}

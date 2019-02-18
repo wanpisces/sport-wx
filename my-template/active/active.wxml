@@ -1,0 +1,19 @@
+<!-- 活动榜 -->
+<template name="active">
+  <view class='active-contain'>
+    <view class='active_img' wx:if="{{index==0}}">
+      <image mode='aspectFill' src='/pic/active_one.png'></image>
+    </view>
+    <view class='active_img' wx:elif="{{index==1}}">
+      <image mode='aspectFill' src='/pic/active_two.png'></image>
+    </view>
+    <view class='active_img' wx:elif="{{index==2}}">
+      <image mode='aspectFill' src='/pic/active_three.png'></image>
+    </view>
+    <view wx:else style='font-size:32rpx;color:#8E8E8E;width:20%;text-align:center;font-style:italic;'>{{index+1}}</view>
+    <view class='active-title'>
+      <image mode='aspectFill' src='{{item.user_avatar}}' class='person-img'></image>
+      <text>{{item.user_nickname}}</text>
+    </view>
+  </view>
+</template>

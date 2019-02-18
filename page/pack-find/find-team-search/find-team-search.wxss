@@ -1,0 +1,98 @@
+/* page/pack-find/find-team-search/find-team-search.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/team2/team2.wxss";
+@import "/libs/icon.wxss";
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1001;
+  background: #282828;
+}
+
+.filter-wrap {
+  padding: 0 12rpx;
+  height: 90rpx;
+  z-index: 1001;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.find-search {
+  background: #f2f2f2;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+  color: #ffd100;
+}
+
+.find-search>view {
+  width: 90%;
+  border-radius: 40rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10rpx 0;
+  font-size: 30rpx;
+  color: #8f8f8f;
+}
+
+.find-search  image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-left: 20rpx;
+}
+
+.find-search  input {
+  width: 95%;
+}
+
+.filter-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80rpx;
+  height: 100%;
+  border-bottom: 1px solid #fff;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.filter-item image {
+  position: relative;
+  margin-left: 13rpx;
+  width: 25rpx;
+  height: 25rpx;
+  top: 5rpx;
+}
+
+.find-team-fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1000;
+}
+
+.team-wrapper {
+  padding-top: 330rpx;
+}
+
+.team-module {
+  position: relative;
+  margin-bottom: 23rpx;
+  /* padding: 0 30rpx; */
+}

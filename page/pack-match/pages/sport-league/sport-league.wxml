@@ -1,0 +1,257 @@
+<!--page/pack-match/pages/sports-events/sports-events.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src='/my-template/sports-events/sports-events.wxml' />
+
+<view class="{{splendStatus?'page':'pageTip'}}">
+  <navigationBar class='navigationBar' title-name="赛事" tag="{{3}}" bg-color="#fff" status-bar-height="{{statusBarHeight}}">
+  </navigationBar>
+  <!-- 封面 -->
+  <view class='sport-underway-banber' style='margin-top:{{statusBarHeight+45}}px'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="5000">
+      <block wx:for="{{[imgUrls]}}" wx:for-item="imgUrl" wx:key="{{index}}">
+        <swiper-item>
+          <image mode='aspectFill' src='{{imgUrl}}'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='collect-sport'>
+      <image src="{{collectState?'/pic/collect-2.png':'/pic/collect-1.png'}}" bindtap='collectEvt'></image>
+    </view>
+  </view>
+  <view class='sport-underway-fouce'>
+    <view bindtap='focusEvt'>
+      <image src="{{focusState?'/pic/focused2.png':'/pic/focusing.png'}}"></image>
+      <text wx:if="{{focusState}}" class='already-fouse'>已关注</text>
+      <text wx:else>加关注</text>
+    </view>
+    <view bindtap='sportInfoEvt'>
+      <image src='/pic/game_info.png'></image>
+      <text>赛事信息</text>
+    </view>
+  </view>
+  <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+  <view class='match-schedule'>
+    <view class='view-module'>
+      <view class='tab'>
+        <view id="tab1" catchtap='bindTabClick' class="sub {{tabId=='tab1'?'subed':''}}">
+          <image mode='aspectFill' src='/pic/race_course.png'></image>
+          <text>赛程</text>
+        </view>
+        <view id="tab2" catchtap='bindTabClick' class="sub {{tabId=='tab2'?'subed':''}}">
+          <image mode='aspectFill' src='/pic/Rankings.png'></image>
+          <text>排行</text>
+        </view>
+        <view id="tab3" catchtap='bindTabClick' class="sub {{tabId=='tab3'?'subed':''}}">
+          <image mode='aspectFill' src='/pic/dongtai.png'></image>
+          <text>动态</text>
+        </view>
+      </view>
+      <!-- 赛程 -->
+      <view hidden="{{tabId != 'tab1'}}" class='tab1'>
+        <!-- <view class='label' wx:if="{{competition_level == 1}}">
+          <view catchtap='bindLabelClick' data-index='{{0}}' class="sub {{checkLabelIndex == 0?'subed':''}}">小组赛
+            <view class="line {{checkLabelIndex == 0?'lineed':''}}"></view>
+          </view>
+          <view catchtap='bindLabelClick' data-index='{{1}}' class="sub {{checkLabelIndex == 1?'subed':''}}">淘汰赛
+            <view class="line {{checkLabelIndex == 1?'lineed':''}}"></view>
+          </view>
+        </view> -->
+        <!-- <view wx:if="{{competition_level==1&&checkLabelIndex==0 ||!(checkLabelIndex == 1 && competition_status == 3)}}" style='width:690rpx;height:1px;background:#F2F2F2;'></view>
+        <view wx:if="{{competition_level==1}}" hidden='{{checkLabelIndex!=1}}' class='label2'>
+          <view catchtap='bindLabelClick2' class="label2-item {{checkLabelIndex2==0?'label2-item-ed':''}}" data-index='{{0}}'>晋级区</view>
+          <view catchtap='bindLabelClick2' wx:if="{{rank_interval>2}}" class="label2-item {{checkLabelIndex2==1?'label2-item-ed':''}}" data-index='{{1}}'>排位区</view>
+        </view> -->
+        <!-- <view wx:if="{{competition_level==1}}" hidden='{{checkLabelIndex!=0}}' class='label2'>
+          <picker bindchange="bindchangeGroup" wx:if="{{groupList}}" class="label2-item {{checkLabelIndex2==0?'label2-item-ed':''}}" range='{{groupList}}' range-key='group_name'>
+            <view style='display: flex;flex-flow: row nowrap;align-items: center;'>
+              <view>{{group_name||'A组'}}</view>
+
+              <view class='iconfont icon-xiala' style='font-size:22rpx;'></view>
+            </view>
+          </picker>
+          <view wx:else catchtap='onGroup' class="label2-item {{checkLabelIndex2==0?'label2-item-ed':''}}">
+            <view style='display: flex;flex-flow: row nowrap;align-items: center;'>
+              <view>{{group_name||'A组'}}</view>
+              <view class='iconfont icon-xiala' style='font-size:22rpx;'></view>
+            </view>
+          </view>
+        </view> -->
+        <view class='group' wx:if="{{!(checkLabelIndex == 1 && competition_status == 3)}}">
+          <view id='front' catchtap="{{courseLabel[checkLabelIndex].isFront?'onFront':'onAroundLast'}}" style="{{courseLabel[checkLabelIndex].isFront?'color:#353535;':'color:#999;'}}" class='sub1'>
+            <view class='iconfont icon-xiangzuo' style='font-size:28rpx;'> </view>前一轮
+          </view>
+          <picker bindchange="bindchangeMatchTurns" wx:if="{{courseLabel[checkLabelIndex].matchTurns}}" range='{{courseLabel[checkLabelIndex].matchTurns}}' range-key='match_turn_name'>
+            <view class='sub2'>
+              <view class='group-name'>{{courseLabel[checkLabelIndex].match_turn_name}}</view>
+              <view class='triangle'>
+                <view class='iconfont icon-xiala' style='font-size:32rpx;'></view>
+              </view>
+            </view>
+          </picker>
+          <view catchtap='onMatchTurns' wx:else>
+            <view class='sub2'>
+              <view class='group-name'>第1轮</view>
+              <view class='triangle'>
+                <view class='iconfont icon-xiala' style='font-size:32rpx;'></view>
+              </view>
+            </view>
+          </view>
+          <view id='after' catchtap="{{courseLabel[checkLabelIndex].isAfter?'onAfter':'onAroundLast'}}" style="{{courseLabel[checkLabelIndex].isAfter?'color:#353535;':'color:#999;'}}" class='sub3'>后一轮
+            <view class='iconfont icon-angle-down' style='font-size:38rpx;'> </view>
+          </view>
+        </view>
+      </view>
+      <!-- 排行 -->
+      <view hidden="{{tabId != 'tab2'}}" class='tab2'>
+        <view class='label3'>
+          <view catchtap='bindLabelClick' wx:for="{{rankingsLabel}}" wx:key="labelKey" data-index='{{index}}' class="sub {{checkLabelIndex3 == index?'subed':''}}">{{item.value}}
+            <view class="line {{checkLabelIndex3 == index?'lineed':''}}"></view>
+          </view>
+        </view>
+        <template wx:if="{{checkLabelIndex3 == 0}}" is='scoreboard' data="{{scoreboardTable}}" />
+        <template wx:if="{{checkLabelIndex3 == 1}}" is='shoot' data="{{shootTable}}" />
+        <template wx:if="{{checkLabelIndex3 == 2}}" is='assists' data="{{assistsTable}}" />
+        <view wx:if='{{checkLabelIndex3 ==3 }}' class='tip'>
+          <view class='tip-item'>
+            * 停赛规则：
+            <text wx:for="{{competition_stop_rule}}" wx:key="tipKey">{{item.num}}{{item.type==1?'红牌':'黄牌'}}停赛{{item.turn}}轮、</text>
+          </view>
+        </view>
+        <view wx:if='{{checkLabelIndex3 ==3 }}' class='label2' style=' margin-bottom: 20rpx;'>
+          <view catchtap='bindLabelClick4' wx:if="{{competition_status!=3}}" class="label2-item {{checkLabelIndex4==0?'label2-item-ed':''}}" data-index='{{0}}'>停赛榜</view>
+          <view catchtap='bindLabelClick4' class="label2-item {{checkLabelIndex4==1?'label2-item-ed':''}}" data-index='{{1}}'>球员累计</view>
+          <view catchtap='bindLabelClick4' class="label2-item {{checkLabelIndex4==2?'label2-item-ed':''}}" data-index='{{2}}'>球队累计</view>
+        </view>
+        <template wx:if="{{checkLabelIndex3 == 3 && checkLabelIndex4==0}}" is='ryBrand1' data="{{ryBrand1}}" />
+        <template wx:if="{{checkLabelIndex3 == 3 && checkLabelIndex4==1}}" is='ryBrand2' data="{{ryBrand2}}" />
+        <template wx:if="{{checkLabelIndex3 == 3 && checkLabelIndex4==2}}" is='ryBrand3' data="{{ryBrand3}}" />
+      </view>
+      <!-- 动态 -->
+      <view hidden="{{tabId != 'tab3'}}" class='tab3'>
+        <!-- 精彩瞬间 -->
+        <view class='sport-splend'>
+          <view class='sport-splend-all'>
+            <view class='sport-splend-title'>
+              <view class='sportInfo'>精彩瞬间</view>
+              <navigator url='/page/pack-match/pages/splend/splend?competition_id={{competition_id}}'>
+                <view class='sport-splend-more'>
+                  <text>更多精彩</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </navigator>
+            </view>
+            <view class='sport-splend-contain' wx:if="{{sportSplend.length>0}}">
+              <view wx:for="{{sportSplend}}" wx:for-item="sportSplend" wx:key="{{index}} " data-index="{{index}}" bindtap='splendVideoEvt'>
+                <image src='{{sportSplend.material_pic}}' mode='aspectFill'></image>
+                <view>{{sportSplend.material_title}}</view>
+              </view>
+            </view>
+            <view wx:else>
+              <view class='sportInfo-empty'>暂无数据</view>
+            </view>
+          </view>
+        </view>
+        <!-- 热门咨讯 -->
+        <view class='hotInfo'>
+          <view class='hotInfo-all'>
+            <view class='hotInfo-title'>
+              <view class='sportInfo'>热门资讯</view>
+              <navigator url='/page/pack-match/pages/hot-info/hot-info?competition_id={{competition_id}}'>
+                <view class='hotInfo-more'>
+                  <text>更多资讯</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </navigator>
+            </view>
+            <view wx:if="{{hotInfo.length>0}}" class='hotInfo-contain'>
+              <import src="../../../../my-template/news/news.wxml" />
+              <block wx:for="{{hotInfo}}" wx:for-item="hotInfo" wx:key="{{index}}">
+                <template wx:if="{{hotInfo.material_pic_type == 0 ||hotInfo.material_pic_type == 2 }}" is="news_item1" data="{{...hotInfo}}"></template>
+                <template wx:if="{{hotInfo.material_pic_type == 1}}" is="news_item2" data="{{...hotInfo}}"></template>
+              </block>
+            </view>
+            <view wx:else>
+              <view class='sportInfo-empty'>暂无数据</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 赛程 -->
+    <swiper wx:if="{{tabId=='tab1'}}" class='swiper-view' current='{{swiperCurrent}}' bindchange="bindSwiperChange" duration="{{500}}" skip-hidden-item-layout='true' style='height:{{swiperHeight}}px;top:{{swiperTop}}px;'>
+      <!-- 小组赛 -->
+      <swiper-item catchtouchmove="{{competition_level==1?'':'catchTouchMove'}}">
+        <scroll-view hidden="{{checkLabelIndex!=0}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <template wx:for="{{courseLabel[checkLabelIndex].list}}" wx:key="scoreboardKey1" wx:for-item="item" is='events' data="{{item,index}}" />
+          <view class='empty-view' wx:if="{{courseLabel[checkLabelIndex].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...courseLabel[checkLabelIndex].loadData}}" />
+        </scroll-view>
+      </swiper-item>
+      <!-- 淘汰赛 -->
+      <!-- <swiper-item wx:if="{{competition_level == 1}}">
+        <scroll-view hidden="{{checkLabelIndex!=1}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <view wx:if="{{!(checkLabelIndex == 1 && competition_status == 3 && checkLabelIndex2 == 0)}}">
+            <template wx:for="{{courseLabel[checkLabelIndex].list}}" wx:key="scoreboardKey2" wx:for-item="item" is='events' data="{{item,index}}" />
+            <view class='empty-view' wx:if="{{courseLabel[checkLabelIndex].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+              <template is="emptyView2" data="{{empty2}}" />
+            </view>
+            <template wx:else is='loadMore3' data="{{...courseLabel[checkLabelIndex].loadData}}" />
+          </view>
+          <view wx:else>
+            <image wx:if="{{img_url}}" mode='widthFix' style='width:100%;margin-top:20rpx;' src='{{img_url}}'></image>
+            <view wx:else class='empty-view' style='min-height:{{swiperHeight}}px;'>
+              <image mode='aspectFill' style="width:277rpx;height: 277rpx;" src="{{empty.icon||'/pic/no-content.png'}}"></image>
+              <text style='display:block;margin:15rpx;color:#999;font-size:30rpx;'>暂未生成</text>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item> -->
+    </swiper>
+    <!-- 排行 -->
+    <swiper wx:if="{{tabId=='tab2'}}" class='swiper-view' current='{{swiperCurrent}}' bindchange="bindSwiperChange" duration="{{500}}" skip-hidden-item-layout='true' style='height:{{swiperHeight}}px;top:{{swiperTop}}px;'>
+      <swiper-item>
+        <scroll-view hidden="{{checkLabelIndex3!=0}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <template wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="scoreboardKey3" wx:for-item="scoreboardTable" is='scoreboard' data="{{scoreboardTable,index}}" />
+          <view class='empty-view' wx:if="{{rankingsLabel[checkLabelIndex3].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...rankingsLabel[checkLabelIndex3].loadData}}" />
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view hidden="{{checkLabelIndex3!=1}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <template wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="shoot1" wx:for-item="shootTable" is='shoot' data="{{shootTable,index}}" />
+          <view class='empty-view' wx:if="{{rankingsLabel[checkLabelIndex3].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...rankingsLabel[checkLabelIndex3].loadData}}" />
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view hidden="{{checkLabelIndex3!=2}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <template wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="shoot2" wx:for-item="assistsTable" is='assists' data="{{assistsTable,index}}" />
+          <view class='empty-view' wx:if="{{rankingsLabel[checkLabelIndex3].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...rankingsLabel[checkLabelIndex3].loadData}}" />
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view hidden="{{checkLabelIndex3!=3}}" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <template wx:if="{{checkLabelIndex4 == 0}}" wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="ryBrand1" wx:for-item="ryBrand1" is='ryBrand1' data="{{ryBrand1,index}}" />
+          <template wx:if="{{checkLabelIndex4 == 1}}" wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="ryBrand2" wx:for-item="ryBrand2" is='ryBrand2' data="{{ryBrand2,index}}" />
+          <template wx:if="{{checkLabelIndex4 == 2}}" wx:for="{{rankingsLabel[checkLabelIndex3].list}}" wx:key="ryBrand3" wx:for-item="ryBrand3" is='ryBrand3' data="{{ryBrand3,index}}" />
+          <view class='empty-view' wx:if="{{rankingsLabel[checkLabelIndex3].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...rankingsLabel[checkLabelIndex3].loadData}}" />
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<!-- 精彩瞬间的弹窗 -->
+<videoView status="{{splendStatus}}" videoState="{{videoState}}" material_type="{{splendTip.material_type}}" material_url="{{splendTip.material_url}}" material_title="{{splendTip.material_title}}" material_pic="{{splendTip.material_pic}}" bind:onBut="tipIconEvt"
+/>

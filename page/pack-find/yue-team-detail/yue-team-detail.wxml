@@ -1,0 +1,131 @@
+<!--page/pack-find/yue-team-detail/yue-team-detail.wxml-->
+<!--page/pack-find/yue-data/yue-data.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<view class="{{dissolveState?'pages':'page_change'}}">
+  <navigationBar class='navigationBar' title-name="队伍详情" tag="{{1}}" img-url="{{bgUrl}}" status-bar-height="{{statusBarHeight}}" />
+  <view class='v3'>
+    <image mode='aspectFill' src='{{group_pic?group_pic:bgUrl1}}' class='bg'></image>
+  </view>
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='team-avator'>
+      <image src='{{group_badge}}'></image>
+    </view>
+    <view class='team-name'>{{group_name}}</view>
+    <view class='team-info'>
+      {{attr_id==2?'球员':'队员'}} {{member_num}} | 粉丝 {{atten_num}} | 访问{{visit_num ||0}}
+    </view>
+    <view class='team-intro'>
+      {{group_desc}}
+    </view>
+  </view>
+  <view class='team-content'>
+    <!-- 这里新增了一些字段暂无接口 -->
+    <view>
+      <view>队伍编号：</view>
+      <view class='team-content-ringht'>{{group_sn}}</view>
+    </view>
+    <view>
+      <view>队伍类型：</view>
+      <view class='team-content-ringht'>{{attr_value}}</view>
+    </view>
+    <view>
+      <view>创建者：</view>
+      <view class='team-content-ringht'>{{user_nickname}}</view>
+    </view>
+  </view>
+  <view class='team-line'></view>
+  <view class='team-content'>
+    <view>
+      <view>队伍名称：</view>
+      <view class='team-content-ringht'>{{group_name || ''}}</view>
+    </view>
+    <view>
+      <view>队伍规模：</view>
+      <view class='team-content-ringht'>1~{{group_scale || ''}}人</view>
+    </view>
+    <view>
+      <view>成立时间：</view>
+      <view class='team-content-ringht'>{{group_time || ''}}</view>
+    </view>
+    <view>
+      <view>联系方式：</view>
+      <view class='team-content-ringht'>{{group_tel ||''}}</view>
+    </view>
+    <view>
+      <view>队伍简介：</view>
+      <view class='team-content-ringht'>{{group_desc || ''}}</view>
+    </view>
+    <view wx:if="{{attr_id==2 || attr_id==3}}">
+      <view>主场球衣：</view>
+      <view class='team-content-ringht'>
+        <view wx:if="{{home_shirt != '#FFFFFF'}}" class='iconfont icon-qiuyi' style="font-size:60rpx;color:{{home_shirt}};text-align:right;"></view>
+        <view wx:if="{{home_shirt == '#FFFFFF'}}" class='iconfont icon-qiuyi-baise' style="font-size:60rpx;text-align:right;"></view>
+      </view>
+    </view>
+    <view wx:if="{{attr_id==2 || attr_id==3}}">
+      <view>客场球衣：</view>
+      <view class='team-content-ringht'>
+        <view wx:if="{{away_kit != '#FFFFFF'}}" class='iconfont icon-qiuyi' style="font-size:60rpx;color:{{away_kit}};text-align:right;"></view>
+        <view wx:if="{{away_kit == '#FFFFFF'}}" class='iconfont icon-qiuyi-baise' style="font-size:60rpx;text-align:right;"></view>
+      </view>
+    </view>
+    <view>
+      <view>所在地区：</view>
+      <view class='team-content-ringht'>{{address || ''}}</view>
+    </view>
+    <view>
+      <view>常用场馆：</view>
+      <view class='team-content-ringht'>{{group_venues_name || ''}}</view>
+    </view>
+
+  </view>
+  <view class='team-line'></view>
+  <view wx:if="{{attr_id==2}}" class='team-content'>
+  </view>
+  <!-- 创建者的权限 -->
+  <view class='state' wx:if="{{is_member == 1&&is_admin==1}}">
+    <authorizeView class="authorizeView" bind:onBut="submitBtn" data-title="dissolve">
+      <view class='team-sure'>解散队伍</view>
+    </authorizeView>
+    <authorizeView class="authorizeView" bind:onBut="submitBtn" data-title="transfer">
+      <view class='team-sure'>转让队伍</view>
+    </authorizeView>
+    <authorizeView class="authorizeView" bind:onBut="submitBtn" data-title="edit">
+      <view class='team-sure'>修改信息</view>
+    </authorizeView>
+  </view>
+  <view class='state' wx:elif="{{is_member == 1 && is_admin!=1}}">
+    <authorizeView class="authorizeView" bind:onBut="submitBtn" data-title="quit">
+      <view class='team-sure'>退出队伍</view>
+    </authorizeView>
+  </view>
+  <template is='loading' data="{{hidden:group_name}}"> </template>
+</view>
+
+<!-- 解散队伍弹框 -->
+<view hidden='{{dissolveState}}'>
+  <view class='dissolve-team'>
+    <view class='dissolve-team-contain'>
+      <view class='dissolve-title'>请选择一位队员接收您的队伍</view>
+      <view class='dissolve-people'>
+        <view wx:for="{{transferList}}" wx:key="{{index}}" class='dissolve-content' data-index="{{index}}" bindtap='selectTeam'>
+          <image mode='aspectFill' src='{{item.user_avatar}}'></image>
+          <image mode='aspectFill' src='/pic/team_select.png' class="{{item.selectState?'select-img':'img'}}"></image>
+          <view class='dissolve-name'>{{item.user_nickname}}</view>
+          <view wx:if="{{item.is_leader==1 }}" class='create-person'>
+            <view class='triangle'></view>
+            <text>队长</text>
+          </view>
+        </view>
+      </view>
+      <view class='state'>
+        <authorizeView class="authorizeView" bind:onBut="cancelBtn">
+          <view class='team-sure'>取消</view>
+        </authorizeView>
+        <authorizeView class="authorizeView" bind:onBut="sureTransfer">
+          <view class='team-sure'>确定转让</view>
+        </authorizeView>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!--widget/comment-view/comment-view.wxml-->
+<view class='commentview' hidden="{{isShow}}" catchtap='exit'>
+
+</view>
+<view class='comment-bottom-view' hidden="{{isHidden?isShow:isHidden}}">
+  <input  placeholder="{{placeholder||'期待你的神评论'}}" confirm-hold="true" value="{{isShow?'':''}}" bindinput="bindinput" focus="{{!isShow}}" cursor-spacing="{{cursorspacing}}" confirm-hold="{{confirmhold}}" placeholder-class="placeholder-class" class='input-view'></input>
+  <authorizeView refresh="{{refresh}}" user-info="{{true}}" user-phone="{{true}}" bind:onBut="send">
+    <view class='send'>发送</view>
+  </authorizeView>
+</view>

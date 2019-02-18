@@ -1,0 +1,55 @@
+<!--page/pack-find/yue-release-edi/yue-release-edi.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" title-name='编辑约战' />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='release-tips'>
+      温馨提示：约战成功后，可前往约战详情录入比分数据
+    </view>
+    <view class='release-content'>
+      <view>
+        <view>约战时间：</view>
+        <view style='display:flex;align-item:center'>
+          <picker mode="date" value="{{date}}" start="{{startdate}}" bindchange="bindDateChange">
+            <view class='release-content-right'>{{date|| '请选择日期'}}</view>
+          </picker>
+          <view style='flex-grow:2' style='height:35rpx;width:1rpx;border-left:2rpx #000 solid;margin:0 10rpx'></view>
+          <picker mode="time" value="{{starttime}}" bindchange="bindTimeChange">
+            <view class='release-content-right'>{{time|| '开战时间'}}</view>
+          </picker>
+        </view>
+
+      </view>
+      <view catchtap='onLocation'>
+        <view>约战地点：</view>
+        <view class='release-content-right'>{{mCaseAddr|| '请选择约战地点'}}</view>
+      </view>
+      <view>
+        <view>赛 制：</view>
+        <picker bindchange="bindPickerChangeRule" value="{{movementRule[indexRule].id}}" range-key="name" range="{{movementRule}}">
+          <view class='release-content-right'>{{movement_rule|| '请选择赛制'}}
+            <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+          </view>
+        </picker>
+      </view>
+      <view>
+        <view>性 质：</view>
+        <picker bindchange="bindPickerChangeType" value="{{movementType[indexType].id}}" range-key="name" range="{{movementType}}">
+          <view class='release-content-right'>{{movement_type|| '请选择性质'}}
+            <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='release-line'></view>
+    <view class='release-note'>
+      <view>备注:</view>
+      <textarea placeholder='请填写费用事项、交通费用等备注信息' value='{{remark}}' bindinput="bindinput" class='release-note-text'></textarea>
+    </view>
+
+    <view>
+      <button class='release-sure' catchtap='bindUpRelese'>编辑保存</button>
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,154 @@
+<!--page/pack-active/badminton-result/badminton-result.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/group-match/group-match.wxml" />
+
+<view class='pages_'>
+  <navigationBar class='navigationBar' tag="{{3}}" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" title-name="川大四院羽毛球友谊赛" />
+  <!-- banners -->
+  <view class='data_view_' style="margin-top:{{statusBarHeight+45}}px;">
+    <view class='top-wrapper'>
+      <image class='top-image' src='https://img.sport.darongshutech.com/确定banner.png'></image>
+      <authorizeView id="share" bnt-type="share" style="position: absolute;top:52rpx;right:0;">
+        <view class='share-btn-wrap'>
+          <text class='iconfont icon-fenxiang'></text> 分享
+        </view>
+      </authorizeView>
+    </view>
+  </view>
+  <!-- tabs -->
+  <view>
+    <view class='b-tabs'>
+      <text wx:for="{{tabData}}" class="{{index==tabIndex?'b-active':''}}" data-id="{{index}}" wx:key="{{index}}" bindtap='bindTabs'>{{item}}</text>
+    </view>
+    <view class='b-match' wx:if="{{tabIndex==0}}">
+      <view class='match-tabs'>
+        <view bindtap='bindmatch' data-id="0" class="{{matchIndex==0?'active':''}}">淘汰赛
+          <text></text>
+        </view>
+        <view bindtap='bindmatch' data-id="1" class="{{matchIndex==1?'active':''}}">小组赛
+          <text></text>
+        </view>
+      </view>
+      <view class='match-content' wx:if="{{matchIndex==0}}">
+        <view wx:if="{{outList.length>0}}">
+          <view class='match-item' wx:for="{{outList}}" wx:key="{{index}}">
+            <view>
+              <view class='group-num'>{{item.home_group}}</view>
+              <view class='group-item' wx:for="{{item.home_group_member}}" wx:for-index="child" wx:for-item="itemName" wx:key="{{child}}">
+                <view class='text-line1'>{{itemName.name}}</view>
+                <text>{{itemName.college}}</text>
+              </view>
+            </view>
+            <view>
+              <view class='juesai'>{{item.turn}}</view>
+              <view class='match-score'>
+                <text>{{item.score}}</text>
+              </view>
+              <view class='match-detail-score'>
+                <text>{{item.first}}</text>
+                <text>{{item.second}}</text>
+                <text>{{item.third}}</text>
+              </view>
+            </view>
+            <view>
+              <view class='group-num'>{{item.away_group}}</view>
+              <view class='group-item' wx:for="{{item.away_group_member}}" wx:for-index="child" wx:for-item="itemName" wx:key="{{child}}">
+                <view class='text-line1'>{{itemName.name}}</view>
+                <text>{{itemName.college}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='check-more' wx:if="{{!isFinished}}" bindtap='checkMore'>查看更多
+            <view style='margin:5rpx 5rpx 0;' class='iconfont icon-jiantou'></view>
+          </view>
+          <view class='check-more' wx:if="{{isFinished}}">我是有底线哒~</view>
+        </view>
+        <view wx:if="{{!outList.length}}" class='no-data'>
+          <view class='empty-view'>
+            <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+            <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无数据</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{matchIndex==1}}" class='group-matches'>
+        <picker bindchange="bindChangeGroup" value="{{index}}" range="{{grouping}}" range-key="name">
+          <view class="group-select">
+            {{grouping[groupIndex].name}}
+            <!-- <text class='black-down'></text> -->
+            <text class='iconfont icon-xiala' style='font-size:23rpx;margin-left:10rpx;margin-top:10rpx;'></text>
+          </view>
+        </picker>
+        <view class='match-content'>
+          <view class='group-score-wrap'>
+            <view class='group-title'>
+              <text>组别</text>
+              <text>胜</text>
+              <text>负</text>
+            </view>
+            <view class='group-list' wx:for="{{matchObj.score}}" wx:key="{{index}}">
+              <text>{{item.group_no}}</text>
+              <text>{{item.win}}</text>
+              <text>{{item.loss}}</text>
+            </view>
+          </view>
+          <view wx:if="{{matchObj.match.length>0}}">
+            <view class='match-item' wx:for="{{matchObj.match}}" wx:key="{{index}}">
+              <view>
+                <view class='group-num'>{{item.home_group}}</view>
+                <view class='group-item' wx:for="{{item.home_group_member}}" wx:for-index="child" wx:for-item="itemName" wx:key="{{child}}">
+                  <view class='text-line1'>{{itemName.name}}</view>
+                  <text>{{itemName.college}}</text>
+                </view>
+              </view>
+              <view>
+                <view class='match-score'>
+                  <text>{{item.score}}</text>
+                </view>
+              </view>
+              <view>
+                <view class='group-num'>{{item.away_group}}</view>
+                <view class='group-item' wx:for="{{item.away_group_member}}" wx:for-index="child" wx:for-item="itemName" wx:key="{{child}}">
+                  <view class='text-line1'>{{itemName.name}}</view>
+                  <text>{{itemName.college}}</text>
+                </view>
+              </view>
+            </view>
+            <view class='check-more'>我是有底线哒~</view>
+          </view>
+
+          <view wx:if="{{!matchObj.match.length}}" class='no-data'>
+            <view class='empty-view'>
+              <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+              <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无数据</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{tabIndex==1}}">
+      <!-- 分组 -->
+      <view class='group'>
+        <block wx:for="{{grouping}}" wx:key="{{index}}">
+          <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" bind:onBut="groupSelect" data-index="{{index}}">
+            <view class="{{selectIndex == index?'select':'btn'}}">{{item.name}}</view>
+          </authorizeView>
+        </block>
+      </view>
+      <!-- 分组情况 -->
+      <view class='group-detail'>
+        <!-- wx:for="{{dataList}}" data="{{item,isColoseShare,ckId,index}}" wx:key="index" -->
+        <view wx:if="{{dataList.length>0}}">
+          <template is="badminton" wx:for="{{dataList}}" data="{{item,index}}" wx:key="index" />
+          <view class='check-more' style='margin:20rpx 0;'>我是有底线哒~</view>
+        </view>
+
+        <view wx:if="{{!dataList.length}}" class='no-data'>
+          <view class='empty-view'>
+            <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+            <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无数据</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

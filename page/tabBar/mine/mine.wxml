@@ -1,0 +1,141 @@
+<!--page/tabBar/mine/mine.wxml-->
+
+<view style='min-height:{{windowHeight}}px;  display: flex;flex-flow: column;background:#f2f2f2;'>
+  <view class='base' catchlongpress='onBg' style='height:{{bgh+30}}rpx;'>
+    <image mode='aspectFill' class='base-bg' src='{{user_background?user_background:bgUrl2}}' style='height:{{bgh}}rpx;'></image>
+    <image mode='aspectFill' src='/pic/userInfo.png' style='height:80rpx;' class='base-bg-space'></image>
+    <view class='user-details' style="margin-top:{{statusBarHeight+65}}px;">
+      <view class='base-left'>
+        <authorizeView id="onReset" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+          <image mode='aspectFill' class='headPortrait' src="{{user_avatar}}"></image>
+        </authorizeView>
+        <view>
+          <view style='display:flex;align-item:center;'>
+            <view wx:if="{{user.length!=0}}">
+              <text class='name'>{{user.user_nickname||''}}</text>
+            </view>
+            <view wx:if="{{!user.user_nickname}}">
+              <authorizeView id="getMine" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+                <view class='mine-get'>获取授权</view>
+              </authorizeView>
+            </view>
+            <view wx:else class='audit_realnameState'>
+              <image mode='aspectFill' src='/pic/audit_state.png'></image>
+              <text>{{user.audit_status == 2?'已认证':'未认证'}}</text>
+            </view>
+          </view>
+          <view class='base-id' wx:if="{{user_code}}">ID:{{user_code}}</view>
+        </view>
+        <!-- <view style='color:#fff;'>fhjahsfkhds</view> -->
+      </view>
+      <authorizeView id="mine" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view slot="but" style='display:flex;align-item:center;'>
+          <text class='but-text'>修改个人资料</text>
+          <image mode='aspectFill' class='goToImg' src='/pic/arrow1.png'></image>
+        </view>
+      </authorizeView>
+    </view>
+    <!-- <view class='other'>
+      <navigator url='/page/pack-mine/mine-follow/mine-follow' style='margin-right:8rpx; flex-grow: 1;flex-shrink: 1;  text-align: center;'>
+        <text>{{follow}}\n关注</text>
+      </navigator>
+      <text>|</text>
+      <navigator url='/page/pack-mine/mine-collection/mine-collection' style='margin-left:8rpx;flex-grow: 1;flex-shrink: 1;  text-align: center;'>
+        <text>{{collect}}\n收藏</text>
+      </navigator>
+    </view> -->
+  </view>
+
+  <view class='modle-contain'>
+    <view class='contain'>与我相关</view>
+    <view class='modle-top'>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="myDt" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="team" class='item-top' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/mydt.png'></image>
+          <view class='txt'>我的动态</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="myFocus" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="team" class='item-top' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/fouce.png'></image>
+          <view class='txt'>我的关注</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="myCollect" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="team" class='item-top' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/mycellect.png'></image>
+          <view class='txt'>我的收藏</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="message" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="message" class='item-top' bindtap='onItemClick' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/message.png'></image>
+          <view class='txt'>我的消息</view>
+          <view wx:if="{{message_count}}" class='dian'>{{message_count}}</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="team" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="team" class='item-top' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/myteam.png'></image>
+          <view class='txt'>我的队伍</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+      <authorizeView style="width:25%;margin-bottom:20rpx;" id="myYd" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view id="team" class='item-top' hover-class='itemHover'>
+          <image class='img' mode='aspectFill' src='/pic/myyd.png'></image>
+          <view class='txt'>我的约战</view>
+          <!-- <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image> -->
+        </view>
+      </authorizeView>
+
+    </view>
+  </view>
+  <!-- <authorizeView id="myAdd" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+    <view id="team" class='item' hover-class='itemHover'>
+      <image class='img' mode='aspectFill' src='/pic/my_addteam.png'></image>
+      <view class='txt'>我加入的队伍</view>
+      <text class='txt2'>可查看申请队伍状态</text>
+      <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+    </view>
+  </authorizeView> -->
+  <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+  <!-- 关于 实名认证 意见反馈 -->
+  <view class='modle-center'>
+    <authorizeView id="setting" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+      <view class='item' hover-class='itemHover'>
+        <!-- <image class='img' mode='aspectFill' src='/pic/settings.png'></image> -->
+        <view class='txt'>关于</view>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </authorizeView>
+    <authorizeView id="myReally" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+      <view class='item' hover-class='itemHover'>
+        <!-- <image class='img' mode='aspectFill' src='/pic/audit_realname.png'></image> -->
+        <view class='txt'>实名认证</view>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </authorizeView>
+    <authorizeView id="feedback" bind:onBut="onItemClick" is-immediately-back="{{true}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+      <view id="comment" class='item' hover-class='itemHover'>
+        <!-- <image class='img' mode='aspectFill' src='/pic/advice.png'></image> -->
+        <view class='txt'>意见反馈</view>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </authorizeView>
+
+  </view>
+
+  <view style='flex-grow: 1;flex-shrink: 1;'>
+  </view>
+
+  <view class='bottom'>
+    <authorizeView bnt-type='share'>
+      <view class='share'>分享 | 八分钟运动</view>
+    </authorizeView>
+  </view>
+</view>

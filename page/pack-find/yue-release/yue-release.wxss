@@ -1,0 +1,135 @@
+/* page/pack-find/yue-release/yue-release.wxss */
+@import "/libs/icon.wxss";
+
+.pages_ {
+  /* position: relative; */
+}
+
+.data_view_ {
+  /* position: absolute; */
+  /* width: 750rpx;
+  height: auto;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center; */
+
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  color: #000;
+}
+
+.release-tips {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff9bc;
+  color: #353535;
+  font-size: 24rpx;
+  text-indent: 18rpx;
+}
+
+.release-content {
+  width: 100%;
+}
+
+.release-content>view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 18rpx;
+  padding: 25rpx 0;
+  border-bottom: 1rpx #f2f2f2 solid;
+  font-size: 32rpx;
+  color: #353535;
+}
+
+.match-address {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 18rpx;
+  padding: 25rpx 0;
+  border-bottom: 1rpx #f2f2f2 solid;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  color: #353535;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.match-address view {
+  display: inline;
+}
+
+.match-address input {
+  display: block;
+}
+
+.release-content-right {
+  color: #999;
+  font-size: 28rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.release-line {
+  height: 20rpx;
+  width: 100%;
+  background: #eee;
+}
+
+.release-note {
+  margin: 20rpx 18rpx;
+  font-size: 32rpx;
+  width: 714rpx;
+}
+
+.release-note-text {
+  margin-top: 20rpx;
+  background: #eee;
+  width: 94%;
+  height: 150rpx;
+  border-radius: 10rpx;
+  padding: 20rpx 3%;
+  color: #999;
+  font-size: 24rpx;
+  z-index: 1;
+}
+
+.release-sure {
+  width: 450rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  box-shadow: 0px 0px 16px rgba(179, 33, 36, 0.24);
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  margin: 80rpx 0;
+}
+
+button::after {
+  border: none;
+  outline: none;
+}
+
+.release-content-img {
+  width: 40rpx;
+  height: 40rpx;
+}

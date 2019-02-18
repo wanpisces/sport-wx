@@ -1,0 +1,71 @@
+<!--page/pack-find/yue-move-search/yue-move-search.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<!-- <loadingView wx:if="{{isLoading}}" /> -->
+<navigationBar class='navigationBar' tag="{{3}}" status-bar-height="{{statusBarHeight}}"  title-name="约战搜索" hover-class="none" />
+<view class='find-team-fixed'  style="top:{{statusBarHeight+45}}px;">
+  
+  <view class='find-search' >
+     <view> 
+       <image src='/pic/search.png' mode='scaleToFill'></image>
+       <input placeholder='快速搜索你想要了解的队伍约战信息' bindblur="search"></input> 
+      </view>
+      <text catchtap='cancleBack'>取消</text>
+  </view>
+
+</view>
+<view class='match-wrapper'>
+  <view wx:if="{{dataList.length>0}}">
+    <navigator wx:for="{{dataList}}" wx:key="{{index}}" url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}'>
+      <view hover-stop-propagation="true" class='match'>
+        <view class='match_team'>
+          <view class='team1'>
+            <image src='{{item.group_info.group_badge}}'></image>
+            <view>{{item.group_info.group_name}}</view>
+          </view>
+          <view class='to'>
+            <image src='../../../pic/VS_black.png'></image>
+            <view wx:if="{{item.movement_state == 1}}">等待应约</view>
+            <view wx:if="{{item.movement_state == 2}}">约战成功</view>
+            <view wx:if="{{item.movement_state == 3}}">约战结束</view>
+            <view wx:if="{{item.movement_state == 4 || item.movement_state == 5}}">约战取消</view>
+          </view>
+          <view class='team2'>
+            <!-- <image src='{{item.away_info.group_badge|| "/pic/jfb_add.png"}}'></image>
+            <view>{{item.away_info.group_name|| '等待应约'}}</view> -->
+            <image src='{{item.away_info.group_badge || "/pic/jfb_add.png"}}' mode='scaleToFill'></image>
+            <view wx:if="{{item.movement_state == 1}}">{{item.away_info.group_name || '等待应约'}}</view>
+            <view wx:else style="{{item.away_info.group_name?'':'color:#ff0000;'}}">{{item.away_info.group_name || '队伍已解散'}}</view>
+          </view>
+        </view>
+        <view class='match_details'>
+          <text>{{item.movement_rule}}</text>
+          <text>{{item.movement_type}}</text>
+          <text>{{item.movement_time}}</text>
+        </view>
+        <view class='match_addr'>
+          <image src='../../../pic/location.png'></image>
+          <view>{{item.address}}</view>
+        </view>
+      </view>
+    </navigator>
+    <template is="loadMore2" data="{{...loadData}}" />
+  </view>
+  <view wx:if="{{!dataList.length}}">
+    <template is="emptyView" data="{{empty}}" />
+  </view>
+</view>
+
+<!-- <view class='yue-btn'>
+  <view>
+    <authorizeView id="feedback" bind:onBut="{{chooseData.length>0?'':'onTeam'}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+      <view wx:if="{{chooseData.length>0}}">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{chooseData}}" range-key="group_name">
+          <image mode='aspectFill' src='/pic/yd_btn.png' class='yue-btn'></image>
+        </picker>
+      </view>
+      <view wx:else>
+        <image mode='aspectFill' src='/pic/yd_btn.png' class='yue-btn'></image>
+      </view>
+    </authorizeView>
+  </view>
+</view> -->

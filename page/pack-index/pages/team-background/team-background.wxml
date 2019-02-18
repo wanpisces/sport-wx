@@ -1,0 +1,34 @@
+<!--page/pack-index/pages/team-background/team-background.wxml-->
+<!--page/pack-mine/mine-modify/mine-modify.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" is-back="{{true}}" title-name="设置队伍封面" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='mine-wrape'>
+      <view>
+        <text>上传本地图片</text>
+        <text class='mine-tips'> (推荐大小： 750*460px)</text>
+      </view>
+      <view class='mine-upload' bindtap='uploadImg'>
+        <image src='../../../../pic/bg_upload.png' class='upload-img-1'></image>
+        <view>点击上传</view>
+        <image mode='aspectFill' src="{{imgSrc}}" class='upload-img'></image>
+      </view>
+      <view style="margin-top:20rpx">
+        <text>推荐图片</text>
+      </view>
+      <view class='mine-img'>
+        <view wx:for="{{listData}}" wx:key="iiKey" catchtap='onBgItem' data-item='{{item}}' data-index='{{index}}'>
+          <image class='mine-img-1' mode='aspectFill' src='{{item.url}}'></image>
+          <image wx:if="{{index == ckIndex}}" class='mine-img-2' src='/pic/checked.png'></image>
+        </view>
+      </view>
+      <view class='loadMore'>
+        <template is='loadMore' data="{{loadData}}" />
+      </view>
+    </view>
+    <button catchtap='submit' class='mine-btn'>
+      确 认
+    </button>
+  </view>
+</view>

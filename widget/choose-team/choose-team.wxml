@@ -1,0 +1,22 @@
+<!--widget/choose-team/choose-team.wxml-->
+<view class='choose-team' wx:if="{{show==true}}">
+  <view class='choose-1'>
+    <view class='choose-title'>
+         <image src='/pic/header.png' ></image>
+     </view>
+    <scroll-view scroll-y style="max-height:25vh;">
+      <view class='choose-team-list' wx:for="{{listData}}" wx:key="{{index}}" catchtap='bindTeam' data-index='{{index}}' data-id="{{item.group_id}}">
+        <view>{{item.group_name}}</view>
+        <image mode='aspectFill' src="{{index==curLabelIndex?'/pic/checked1.png':'/pic/checked2.png'}}" class='choose-img' ></image>
+      </view>
+    </scroll-view>
+    <view class='choose-tips'>
+      温馨提示:迎战后可主动联系主队，如因天气情况，个人原因无法前往完成约战，请及时告知对方
+    </view>
+    <view class='choose-btn'>
+      <view catchtap='bindCancle'>取消</view>
+      <view catchtap='bindSure'>确定应战</view>
+    </view>
+
+  </view>
+</view>

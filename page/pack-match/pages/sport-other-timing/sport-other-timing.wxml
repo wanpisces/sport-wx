@@ -1,0 +1,123 @@
+<!--page/pack-match/pages/sports-events/sports-events.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src='/my-template/sport-timing/sport-timing.wxml' />
+
+
+<view class="{{splendStatus?'page':'pageTip'}}">
+  <navigationBar class='navigationBar' title-name="赛事" tag="{{3}}" bg-color="#fff" status-bar-height="{{statusBarHeight}}">
+  </navigationBar>
+  <!-- 封面 -->
+  <view class='sport-underway-banber' style='margin-top:{{statusBarHeight+45}}px'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="5000">
+      <block wx:for="{{[imgUrls]}}" wx:for-item="imgUrl" wx:key="{{index}}">
+        <swiper-item>
+          <image mode='aspectFill' src='{{imgUrl}}'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='collect-sport'>
+      <image src="{{collectState?'/pic/collect-2.png':'/pic/collect-1.png'}}" bindtap='collectEvt'></image>
+    </view>
+  </view>
+  <view class='sport-underway-fouce'>
+    <view bindtap='focusEvt'>
+      <image src="{{focusState?'/pic/focused2.png':'/pic/focusing.png'}}"></image>
+      <text wx:if="{{focusState}}" class='already-fouse'>已关注</text>
+      <text wx:else>加关注</text>
+    </view>
+    <view bindtap='sportInfoEvt'>
+      <image src='/pic/game_info.png'></image>
+      <text>赛事信息</text>
+    </view>
+  </view>
+  <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+  <view class='match-schedule'>
+    <!-- style='height:{{swiperTop-statusBarHeight-45}}px;top:0;' -->
+    <view class='view-module'>
+      <view class='tab'>
+        <view id="tab2" catchtap='bindTabClick' class="sub {{tabId=='tab2'?'subed':''}}">
+          <image mode='aspectFill' src='/pic/Rankings.png'></image>
+          <text>排行</text>
+        </view>
+        <view id="tab3" catchtap='bindTabClick' class="sub {{tabId=='tab3'?'subed':''}}">
+          <image mode='aspectFill' src='/pic/dongtai.png'></image>
+          <text>动态</text>
+        </view>
+      </view>
+      <!-- 动态 -->
+      <view hidden="{{tabId != 'tab3'}}" class='tab3'>
+        <!-- 精彩瞬间 -->
+        <view class='sport-splend'>
+          <view class='sport-splend-all'>
+            <view class='sport-splend-title'>
+              <view class='sportInfo'>精彩瞬间</view>
+              <navigator url='/page/pack-match/pages/splend/splend?competition_id={{competition_id}}'>
+                <view class='sport-splend-more'>
+                  <text>更多精彩</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </navigator>
+            </view>
+            <view class='sport-splend-contain' wx:if="{{sportSplend.length>0}}">
+              <view wx:for="{{sportSplend}}" wx:for-item="sportSplend" wx:key="{{index}} " data-index="{{index}}" bindtap='splendVideoEvt'>
+                <image src='{{sportSplend.material_pic}}' mode='aspectFill'></image>
+                <view>{{sportSplend.material_title}}</view>
+              </view>
+            </view>
+            <view wx:else>
+              <view class='sportInfo-empty'>暂无数据</view>
+            </view>
+          </view>
+        </view>
+        <!-- 热门咨讯 -->
+        <view class='hotInfo'>
+          <view class='hotInfo-all'>
+            <view class='hotInfo-title'>
+              <view class='sportInfo'>热门资讯</view>
+              <navigator url='/page/pack-match/pages/hot-info/hot-info?competition_id={{competition_id}}'>
+                <view class='hotInfo-more'>
+                  <text>更多资讯</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </navigator>
+            </view>
+            <view wx:if="{{hotInfo.length>0}}" class='hotInfo-contain'>
+              <import src="../../../../my-template/news/news.wxml" />
+              <block wx:for="{{hotInfo}}" wx:for-item="hotInfo" wx:key="{{index}}">
+                <template wx:if="{{hotInfo.material_pic_type == 0 ||hotInfo.material_pic_type == 2 }}" is="news_item1" data="{{...hotInfo}}"></template>
+                <template wx:if="{{hotInfo.material_pic_type == 1}}" is="news_item2" data="{{...hotInfo}}"></template>
+              </block>
+            </view>
+            <view wx:else>
+              <view class='sportInfo-empty'>暂无数据</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 排行 -->
+    <swiper wx:if="{{tabId=='tab2'}}" class='swiper-view' current='{{swiperCurrent}}' bindchange="bindSwiperChange" duration="{{500}}" skip-hidden-item-layout='true' style='height:{{swiperHeight}}px;top:{{swiperTop}}px;'>
+      <!-- 积分榜 -->
+      <swiper-item>
+        <scroll-view scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+          <!-- 杯赛 -->
+          <view wx:if="{{tabId == 'tab2' && rankingsLabel.length>0 && competition_level == 1}}">
+            <view class='timing-header'>
+              <view>姓名</view>
+              <view style='margin-right:22rpx;'>比赛用时</view>
+            </view>
+          </view>
+          <template wx:for="{{rankingsLabel}}" wx:key="{{index}}" wx:for-item="rankingsLabel" wx:if="{{competition_level == 1}}" is='sport-timing' data="{{rankingsLabel,index}}" />
+          <view class='empty-view' wx:if="{{rankingsLabel.length==0}}" style='min-height:{{swiperHeight}}px;'>
+            <template is="emptyView2" data="{{empty}}" />
+          </view>
+          <template wx:else is='loadMore3' data="{{...rankingsLabel.loadData}}" />
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<!-- 精彩瞬间的弹窗 -->
+<videoView status="{{splendStatus}}" videoState="{{videoState}}" material_type="{{splendTip.material_type}}" material_url="{{splendTip.material_url}}" material_title="{{splendTip.material_title}}" material_pic="{{splendTip.material_pic}}" bind:onBut="tipIconEvt"
+/>

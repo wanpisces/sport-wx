@@ -1,0 +1,85 @@
+/* widget/or-code/or-code.wxss */
+
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1002;
+  background: rgba(40, 40, 40, 0.8);
+}
+
+.v_view {
+  position: fixed;
+  top: 350rpx;
+  left: 70rpx;
+  width: 70%;
+  height: 60%;
+  z-index: 1003;
+  display: flex;
+  flex-flow: column;
+  background: rgba(0, 0, 0, 0);
+}
+
+.code {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  background: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.canvas-or {
+  width: 610rpx;
+  height: 610rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.or-btn {
+  width: 610rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tips {
+  font-size: 32rpx;
+  color: #353535;
+  padding: 20rpx;
+  font-weight: bold;
+}
+
+.bnt {
+  width: 50%;
+  /* display: flex;
+  flex-flow: column; */
+  margin-top: 50rpx;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.bnt image {
+  display: block;
+  height: 98rpx;
+  width: 98rpx;
+  margin: auto;
+}
+
+.bnt view {
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+button::after {
+  border: none;
+}

@@ -1,0 +1,52 @@
+<template name="badminton">
+  <view class='badminton-all'>
+    <view class='badminton-left'>
+      <view class='badminton-image'>
+        <image mode='aspectFill' src="{{item[1].user_avatar || '/pic/jfb_add.png'}}"></image>
+        <image wx:if="{{item[1].is_show == 1 && item[1].user_id != 0}}" src='/pic/dianhua.png' style='width:35rpx;height:35rpx; position: absolute;right:78rpx;bottom:27rpx;' bindtap='getPhone' data-index="{{index}}" data-title="A"></image>
+      </view>
+      <view class='badminton-text' wx:if="{{item[1].user_id !=0}}">
+        <view class='badminton-title'>{{item[1].user_nickname}}</view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-xingming' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[1].name}}</text>
+        </view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-xueyuan' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[1].college}}</text>
+        </view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-shubendisc' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[1].major}}</text>
+        </view>
+      </view>
+      <view wx:else class='active-space'>小伙伴正在赶来...</view>
+    </view>
+    <view class='badminton-center'>
+      <view class='title'>{{item[0].group_no}}</view>
+      <view class='iconfont icon-hezuo' style='font-size:60rpx;color:#FFD100;text-align:center;'></view>
+    </view>
+    <view class='badminton-right'>
+      <view class='badminton-image'>
+        <image mode='aspectFill' src="{{item[2].user_avatar || '/pic/jfb_add.png'}}"></image>
+        <image wx:if="{{item[2].is_show == 1 && item[2].user_id != 0}}" src='/pic/dianhua.png' style='width:35rpx;height:35rpx; position: absolute;right:78rpx;bottom:27rpx;' bindtap='getPhone' data-index="{{index}}" data-title="B"></image>
+      </view>
+      <view class='badminton-text' wx:if="{{item[2].user_id != 0}}">
+        <view class='badminton-title'>{{item[2].user_nickname}}</view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-xingming' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[2].name}}</text>
+        </view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-xueyuan' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[2].college}}</text>
+        </view>
+        <view class='badminton-container'>
+          <text class='iconfont icon-shubendisc' style='font-size:20rpx;color:#E3E3E3;margin-right:10rpx;'></text>
+          <text class='text'>{{item[2].major}}</text>
+        </view>
+      </view>
+      <view wx:else class='active-space'>小伙伴正在赶来...</view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,23 @@
+<view class="video-view" hidden='{{status}}'>
+  <view class='video-contain'>
+    <authorizeView bnt-type="share" style="position:absolute;right:17rpx;top:17rpx;" wx:if="{{material_type == '2'}}">
+      <view class='video-share'>
+        <image mode='aspectFill' src='/pic/tip_share.png'></image>
+      </view>
+    </authorizeView>
+    <video wx:if="{{material_type == '3' && videoState}}" class='video_image' src="{{material_url}}" controls show-fullscreen-btn="true" direction="90" bindfullscreenchange="controlVideoEvt">
+      <cover-view class="cover-view" bindtap="play" style="position:absolute;right:17rpx;top:17rpx;" hidden='{{imgState}}'>
+        <button open-type="share">
+          <cover-image class="cover-image" src="/pic/tip_share.png" />
+        </button>
+      </cover-view>
+    </video>
+    <image wx:if="{{material_type == '2'}}" src="{{material_url}}" class='video_image' mode='aspectFill'></image>
+    <view class="video-title">
+      <text>{{material_title}}</text>
+    </view>
+  </view>
+  <view class='tip-icon' bindtap='tipIconEvt'>
+    <image src='/pic/tip.png' mode='aspectFill'></image>
+  </view>
+</view>

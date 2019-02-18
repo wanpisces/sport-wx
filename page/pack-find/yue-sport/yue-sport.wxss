@@ -1,0 +1,589 @@
+/* page/pack-find/yue-sport/yue-sport.wxss */
+@import "/libs/icon.wxss";
+
+page {
+  background: #2d2c33;
+  color: #fff;
+}
+
+.pages {
+  position: relative;
+}
+
+.pages-fixed {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+.v2 {
+  overflow: hidden;
+  background: #222;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+}
+
+.data_view {
+  /* position: absolute; */
+  width: 100%;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data_view .data_view_tag {
+  width: 119rpx;
+  height: 56rpx;
+  background-color: #ffd100;
+  border-radius: 50rpx 0 0 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+}
+
+.data_view .data_view_contain {
+  width: 100%;
+  display: flex;
+  margin-top: 30rpx;
+}
+
+.data_view_contain>view {
+  text-align: center;
+  width: 39%;
+}
+
+.yue-wait {
+  text-align: center;
+  font-size: 32rpx;
+  color: #ffe600;
+  padding-bottom: 20rpx;
+}
+
+.data_view_contain>view:nth-child(2) {
+  /* border: 1px  red solid; */
+  text-align: center;
+  width: 25%;
+}
+
+.yue-avator {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  /* border: 1px red solid; */
+  margin: 0 auto;
+  background: #dcdcdc;
+}
+
+.yue-avator3 {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  /* border: 1px red solid; */
+  margin: 0 auto;
+  /* background: #dcdcdc; */
+}
+
+.yue-vs {
+  /* width: 120rpx; */
+  height: 120rpx;
+  line-height: 120rpx;
+  border-radius: 120rpx;
+  margin: 0rpx auto;
+}
+
+.vs-img {
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-top: 40rpx;
+}
+
+.yue-sucess {
+  background: #ffe600;
+  padding: 6rpx 0;
+  font-size: 29rpx;
+  border-radius: 25rpx;
+  color: #000;
+  margin-top: 25rpx;
+  /* width: 60%; *//* margin: auto; */
+}
+
+.yue-name {
+  font-size: 34rpx;
+  color: #fff;
+  margin-top: 15rpx;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 15rpx;
+}
+
+.yue-line {
+  background: #222;
+  height: 10rpx;
+}
+
+.yue-line2 {
+  background: #222;
+  height: 20rpx;
+}
+
+.yue-rules {
+  background: #2d2c33;
+  color: #c2c2c2;
+  font-size: 32rpx;
+  padding-left: 30rpx;
+  padding-top: 20rpx;
+}
+
+.yue-rules view {
+  display: flex;
+  /* align-items: center; */
+  padding: 10rpx 0 30rpx 0;
+  word-wrap: break-word;
+}
+
+.yue-rules button {
+  padding: 0;
+  line-height: 30rpx;
+  background-color: transparent;
+  text-align: left;
+  margin: 0;
+}
+
+.yue-process {
+  background: #2d2c33;
+  font-size: 30rpx;
+  color: #c2c2c2;
+  padding-bottom: 120rpx;
+}
+
+.yue-process-1 {
+  padding: 30rpx;
+}
+
+.yue-process-start {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 25rpx;
+  margin: 0 0 0 20rpx;
+}
+
+.yue-process-round {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 20rpx;
+  border: 1px #eee solid;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.yue-process-vertical {
+  height: 70rpx;
+  width: 1rpx;
+  text-align: center;
+  margin: 0 auto;
+  border-left: 1px #eee solid;
+}
+
+.yue-poress-title {
+  margin-left: 40rpx;
+  position: relative;
+  top: -5rpx;
+}
+
+.yue-botton, .yue-botton2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 89rpx;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.yue-botton2>view {
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  color: #202020;
+  width: 100%;
+  background: #ffd100;
+  font-weight: bold;
+}
+
+.yue-botton>view {
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  color: #ffd100;
+}
+
+.yue-botton>authorizeView {
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  width: 25%;
+  color: #ffd100;
+}
+
+.yue-botton>view:nth-child(1) {
+  width: 25%;
+  background: #202020;
+  font-size: 30rpx;
+}
+
+.yue-botton>view:nth-child(2) {
+  width: 35%;
+  background: #282828;
+  font-size: 30rpx;
+}
+
+.yue-botton>view:nth-child(3) {
+  width: 40%;
+  background: #ffd100;
+  color: #222;
+}
+
+.share-one {
+  background: #000;
+  height: 98rpx;
+  width: 100%;
+  color: #ffd100;
+  font-size: 28rpx;
+  line-height: 98rpx;
+}
+
+.yue-look {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 89rpx;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.yue-look view:nth-child(1) {
+  height: 89rpx;
+  /* width: 40%; */
+  text-align: center;
+  font-size: 30rpx;
+  background: #202020;
+  line-height: 89rpx;
+}
+
+.yue-look view:nth-child(2) {
+  height: 89rpx;
+  line-height: 89rpx;
+  width: 60%;
+  text-align: center;
+  background: #ffd100;
+  color: #222;
+  font-size: 36rpx;
+}
+
+.yue-share-two {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  color: red;
+}
+
+.share-two {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #202020;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  box-shadow: 0px 0px 16px rgba(179, 33, 36, 0.24);
+}
+
+.share-three {
+  text-align: center;
+  color: #ffd100;
+  /* display: flex; */
+  width: 100%;
+}
+
+.share-1 {
+  width: 40%;
+  background: #000;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.yue-contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.yue-contact>image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+/* 约动留言和电话 */
+
+.yue-modele {
+  width: 100%;
+  height: 110rpx;
+  background-color: #2d2c33;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.yue-modele>view {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.yue-modele-message>view, .yue-modele-phone>view {
+  line-height: 110rpx;
+}
+
+.yue-text-line {
+  width: 1px;
+  height: 52rpx;
+  background-color: #464646;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.yue-text {
+  font-size: 36rpx;
+  color: #c2c2c2;
+  margin-left: 10rpx;
+}
+
+/* 计分板 */
+
+.yue-scorecard {
+  /* width: 100%; */
+  height: 113rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  background-color: #2d2c33;
+  border-bottom: 1rpx solid #414141;
+}
+
+.yue-scorecard-checkNum {
+  font-size: 28rpx;
+  color: #ffd100;
+  margin-right: 20rpx;
+  line-height: 113rpx;
+  display: flex;
+  align-items: center;
+}
+
+.yue-scorecard-checkNum image {
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.yue-scorecard-title {
+  font-size: 32rpx;
+  color: #c2c2c2;
+}
+
+.yue-process-contain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.yue-process-text {
+  font-size: 24rpx;
+  color: #c2c2c2;
+}
+
+.yue-process-icon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10rpx 39rpx;
+}
+
+.yue-button {
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.yue-btn-cancel, .yue-btn-edit, .yue-btn-commissioned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yue-btn-cancel {
+  width: 100%;
+  height: 98rpx;
+  background-color: #28272c;
+}
+
+.yue-btn-edit, .yue-btn-commissioned {
+  width: 100%;
+  height: 98rpx;
+  background-color: #ffd100;
+}
+
+/* 留言弹窗 */
+
+.message {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.message-contain {
+  width: 690rpx;
+  height: 524rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+  position: relative;
+  top: 50%;
+  left: 30rpx;
+  transform: translateY(-50%);
+}
+
+.yue-select-team {
+  height: 360rpx;
+  overflow: auto;
+}
+
+.yue-select-team>view:last-child {
+  border-bottom: 0;
+}
+
+textarea {
+  width: auto;
+  height: 300rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  margin: auto;
+  padding-top: 40rpx;
+  font-size: 32rpx;
+  color: #353535;
+  padding-left: 40rpx;
+  padding-bottom: 20rpx;
+}
+
+.message-info {
+  font-size: 28rpx;
+  color: #999;
+  position: absolute;
+  top: 310rpx;
+  right: 30rpx;
+}
+
+.announce-bnt {
+  height: 200rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.announce-bnt button {
+  margin-top: 20rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  line-height: 80rpx;
+  border: none;
+  outline: none;
+  float: left;
+  margin-bottom: 60rpx;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00);
+  background: -o-linear-gradient(left, #ffd100, #ffae00);
+  background: -moz-linear-gradient(left, #ffd100, #ffae00);
+  background: linear-gradient(left, #ffd100, #ffae00);
+  box-shadow: 0rpx 0rpx 16rpx rgba(179, 33, 36, 0.24);
+}
+
+.announce-bnt button::after {
+  border: none;
+}
+
+.active-list-title {
+  font-size: 32rpx;
+  color: #353535;
+  margin: 20rpx 20rpx 0 20rpx;
+  font-weight: bold;
+}
+
+.yue-select-team>view {
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}

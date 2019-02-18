@@ -1,0 +1,25 @@
+<!--widget/navigationBar/navigationBar.wxml-->
+<view wx:if="{{tag==0}}" class='navigationBarF' style="height:{{statusBarHeight+45}}px">
+  <view class='view_bar0' style='padding-top:{{statusBarHeight}}px;'>
+    <image wx:if="{{isBack}}" mode='aspectFill' src='/pic/back_black.png' catchtap='navigateBack'></image>
+    <view style="{{isBack?'':'padding:0 20rpx;'}}">{{titleName}}</view>
+  </view>
+</view>
+<view wx:elif="{{tag==1}}" class='navigationBarF' style="height:{{statusBarHeight+45}}px">
+  <view class='view_bar1' style="padding-top:{{statusBarHeight}}px;background-image: url('{{imgUrl}}');background-color:#202020;">
+    <image wx:if="{{isBack}}" mode='aspectFill' src='/pic/back_arrow.png' catchtap='navigateBack'></image>
+    <view style="{{isBack?'':'padding:0 20rpx;'}}">{{titleName}}</view>
+  </view>
+</view>
+<view wx:elif="{{tag==2}}" class='navigationBarF' style="height:{{statusBarHeight+45}}px">
+  <view class='view_bar1' style="padding-top:{{statusBarHeight}}px;background-color:{{bgColor||'#202020'}};">
+    <image wx:if="{{isBack}}" mode='aspectFill' src='/pic/back_arrow.png' catchtap='navigateBack'></image>
+    <view style="{{isBack?'':'padding:0 20rpx;'}}">{{titleName}}</view>
+  </view>
+</view>
+<view wx:else class='navigationBarF' style="height:{{statusBarHeight+45}}px">
+  <view class='view_bar2' style="padding-top:{{statusBarHeight}}px;background-color:#ffffff;">
+    <image wx:if="{{isBack}}" mode='aspectFill' src='/pic/back_black.png' catchtap='navigateBack'></image>
+    <view style="{{isBack?'':'padding:0 20rpx;'}}">{{titleName}}</view>
+  </view>
+</view>

@@ -1,0 +1,271 @@
+@import '/libs/icon.wxss';
+
+.sport-ranking {
+  width: 100%;
+  height: 210rpx;
+}
+
+.sport-ranking {
+  width: 100%;
+  height: 210rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  align-items: center;
+  background: #efeff4;
+}
+
+.sport-ranking>view {
+  width: 230rpx;
+  height: 150rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.sport-ranking>view:nth-child(2) {
+  margin: 0 7rpx;
+}
+
+.sport-ranking>view>.sport-ranking-headimg {
+  display: block;
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #eee;
+  margin: auto;
+  margin-top: 20rpx;
+  border-radius: 50%;
+}
+
+.sport-ranking>view>text {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 1);
+  line-height: 60rpx;
+  margin: 0 18rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sport-ranking>view>.sport-ranking-icon {
+  width: 36rpx;
+  height: 56rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+}
+
+.sport-ranking-player {
+  width: 100%;
+  background-color: #fff;
+}
+
+.sport-ranking-title {
+  font-size: 34rpx;
+  color: rgba(53, 53, 53, 1);
+  margin: 30rpx 0 0 22rpx;
+  font-weight: 600;
+}
+
+.sport-ranking-contain {
+  height: 173rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #efeff4;
+}
+
+.sport-ranking-contain>image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  margin-left: 22rpx;
+}
+
+.sport-ranking-name>view {
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 1);
+}
+
+.sport-ranking-name>text {
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.sport-ranking-num {
+  display: flex;
+  position: absolute;
+  right: 0;
+  margin-right: 22rpx;
+}
+
+.sport-ranking-num>image:first-child {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.sport-ranking-num>image:last-child {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.sport-ranking-num>text {
+  display: inline-block;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 1);
+  margin: 0 10rpx;
+}
+
+.sport-team-contain {
+  width: 100%;
+  height: 310rpx;
+  background-color: #efeff4;
+}
+
+.sport-ranking-team>.sport-ranking-title {
+  margin: 30rpx 22rpx;
+}
+
+.sport-team-contain {
+  width: 100%;
+  height: 310rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sport-team {
+  width: 340rpx;
+  height: 270rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+}
+
+.sport-team:first-child {
+  margin-right: 20rpx;
+}
+
+.sport-team>image {
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin: 12rpx auto;
+}
+
+.sport-team>text {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+.sport-team>view {
+  width: 190rpx;
+  height: 58rpx;
+  border: 1rpx solid #ffb100;
+  border-radius: 29rpx;
+  margin: auto;
+  margin-top: 32rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.sport-team>view>text {
+  font-size: 24rpx;
+  color: rgba(255, 209, 0, 1);
+  line-height: 58rpx;
+}
+
+.sport-data>.sport-ranking-title {
+  margin: 21rpx 0 29rpx 22rpx;
+}
+
+.sport-data-num {
+  width: 100%;
+  height: 157rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #efeff4;
+}
+
+.sport-data-num>view:first-child {
+  margin-left: 129rpx;
+}
+
+.sport-data-num>view:last-child {
+  margin-right: 117rpx;
+}
+
+.sport-data-num>view text {
+  display: block;
+  text-align: center;
+}
+
+.sport-data-num>view text:first-child {
+  font-size: 38rpx;
+  color: rgba(53, 53, 53, 1);
+}
+
+.sport-data-num>view text:nth-child(2) {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 60rpx;
+}
+
+.sport-data-num>view:nth-child(2) text:nth-child(2) {
+  color: #ffb100;
+}
+
+.sport-data-num>view image {
+  display: block;
+  width: 63rpx;
+  height: 63rpx;
+  margin: auto;
+}
+
+.sport-info {
+  width: 100%;
+  height: 142rpx;
+  background-color: #f2f2f2;
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+
+.sport-info>view {
+  width: 50%;
+  height: 122rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sport-info .sport-info-line {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1rpx solid #efeff4;
+}
+
+.sport-info>view image {
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 12rpx;
+}
+
+.sport-info>view view {
+  font-size: 28rpx;
+  font-weight: normal;
+  color: rgba(53, 53, 53, 1);
+}

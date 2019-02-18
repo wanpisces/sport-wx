@@ -1,0 +1,98 @@
+<!--page/tabBar/find/find.wxml-->
+<import src="/my-template/news/news.wxml" />
+<import src="/my-template/shuoshuo/shuoshuo.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' label-list="{{labelList}}" cur-label-index="{{curLabelIndex}}" bind:myevent="switchTabPerson" scroll-height="{{scrollHeight}}" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view1' style="height:{{scrollHeight}}px;top:{{statusBarHeight+45}}px;">
+    <swiper duration="200" style="height:{{scrollHeight}}px" current="{{curLabelIndex}}" bindchange="swiperChange" bindscroll="bindscrollo">
+      <block>
+        <swiper-item>
+          <scroll-view scroll-y style="height:{{scrollHeight}}px" bindscrolltolower="pullLower" bindscrolltoupper="toUpperLoadNews">
+            <view class='swiper1'>
+              <view class='swiper-nav' wx:if="{{list.banner.length>0}}">
+                <swiper autoplay="{{autoplay}}" interval="5000" duration="500" style="height:380rpx;" circular="true" bindchange="swiperChangeImg">
+                  <block wx:for="{{list.banner}}" wx:key="index">
+                    <swiper-item>
+                      <view class='swiper-img' bindtap='linkBanner' data-item='{{item}}'>
+                        <image mode='aspectFill' class='swiper-img-1' src='{{item.banner_pic}}'></image>
+                      </view>
+                    </swiper-item>
+                  </block>
+                </swiper>
+                <view class='swiper-title'>
+                  <view>{{item.banner_title}}</view>
+                  <view class='swiper-title-2'>{{currentIndex}}/{{list.banner.length}}</view>
+                </view>
+              </view>
+
+
+              <!--nav部分  -->
+              <view class='find-nav'>
+
+                <view wx:for="{{list.nav}}" wx:key="index">
+                  <authorizeView data-id="{{item}}" refresh="{{refreshAuthorizeView}}" bind:onBut="onBut" user-info="{{true}}" user-phone="{{true}}">
+                    <view>
+                      <view>
+                        <image mode='aspectFill' class='find-nav-img' src='{{item.nav_pic}}'></image>
+                        <view style='font-size:28rpx;margin-top:10rpx;'>{{item.nav_title}}</view>
+                      </view>
+                    </view>
+                  </authorizeView>
+                </view>
+              </view>
+              <view class='find-line'></view>
+              <view wx:if="{{newsData.list.length!=0}}">
+                <template is='news' wx:for="{{newsData.list}}" data="{{...item}}" wx:key="{{index}}" />
+                <view class='find-bottom'></view>
+              </view>
+              <view wx:if="{{newsData.list.length==0}}">
+                <!-- <image src='../../../pic/'></image> -->
+                <template is="emptyView2" data="{{empty}}" />
+              </view>
+
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+      <block>
+        <swiper-item>
+          <scroll-view scroll-y style="height:{{scrollHeight}}px" bindscrolltolower="pullLower" lower-threshold="100">
+            <view wx:if="{{feedList.length!=0}}">
+              <template is='shuoshuo' wx:for="{{feedList}}" data="{{item,index,mineUserId}}" wx:key="listKey" />
+              <template is="loadMore2" data="{{...loadData1}}" />
+              <view class='find-bottom'></view>
+            </view>
+            <view wx:if="{{feedList.length==0}}">
+              <!-- <image src='../../../pic/'></image> -->
+              <template is="emptyView" data="{{empty}}" />
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+      <block>
+        <swiper-item>
+          <scroll-view scroll-y style="height:{{scrollHeight}}px" bindscrolltolower="pullLower" lower-threshold="100">
+            <view wx:if="{{newsDataTab.length!=0}}">
+              <template is='news' wx:for="{{newsDataTab}}" data="{{...item}}" wx:key="{{index}}" />
+              <template is="loadMore2" data="{{...loadData2}}" />
+              <view class='find-bottom'></view>
+            </view>
+            <view wx:if="{{newsDataTab.length==0}}">
+              <template is="emptyView" data="{{empty}}" />
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view wx:if="{{curLabelIndex==1}}">
+      <addNews />
+    </view>
+    <view class='yue-fresh' catchtap='freshLoad'>
+      <!-- <image mode='aspectFill' src='/pic/fresh.png' animation="{{refreshAnimation}}"></image> -->
+      <image mode='aspectFill' src='/pic/fresh.png' class='{{refreshing==true?"mymove":""}}'></image>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,117 @@
+.team-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15rpx;
+  height: 180rpx;
+  /* box-shadow: 0 0 10rpx 0rpx #edebeb; *//* border-radius: 4rpx; *//* background: #fff; */
+  background: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(237, 237, 237, 1);
+  box-shadow: 0px 4rpx 4rpx rgba(0, 0, 0, 0.11);
+  opacity: 1;
+  border-radius: 6rpx;
+}
+
+.follow-wrapper {
+  position: absolute;
+  top: 50rpx;
+  right: 50rpx;
+}
+
+.team-left {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.team-left image {
+  width: 140rpx;
+  height: 140rpx;
+  border: 1rpx solid #f2f2f2;
+}
+
+.team-left-text {
+  margin-left: 30rpx;
+  max-width: 460rpx;
+}
+
+.team-name {
+  position: relative;
+  margin: 8rpx 0 5rpx 0;
+  display: inline-block;
+  max-width: 320rpx;
+  padding-right: 75rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  color: #353535;
+}
+
+.team-dynamic {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.team-lable {
+  position: absolute;
+  right: 0rpx;
+  top: 0;
+  /* padding: 0 8rpx; */
+  height: 30rpx;
+  line-height: 28rpx;
+  font-size: 22rpx;
+  color: #282828;
+  /* background: #ffd100; */
+  border-radius: 5rpx;
+  text-align: center;
+  border: 1rpx solid #ffd100;
+}
+
+.attention {
+  text-align: center;
+  width: 100rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: #282828;
+  line-height: 50rpx;
+  border-radius: 6rpx;
+}
+
+.attention1 {
+  text-align: center;
+  width: 100rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  color: #222;
+  background: #edebeb;
+  line-height: 50rpx;
+  border-radius: 6rpx;
+}
+
+button {
+  padding: 0;
+}
+
+button::after {
+  border: none;
+}
+
+.yue-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 55rpx;
+  width: 100rpx;
+  height: 100rpx;
+  -moz-box-shadow: 4rpx 10rpx 16rpx #eee;
+  -webkit-box-shadow: 4rpx 10rpx 16rpx #eee;
+  box-shadow: 4rpx 10rpx 16rpx #eee;
+  border-radius: 100rpx;
+}
+
+.team-adress {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 15rpx;
+}

@@ -1,0 +1,411 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.3.0",
+  "appid": "wxfe381b28aeca71d5",
+  "projectname": "%E5%85%A8%E6%B0%91%E5%81%A5%E8%BA%AB",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": 58,
+      "list": [
+        {
+          "id": 0,
+          "name": "开发",
+          "pathName": "page/tabBar/index/index",
+          "query": ""
+        },
+        {
+          "id": 1,
+          "name": "个人动态",
+          "pathName": "page/pack-index/pages/team-page/team-page",
+          "query": ""
+        },
+        {
+          "id": 2,
+          "name": "开发",
+          "pathName": "page/pack-mine/mine-create/mine-create",
+          "query": "",
+          "scene": "1011"
+        },
+        {
+          "id": 3,
+          "name": "page/pack-active",
+          "pathName": "page/pack-active/active-show/active-show",
+          "query": "movement_id=525525366194831360",
+          "scene": "1011"
+        },
+        {
+          "id": 4,
+          "name": "赛况",
+          "pathName": "page/pack-match/pages/match-sign-up/match-sign-up",
+          "query": "scene=502524536663572480",
+          "scene": "1011"
+        },
+        {
+          "id": 5,
+          "name": "报名",
+          "pathName": "page/pack-match/pages/sign-up/sign-up",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "create",
+          "pathName": "page/pack-mine/mine-create/mine-create",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "mine",
+          "pathName": "page/tabBar/mine/mine",
+          "query": ""
+        },
+        {
+          "id": 8,
+          "name": "manage",
+          "pathName": "page/pack-index/pages/member-manage/member-manage",
+          "query": "group_id=459861951640502272"
+        },
+        {
+          "id": -1,
+          "name": "release",
+          "pathName": "page/pack-find/yue-release/yue-release",
+          "query": "group_id=459861951640502272"
+        },
+        {
+          "id": -1,
+          "name": "sport",
+          "pathName": "page/pack-find/yue-sport/yue-sport",
+          "query": "soccer_movement_id=460912763061927936"
+        },
+        {
+          "id": 11,
+          "name": "yue-release-edi",
+          "pathName": "page/pack-find/yue-release-edi/yue-release-edi",
+          "query": "soccer_movement_id=460932700165898240&group_id=459861951640502272"
+        },
+        {
+          "id": -1,
+          "name": "yue-data",
+          "pathName": "page/pack-find/yue-data/yue-data",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "yue-data",
+          "pathName": "page/pack-find/yue-sport/yue-sport",
+          "query": "soccer_movement_id=461991957472739328"
+        },
+        {
+          "id": -1,
+          "name": "findone",
+          "pathName": "page/tabBar/find/find",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "yue-data",
+          "pathName": "page/pack-find/yue-data/yue-data",
+          "query": "soccer_movement_id=462364652324519936&group_id=462297826051751936"
+        },
+        {
+          "id": -1,
+          "name": "i",
+          "pathName": "page/pack-index/pages/team-fun-intro/team-fun-info",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "find",
+          "pathName": "page/tabBar/find/find",
+          "query": ""
+        },
+        {
+          "id": 18,
+          "name": "yue-more",
+          "pathName": "page/pack-find/yue-more/yue-more",
+          "query": "group_id=462720693201534976"
+        },
+        {
+          "id": -1,
+          "name": "yue-sport",
+          "pathName": "page/pack-find/yue-sport/yue-sport",
+          "query": "soccer_movement_id=462750840403263488"
+        },
+        {
+          "id": 20,
+          "name": "fff",
+          "pathName": "page/pack-index/pages/personal-dynamics/personal-dynamics",
+          "query": "isShare=1&feed_id=463454279961673728&type=2"
+        },
+        {
+          "id": 21,
+          "name": "find-team-s",
+          "pathName": "page/pack-find/find-team-search/find-team-search",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "扫描二维码",
+          "pathName": "page/pack-index/pages/team-page/team-page",
+          "query": "scene=472872738998976512",
+          "scene": "1013"
+        },
+        {
+          "id": 23,
+          "name": "发现",
+          "pathName": "page/tabBar/find/find",
+          "query": "current=2",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-yue/mine-yue",
+          "query": "",
+          "scene": "1011"
+        },
+        {
+          "id": 25,
+          "name": "page/yd-detail",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=524356384720945152",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-organizer",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=525811306503077888"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-organizer",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=525525366194831360",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-organizer",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=525714277424693248",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=527906651601108992",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-organizer",
+          "pathName": "page/pack-organizer/yd-detail/yd-detail",
+          "query": "movement_id=527906651601108992",
+          "scene": "1011"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=528603683680681984"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=526861193101443072"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=526861193101443072  attr_id=2"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=526861193101443072&attr_id=2"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=528615074001059840&attr_id=2"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-data/yue-data",
+          "query": "soccer_movement_id=528615074001059840&attr_id=2"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-data/yue-data",
+          "query": "soccer_movement_id=528615074001059840&attr_id=2"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/yue-score/yue-score",
+          "query": "soccer_movement_id=528603683680681984&attr_id=3"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-yue/mine-yue",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/find-team/find-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/join-team/join-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/tabBar/about-movement/about-movement",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-find",
+          "pathName": "page/pack-find/find-team/find-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-mine",
+          "pathName": "page/pack-mine/mine-team/mine-team",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/tabBar",
+          "pathName": "page/tabBar/match/match",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-match",
+          "pathName": "page/pack-match/pages/user-info/user-info",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "page/pack-match",
+          "pathName": "page/pack-match/pages/sport-detail/sport-detail",
+          "query": "competition_id=541323973032411136"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-match",
+          "pathName": "page/pack-match/pages/sport-underway/sport-underway",
+          "query": "competition_id=541323973032411136"
+        },
+        {
+          "id": 58,
+          "name": "page/pack-match",
+          "pathName": "page/pack-match/pages/sport-events/sport-events",
+          "query": "competition_id=541323973032411136"
+        },
+        {
+          "id": -1,
+          "name": "page/pack-match",
+          "pathName": "page/pack-match/pages/sport-underway/sport-underway",
+          "query": "competition_id=541679849752756224"
+        }
+      ]
+    }
+  }
+}

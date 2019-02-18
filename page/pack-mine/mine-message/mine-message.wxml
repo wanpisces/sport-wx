@@ -1,0 +1,32 @@
+<!--page/pack-mine/mine-message/mine-message.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#282828" title-name="我的消息" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view wx:if="{{dataList.length!=0}}">
+      <view class='sys-notice' wx:for="{{dataList}}" wx:key="index" bindtap='skipHtml' data-index="{{index}}">
+        <view class='conetnt'>
+          <view class='conetnt-text'>
+            <text wx:if="{{item.message_content_type == 1}}" class='message-team'>队伍</text>
+            <text wx:if="{{item.message_content_type == 2}}" class='message-yd'>约战</text>
+            <text wx:if="{{item.message_content_type == 3}}" class='message-competion'>赛事</text>
+            <view style='width:80%;'>{{item.message_content}}</view>
+          </view>
+        </view>
+        <view class='time'>{{item.create_time}}</view>
+        <view class='dian-view' wx:if="{{item.is_visit == 2}}">
+          <view class='dian'></view>
+        </view>
+
+        <!-- wx:if="{{item.is_visit == 2}}" -->
+        <image wx:if="{{item.message_mini_run !=0}}" mode='aspectFill' src='/pic/arrow.png' class='jiantou'></image>
+        <!-- <view  class='dian'></view> -->
+      </view>
+      <template is="loadMore" data="{{loadData}}" />
+    </view>
+    <view wx:if="{{dataList.length==0}}" class='no-data'>
+      <template is="emptyView" data="{{empty}}" />
+    </view>
+  </view>
+</view>

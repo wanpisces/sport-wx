@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "wxzx-progress": "/widget/wxzx-progress/wxzx-progress"
+  }
+}

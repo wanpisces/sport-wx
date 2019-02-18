@@ -1,0 +1,379 @@
+<loadingView wx:if="{{isLoading}}" />
+<import src="/my-template/load/listTemplate.wxml" />
+<view class="{{openState||openStatus?'pages-fixed':'pages'}}">
+  <navigationBar class='navigationBar' title-name="组织者约战" tag="{{2}}" status-bar-height="{{statusBarHeight}}" bg-color="transparent" />
+  <view class='v2'>
+    <!-- margin-top:{{statusBarHeight+45}}px; -->
+    <image wx:if="{{movement_info.attr_id == 2}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251736568193.png  " class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+    <image wx:elif="{{movement_info.attr_id == 3}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251735466355.png " class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+    <image wx:else mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251737248924.png" class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+    <view class='data_view_tag'>
+      <view class='iconfont icon-fenxiang' style='font-size:25rpx;color:#353535;margin:0 8rpx;'></view>
+      <authorizeView id="share" bnt-type="share">
+        <view style='font-size:30rpx;color:#353535;line-height:56rpx;'>分享</view>
+      </authorizeView>
+    </view>
+    <view class='v2-content'>
+      <image src='{{organizer.user_avatar}}'></image>
+      <view class='v2-tag'>组织者</view>
+      <view class='v2-name'>
+        <text>{{organizer.user_nickname || '组织者'}}</text>
+        <!-- <text wx:if="{{is_organizer == 2}}" class='iconfont icon-dianhua' style='font-size:30rpx;color:#FFE227' bindtap='phoneOr'></text> -->
+        <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" user-phone="{{true}}" bind:onBut='phoneOr'>
+          <text wx:if="{{is_organizer == 2}}" class='iconfont icon-dianhua' style='font-size:30rpx;color:#FFE227'></text>
+        </authorizeView>
+      </view>
+    </view>
+  </view>
+  <!-- 详情 -->
+  <view class='yue-rules'>
+    <view>
+      <text>类型：</text>
+      <text>{{movement_info.attr_name}}</text>
+    </view>
+    <view>
+      <text>费用：</text>
+      <text>{{movement_info.movement_fee}}</text>
+    </view>
+    <view>
+      <text>赛制性质：</text>
+      <text>{{movement_info.movement_rule }} | {{movement_info.movement_type }}</text>
+    </view>
+    <view>
+      <text>时间：</text>
+      <text>{{movement_info.movement_date}}  {{movement_info.movement_time}}</text>
+    </view>
+    <view bindtap='openMap'>
+      <text>地点：</text>
+      <text style='width:80%;'>
+        <text>{{movement_info.address}}{{movement_info.venue}}</text>
+      <text class='iconfont icon-dingweiweizhizuobiaomianxing' style='font-size:34rpx;color:#FFD100;margin-left:10rpx;'></text>
+      </text>
+    </view>
+    <view>
+      <text>备注：</text>
+      <text text style='width:80%;'>{{movement_info.movement_remark || ''}}</text>
+    </view>
+  </view>
+  <!-- 约战情况 -->
+  <view wx:if="{{movement_info.movement_state == 1|| movement_info.movement_state ==2 || movement_info.movement_state ==3 || movement_info.movement_state ==4 || movement_info.movement_state ==5 || movement_info.movement_state ==6 }}" class='yd-detail'>
+    <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{movement_id}}'>
+      <view hover-stop-propagation="true" class='match'>
+        <view class='match_type'>{{movement_info.attr_name}}</view>
+        <view class='match_team'>
+          <view class='team1'>
+            <image src="{{home_group.group_badge ||'/pic/jfb_add.png'}}"></image>
+            <view wx:if="{{home_group.group_name}}">{{home_group.group_name}}</view>
+            <view wx:else style="{{home_group.group_name?'':'color:#ff0000;'}}">队伍已解散</view>
+          </view>
+          <view class='to'>
+            <view style='font-size:24rpx;color:#999;text-align:center;background:none;'>{{movement_info.movement_rule}}</view>
+            <view class='iconfont icon-vs' style='font-size:35rpx;color:#fff;background:transparent'></view>
+            <view wx:if="{{movement_info.movement_state == 1}}">等待应约</view>
+            <view wx:if="{{movement_info.movement_state == 2}}">约战成功</view>
+            <view wx:if="{{movement_info.movement_state == 3}}">约战完结</view>
+            <view wx:if="{{movement_info.movement_state == 4 }}">正常取消</view>
+            <view wx:if="{{ movement_info.movement_state == 5}}">违约取消</view>
+            <view wx:if="{{movement_info.movement_state == 6 }}">约战进行时</view>
+          </view>
+          <view class='team2'>
+            <image src='{{away_group.group_badge || "/pic/jfb_add.png"}}' mode='scaleToFill'></image>
+            <view wx:if="{{movement_info.movement_state == 1 || movement_info.movement_state == 4 }}" style="{{away_group.group_name?'color:#353535;':'color:#999;'}}">{{away_group.group_name || '等待应约'}}</view>
+            <view wx:else style="{{away_group.group_name?'':'color:#ff0000;'}}">{{away_group.group_name || '队伍已解散'}}</view>
+          </view>
+        </view>
+        <view class='match_details'>
+          <view class='match_details_time'>
+            <view class='iconfont icon-shijian1' style='font-size:30rpx;color:#FFD100;margin-left:0;'></view>
+            <view class=''>{{movement_info.movement_date}} {{movement_info.movement_time}}</view>
+          </view>
+          <view>费用：{{movement_info.movement_fee}}</view>
+        </view>
+        <view class='match_addr'>
+          <view class='iconfont icon-location' style='font-size:30rpx;color:#FFD100;'></view>
+          <view class='match_addr_item'>{{movement_info.address}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view style='width:100%;height:20rpx;background-color:#222;'></view>
+  <!-- A队/B队 两支队伍的情况 -->
+  <view wx:if="{{movement_info.group_num == 2}}" class='team_list' style="{{is_organizer == 1 && movement_info.movement_state == 7?'margin-bottom: 98rpx;':''}}">
+    <view class='detail-list'>
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{detail_tab.currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">
+          <!-- {{home_group.group_name || 'A队'}}({{group_member_count.group_a_count}}/{{movement_info.group_per_num}}) -->
+          <text class='hidden-style'>{{home_group.group_name || 'A队'}}</text>
+          <text>({{group_member_count.group_a_count}}/{{movement_info.group_per_num}})</text>
+        </view>
+        <view class="swiper-tab-list {{detail_tab.currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="tabNav">
+          <!-- {{away_group.group_name || 'B队'}}（{{group_member_count.group_b_count}}/{{movement_info.group_per_num}}） -->
+          <text class='hidden-style'>{{away_group.group_name || 'B队'}}</text>
+          <text>({{group_member_count.group_b_count}}/{{movement_info.group_per_num}})</text>
+        </view>
+      </view>
+      <view class='swiper-contain'>
+        <!-- A队 -->
+        <view wx:if="{{detail_tab.currentTab==1}}" class='sport-select'>
+          <view wx:if="{{homeList.length>0}}" class='detail_content' wx:for="{{homeList}}" wx:key="{{index}}">
+            <view class='detail-top'>
+              <view class='detail-top-one'>
+                <image src='{{item.user_avatar}}' class='headImg'></image>
+                <image wx:if="{{item.user_gender == 1}}" mode='aspectFill' src='/pic/famale.png' class='sex'></image>
+                <image wx:if="{{item.user_gender == 2}}" mode='aspectFill' src='/pic/female.png' class='sex'></image>
+              </view>
+              <view class='detail-top-two'>
+                <view class='detail-name'>{{item.user_nickname}}</view>
+                <view class='detail-time'>申请时间：{{item.create_time}}</view>
+              </view>
+              <view class='detail-top-three' wx:if="{{is_organizer == 1}}">
+                <view class='iconfont icon-dianhua1' style='font-size:30rpx;color:#FFD100;margin-right:40rpx;' data-index="{{index}}" bindtap='phoneEvt'></view>
+                <view wx:if="{{movement_info.movement_state == 7}}" class='iconfont icon-delete' style='font-size:30rpx;color:#FFD100;' data-index="{{index}}" bindtap='deleteEvt'></view>
+              </view>
+            </view>
+            <view class='detail-center'>
+              <view>身高：{{item.user_height}}cm</view>
+              <view>体重：{{item.user_weight}}kg</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">位置：{{item.role}}</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">号码：{{item.no}}号</view>
+            </view>
+          </view>
+          <view wx:if="{{homeList.length==0}}">
+            <template is='emptyView2' data="{{empty}}" />
+          </view>
+          <view class='checkMore' wx:if="{{homeMore}}" catchtap='checkMoreEvt' data-title="home">
+            <view style='font-size:24rpx;color:#999999'>查看更多</view>
+            <view class='iconfont icon-jiantou' style='font-size:24rpx;color:#999999'></view>
+          </view>
+          <!-- 点我报名//取消报名 -->
+          <!-- catchtouchmove="buttonMove" catchtouchstart="buttonStart"  -->
+          <view class='btn-baoming' wx:if="{{movement_info.movement_state == 7 && (is_joined ==1 || is_joined ==0)}}" style="position: fixed;bottom:{{buttonBtm}}px;right:{{buttonRighgt}}px;">
+            <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="A_team" bind:onBut="{{is_joined == 1? 'cancelBaoming': 'applyEvt'}}" style="margin-bottom:10rpx;">
+              <view class='iconfont icon-baomingguanli' style='color:#202020;font-size:40rpx;'></view>
+              <view style='font-size:18rpx;color:#202020;'>{{is_joined == 1?'取消报名':'点我报名'}}</view>
+            </authorizeView>
+          </view>
+        </view>
+        <!-- B队 -->
+        <view wx:if="{{detail_tab.currentTab==2}}" class='sport-select'>
+          <view wx:if="{{awayList.length>0}}" class='detail_content' wx:for="{{awayList}}" wx:key="{{index}}">
+            <view class='detail-top'>
+              <view class='detail-top-one'>
+                <image src='{{item.user_avatar}}' class='headImg'></image>
+                <image wx:if="{{item.user_gender == 1}}" mode='aspectFill' src='/pic/famale.png' class='sex'></image>
+                <image wx:if="{{item.user_gender == 2}}" mode='aspectFill' src='/pic/female.png' class='sex'></image>
+              </view>
+              <view class='detail-top-two'>
+                <view class='detail-name'>{{item.user_nickname}}</view>
+                <view class='detail-time'>申请时间：{{item.create_time}}</view>
+              </view>
+              <view class='detail-top-three' wx:if="{{is_organizer == 1}}">
+                <view class='iconfont icon-dianhua1' style='font-size:30rpx;color:#FFD100;margin-right:40rpx;' data-index="{{index}}" bindtap='phoneEvt'></view>
+                <view wx:if="{{movement_info.movement_state == 7}}" class='iconfont icon-delete' style='font-size:30rpx;color:#FFD100;' data-index="{{index}}" bindtap='deleteEvt'></view>
+              </view>
+            </view>
+            <view class='detail-center'>
+              <view>身高：{{item.user_height}}cm</view>
+              <view>体重：{{item.user_weight}}kg</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">位置：{{item.role}}</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">号码：{{item.no}}号</view>
+            </view>
+          </view>
+          <view wx:if="{{awayList.length==0}}">
+            <template is='emptyView2' data="{{empty}}" />
+          </view>
+          <view class='checkMore' wx:if="{{awayMore}}" catchtap='checkMoreEvt' data-title="away">
+            <view style='font-size:24rpx;color:#999999'>查看更多</view>
+            <view class='iconfont icon-jiantou' style='font-size:24rpx;color:#999999'></view>
+          </view>
+          <!-- catchtouchmove="buttonMove" catchtouchstart="buttonStart" -->
+          <view class='btn-baoming' wx:if="{{movement_info.movement_state == 7 && (is_joined ==2 || is_joined ==0)}}" style="position: fixed;bottom:{{buttonBtm}}px;right:{{buttonRighgt}}px;">
+            <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="B_team" bind:onBut="{{is_joined ==2? 'cancelBaoming': 'applyEvt'}}" style="margin-bottom:10rpx;">
+              <view class='iconfont icon-baomingguanli' style='color:#202020;font-size:40rpx;'></view>
+              <view style='font-size:18rpx;color:#202020;'>{{is_joined ==2?'取消报名':'点我报名'}}</view>
+            </authorizeView>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 只有一支队伍的情况 -->
+  <view class='team_list' wx:if="{{movement_info.group_num == 1}}" style="{{is_organizer==1 && movement_info.movement_state == 7?'margin-bottom: 98rpx;':''}}">
+    <view class='detail-list'>
+      <view class="swiper-tab">
+        <view class="swiper-tab-list on" data-current="0" bindtap="tabNav">{{home_group.group_name || 'A队'}}({{group_member_count.group_a_count}}/{{movement_info.group_per_num}})</view>
+      </view>
+      <view class='swiper-contain'>
+        <view class='sport-select'>
+          <view wx:if="{{homeList.length>0}}" class='detail_content' wx:for="{{homeList}}" wx:key="{{index}}">
+            <view class='detail-top'>
+              <view class='detail-top-one'>
+                <image src='{{item.user_avatar}}' class='headImg'></image>
+                <image wx:if="{{item.user_gender == 1}}" mode='aspectFill' src='/pic/famale.png' class='sex'></image>
+                <image wx:if="{{item.user_gender == 2}}" mode='aspectFill' src='/pic/female.png' class='sex'></image>
+              </view>
+              <view class='detail-top-two'>
+                <view class='detail-name'>{{item.user_nickname}}</view>
+                <view class='detail-time'>申请时间：{{item.create_time}}</view>
+              </view>
+              <view class='detail-top-three' wx:if="{{is_organizer == 1}}">
+                <view class='iconfont icon-dianhua1' style='font-size:30rpx;color:#FFD100;margin-right:40rpx;' data-index="{{index}}" bindtap='phoneEvt'></view>
+                <view wx:if="{{movement_info.movement_state == 7}}" class='iconfont icon-delete' style='font-size:30rpx;color:#FFD100;' data-index="{{index}}" bindtap='deleteEvt'></view>
+              </view>
+            </view>
+            <view class='detail-center'>
+              <view>身高：{{item.user_height}}cm</view>
+              <view>体重：{{item.user_weight}}kg</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">位置：{{item.role}}</view>
+              <view wx:if="{{movement_info.attr_id == 2 ||movement_info.attr_id == 3}}">号码：{{item.no}}号</view>
+            </view>
+          </view>
+          <!-- catchtouchmove="buttonMove" catchtouchstart="buttonStart" -->
+          <view class='btn-baoming' wx:if="{{movement_info.movement_state == 7}}" style="position: fixed;bottom:{{buttonBtm}}px;right:{{buttonRighgt}}px;">
+            <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="A_team" bind:onBut="{{is_joined == 1? 'cancelBaoming': 'applyEvt'}}" style="margin-bottom:10rpx;">
+              <view class='iconfont icon-baomingguanli' style='color:#202020;font-size:40rpx;'></view>
+              <view style='font-size:18rpx;color:#202020;'>{{is_joined == 1?'取消报名':'点我报名'}}</view>
+            </authorizeView>
+          </view>
+          <view wx:if="{{homeList.length==0}}">
+            <template is='emptyView2' data="{{empty}}" />
+          </view>
+          <view class='checkMore' wx:if="{{homeMore}}" catchtap='checkMoreEvt' data-title="home">
+            <view style='font-size:24rpx;color:#999999'>查看更多</view>
+            <view class='iconfont icon-jiantou' style='font-size:24rpx;color:#999999'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 组织者的操作 -->
+  <view wx:if="{{is_organizer==1 && movement_info.movement_state==7 }}" class='btn-caozuo'>
+    <authorizeView refresh="{{refreshAuthorizeView}} " user-info="{{true}} " style='width:25%;background:#2D2C33;' bind:onBut="cancelYdEvt">
+      <view class='btn-detail'>
+        <view class='iconfont icon-jiaochacross80' style='color:#FFFFFF;font-size:28rpx;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#fff;'>取消</view>
+      </view>
+    </authorizeView>
+    <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}} " style='width:25%;background:#3B3A3E;' bind:onBut="editYdEvt">
+      <view class='btn-detail'>
+        <view class='iconfont icon-bianjiicon' style='color:#FFFFFF;font-size:27rpx;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#fff;'>编辑</view>
+      </view>
+    </authorizeView>
+    <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}} " style='width:50%;background:#FFD100;' bind:onBut="openYd">
+      <view class='btn-detail'>
+        <view class='iconfont icon-yundong' style='color:#353535;font-size:38rpx;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#353535;'>开启约战</view>
+      </view>
+    </authorizeView>
+  </view>
+</view>
+<!-- 开启约战弹窗 -->
+<view wx:if="{{openState}}">
+  <view class='open-tip'>
+    <view class='open-content'>
+      <view class='open-content-title'>请编辑队伍名称并指定创建者</view>
+      <!-- 两支队伍的情况 -->
+      <view class='tip-list' wx:if="{{movement_info.group_num == 2}}">
+        <view class='detail-tip-list'>
+          <view class="swiper-tab " style='background:#fff;'>
+            <!-- A队 -->
+            <view wx:if="{{!focusState}}" class="swiper-tab-list" data-current="0" bindtap="tipTabNav" style='width:50%;'>
+              <text class="hidden-style {{tab_tip.currentTab==0? 'in' : ''}}">{{home_group.group_name ||group_name_a}}</text>
+              <text class='iconfont icon-bianji' style='font-size:32rpx;color:#FDB208;margin-left:30rpx;' bindtap='bindEdit' data-title="A"></text>
+            </view>
+            <view wx:if="{{focusState}}" class="swiper-tab-list" data-current="0" style='width:50%;'>
+              <input bindblur='bindblurAevt' focus="{{focus_a}}" bindinput='getOneText' value="{{home_group.group_name ||group_name_a}}" maxlength="10"></input>
+              <image mode='aspectFill' src='/pic/dui.png' style='width:30rpx;height:30rpx;' bindtap='bindSure' data-title="A"></image>
+            </view>
+            <!-- B队 -->
+            <view wx:if="{{!focusStatus}}" class="swiper-tab-list" data-current="1" bindtap="tipTabNav" style='width:50%;'>
+              <text class="hidden-style {{tab_tip.currentTab==1 ? 'in' : ''}} ">{{away_group.group_name||group_name_b}}</text>
+              <text class='iconfont icon-bianji' style='font-size:32rpx;color:#FDB208;margin-left:30rpx;' bindtap='bindEdit' data-title="B"></text>
+            </view>
+            <view wx:if="{{focusStatus}}" class="swiper-tab-list" data-current="1" style='width:50%;'>
+              <input bindblur='bindblurBevt' focus="{{focus_b}}" bindinput='getTwoText' value="{{away_group.group_name||group_name_b}}" maxlength="10"></input>
+              <image mode='aspectFill' src='/pic/dui.png' style='width:30rpx;height:30rpx;' bindtap='bindSure' data-title="B"></image>
+            </view>
+          </view>
+          <view class='swiper-contain'>
+            <!-- A队 -->
+            <view wx:if="{{tab_tip.currentTab==0}}" class='sport-select'>
+              <view class='tip-content'>
+                <view class='tip-container' wx:for="{{homeList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='selectMember'>
+                  <image class='container-img' src='{{item.user_avatar}}'></image>
+                  <view class='container-name'>{{item.user_nickname}}</view>
+                  <view wx:if="{{selectIndex_a != index}}" class='container-icon'></view>
+                  <view wx:else class='iconfont icon-xuanzhong container-select-icon'></view>
+                </view>
+              </view>
+            </view>
+            <!-- B队 -->
+            <view wx:if="{{tab_tip.currentTab==1}}" class='sport-select'>
+              <view class='tip-content'>
+                <view class='tip-container' wx:for="{{awayList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='selectMember'>
+                  <image class='container-img' src='{{item.user_avatar}}'></image>
+                  <view class='container-name'>{{item.user_nickname}}</view>
+                  <view wx:if="{{selectIndex_b != index}}" class='container-icon'></view>
+                  <view wx:else class='iconfont icon-xuanzhong container-select-icon'></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 一支队伍的情况 -->
+      <view class='tip-list' wx:if="{{movement_info.group_num == 1}}">
+        <view class='detail-tip-list'>
+          <view class="swiper-tab" style='background:#fff;'>
+            <view wx:if="{{!focusState}}" class="swiper-tab-list" data-current="1">
+              <text bindtap='getFouse' class="hidden-style in">{{home_group.group_name ||group_name_a}}</text>
+              <text class='iconfont icon-bianji' style='font-size:32rpx;color:#FDB208;margin-left:30rpx;' bindtap='bindEdit' data-title="A"></text>
+            </view>
+            <view wx:if="{{focusState}}" class="swiper-tab-list" data-current="1">
+              <!--  -->
+              <input bindblur='bindblurAevt' focus="{{focus_a}}" bindinput='getOneText' value='{{home_group.group_name ||group_name_a}}' placeholder='请输入队伍名称' maxlength="10"></input>
+              <!-- <text class='iconfont icon-xuanzhong1' style='font-size:32rpx;color:#FDB208;' bindtap='bindSure' data-title="A"></text> -->
+              <image mode='aspectFill' src='/pic/dui.png' style='width:30rpx;height:30rpx;' bindtap='bindSure' data-title="A"></image>
+            </view>
+          </view>
+          <view class='swiper-contain'>
+            <view wx:if="{{tab_tip.currentTab==0}}" class='sport-select'>
+              <view class='tip-content'>
+                <view class='tip-container' wx:for="{{homeList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='selectMember'>
+                  <image class='container-img' src='{{item.user_avatar}}'></image>
+                  <view class='container-name'>{{item.user_nickname}}</view>
+                  <view wx:if="{{selectIndex_a != index}}" class='container-icon'></view>
+                  <!-- <view wx:else class='iconfont icon-xuanzhong container-select-icon'></view> -->
+                  <image wx:else mode='aspectFill' src='/pic/dui.png' style='width:30rpx;height:30rpx;' class='container-select-icon'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='announce-bnt'>
+        <button data-title="cancel" bindtap="tipEvt" class='btn'>取消</button>
+        <button data-title="sure" bindtap="tipEvt" class='btn'>确定</button>
+        <!-- <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="cancel" bind:onBut="tipEvt">
+          <view class='btn'>取消</view>
+        </authorizeView>
+        <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="sure" bind:onBut="tipEvt">
+          <view class='btn'>确定</view>
+        </authorizeView> -->
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 点我报名弹窗 -->
+<view wx:if="{{openStatus}}">
+  <view class='open-tip'>
+    <view class='open-content'>
+      <view class='openStatus-title'>温馨提示</view>
+      <view class='openStatus-text'>你已选择{{detail_tab.currentTab==1?group_name_a:group_name_b}},完善个人信息方可成功加入</view>
+      <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" data-title="sure" bind:onBut="navigatorEvt">
+        <view class='openStatus-btn'>我知道了（{{countDownNum}}）</view>
+      </authorizeView>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,133 @@
+<!--page/pack-match/pages/match-sign-up/match-sign-up.wxml-->
+<import src="/libs/wxParse/wxParse.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<import src="../../../../my-template/load/listTemplate.wxml" />
+<navigationBar class='navigation-bar' title-name="赛事报名" tag="{{3}}" status-bar-height="{{statusBarHeight}}">
+</navigationBar>
+
+<view style='margin:{{45+statusBarHeight}}px 0 0 0;position: relative;' class="{{!sportTipState?'sport-hidden':'sport-visible'}}">
+  <view style='margin-bottom:200rpx;'>
+    <swiper autoplay="true" interval="5000" duration="500" class='swiper'>
+      <block wx:for="{{[competition_pic]}}" wx:key="{{index}}">
+        <swiper-item catchtouchmove='catchTouchMove'>
+          <image mode='aspectFill' src="{{[competition_pic]}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <view style='color:#353535;font-size:30rpx;font-weight: bold;'>报名类型：</view>
+      <label class="radio-item">
+        <radio value="1" checked/>
+        <text>队员报名</text>
+      </label>
+      <label class="radio-item" style='margin-left:50rpx;'>
+        <radio value="2" />
+        <text>队长报名</text>
+      </label>
+    </radio-group>
+    <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+    <view>
+      <view class='team'>
+        <!-- 队伍参加赛事 -->
+        <view style='width:100%;margin-bottom:20rpx;'>
+          <view wx:if="{{select == 2}}" style='width:100%;line-height:81rpx;font-size:28rpx;color:#353535;margin-left:17rpx;border-bottom:1rpx solid #F2F2F2;'>你可选择以下球队参与赛事</view>
+          <!-- <view wx:else style='width:100%;line-height:81rpx;font-size:28rpx;color:#353535;margin-left:17rpx;border-bottom:1rpx solid #F2F2F2;'>已报名
+            <text style='color:#CB2500;'>{{team_num || '0'}}</text>支队伍，可加入队伍参与赛事</view> -->
+          <view wx:else style='width:100%;line-height:81rpx;font-size:28rpx;color:#353535;margin-left:17rpx;border-bottom:1rpx solid #F2F2F2;'>您可加入以下队伍参与赛事</view>
+        </view>
+        <!-- 队长创建队伍 -->
+        <view wx:if="{{select == 2}}" class='team-item' bindtap='creatSportTeam'>
+          <view class='img' style='border:none;'>
+            <image mode='aspectFill' style='width:90rpx;height:90rpx;' src='/pic/wyyz_small.png'></image>
+          </view>
+          <text style='color:#FFB100;'>创建球队</text>
+        </view>
+        <!-- 队伍列表有队伍 -->
+        <view wx:if="{{teamList.length>0}}" catchtap='onItem' data-index='{{index}}' class='team-item' wx:for="{{teamList}}" wx:key="index">
+          <view class='img'>
+            <image mode='aspectFill' style='width:90rpx;height:90rpx;background:#f2f2f2;position: absolute;top: 0;left: 0;z-index: 1;border-radius: 50%;border: 1rpx solid #e5e5e5;' src='{{item.group_badge}}'></image>
+            <image hidden='{{index!=selectTeamIndex}}' mode='aspectFill' style='width:90rpx;height:90rpx;background-color:rgba(0,0,0,.2);position: absolute;top: 0;left: 0;z-index: 2;border-radius: 50%;border: 1rpx solid #e5e5e5;' src='/pic/team_select.png'>
+
+            </image>
+            <image wx:if="{{item.group_status!=0&&select==1}}" src="{{item.group_status==2?'/pic/joined.png':'/pic/applied.png'}}" style='width:86rpx;height:36rpx;z-index: 3;position: absolute;right:-80rpx;top:-14rpx;'></image>
+          </view>
+          <text>{{item.group_name}}</text>
+        </view>
+        <!-- 队伍列表无队伍 -->
+        <view wx:if="{{teamList.length <= 0}}">
+          <template is='emptyView2' data="{{empty}}" />
+        </view>
+      </view>
+      <view class='lookMore' wx:if="{{moreTeamState}}" bindtap='moreTeamEvt'>
+        <text>更多队伍</text>
+        <view class='iconfont icon-gengduo' style='color:#CBCBCB;font-size:24rpx;'></view>
+      </view>
+    </view>
+  </view>
+
+  <view class='sport-team-end' wx:if="{{competition_status == 1}}">
+    <image mode='aspectFill' src="{{selected?'/pic/selected.png':'/pic/select.png'}}" catchtap="onSelected"></image>
+    <text bindtap='alreadySport'>我已阅读并同意遵守 <text style='color:#FFB000;'>《赛事须知和规程》</text></text>
+  </view>
+  <view class='sport-detail-btn'>
+    <authorizeView bnt-type='share' refresh="{{refreshAuthorizeView}}">
+      <view class='detail-btn-share'>
+        <image mode='aspectFill' src='/pic/team_share_share.png'></image>
+        <text>分享</text>
+      </view>
+    </authorizeView>
+    <authorizeView wx:if="{{competition_status == 2}}" data-title="two" bind:onBut="detailApplyEvt" refresh="{{refreshAuthorizeView}}" user-info="{{true}}">
+      <view class='detail-btn-apply' style='background:#999;'>进行中</view>
+    </authorizeView>
+    <authorizeView wx:elif="{{competition_status == 3}}" data-title="three" bind:onBut="detailApplyEvt" refresh="{{refreshAuthorizeView}}" user-info="{{true}}">
+      <view class='detail-btn-apply' style='background:#999;'>已完结</view>
+    </authorizeView>
+    <authorizeView wx:elif="{{competition_status == 4}}" refresh="{{refreshAuthorizeView}}" user-info="{{true}}">
+      <view class='detail-btn-apply' style='background:#999;'>计划中</view>
+    </authorizeView>
+    <authorizeView wx:elif="{{competition_status == 5}}" refresh="{{refreshAuthorizeView}}" user-info="{{true}}">
+      <view class='detail-btn-apply' style='background:#999;'>抽签阶段</view>
+    </authorizeView>
+    <authorizeView wx:else data-title="one" bind:onBut="detailApplyEvt" refresh="{{refreshAuthorizeView}}" user-info="{{true}}">
+      <view class='detail-btn-apply' style="{{(is_enlist==1&&select==2) || isNotStarted || competition_status !=1?'background:#999;':''}}">{{is_enlist==1&&select==2?'已报名':'我要报名'}}</view>
+    </authorizeView>
+  </view>
+
+  <view wx:if="{{isGoHome}}" catchtap='goHome' class='shareGoHome'>
+    <image mode='aspectFill' src='/pic/go_home.png'></image>
+  </view>
+
+</view>
+
+<!-- 赛事须知和规程弹窗 -->
+
+<view class='sport-tip' hidden='{{sportTipState}}'>
+  <view class='sport-contain'>
+    <view class='back_icon'>
+      <image mode='scaleToFill' src='/pic/back_black.png' style='width:36rpx;height:36rpx;padding:0rpx 30rpx;' bindtap='cancelBtn'></image>
+      <text>赛事须知和规程</text>
+    </view>
+    <view class='sport-select'>
+      <view class='explain-item'>
+        <view>活动须知:</view>
+        <text wx:if="{{enlist_starttime}}">报名开始时间：{{enlist_starttime}}</text>
+        <text wx:if="{{enlist_endtime}}">报名截止时间：{{enlist_endtime}}</text>
+      </view>
+      <view class='explain-item'>
+        <view>停赛规则：</view>
+        <text wx:for="{{competition_stop_rule}}" wx:key="tsKey">{{item.num}}张{{item.type==1?'红牌':'黄牌'}}停赛{{item.turn}}轮</text>
+        <text wx:if="{{competition_stop_rule.length<=0}}">无</text>
+      </view>
+      <view wx:if="{{competition_desc}}" class='explain-item'>
+        <text>晋级规则：</text>
+      </view>
+      <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+    </view>
+    <!-- 规程 -->
+    <view class='sport-select'>
+      <view class='sport-select-view'>活动规程：</view>
+      <template wx:if="{{competition_rule_txt}}" is="wxParse" data="{{wxParseData:article2.nodes}}" />
+    </view>
+  </view>
+
+</view>

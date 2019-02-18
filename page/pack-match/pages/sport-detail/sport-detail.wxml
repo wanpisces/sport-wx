@@ -1,0 +1,215 @@
+<import src="/libs/wxParse/wxParse.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<view class="{{personal_is_esline || personal_is_userInfo?'page_fixed':'page'}}">
+  <!-- 导航栏 -->
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#fff" title-name="赛事详情" status-bar-height="{{statusBarHeight}}" />
+  <!-- 赛事详情信息 -->
+  <view class="sport-detail-info" style='margin-top:{{statusBarHeight+45}}px;'>
+    <view class='swiper-view'>
+      <swiper autoplay="true" interval="5000" duration="500" class='swiper'>
+        <block wx:for="{{[competition_pic]}}" wx:key="{{index}}">
+          <swiper-item catchtouchmove='catchTouchMove'>
+            <image mode='aspectFill' src="{{[competition_pic]}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='collect-sport'>
+        <image src="{{is_favorites==1?'/pic/collect-2.png':'/pic/collect-1.png'}}" bindtap='collectEvt'></image>
+      </view>
+    </view>
+    <view class='sport-detail-contain'>
+      <view class='sport-detail-left'>
+        <view class='sport-detail-title'>{{competition_name}}</view>
+        <view class='sport-detail-icon'>
+          <image mode='aspectFill' src='/pic/list_time.png'></image>
+          <text style='flex-grow: 0;flex-shrink: 0;'>{{competition_starttime}}</text>
+          <image wx:if="{{attr_id != 51}}" mode='aspectFill' src='/pic/list_cup.png'></image>
+          <text wx:if="{{attr_id != 51}}" style='flex-grow: 0;flex-shrink: 0;'>{{competition_level==1&&'杯赛' || competition_level==2&&'联赛' || '系列赛'}}</text>
+          <image wx:if="{{attr_id == 2 &&competition_tag ==1 }}" mode='aspectFill' src='/pic/people.png'></image>
+          <text wx:if="{{attr_id == 2 &&competition_tag ==1 }}" style='flex-grow: 0;flex-shrink: 0;'>{{competition_rule==3&&'三人制' || competition_rule==5&&'五人制'|| competition_rule==8&&'八人制'||competition_rule==11&&'十一人制'||'其他'}}</text>
+          <image mode='aspectFill' src='/pic/list_addr.png'></image>
+          <text style='flex-grow: 1;flex-shrink: 1; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{city_name}}</text>
+        </view>
+      </view>
+      <view catchtap='onFollow' class='sport-detail-right'>
+        <view wx:if="{{is_atten == 1}}">
+          <image mode='aspectFill' src='/pic/focused2.png'></image>
+          <!-- <text class='iconfont icon-guanzhu1' style='font-size:30rpx;color:'></text> -->
+          <text>已关注</text>
+        </view>
+        <view wx:else>
+          <image mode='aspectFill' src='/pic/focus.png'></image>
+          <text>加关注</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style='width:100%;height:20rpx;background-color:#efeff4;z-index:100;'></view>
+  <!-- 须知、规程、队伍 -->
+  <!-- style='background-image:url(https://img.sport.darongshutech.com/image_201901081450384035.png)' -->
+  <!-- background-color:#fff; -->
+  <view class='sport-all-list' style="{{theme_pic?theme_pic:'background-color:#fff;'}}">
+    <!-- sport-detail-list -->
+    <!-- sport-detail-white -->
+    <view class="{{theme_pic?'sport-detail-list':'sport-detail-white'}}" style="min-height:{{minHeight}}px">
+      <view class='detail-list'>
+        <view class="swiper-tab">
+          <view class="swiper-tab-list {{detail_tab.currentTab==0 ? 'on ' : ' '}}" data-current="0" bindtap="tabNav">赛事信息</view>
+          <view class="swiper-tab-list {{detail_tab.currentTab==1 ? 'on ' : ' '}}" data-current="1" bindtap="tabNav">赛事规程</view>
+          <view class="swiper-tab-list {{detail_tab.currentTab==2 ? 'on ' : ' '}}" data-current="2" bindtap="tabNav">{{competition_tag == 1?'参赛队伍':'参赛人员'}}</view>
+        </view>
+        <view class='swiper-contain'>
+          <!-- 须知 -->
+          <view wx:if="{{detail_tab.currentTab==0}}" class='sport-select'>
+            <view class='explain-item'>
+              <view>赛事标题：</view>
+              <text style='width:77%;' wx:if="{{competition_name}}">{{competition_name}}</text>
+            </view>
+            <view class='explain-item'>
+              <view>赛事地区：</view>
+              <text wx:if="{{city_name}}">{{province_name}} {{city_name}}</text>
+              <text wx:else>{{province_name}}</text>
+            </view>
+            <view wx:if="{{attr_id != 51}}" class='explain-item'>
+              <view>赛事级别：</view>
+              <text>{{competition_level==1&&'杯赛' || competition_level==2&&'联赛' || '系列赛'}}</text>
+            </view>
+            <view class='explain-item' wx:if="{{attr_id == 2 &&competition_tag ==1 }}">
+              <view>赛事赛制：</view>
+              <text>{{competition_rule==3&&'三人制' || competition_rule==5&&'五人制'|| competition_rule==8&&'八人制'||competition_rule==11&&'十一人制'||'其他'}}</text>
+            </view>
+            <view class='explain-item'>
+              <view>赛事报名时间：</view>
+              <text wx:if="{{enlist_starttime || enlist_endtime}}">{{enlist_starttime?enlist_starttime:' '}} — {{enlist_endtime?enlist_endtime:' '}}</text>
+            </view>
+            <view class='explain-item'>
+              <view>赛事开始时间：</view>
+              <text wx:if="{{competition_starttime || competition_endtime}}">{{competition_starttime?competition_starttime:' '}} — {{competition_endtime?competition_endtime:' '}}</text>
+            </view>
+            <view class='explain-item'>
+              <view>赛事说明：</view>
+            </view>
+            <view wx:if="{{competition_desc}}" class='explain-item'>
+              <text>晋级规则：</text>
+            </view>
+            <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+          </view>
+          <!-- 规程 -->
+          <view wx:if="{{detail_tab.currentTab==1}}" class='sport-select '>
+            <view class='explain-item' wx:if="{{attr_id == 2 &&competition_tag ==1 }}">
+              <view>停赛规则：</view>
+              <text wx:for="{{competition_stop_rule}}" wx:key="tsKey">{{item.num}}张{{item.type==1?'红牌 ':'黄牌 '}}停赛{{item.turn}}轮</text>
+              <!-- <text wx:elif="{{competition_rule_txt}}">{{competition_rule_txt}}</text> -->
+              <text wx:if="{{competition_stop_rule.length<=0}}">无</text>
+            </view>
+            <view class='explain-item'>
+              <view>赛事规程：</view>
+            </view>
+            <template is="wxParse" data="{{wxParseData:article2.nodes}}" />
+          </view>
+          <!-- 队伍 -->
+          <view wx:if="{{detail_tab.currentTab==2}}" class='sport-team '>
+            <view class='detail-team '>
+              <!-- 参赛队伍展示 -->
+              <view wx:if="{{enlist_group.length>0}}" wx:for="{{enlist_group}}" wx:key="{{index}}" class='detail-team-view '>
+                <view bindtap='navigationTeam' data-index="{{index}}">
+                  <image mode='aspectFill ' src='{{item.group_badge}} ' class='detail_team-img '></image>
+                  <image mode='aspectFill ' src='/pic/pass.png ' class='detail_team-icon '></image>
+                  <view>{{item.group_name}}</view>
+                </view>
+              </view>
+              <!-- 参赛人员展示 -->
+              <view wx:if="{{enlist_person.length>0}}" wx:for="{{enlist_person}}" wx:key="{{index}}" class='detail-team-view '>
+                <view data-index="{{index}}">
+                  <image mode='aspectFill ' src='{{item.user_avatar}} ' class='detail_team-img '></image>
+                  <image mode='aspectFill ' src='/pic/pass.png ' class='detail_team-icon '></image>
+                  <view>{{item.user_nickname}}</view>
+                </view>
+              </view>
+            </view>
+            <!-- 参赛队伍为空 -->
+            <view wx:if="{{enlist_group && enlist_group.length == 0}}" class='empty-view '>
+              <template is="emptyView2" data="{{empty}}" />
+            </view>
+            <!-- 参赛人员为空 -->
+            <view wx:if="{{ enlist_person && enlist_person.length == 0}}" class='empty-view '>
+              <template is="emptyView2" data="{{empty}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{competition_status == 1}}" class='sport-team-end ' catchtap="{{is_enlist==2?'onSelected':' '}}">
+    <view wx:if="{{selected||is_enlist==1}}" class='iconfont icon-gouxuan' style='color:#fff;margin-right:15rpx;font-size:24rpx;'></view>
+    <view wx:else style='width:20rpx;height:20rpx;border-radius:50%;border:2rpx solid #fff;margin-right:15rpx;'></view>
+    <!-- <image wx:else mode='aspectFill' src="/pic/select.png"></image> -->
+    <text>我已阅读须知和规程，并同意上述条例。</text>
+  </view>
+  <view wx:if="{{competition_status == 1}}" class='sport-detail-btn '>
+    <authorizeView bnt-type='share' style="width: 100%;">
+      <view class='detail-btn-share '>
+        <image mode='aspectFill ' src='/pic/team_share_share.png'></image>
+        <text>分享</text>
+      </view>
+    </authorizeView>
+    <authorizeView bind:onBut="detailApplyEvt">
+      <view class='detail-btn-apply ' style="{{is_enlist==1 || isNotStarted || competition_status !=1?'background:#e9e9e9;color:#999999; ':' '}}">{{is_enlist==2?'我要报名 ':'已报名 '}}</view>
+    </authorizeView>
+  </view>
+  <view wx:elif="{{competition_status==4}}" class='sport-detail-btn '>
+    <authorizeView bnt-type='share' style="width: 100%;">
+      <view class='detail-btn-share' style="width: 100%;">
+        <image mode='aspectFill ' src='/pic/team_share_share.png '></image>
+        <text>分享</text>
+      </view>
+    </authorizeView>
+    <!-- <authorizeView>
+      <view class='detail-btn-apply ' style="background:#e9e9e9;color:#999999;">计划中</view>
+    </authorizeView> -->
+  </view>
+  <view wx:elif="{{competition_status==5}}" class='sport-detail-btn '>
+    <authorizeView bnt-type='share' style="width: 100%;">
+      <view class='detail-btn-share' style="width: 100%;">
+        <image mode='aspectFill ' src='/pic/team_share_share.png '></image>
+        <text>分享</text>
+      </view>
+    </authorizeView>
+    <!-- <authorizeView>
+      <view class='detail-btn-apply ' style="background:#e9e9e9;color:#999999;">抽签阶段</view>
+    </authorizeView> -->
+  </view>
+</view>
+
+<view wx:if="{{isGoHome}}" catchtap='goHome' class='shareGoHome '>
+  <image mode='aspectFill ' src='/pic/go_home.png '></image>
+</view>
+
+<view wx:if="{{personal_is_esline}}" class='personal_content_tip'>
+  <view class='personal_content'>
+    <image src='/pic/yunduo.png'></image>
+    <view class='personal-title'>温馨提示</view>
+    <view class='personal-text'>
+      <view>恭喜您</view>
+      <view>报名成功啦~</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{personal_is_userInfo}}" class='personal_content_tip'>
+  <view class='personal_content'>
+    <image src='/pic/yunduo.png'></image>
+    <view class='personal-title'>温馨提示</view>
+    <view class='personal-text'>
+      <view>您的个人信息还不完善</view>
+      <view>请先去完善个人信息吧~</view>
+    </view>
+    <view class='personal_btn'>
+      <authorizeView bind:onBut="cancelPersonal">
+        <view class='personal_cancel'>取消</view>
+      </authorizeView>
+      <authorizeView bind:onBut="surePersonal">
+        <view class='personal_sure'> 去完善</view>
+      </authorizeView>
+    </view>
+  </view>
+</view>

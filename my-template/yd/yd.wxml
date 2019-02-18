@@ -1,0 +1,62 @@
+<template name="yd">
+  <!-- <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}'> -->
+  <view hover-stop-propagation="true" class='yd-match' style='background-image:url(https://img.sport.darongshutech.com/image_201812191601573723.png)'>
+    <view class='yd-match_type'>{{item.attr_name}} </view>
+    <view class='yd-match_team'>
+      <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}' hover-class="none">
+        <view class='yd-team1'>
+          <image src='{{item.group_info.group_badge|| "/pic/jfb_add.png"}}'></image>
+          <view wx:if="{{item.movement_state == 1 || item.movement_state == 4}}">{{item.group_info.group_name || '等待应约'}}</view>
+          <view wx:else style="{{item.group_info.group_name?'':'color:#ff0000;'}}">{{item.group_info.group_name || '队伍已解散'}}</view>
+        </view>
+      </navigator>
+      <view class='yd-to'>
+        <navigator wx:if="{{item.belongTo == 2}}" url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}&attr_id={{item.attr_id}}' hover-class="none">
+          <view style='font-size:24rpx;color:#999;text-align:center;background:none;'>{{item.movement_rule}}</view>
+          <image src='/pic/VS_black.png'></image>
+          <view wx:if="{{item.movement_state == 1}}" class='yd-bg-match'>立即应战</view>
+        </navigator>
+        <navigator wx:else url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}' hover-class="none">
+          <view style='font-size:24rpx;color:#999;text-align:center;background:none;'>{{item.movement_rule}}</view>
+          <image src='/pic/VS_black.png'></image>
+          <view wx:if="{{item.movement_state == 1}}">等待应约</view>
+          <view wx:if="{{item.movement_state == 2}}">约战成功</view>
+          <view wx:if="{{item.movement_state == 3}}">约战完结</view>
+          <view wx:if="{{item.movement_state == 4 }}">正常取消</view>
+          <view wx:if="{{ item.movement_state == 5}}">违约取消</view>
+          <view wx:if="{{item.movement_state == 6 }}">约战进行时</view>
+        </navigator>
+      </view>
+      <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}' hover-class="none">
+        <view class='yd-team2'>
+          <image src='{{item.away_info.group_badge || "/pic/jfb_add.png"}}' mode='scaleToFill'></image>
+          <view wx:if="{{item.movement_state == 1 || item.movement_state == 4}}" style="{{item.away_info.group_name?'color:#353535;':'color:#999;'}}">{{item.away_info.group_name || '等待应约'}}</view>
+          <view wx:else style="{{item.away_info.group_name?'':'color:#ff0000;'}}">{{item.away_info.group_name || '队伍已解散'}}</view>
+        </view>
+      </navigator>
+    </view>
+    <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}' hover-class="none">
+      <view class='yd-match_details'>
+        <view class='yd-match_details_time'>
+          <view class='iconfont icon-shijian1' style='font-size:30rpx;color:#959595;margin-right:8rpx;'></view>
+          <view class=''>{{item.movement_time}}</view>
+        </view>
+        <view class='yd-match_details_feet'>
+          <view class='iconfont icon-price' style='font-size:30rpx;color:#959595;margin-right:8rpx;'></view>
+          <view>费用：{{item.movement_fee}}</view>
+        </view>
+      </view>
+      <view class='yd-match_details'>
+        <view class='yd-match_details_time'>
+          <view class='iconfont icon-location' style='font-size:30rpx;color:#959595;margin-right:8rpx;'></view>
+          <view class='yd-match_addr_item'>{{item.address}}</view>
+        </view>
+        <view class='yd-match_details_feet'>
+          <view class='iconfont icon-liulan' style='font-size:25rpx;color:#959595;margin-right:8rpx;'></view>
+          <view wx:if="{{item.movement_state == 1}}" class='yd-match_addr_item'>浏览量：{{item.movement_visitor_num || 0}}</view>
+          <view wx:else class='yd-match_addr_item'>围观量：{{item.movement_visitor_num || 0}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</template>

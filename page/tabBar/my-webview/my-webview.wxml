@@ -1,0 +1,8 @@
+<!--page/tabBar/my-webview/my-webview.wxml-->
+
+<!-- <view class='pages'> -->
+<!-- <navigationBar class='navigationBar' tag="{{2}}" is-back="{{true}}" title-name="" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" /> -->
+<!-- <view class='data_view' style="top:{{statusBarHeight+45}}px;"> -->
+<web-view src="{{url}}"></web-view>
+<!-- </view>
+</view> -->

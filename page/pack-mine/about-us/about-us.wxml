@@ -1,0 +1,26 @@
+<!--page/pack-mine/about-us/about-us.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' status-bar-height="{{statusBarHeight}}" tag="{{2}}" title-name="关于我们" hover-class="none" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='logo-v'>
+      <image src='/pic/icon.png'>
+      </image>
+      <view>八分钟运动</view>
+    </view>
+    <view class='introduce'>
+      <text>
+    当时间被填满，生活的必选项里是否会出现“健身”两个字？每天24小时，留出1/180的时间给健身。8分钟，什么都不想，只有运动。8分钟，更积极的生活态度，对自己更好的生活方式。8分钟，更多更美好......
+  </text>
+
+    </view>
+    <!-- <view class='saoma'>
+    <image mode='aspectFill' src='/pic/code.png'></image>
+    <text>扫描二维码关注我们</text>
+  </view> -->
+    <view class='bottomTxt'>
+      <text>copyright@2016-2026</text>
+      <text>四川大榕树数据技术有限公司</text>
+    </view>
+
+  </view>
+</view>

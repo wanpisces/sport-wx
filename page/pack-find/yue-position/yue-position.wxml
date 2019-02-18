@@ -1,0 +1,48 @@
+<loadingView wx:if="{{isLoading}}" />
+<import src="/my-template/position/position.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="定位" tag="{{2}}" status-bar-height="{{statusBarHeight}}" />
+  <view style='margin-top:{{statusBarHeight+45}}px;padding-top:20rpx;'>
+    <view class='position-search' bindtap='searchEvt'>
+      <view class='iconfont icon-sousuo-copy' style='font-size:30rpx;color:#6e6e6e;margin-right:10rpx;'></view>
+      <view style='font-size:28rpx;color:#6e6e6e;'>请输入关键字</view>
+    </view>
+  </view>
+  <view class='position-address'>
+    <view class='position-address-title'>当前定位 </view>
+    <view catchtap='onPositionLocation' class='position-location'>
+      <view class='position-location-one'>
+        <view class='iconfont icon-dingweiweizhizuobiaomianxing' style='font-size:35rpx;color:#FFD100;margin:0 30rpx;'></view>
+        <view>
+          <view style='font-size:30rpx;color:#353535;'>{{locationItem.title}}</view>
+          <view style='font-size:26rpx;color:#ACACAD;margin-top:10rpx;'>{{locationItem.address}}</view>
+        </view>
+      </view>
+      <view class='iconfont icon-wancheng1' style="font-size:30rpx;color:{{index1==0?'#FFD100':'#ffffff'}};margin-right:30rpx;"></view>
+    </view>
+  </view>
+  <view class='position-address'>
+    <view class='position-address-spaicl'>
+      <view style='font-size: 26rpx;color: #acacad;line-height: 86rpx;'>常用位置</view>
+      <view class='position-manage' bindtap='addPosition'>
+        <view class='iconfont icon-jichuguanli' style='font-size:40rpx;color:#FFD100;'></view>
+        <view style='font-size: 26rpx;color: #FFD100;line-height: 86rpx;'>管理</view>
+      </view>
+    </view>
+    <template wx:for="{{userLocations}}" wx:key="key2" is="position" data="{{item,index,index2,index3,id:'tag2'}}" />
+  </view>
+  <view class='position-address'>
+    <view class='position-address-title'>周边位置 </view>
+    <template wx:for="{{list}}" wx:key="key3" is="position" data="{{item,index,index2,index3,id:'tag3'}}" />
+  </view>
+  <view wx:if="{{list.length>0}}" class='loadMore'>
+    <template is='loadMore' data="{{loadData}}" />
+  </view>
+  <view wx:elif="{{list.length == 0}}">
+    <template is="emptyView2" data="{{empty}}" />
+  </view>
+</view>
+<view class='submit' catchtap="butSubmit">
+  确认选择
+</view>

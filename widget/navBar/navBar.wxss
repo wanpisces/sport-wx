@@ -1,0 +1,50 @@
+/* widget/navBar/navBar.wxss */
+/* widget/navigationBar/navigationBar.wxss */
+
+.navigationBarF {
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
+
+.navigationBarBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.view_bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  opacity: 1;
+  width: 100%;
+  color: #000;
+}
+
+.statusBar {
+  width: 100%;
+}
+
+.navigationBar {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1rpx #F2F2F2 solid
+}
+
+.title {
+  line-height: 45px;
+  font-size: 34rpx;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 10rpx;
+  margin:0 25rpx; 
+  color: #000;
+}
+.active{
+  border-bottom: 8rpx #FFD100 solid 
+}

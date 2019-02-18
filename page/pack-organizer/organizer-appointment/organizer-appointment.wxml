@@ -1,0 +1,102 @@
+<!--page/pack-organizer/organizer-appointment/organizer-appointment.wxml-->
+<viewPicker wx:if="{{isViewPicker}}" list-data="{{colorList}}" colors="{{color}}" bind:onclick="bindViewPicker" />
+<view class='pages_'>
+  <navigationBar class='navigationBar' tag="{{3}}" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" title-name="组织者约战" />
+  <view class='data_view_' style="margin-top:{{statusBarHeight+45}}px;">
+    <view class='top-wrapper'>
+      <image class='top-image' src='https://img.sport.darongshutech.com/微信图片_20181226110344.png'></image>
+      <authorizeView id="share" bnt-type="share" style="position: absolute;top:52rpx;right:0;">
+        <view class='share-btn-wrap'>
+          <text class='iconfont icon-fenxiang'></text> 分享
+        </view>
+      </authorizeView>
+    </view>
+    <view class='release-content'>
+      <view wx:if="{{!isGroup}}">
+        <view>类型：</view>
+        <picker wx:if="{{!movement_id}}" bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{chooseData}}" range-key="name">
+          <view class='release-content-right'>{{group_name||'请选择约战类型'}}
+            <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+          </view>
+        </picker>
+        <view class='release-content-right' style='margin-right:40rpx;' wx:if="{{movement_id}}">{{group_name}}</view>
+      </view>
+      <view>
+        <view>约战日期：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="date" value="{{date}}" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+            <view class='release-content-right' style='text-align: right;'>{{date|| '请选择日期'}}
+              <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view>
+        <view>约战时间：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="time" value="{{time}}" start="{{nowtTime}}" end="23:59" bindchange="bindTimeChange">
+            <view class='release-content-right'>{{time|| '请选择时间'}}
+              <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view catchtap='onLocation' style='border-bottom:0;padding:0;'>
+        <view style='width:230rpx;padding:25rpx 0;'>约战地点：</view>
+        <view class='release-content-right' style='padding:25rpx 0;border-bottom:1rpx solid #f2f2f2;'>{{mCaseAddr|| '请选择约战地点'}}
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+      <view class='match-address'>
+        <!-- <view style='flex-grow: 0;flex-shrink: 0;'>比赛场馆：</view> -->
+        <input class='release-content-right' placeholder='请输入场馆名称' style='text-align:right;margin-right:18rpx;' placeholder-style="color:#999999;" bindinput='matchAddress' maxlength="16" value="{{venue}}"></input>
+      </view>
+      <view>
+        <view>赛制性质：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="multiSelector" bindchange="bindPickerChangeRule" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;width:60%;' range-key="name" range="{{movement}}">
+            <view class='release-content-right'>
+              <view>{{itemRule}}</view>
+              <view style='flex-grow:2' style='height:35rpx;width:1rpx;border-left:2rpx #999 solid;margin:0 30rpx'></view>
+              <view>{{itemType}}</view>
+            </view>
+          </picker>
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+      <view>
+        <view>人数：</view>
+        <view style='display:flex;'>
+          <view class='select-team-wrap'>
+            <text class='{{group_num==1?"active":""}}' bindtap='{{movement_id?"":"selectTeam"}}' data-id='1'>1</text>
+            <text class='{{group_num==2?"active":""}}' bindtap='{{movement_id?"":"selectTeam"}}' data-id='2'>2</text>支队伍 </view>
+          <view class='input-num-wrap'>
+            <input type='number' bindblur="getGroupNum" value='{{group_per_num}}'></input>人/队</view>
+        </view>
+      </view>
+    </view>
+    <view class='release-content'>
+      <view>
+        <view>费用情况：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker bindchange="bindPickerChangecost" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;width:60%;' value="{{0}}" range-key="name" range="{{costType}}">
+            <view class='release-content-right'>
+              <view>{{cost}}</view>
+            </view>
+          </picker>
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+    </view>
+    <view class='release-note'>
+      <view>备注:</view>
+      <textarea maxlength='150' wx:if="{{!isViewPicker}}" placeholder='请填写注意事项' value='{{remark}}' bindinput="bindinput" class='release-note-text' placeholder-style="color:#999;"></textarea>
+      <view class='text-limit'>{{curLimitNum}}/150</view>
+    </view>
+
+    <view style='  display: flex;flex-flow: row nowrap;justify-content: center;'>
+      <button wx:if="{{movement_id}}" class='release-sure' disabled='{{isloading}}' catchtap='bindSave' disabled='{{isMark?false:true}}'>重新提交</button>
+      <button wx:else class='release-sure' disabled='{{isloading}}' catchtap='bindUpRelese' disabled='{{isMark?false:true}}'>约战招募</button>
+    </view>
+  </view>
+</view>

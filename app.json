@@ -1,0 +1,162 @@
+{
+  "debug": true,
+  "pages": [
+    "page/pages/active/active",
+    "page/tabBar/about-movement/about-movement",
+    "page/tabBar/match/match",
+    "page/tabBar/movement-circle/movement-circle",
+    "page/tabBar/index/index",
+    "page/tabBar/find/find",
+    "page/tabBar/mine/mine",
+    "page/tabBar/my-webview/my-webview",
+    "page/pages/new-detail/new-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#ffd100",
+    "list": [
+      {
+        "pagePath": "page/tabBar/about-movement/about-movement",
+        "text": "约战",
+        "iconPath": "pic/home_play_grey_icon.png",
+        "selectedIconPath": "pic/home_play_icon.png"
+      },
+      {
+        "pagePath": "page/tabBar/match/match",
+        "text": "赛事",
+        "iconPath": "pic/home_game_icon.png",
+        "selectedIconPath": "pic/home_game_icon_touched.png"
+      },
+      {
+        "pagePath": "page/tabBar/movement-circle/movement-circle",
+        "text": "运动圈",
+        "iconPath": "pic/home_sport_grey_icon.png",
+        "selectedIconPath": "pic/home_sport_icon.png"
+      },
+      {
+        "pagePath": "page/tabBar/mine/mine",
+        "text": "我的",
+        "iconPath": "pic/home_me_grey_icon.png",
+        "selectedIconPath": "pic/home_me_icon.png"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "page/pack-index",
+      "pages": [
+        "pages/team-page/team-page",
+        "pages/organize-team/organize-team",
+        "pages/improve-personal-information/information",
+        "pages/evaluate/evaluate",
+        "pages/personal-dynamics/personal-dynamics",
+        "pages/team-manage/team-manage",
+        "pages/member-manage/member-manage",
+        "pages/wl-drumbeating/wl-drumbeating",
+        "pages/announcements/announcements",
+        "pages/upload/upload",
+        "pages/team-background/team-background",
+        "pages/invite-friends/invite-friends",
+        "pages/team-member-info/team-member-info",
+        "pages/reply-more/reply-more",
+        "pages/comment/comment",
+        "pages/currency-organize-team/organize-team",
+        "pages/currency-team-page/team-page",
+        "pages/team-fun-intro/team-fun-info"
+      ]
+    },
+    {
+      "root": "page/pack-find",
+      "pages": [
+        "find-team/find-team",
+        "yue-score/yue-score",
+        "yue-move/yue-move",
+        "yue-data/yue-data",
+        "yue-team-detail/yue-team-detail",
+        "yue-release/yue-release",
+        "yue-sport/yue-sport",
+        "yue-release-edi/yue-release-edi",
+        "against-record/against-record",
+        "yue-more/yue-more",
+        "reply-more-news/reply-more-news",
+        "find-team-search/find-team-search",
+        "yue-move-search/yue-move-search",
+        "yue-position/yue-position",
+        "position-search/position-search",
+        "add-position/add-position",
+        "active-detail/active-detail"
+      ]
+    },
+    {
+      "root": "page/pack-mine",
+      "pages": [
+        "mine-feedback/mine-feedback",
+        "mine-follow/mine-follow",
+        "mine-collection/mine-collection",
+        "modify-name/modify-name",
+        "mine-really/mine-really",
+        "mine-bg/mine-bg",
+        "mine-message/mine-message",
+        "mine-team/mine-team",
+        "mine-create/mine-create",
+        "join-team/join-team",
+        "mine-settings/mine-settings",
+        "complete-infomation/complete-infomation",
+        "mine-modify/mine-modify",
+        "about-us/about-us",
+        "mine-add/mine-add",
+        "mine-dynamic/mine-dynamic",
+        "mine-yue/mine-yue",
+        "version-description/version-description",
+        "update-details/update-details"
+      ]
+    },
+    {
+      "root": "page/pack-match",
+      "pages": [
+        "pages/sports-events/sports-events",
+        "pages/hot-info/hot-info",
+        "pages/splend/splend",
+        "pages/info-detail/info-detail",
+        "pages/sport-underway/sport-underway",
+        "pages/sport-other-underway/sport-other-underway",
+        "pages/sport-other-timing/sport-other-timing",
+        "pages/sports-record/sports-record",
+        "pages/sports-record-end/sports-record-end",
+        "pages/sport-detail/sport-detail",
+        "pages/sign-up/sign-up",
+        "pages/sport-summary/sport-summary",
+        "pages/sport-share/sport-share",
+        "pages/match-sign-up/match-sign-up",
+        "pages/user-info/user-info",
+        "pages/sport-league/sport-league"
+      ]
+    },
+    {
+      "root": "page/pack-organizer",
+      "pages": [
+        "organizer-appointment/organizer-appointment",
+        "yd-detail/yd-detail",
+        "sign-appointment/sign-appointment"
+      ]
+    },
+    {
+      "root": "page/pack-active",
+      "pages": [
+        "active-show/active-show",
+        "badminton-result/badminton-result"
+      ]
+    }
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "      "
+    }
+  }
+}

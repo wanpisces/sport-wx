@@ -1,0 +1,47 @@
+<!--page/pack-find/find-team-search/find-team-search.wxml-->
+<!--page/pack-find/find-team/find-team.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team2/team2.wxml" />
+<!-- <loadingView wx:if="{{isLoading}}" /> -->
+<view class='find-team-fixed'>
+  <!-- <navigationBar class='navigationBar' tag="{{3}}" title-name="队伍搜索" hover-class="none" /> -->
+  <navigationBar class='navigationBar' tag="{{3}}" status-bar-height="{{statusBarHeight}}" title-name="队伍搜索" />
+  <view class='find-search' style="margin-top:{{statusBarHeight+45}}px;">
+    <view>
+      <!-- <image src='/pic/search.png' mode='scaleToFill'></image> -->
+      <text class='iconfont icon-sousuo-copy' style='font-size:35rpx;margin-left:20rpx;'></text>
+      <input type='text' focus="{{true}}" placeholder='快速搜索你想要查找的队伍' bindblur="search"></input>
+    </view>
+    <text catchtap='cancleBack'>取消</text>
+  </view>
+</view>
+<!-- 我加入的队伍列表 -->
+<view wx:if="{{is_join}}">
+  <view class='team-wrapper' wx:if="{{dataList.length>0}}">
+    <view class='team-module'>
+      <template is="team2" wx:for="{{dataList}}" wx:key="{{index}}" data="{{item,index}}" />
+    </view>
+    <template is="loadMore2" data="{{...loadData}}" />
+  </view>
+  <view wx:if="{{dataList.length == 0}}">
+    <template is="emptyView" data="{{empty}}" />
+  </view>
+</view>
+<!-- 队伍广场 -->
+<view wx:else>
+  <view class='team-wrapper' wx:if="{{dataList.length>0}}">
+    <view class='team-module'>
+      <template is="team_other" wx:for="{{dataList}}" wx:key="{{index}}" data="{{item,index}}" />
+    </view>
+    <template is="loadMore2" data="{{...loadData}}" />
+  </view>
+  <view wx:if="{{dataList.length == 0}}">
+    <template is="emptyView" data="{{empty}}" />
+  </view>
+</view>
+
+
+
+
+
+<!-- <template is="emptyView2" data="{{...loadData}}" /> -->

@@ -1,0 +1,270 @@
+/* page/pack-mine/mine-message/mine-message.wxss */
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.data_view {
+  /* position: fixed; */
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  /* display: flex; *//* flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx; */
+}
+
+.data_view>view {
+  width: 100%;
+}
+
+.tab_bar {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.item_bar {
+  width: 33.3%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_bar view {
+  font-size: 30rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.item_bar text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.tab_bared {
+  border-bottom: 6rpx solid #ffd100;
+}
+
+.tab_bar_viewed {
+  color: #353535;
+}
+
+/* .pages {
+  position: relative;
+  padding-top: 65px;
+} */
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.sys-notice {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 30rpx 25rpx;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 28rpx;
+  color: #515151;
+  width: 700rpx;
+  position: relative;
+}
+
+.conetnt {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.team-apply {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 18rpx;
+  height: 128rpx;
+}
+
+.apply-avator {
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+}
+
+.team-apply-right {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 127rpx;
+  width: 608rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.applyer-name {
+  font-size: 32rpx;
+  color: #353535;
+}
+
+.applyer-bianhao {
+  margin-top: 5rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.team-apply-name {
+  display: flex;
+  flex-flow: row;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.goToImg {
+  margin-top: 8rpx;
+  width: 20rpx;
+  height: 20rpx;
+  padding: 0 20rpx 0 6rpx;
+}
+
+.team-name-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+
+.team-name {
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.yuedong-item {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 24rpx;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.yuedong-title {
+  font-size: 28rpx;
+  color: #515151;
+}
+
+.yuedong-date {
+  margin-top: 10rpx;
+  padding-left: 8rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.no-data {
+  font-size: 28rpx;
+  margin-top: 150rpx;
+  text-align: center;
+}
+
+.time {
+  font-size: 28rpx;
+  color: #999;
+  text-align: left;
+  margin-top: 15rpx;
+  width: 100%;
+}
+
+.conetnt-text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-right: 80rpx;
+  display: flex;
+}
+
+.dian-view {
+  position: absolute;
+  top: 50%;
+  right: 60rpx;
+  transform: translateY(-50%);
+}
+
+.dian {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 16rpx;
+  background: #ed1548;
+}
+
+.conetnt-text>text {
+  display: inline-block;
+  width: 90rpx;
+  height: 42rpx;
+  border-radius: 6px;
+  text-align: center;
+  margin-right: 20rpx;
+  line-height: 42rpx;
+  font-size: 26rpx;
+}
+
+.conetnt-text .message-team {
+  border: 1px solid #00a2ff;
+  font-size: #00a2ff;
+}
+
+.conetnt-text .message-yd {
+  border: 1px solid #ffd100;
+  font-size: #ffd100;
+}
+
+.conetnt-text .message-competion {
+  border: 1px solid #64b35c;
+  font-size: #64b35c;
+}
+
+.jiantou {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30rpx;
+}

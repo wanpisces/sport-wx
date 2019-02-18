@@ -1,0 +1,36 @@
+<!--page/pack-mine/mine-follow/mine-follow.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="我的关注" tag="{{3}}" status-bar-height="{{statusBarHeight}}" hover-class="none" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='team-wrapper' wx:if="{{dataList.length>0}}">
+      <view class='team-module' wx:for="{{dataList}}" wx:key="{{index}}">
+        <navigator url="/page/pack-index/pages/team-page/team-page?group_id={{item.branch_id}}" hover-class='none' class='team-content'>
+          <view class='team-left'>
+            <image mode='aspectFill' src='{{item.group_badge}}'></image>
+            <view class='team-left-text'>
+              <view class='team-name'>{{item.group_name}}
+                <view class='team-lable' wx:if="{{item.attr_value}}">{{item.attr_value}}</view>
+              </view>
+              <view class='team-dynamic'>{{item.member_num}}位队员 · {{item.atten_num || '0'}}人关注 · {{item.visit_num || '0'}}人访问</view>
+              <view class='team-adress'>{{item.area}}</view>
+            </view>
+          </view>
+        </navigator>
+        <view wx:if="{{item.is_join!=1}}" class='follow-wrapper'>
+          <authorizeView bind:onBut="joinFollow" data-index="{{index}}">
+            <view class='joinTeam'>加入</view>
+          </authorizeView>
+          <authorizeView bind:onBut="cancelFollow" data-follow="{{item.branch_id}}" data-index="{{index}}">
+            <view class='attention'>取消关注</view>
+          </authorizeView>
+        </view>
+      </view>
+      <template is="loadMore2" data="{{...loadData}}" />
+    </view>
+    <view wx:if="{{dataList.length == 0}}">
+      <template is="emptyView" data="{{empty}}" />
+    </view>
+  </view>
+</view>

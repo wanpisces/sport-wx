@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "comment-view": "/widget/comment-view/comment-view"
+  }
+}

@@ -1,0 +1,111 @@
+/* page/pack-mine/pages/version-description/version-description.wxss */
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  background: #282828;
+}
+
+.page-v {
+  display: flex;
+  flex-flow: column;
+}
+
+.logo-v {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 280rpx;
+}
+
+.logo-v image {
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.logo-v view {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  line-height: 40rpx;
+}
+
+.logo-v text {
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40rpx;
+  background: #fff;
+}
+
+.bottom text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.item-view {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1px solid #f2f2f2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.arrow {
+  height: 34rpx;
+  width: 34rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.item-left {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.item-left .sub1 {
+  font-size: 32rpx;
+  color: #101010;
+  font-weight: bold;
+}
+
+.item-left .sub2 {
+  font-size: 30rpx;
+  color: #101010;
+  margin-top: 16rpx;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}
+
+.item-left .sub3 {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 16rpx;
+}
+
+.nodata {
+  font-size: 28rpx;
+  width: 100%;
+  text-align: center;
+  color: #999;
+  line-height: 160rpx;
+}

@@ -1,0 +1,280 @@
+/* page/pack-find/yue-team-detail/yue-team-detail.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/libs/icon.wxss";
+
+page {
+  background: #fff;
+  color: #fff;
+}
+
+.pages {
+  position: relative;
+}
+
+.page_change {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+.v3 {
+  overflow: hidden;
+  /* background: #000; */
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 500rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.team-avator {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  overflow: hidden;
+  border: 1rpx #fff solid;
+  margin-top: 20rpx;
+}
+
+.team-avator image {
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.team-name {
+  font-size: 34rpx;
+  margin-top: 20rpx;
+}
+
+.team-info, .team-intro {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+}
+
+.team-content {
+  margin: 0 18rpx;
+  color: #353535;
+  font-size: 32rpx;
+}
+
+.team-content>view {
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx 0;
+  border-bottom: 1rpx #f2f2f2 solid;
+  align-items: center;
+}
+
+.team-content-ringht {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.team-content-color1 {
+  width: 96rpx;
+  height: 62rpx;
+  border-radius: 10rpx;
+}
+
+.team-content-color2 {
+  width: 96rpx;
+  height: 62rpx;
+  border-radius: 10rpx;
+}
+
+.team-line {
+  height: 20rpx;
+  width: 100%;
+  background: #eee;
+}
+
+.state {
+  width: 100%;
+  display: flex;
+  /* flex-flow: column; */
+  align-items: center;
+  justify-content: space-around;
+}
+
+.authorizeView {
+  /* display: flex;
+  flex-flow: column; */
+  align-items: center;
+}
+
+.team-sure {
+  margin-top: 60rpx;
+  width: 169rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  line-height: 60rpx;
+  border: none;
+  outline: none;
+  float: left;
+  margin-bottom: 60rpx;
+  /* margin-right: 12.5rpx; */
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  box-shadow: 0rpx 0rpx 16rpx rgba(179, 33, 36, 0.24);
+}
+
+/* 解散队伍弹框 */
+
+.dissolve-team {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.dissolve-team-contain {
+  width: 90%;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin: auto;
+  margin-top: 55%;
+}
+
+.dissolve-title {
+  font-size: 34rpx;
+  color: #353535;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 50rpx;
+}
+
+.dissolve-people {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dissolve-people>view {
+  width: 25%;
+  margin-top: 70rpx;
+  position: relative;
+}
+
+.dissolve-people>view:last-child {
+  padding-bottom: 70rpx;
+}
+
+.dissolve-content image {
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  margin: auto;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  margin-top: 20rpx;
+}
+
+.dissolve-content .img {
+  width: 90rpx;
+  height: 90rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  border-radius: 50%;
+  border: 1rpx solid #e5e5e5;
+}
+
+.dissolve-content .select-img {
+  width: 90rpx;
+  height: 90rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  border-radius: 50%;
+  border: 1rpx solid #e5e5e5;
+}
+
+.dissolve-name {
+  width: 90%;
+  font-size: 28rpx;
+  color: #353535;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  margin-top: 15rpx;
+}
+
+.create-person {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.create-person>text {
+  display: block;
+  width: 86rpx;
+  height: 36rpx;
+  background-color: #61b05c;
+  border-radius: 39rpx;
+  font-size: 20rpx;
+  color: #353535;
+  line-height: 36rpx;
+  position: absolute;
+  right: -30rpx;
+  top: 0;
+  text-align: center;
+}
+
+.triangle {
+  position: absolute;
+  top: 23rpx;
+  right: 35rpx;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0;
+  border-bottom: 6px solid #fff;
+  border-top: 6px solid #fff;
+  border-left: none;
+  border-right: 6px solid #61b05c;
+  transform: rotate(70deg);
+}

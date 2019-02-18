@@ -1,0 +1,72 @@
+/* page/pack-index/pages/wl-drumbeating/wl-drumbeating.wxss */
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.item{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  line-height: 90rpx;
+  align-items: center;
+}
+.img1 {
+  height: 40rpx;
+  width: 40rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.img2 {
+  width: 32rpx;
+  height: 32rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.item view {
+  font-size: 32rpx;
+  color: #353535;
+  margin-left: 15rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+}

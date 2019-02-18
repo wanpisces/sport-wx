@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "loadingView": "/widget/loading-view/loading-view"
+  }
+}

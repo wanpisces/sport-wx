@@ -1,0 +1,349 @@
+/* page/pack-index/pages/personal-dynamics/personal-dynamics.wxss */
+@import "/my-template/comment/comment.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  padding-bottom: 50px;
+}
+
+.shuoshuo {
+  display: flex;
+  flex-flow: column;
+  background: #fff;
+  width: 750rpx;
+  padding: 30rpx 20rpx 10rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.shuoshuo .ss_userInfo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.u_logo {
+  height: 90rpx;
+  width: 90rpx;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.ss_userInfo_logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 45rpx;
+  border: 1rpx solid #f2f2f2;
+}
+
+.ss_userInfo_sex {
+  position: absolute;
+  right: -10rpx;
+  top: 0;
+  padding: 8rpx;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 18rpx;
+}
+
+.ss_userName {
+  display: flex;
+  flex-flow: column;
+  margin-left: 20rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.ss_userName .c_ss_userName1 {
+  display: block;
+  font-size: 30rpx;
+  color: #353535;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ss_userName .c_ss_userName2 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+
+.ss_userName .c_ss_userName2 text {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.ss_userName .c_ss_userName2 image {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 0;
+  margin-left: 48rpx;
+  margin-bottom: 4rpx;
+}
+
+.delete {
+  font-size: 28rpx;
+  color: #228abf;
+  padding: 0 30rpx;
+}
+
+/* .ss_userName .c_ss_userName2 view {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  margin-left: 5rpx;
+} */
+
+.share {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.share_logo {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.shuoshuo .ss_content {
+  font-size: 30rpx;
+  color: #353535;
+  padding: 20rpx 0;
+  word-wrap: break-word;
+}
+
+.shuoshuo .ss_imgs {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.shuoshuo .ss_imgs view {
+  width: 33.3%;
+  height: 225rpx;
+}
+
+.shuoshuo .ss_imgs view image {
+  background: #e5e5e5;
+  width: 96%;
+  height: 96%;
+  margin: 2%;
+}
+
+.shuoshuo .ss_club {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 96%;
+  margin-top: 20rpx;
+  padding: 2%;
+  align-items: center;
+  background: #eee;
+  border-radius: 8rpx;
+}
+
+.groupAttr_value {
+  background: #ffd100;
+  font-size: 22rpx;
+  color: #282828;
+  margin-top: -8rpx;
+  height: 30rpx;
+  padding: 2rpx 6rpx;
+  border-radius: 4rpx;
+  margin-left: 8rpx;
+  font-weight: normal;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.shuoshuo .ss_club .club_img {
+  height: 80rpx;
+  width: 80rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 8rpx;
+  background: #e5e5e5;
+}
+
+.shuoshuo .ss_club .next {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.shuoshuo .ss_club .club_name {
+  display: flex;
+  flex-flow: column;
+  font-size: 32rpx;
+  padding: 0 30rpx;
+  flex-shrink: 1;
+  flex-grow: 1;
+  height: 80rpx;
+  justify-content: space-between;
+}
+
+.shuoshuo .ss_club .club_name .clubName {
+  color: #353535;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.shuoshuo .ss_club .club_name .clubNum {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.shuoshuo .ss_club .club_name .clubNum image {
+  width: 24rpx;
+  color: 24rpx;
+}
+
+.shuoshuo .ss_club .club_name .clubNum view {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.shuoshuo .ss_bntImg {
+  display: flex;
+  flex-flow: row;
+  padding: 20rpx 0 10rpx 0;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.shuoshuo .ss_bntImg .ss_accessment {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.shuoshuo .ss_bntImg .ss_zan {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+  margin-left: 30rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.zan_num {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 70rpx;
+  width: 100%;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.join_num_img {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-left: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.img5 {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid #fff;
+  margin-left: -20rpx;
+  background: #f4f4f4;
+}
+
+.addrs {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 24rpx;
+  color: #228abf;
+  margin-right: 20rpx;
+  align-items: flex-start;
+  padding: 10rpx 0;
+}
+
+.addrs image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+  margin-top: 6rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.somll {
+  font-size: 24rpx;
+  color: #353535;
+}

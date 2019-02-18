@@ -1,0 +1,108 @@
+/* page/pack-find/yue-more/yue-more.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/yd/yd.wxss";
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1001;
+  background: #282828;
+}
+
+.filter-wrap {
+  padding: 0 12rpx;
+  height: 45px;
+  /* border-bottom: 2px solid #f2f2f2; */
+  z-index: 1001;
+}
+
+.filter-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  height: 100%;
+  border-bottom: 1px solid #fff;
+  font-size: 28rpx;
+}
+
+.active-after {
+  height: 86rpx;
+  line-height: 95rpx;
+  border-bottom: 6rpx solid #fff;
+}
+
+.active {
+  height: 86rpx;
+  line-height: 95rpx;
+  border-bottom: 6rpx #ffd100 solid;
+  /* color: #ffd100 */
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.filter-item image {
+  position: relative;
+  top: -3rpx;
+  margin-left: 13rpx;
+  width: 15rpx;
+  height: 10rpx;
+}
+
+.find-team-fixed {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  background: #fff;
+  z-index: 1000;
+}
+
+/* .match-wrapper {
+  margin-bottom: 30rpx;
+} */
+
+.no-data {
+  margin-top: 60%;
+}
+
+.no-data image {
+  display: block;
+  width: 212rpx;
+  height: 167rpx;
+  margin: 0 auto;
+}
+
+.no-data text {
+  display: block;
+  margin: 15rpx;
+  color: #999;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.headPortrait {
+  width: 260rpx;
+  height: 85rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 209, 1, 1);
+  border-radius: 43rpx;
+  line-height: 85rpx;
+  font-size: 34rpx;
+  text-align: center;
+  color: #ffd100;
+  margin: 0 auto;
+}
+
+.yd-match {
+  height: 300rpx;
+}

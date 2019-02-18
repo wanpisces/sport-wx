@@ -1,0 +1,179 @@
+/* page/pack-find/new-detail/new-detail.wxss */
+/* pages/index/information_details/information_details.wxss */
+@import "/page/tmp/load/listTemplate.wxss";
+@import "/libs/wxParse/wxParse.wxss";
+
+.title {
+  display: flex;
+  flex-flow: column;
+  padding: 15rpx;
+}
+
+.title .title_txt {
+  font-size: 40rpx;
+  letter-spacing: 1rpx;
+  font-weight: 600;
+  color: #353535;
+}
+
+.title .state {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 28rpx;
+}
+
+.title .state .img1 {
+  width: 26rpx;
+  height: 24rpx;
+}
+
+.title .state .img2 {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 38rpx;
+}
+
+.title .state .img3 {
+  width: 24rpx;
+  height: 25rpx;
+  margin-left: 38rpx;
+}
+
+.title .state .tv1 {
+  font-size: 26rpx;
+  color: #999;
+  margin-left: 12rpx;
+}
+
+.title .state .tv3 {
+  font-size: 26rpx;
+  color: #999;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: right;
+}
+
+.explain {
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 10rpx;
+}
+
+.explain .label {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0rpx 15rpx;
+}
+
+.explain .label .item {
+  color: #666;
+  font-size: 24rpx;
+  padding: 13rpx 18rpx;
+  background: #eee;
+  border-radius: 10rpx;
+  margin: 10rpx;
+}
+
+.explain .buts {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.explain .buts .praise {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.explain .buts .praise view {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: #fff;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.explain .buts .praise view image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.explain .buts .praise text {
+  margin-top: 22rpx;
+  font-size: 26rpx;
+  color: #515151;
+}
+
+.explain .buts .home {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 62rpx;
+}
+
+.explain .buts .home button {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  background: #fff;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.explain .buts .home button::after {
+  border: 0;
+}
+
+.explain .buts .home button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.explain .buts .home text {
+  margin-top: 22rpx;
+  font-size: 26rpx;
+}
+
+.loadMore {
+  padding-bottom: 126rpx;
+}
+
+.detail-container {
+  padding: 5rpx 30rpx 10rpx 30rpx;
+}
+
+.detail-container image {
+  width: 100% !important;
+}
+  
+/* .detail-container .wxParse-p {
+  line-height: 50rpx !important;
+  font-size: 16px !important;
+}
+
+.detail-container .wxParse-p view {
+  font-size: 16px !important;
+}   */
+
+.shareGoHome{
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image{
+  width: 120rpx;
+  height: 120rpx;
+}

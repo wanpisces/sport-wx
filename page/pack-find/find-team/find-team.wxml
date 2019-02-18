@@ -1,0 +1,77 @@
+<!--page/pack-find/find-team/find-team.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team3/team3.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<navigationBar class='navigationBar' tag="{{2}}" bg-color="#202020" status-bar-height="{{statusBarHeight}}" title-name="队伍广场" />
+<view class='find-team-fixed' style="top:{{statusBarHeight+45}}px;">
+  <view class='find-search'>
+    <view catchtap='search'>
+      <!-- <image src='/pic/search.png' mode='scaleToFill'></image> -->
+      <text class='iconfont icon-sousuo-copy' style='font-size:35rpx;'></text>
+      <text>快速搜索你想要了解的队伍</text>
+    </view>
+  </view>
+  <view class='filter-wrap'>
+    <view class='filter-content'>
+      <picker class='filter-item' mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <!-- <view class="{{address?'picker':'picker_no'}}"> -->
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{address||'区域'}}</view>
+          <view class='iconfont icon-xiala' style='font-size:20rpx;color:#272727;margin-left:10rpx;'></view>
+          <!-- <view class='sjx-view'></view> -->
+          <!-- <image src='/pic/sjx.png' mode='scaleToFill'></image> -->
+        </view>
+        <!-- </view> -->
+      </picker>
+      <picker mode="selector" class='filter-item' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{0}}" range-key="name" range="{{typeArray[0]}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{typesOf}}</view>
+          <view class='iconfont icon-xiala' style='font-size:20rpx;color:#272727;margin-left:10rpx;'></view>
+          <!-- <image src='/pic/sjx.png' mode='scaleToFill'></image> -->
+        </view>
+      </picker>
+      <picker class='filter-item' bindchange="bindFilterChange" range="{{filterArray}}" range-key="name" value="{{1}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{filterText}}</view>
+          <view class='iconfont icon-xiala' style='font-size:20rpx;color:#272727;margin-left:10rpx;'></view>
+          <!-- <image src='/pic/sjx.png' mode='scaleToFill'></image> -->
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class='team-wrapper' style="padding-top:{{statusBarHeight+165}}px;" wx:if="{{dataList.length>0}}">
+  <view class='team-module' wx:for="{{dataList}}" wx:key="{{index}}">
+    <template is="team3" data="{{...item}}" />
+    <!-- <navigator url="{{item.attr_id==2?'/page/pack-index/pages/team-page/team-page?group_id='+item.group_id:'/page/pack-index/pages/currency-team-page/team-page?group_id='+item.group_id}}" hover-class='none' class='team-content'>
+      <view class='team-left'>
+        <image mode='aspectFill' src='{{item.group_badge}}'></image>
+        <view class='team-left-text'>
+          <view class='team-name'>{{item.group_name}}
+            <view class='team-lable' wx:if="{{item.attr_value}}">{{item.attr_value}}</view>
+          </view>
+          <view class='team-dynamic'>{{item.member_num}}位队员 · {{item.feed_num || '0'}}人关注 · {{item.visit_num || '0'}}人访问</view>
+          <view class='team-adress'>{{item.area}}</view>
+        </view>
+      </view>
+    </navigator> -->
+    <!-- <view class='follow-wrapper'> -->
+    <!-- <authorizeView bind:onBut="followTeam" data-follow="{{item.group_id}}" data-followid="{{item.is_follow}}" data-index="{{index}}">
+        <view class='attention' wx:if="{{item.is_follow == 1}}">关注</view>
+        <view class='attention1' wx:if="{{item.is_follow == 2}}">已关注</view>
+      </authorizeView> -->
+    <!-- <authorizeView wx:if="{{item.is_follow == 2}}" bind:onBut="cancelFollow" data-follow="{{item.group_id}}" data-index="{{index}}">
+        
+      </authorizeView> -->
+    <!-- </view> -->
+  </view>
+  <template is="loadMore2" data="{{...loadData}}" />
+</view>
+<view wx:if="{{dataList.length == 0}}">
+  <template is="emptyView" data="{{empty}}" />
+</view>
+
+
+
+
+<!-- <template is="emptyView2" data="{{...loadData}}" /> -->

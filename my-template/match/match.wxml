@@ -1,0 +1,55 @@
+<template name='match'>
+  <view id="item{{index}}" class='temp-match' catchtap='bindItemClick' data-index='{{index}}'>
+    <image mode='aspectFill' class='temp-match-img' src='{{competition_pic}}'></image>
+    <view wx:if="{{competition_tag == 2}}" class='match-label'>
+      <view class='iconfont icon-wode' style='font-size:16rpx;color:#fff;'></view>
+      <view class='match-label-text'>个人</view>
+    </view>
+    <view class='temp-sub'>
+      <view class='temp-sub-base'>
+        <view class='title'>{{competition_name}}</view>
+        <view class='child'>
+          <image mode='aspectFill' src='/pic/list_time.png'></image>
+          <text style='flex-grow: 0;flex-shrink: 0;'>{{competition_starttime}}</text>
+          <image wx:if="{{attr_id !=51}}" mode='aspectFill' src='/pic/list_cup.png'></image>
+          <text wx:if="{{attr_id !=51}}" style='flex-grow: 0;flex-shrink: 0;'>{{competition_level==1&&'杯赛' || competition_level==2&&'联赛' || '系列赛'}}</text>
+          <image wx:if="{{attr_id ==2 && competition_tag==1}}" mode='aspectFill' src='/pic/people.png'></image>
+          <text wx:if="{{attr_id ==2 && competition_tag==1}}" style='flex-grow: 0;flex-shrink: 0;'>{{competition_rule==3&&'三人制' || competition_rule==5&&'五人制'|| competition_rule==8&&'八人制'||competition_rule==11&&'十一人制'||'其他'}}</text>
+          <image mode='aspectFill' src='/pic/list_addr.png'></image>
+          <text style='flex-grow: 1;flex-shrink: 1; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{city_name||'未知'}}</text>
+        </view>
+      </view>
+      <view class="tip {{competition_status==2?'tip2':competition_status==3?'tip3':''}}">
+        <view class='triangle-right'>
+        </view>
+        <view class='tip-txt'>{{is_enlist==1?'已报名':competition_status==1?'报名阶段':competition_status==2?'进行中':competition_status==3?'已完结':competition_status==4?'计划中':'抽签阶段'}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name='collection-match'>
+  <view bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" id="item{{index}}" class='temp-match' catchtap='bindItemClick' catchlongtap='bindItemLongClick' data-index='{{index}}'>
+    <image mode='aspectFill' class='temp-match-img' src='{{competition_pic}}'></image>
+    <view class='temp-sub'>
+      <view class='temp-sub-base'>
+        <view class='title'>{{competition_name}}</view>
+        <view class='child'>
+          <image mode='aspectFill' src='/pic/list_time.png'></image>
+          <text style='flex-grow: 0;flex-shrink: 0;'>{{competition_starttime}}</text>
+          <image mode='aspectFill' src='/pic/list_cup.png'></image>
+          <text style='flex-grow: 0;flex-shrink: 0;'>{{competition_level==1&&'杯赛' || competition_level==1&&'联赛' || '系列赛'}}</text>
+          <image mode='aspectFill' src='/pic/people.png'></image>
+          <text style='flex-grow: 0;flex-shrink: 0;'>{{competition_rule==3&&'三人制' || competition_rule==5&&'五人制'|| competition_rule==8&&'八人制'||competition_rule==11&&'十一人制'||'其他'}}</text>
+          <image mode='aspectFill' src='/pic/list_addr.png'></image>
+          <text style='flex-grow: 1;flex-shrink: 1; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;'>{{city_name||'未知'}}</text>
+        </view>
+      </view>
+      <view class="tip {{competition_status==2?'tip2':competition_status==3?'tip3':''}}">
+        <view class='triangle-right'>
+        </view>
+        <view class='tip-txt'>{{is_enlist==1?'已报名':competition_status==1?'报名阶段':competition_status==2?'进行中':competition_status==3?'已完结':competition_status==4?'计划中':'抽签阶段'}}</view>
+      </view>
+    </view>
+  </view>
+</template>

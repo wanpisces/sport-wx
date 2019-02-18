@@ -1,0 +1,24 @@
+<!--widget/center-picker-view/center-picker-view.wxml-->
+<view class='custom' catchtouchmove="preventD">
+  <view class='bg'></view>
+  <view class='v_view'>
+    <view class='title'>请选择队伍类型</view>
+    <view  class='content'>
+      <scroll-view  scroll-y class='scroll1'>
+        <view  class="item2 {{selectId1 == index?'ck1':''}}" catchtap='onItem1' wx:for="{{[1,2,3,4,5,6]}}" wx:key="colorKey" data-index='{{index}}'>
+          <view class='color_title'>主题色</view>
+        </view>
+      </scroll-view>
+      <scroll-view  scroll-y class='scroll2'>
+        <view class="item1 {{selectId2 == index?'ck2':''}}"  catchtap='onItem2' data-index='{{index}}' wx:for="{{[1,2,3,4,5,6]}}" wx:key="colorKey">
+          <view class='color_title'>主题色</view>
+          <image wx:if="{{selectId2 == index}}" class='imageView' mode='aspectFill' src='/pic/checked.png'></image>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='tab'>
+      <view id="cancel" catchtap='onClicks'>取消</view>
+      <view id="confirm" style='border-left: 1px solid #e5e5e5;' catchtap='onClicks'>确认</view>
+    </view>
+  </view>
+</view>

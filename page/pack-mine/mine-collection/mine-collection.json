@@ -1,0 +1,8 @@
+{
+  "backgroundColor": "#282828",
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "loadingView": "/widget/loading-view/loading-view"
+  }
+}

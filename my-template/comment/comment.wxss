@@ -1,0 +1,197 @@
+.item {
+  display: flex;
+  flex-flow: column;
+  padding: 30rpx 0;
+  margin: 0 5rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.item  .topview {
+  display: flex;
+  flex-flow: row column;
+  align-items: center;
+  position: relative;
+}
+
+.item  .topview .layer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 740rpx;
+}
+
+.item  .topview .layer .userImg {
+  width: 82rpx;
+  height: 82rpx;
+  background: #f4f4f4;
+  border-radius: 50%;
+  margin-left: 15rpx;
+}
+
+.item  .topview .layer .nameAndTime {
+  display: flex;
+  flex-flow: column;
+  margin-left: 13rpx;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+  height: 82rpx;
+}
+
+.item  .topview .layer .nameAndTime .name {
+  max-width: 450rpx;
+  font-size: 28rpx;
+  color: #2b79b5;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item  .topview .layer .nameAndTime .time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.item  .topview .layer .commentZan {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0;
+  padding: 10rpx 14rpx;
+  background: #fff;
+  border-radius: 0;
+}
+
+.item  .topview .layer .commentZan::after {
+  border: 0;
+}
+
+.item  .topview .layer .commentZan image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.item  .topview .layer .hoverClass {
+  background: #f8f8f8;
+}
+
+.item  .topview .layer .commentZan .num {
+  font-size: 24rpx;
+  color: #bcbcbc;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+
+.item  .topview .layer .more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 14rpx 0 0;
+  padding: 12rpx 14rpx 8rpx 14rpx;
+  border-radius: 0;
+  background: #fff;
+  line-height: 1;
+}
+
+.item  .topview .layer .more::after {
+  border: 0;
+}
+
+.item  .topview .layer .more .hoverClass2 {
+  background: #f8f8f8;
+}
+
+.item  .topview .layer .more  .huifu {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+/* .commentList .item  .topview .layer .more  image {
+  line-height: 1;
+  width: 28rpx;
+  height: 28rpx;
+} */
+
+/* 
+.commentList .item  .topview .layer2 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 64rpx;
+}
+
+.commentList .item  .topview .layer2 .view1 {
+  background: #000;
+  opacity: 0.8;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentList .item  .topview .layer2 .view1 .huifu {
+  color: #fff;
+  font-size: 24rpx;
+  padding: 10rpx 25rpx;
+}
+
+.commentList .item  .topview .layer2 .view2 {
+  width: 0;
+  height: 0;
+  border-top: 6rpx solid transparent;
+  border-left: 12rpx solid #000;
+  border-bottom: 6rpx solid transparent;
+  opacity: 0.8;
+} */
+
+.item .bottomView {
+  font-size: 28rpx;
+  color: #353535;
+  margin: 15rpx 68rpx 0 110rpx;
+  word-break:break-all; 
+}
+
+.item .huifuView {
+  display: flex;
+  flex-flow: column;
+  background: #f2f2f2;
+  margin: 15rpx 68rpx 0 110rpx;
+  padding: 10rpx 0;
+}
+
+.item .huifuView .huifuItem {
+  font-size: 26rpx;
+  color: #353535;
+  padding: 10rpx;
+}
+
+.item .huifuView .lookMore {
+  font-size: 24rpx;
+  color: #b7b7b7;
+  padding: 10rpx;
+  margin: 0;
+  border-radius: 0;
+  background: #f2f2f2;
+  line-height: 1;
+  text-align: left;
+  width: auto;
+}
+
+.item .huifuView .lookMoreHove {
+  background: #f8f8f8;
+}
+
+.item .huifuView .lookMore::after {
+  border: 0;
+  width: auto;
+}
+
+.item .huifuView .lookMore text {
+  font-size: 24rpx;
+  color: #2ea3fc;
+}

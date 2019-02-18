@@ -1,0 +1,227 @@
+/* page/pack-match/pages/sports-record/sports-record.wxss */
+@import "/my-template/sports-record/sports-record.wxss";
+
+page {
+  background: #f2f2f2;
+}
+
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sports-record {
+  display: flex;
+  flex-flow: column;
+  background: #202020;
+  padding: 0rpx 20rpx 0 20rpx;
+  justify-content: center;
+  height: 460rpx;
+  z-index: 1;
+}
+
+.sports-record .sports-record-sub1 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sports-record .sports-record-sub1 .team1,
+.sports-record .sports-record-sub1 .and,
+.sports-record .sports-record-sub1 .team2 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sports-record .sports-record-sub1 .team1 image,
+.sports-record .sports-record-sub1 .team2 image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  background: #f2f2f2;
+}
+
+.sports-record .sports-record-sub1 .team1 view,
+.sports-record .sports-record-sub1 .team2 view {
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sports-record .sports-record-sub1 .and image {
+  width: 45rpx;
+  height: 45rpx;
+  margin: 20rpx 0;
+}
+
+.sports-record .sports-record-sub2 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.sports-record .sports-record-sub2 .ch1 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  max-width: 50%;
+}
+
+.sports-record .sports-record-sub2 .ch1 image {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 15rpx;
+}
+
+.sports-record .sports-record-sub2 .ch1 view {
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 50rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sports-record .sports-record-sub2 .ch2 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 50%;
+}
+
+.sports-record .sports-record-sub2 .ch2 image {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 15rpx;
+}
+
+.sports-record .sports-record-sub2 .ch2 view {
+ font-size: 28rpx;
+  color: #fff;
+  line-height: 50rpx;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-data {
+  margin: 0 20rpx;
+  width: 710rpx;
+  background: #fff;
+  z-index: 2;
+  margin-top: -60rpx;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  display: flex;
+  flex-flow: column;
+}
+
+.label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 70rpx;
+}
+
+.label .sub {
+  font-size: 32rpx;
+  color: #1e1e1e;
+  line-height: 80rpx;
+  padding: 0rpx 30rpx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.label .subed {
+  color: #fc0;
+}
+
+.label .sub2 {
+  width: 1px;
+  height: 80rpx;
+  background: #f2f2f2;
+}
+
+.label .sub .line {
+  width: 136rpx;
+  height: 6rpx;
+  background: #fff;
+  border-radius: 3rpx;
+}
+
+.label .sub .lineed {
+  background: #fc0;
+}
+
+.emblem-view {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 85rpx 130rpx 20rpx 130rpx;
+}
+
+.emblem-view .emblem {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+}
+
+.emblem-view .vs {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.record-view {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 20rpx;
+}
+
+.record-view .record1, .record-view .record2 {
+  display: flex;
+  flex-flow: column;
+}
+
+.record-item1 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 15rpx 0;
+}
+
+.record-item1 .place {
+  width: 90rpx;
+  height: 40rpx;
+  border-radius: 5rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.record-item1 .name {
+  font-size: 28rpx;
+  color: #151515;
+  margin-left: 16rpx;
+  width: 165rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

@@ -1,0 +1,112 @@
+<!--page/tabBar/index/index.wxml-->
+<import src="/my-template/shuoshuo/shuoshuo.wxml" />
+<import src="/my-template/team/team.wxml" />
+<import src="/my-template/team3/team3.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<!-- <template is='load' data="{{loadData}}" /> -->
+<viewPicker wx:if="{{isViewPicker}}" list-data="{{colorList}}" bind:onclick="bindViewPicker" />
+<!-- <loadingView wx:if="{{isLoading}}" /> -->
+<!-- <circular-menu-team wx:if="{{ teamList.length>0}}" class="circular-menu" /> -->
+<comment-view is-show="{{isCommentShow}}" params="{{params}}" refresh="{{refreshAuthorizeView}}" />
+<view class='pages' style="height:{{windowHeight}}px;{{isViewPicker?'overflow: hidden;':''}}">
+  <!-- <navigationBar class='navigationBar' tag="{{1}}" is-back="{{false}}" img-url="{{bgUrl1}}" status-bar-height="{{statusBarHeight}}" /> -->
+  <view class='v2'>
+    <image mode='aspectFill' src='{{imgUrl?imgUrl:bgUrl2}}' class='bg' style='height:{{bgh}}rpx;'></image>
+  </view>
+  <view class='data_view' style='min-height:600rpx;' style="top:{{statusBarHeight+45}}px;">
+    <authorizeView user-info="{{true}}" refresh="{{refreshAuthorizeView}}" is-immediately-back="{{true}}" bind:onBut="{{user_avatar?'':'onUserAvatar'}}">
+      <image wx:if="{{user_avatar}}" mode='aspectFill' class='headPortrait' src="{{user_avatar}}"></image>
+      <view wx:else class='headPortrait'>
+        <open-data type="userAvatarUrl" class='headPortrait'></open-data>
+      </view>
+    </authorizeView>
+
+    <view class='ssList'>
+      <!-- && feedList.length==0 -->
+      <!-- 无队伍情况 -->
+      <view wx:if="{{teamList.length==0}}" class='ranks2'>
+        <!-- 我的队伍 -->
+        <view class='ranks1'>
+          <view class='myteamList'>我的队伍</view>
+          <view class='team-space'>您暂未加入任何队伍</view>
+          <view class='team-button'>
+            <view class='team-contain'>
+              <!-- <navigator hover-stop-propagation="false" url='/page/pack-find/find-team/find-team'> -->
+              <!-- <button class='join'>加入队伍</button> -->
+              <button class='join' bindtap='findTeamEvt'>找队伍</button>
+              <!-- </navigator> -->
+              <authorizeView wx:if="{{!isUserInfo || !isPhone||attrList.length==0}}" bind:onBut="{{!isUserInfo || !isPhone?'':'onGetAttr'}}" refresh="{{refreshAuthorizeView}}" user-phone="{{true}}" user-info="{{true}}">
+                <view id='selectAttr' class='found'>创建队伍</view>
+              </authorizeView>
+              <!-- <picker bindchange="bindPickerChange" value="{{0}}" range="{{attrList}}"> -->
+              <picker wx:else mode="selector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{attrList[0]}}" range-key="name">
+                <view id='selectAttr' class='found'>创建队伍</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view style='width:100%;height:21rpx;background:#f2f2f2;'></view>
+        <!-- 热搜推荐 -->
+        <view class='hot-contain'>
+          <view class='myteamList'>活跃推荐</view>
+          <view wx:if="{{hotSearchList.length>0}}" class='team-module' wx:for="{{hotSearchList}}" wx:key="{{index}}">
+            <template is='team3' data="{{...item}}" />
+          </view>
+          <view wx:if="{{hotSearchList.length==0}}">
+            <template is='emptyView2' data="{{empty}}" />
+          </view>
+        </view>
+      </view>
+      <!-- <view class='myteamList' wx:if="{{teamList.length>0}}">我的队伍</view> -->
+      <!-- <view  class='userTeam'>
+        <view catchtap='onTeamDetail' wx:for="{{teamList}}" wx:key="listKey" data-item='{{item}}'>
+          <template is='team' data="{{item}}" />
+        </view>
+        <button wx:if="{{isTeamMore}}" catchtap='teamMore' class='lookTeams'>查看更多
+          <image class='lookTeamsImg' mode='aspectFill' src='/pic/arrow.png'></image>
+        </button>
+      </view> -->
+      <!-- wx:if="{{teamList.length!=0}}" -->
+
+      <!-- 有队伍情况 -->
+      <view wx:else>
+        <!-- 我的队伍 -->
+        <view>
+          <view class='myteamList' wx:if="{{teamList.length>0}}">我的队伍
+            <found-team class="img-style" animation="{{animTranspond}}" bindtap="transpond">
+              <view class='txt'>
+                <text>+</text> 新的队伍</view>
+            </found-team>
+          </view>
+          <view class='userTeam'>
+            <view catchtap='onTeamDetail' wx:for="{{teamList}}" wx:key="listKey" data-item='{{item}}'>
+              <template is='team' data="{{item}}" />
+            </view>
+            <button wx:if="{{isTeamMore}}" catchtap='teamMore' class='lookTeams'>查看更多
+              <image class='lookTeamsImg' mode='aspectFill' src='/pic/arrow.png'></image>
+            </button>
+          </view>
+        </view>
+        <view style='width:100%;height:21rpx;background:#f2f2f2;'></view>
+        <view>
+          <view class='team-dynamics'>队伍广场
+            <view class='checkMore' bindtap='checkMoreTeam'>
+              <text>查看更多</text>
+              <image src='/pic/list_arrow.png'></image>
+            </view>
+          </view>
+          <view class='team-wrapper' wx:if="{{dataList.length>0}}">
+            <view class='team-module' wx:for="{{dataList}}" wx:key="{{index}}">
+              <template is="team3" data="{{...item}}" />
+            </view>
+          </view>
+          <view wx:if="{{!dataList.length}}">
+            <template is='emptyView2' data="{{tip}}" />
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <template is='loading' data="{{hidden:teamList}}"> </template>
+  </view>
+</view>

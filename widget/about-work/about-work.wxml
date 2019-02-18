@@ -1,0 +1,9 @@
+<!--widget/found-team/found-team.wxml-->
+<authorizeView wx:if="{{!isUserInfo || !isPhone||attrList.length==0}}" bind:onBut="{{!isUserInfo || !isPhone?'':'onGetAttr'}}" refresh="{{refreshAuthorizeView}}" user-phone="{{true}}" user-info="{{true}}">
+  <slot></slot>
+</authorizeView>
+<picker wx:else mode="selector" bindchange="bindMultiPickerChange" range="{{attrList[0]}}" range-key="name">
+  <slot></slot>
+</picker>
+
+<!-- bindcolumnchange="bindMultiPickerColumnChange" -->

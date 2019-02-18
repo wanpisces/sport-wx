@@ -1,0 +1,96 @@
+<!--page/pack-find/yue-release/yue-release.wxml-->
+<viewPicker wx:if="{{isViewPicker}}" list-data="{{colorList}}" colors="{{color}}" bind:onclick="bindViewPicker" />
+<view class='pages_'>
+  <navigationBar class='navigationBar' tag="{{3}}" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" title-name="{{isEdit?'编辑约战':'发布约战'}}" />
+  <view class='data_view_' style="margin-top:{{statusBarHeight+45}}px;">
+    <view class='release-tips'>
+      温馨提示：约战成功后，可前往约战详情录入比分数据
+    </view>
+    <view class='release-content'>
+      <view wx:if="{{!isGroup}}">
+        <view>* 我的队伍：</view>
+        <picker bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{chooseData}}" range-key="group_name">
+          <view class='release-content-right'>{{group_name||'请选择需要约战的队伍'}}
+            <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+          </view>
+        </picker>
+      </view>
+      <view>
+        <view>赛制性质：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="multiSelector" bindchange="bindPickerChangeRule" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;width:60%;' range-key="name" range="{{movement}}">
+            <view class='release-content-right'>
+              <view>{{itemRule}}</view>
+              <view style='flex-grow:2' style='height:35rpx;width:1rpx;border-left:2rpx #999 solid;margin:0 30rpx'></view>
+              <view>{{itemType}}</view>
+            </view>
+          </picker>
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+      <view>
+        <view>约战日期：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="date" value="{{date}}" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+            <view class='release-content-right' style='text-align: right;'>{{date|| '请选择日期'}}
+              <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view>
+        <view>约战时间：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker mode="time" value="{{time}}" start="{{nowtTime}}" end="23:59" bindchange="bindTimeChange">
+            <view class='release-content-right'>{{time|| '请选择时间'}}
+              <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view catchtap='onLocation' style='border-bottom:0;padding:0;'>
+        <view style='width:230rpx;padding:25rpx 0;'>* 约战地点：</view>
+        <view class='release-content-right' style='padding:25rpx 0;border-bottom:1rpx solid #f2f2f2;'>{{mCaseAddr|| '请选择约战地点'}}
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+
+    </view>
+    <view class='match-address'>
+      <!-- <view style='flex-grow: 0;flex-shrink: 0;'>比赛场馆：</view> -->
+      <input class='release-content-right' placeholder='请输入场馆名称' maxlength='16' style='text-align:right;margin-right:18rpx;' placeholder-style="color:#999999;" bindinput='matchAddress' value="{{venue}}"></input>
+    </view>
+    <view class='release-line'></view>
+    <view class='release-content'>
+      <view wx:if="{{attr_id == 2 || attr_id == 3}}">
+        <view>球衣颜色:</view>
+        <view class='release-content-right' catchtap='onColors'>
+          <view wx:if="{{home_shirt != 37}}" class='iconfont icon-qiuyi' style="font-size:70rpx;color:{{color}};text-align:right;"></view>
+          <view wx:if="{{home_shirt == 37}}" class='iconfont icon-qiuyi-baise' style="font-size:70rpx;text-align:right;"></view>
+          <image src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+      <view>
+        <view>费用情况：</view>
+        <view style='display:flex;align-item:center; flex-grow: 1;flex-shrink: 1;  justify-content: flex-end;'>
+          <picker bindchange="bindPickerChangecost" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;width:60%;' value="{{0}}" range-key="name" range="{{costType}}">
+            <view class='release-content-right'>
+              <view>{{cost}}</view>
+            </view>
+          </picker>
+          <image mode='' src='../../../pic/list_arrow.png' class='release-content-img'></image>
+        </view>
+      </view>
+    </view>
+    <view class='release-line'></view>
+    <view class='release-note'>
+      <view>备注:</view>
+      <textarea wx:if="{{!isViewPicker}}" placeholder='请填写费用事项、交通费用等备注信息' value='{{remark}}' bindinput="bindinput" class='release-note-text' placeholder-style="color:#999;"></textarea>
+    </view>
+
+    <view style='  display: flex;flex-flow: row nowrap;justify-content: center;'>
+      <button wx:if="{{isEdit}}" class='release-sure' disabled='{{isloading}}' catchtap='bindSave'>保 存</button>
+      <button wx:else class='release-sure' disabled='{{isloading}}' catchtap='bindUpRelese'>发布约战</button>
+    </view>
+  </view>
+</view>

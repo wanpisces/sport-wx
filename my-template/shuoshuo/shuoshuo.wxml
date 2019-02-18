@@ -1,0 +1,63 @@
+<template name="shuoshuo">
+
+  <view hover-stop-propagation='true' class='shuoshuo' catchtap='onItemSS' data-index='{{index}}' data-item='{{item}}'>
+    <view class='ss_userInfo'>
+      <view class='u_logo'>
+        <image class='ss_userInfo_logo' mode='aspectFill' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+        <image wx:if="{{item.is_vip==1||item.user_gender>0}}" mode='aspectFill' class='ss_userInfo_sex' src="{{item.is_vip==1?'/pic/v.png':item.user_gender == 1?'/pic/famale.png':'/pic/male.png'}}"></image>
+      </view>
+      <view class='ss_userName'>
+        <view class='user_nickname'>{{item.user_nickname||'游客'}}
+          <view hidden="{{item.is_top !=2}}" class='top'>置顶</view>
+        </view>
+        <view class='bbboutome'>
+          <view class='time'>{{item.create_time}}</view>
+          <view wx:if="{{mineUserId == item.user_id}}" class='delete' catchtap='onLongTag' data-index='{{index}}' data-item='{{item}}'>删除</view>
+        </view>
+      </view>
+    </view>
+    <text class='ss_content'>{{item.feed_content}}</text>
+    <view class='ss_imgs'>
+      <view wx:for="{{item.feed_pic}}" wx:for-item='imgUrl' wx:key="imgKey" catchtap='lookImage' data-url='{{imgUrl}}' data-i='{{item.feed_pic}}'>
+        <image mode='aspectFill' src='{{imgUrl}}'></image>
+      </view>
+    </view>
+    <view class='ss_club' wx:if="{{item.group && !isNoGroup}}" catchtap='onTeamDetail' data-item='{{item.group}}'>
+      <image mode='aspectFill' class='club_img' src='{{item.group.group_badge}}'></image>
+      <view class='club_name'>
+        <view class='clubName'>{{item.group.group_name}}
+          <view class='groupAttr_value'>{{item.group.attr_value}}</view>
+        </view>
+        <view class='clubNum'>
+          <image wx:if="{{false}}" mode='aspectFill'></image>
+          <view>{{item.group.member_num}}位队员</view>
+        </view>
+      </view>
+      <image mode='aspectFill' class='next' src='/pic/arrow.png'></image>
+    </view>
+    <view wx:if="{{item.address}}" class='addrs'>
+      <image mode='aspectFill' src='/pic/address.png'></image>
+      <view class='addrs_name'>{{item.address}}</view>
+    </view>
+    <view class='ss_bntImg'>
+      <view style=' display: flex;flex-flow: row;align-items: center;width:230rpx;  justify-content: center;' catchtap='onStar' data-item='{{item}}' data-index='{{index}}'>
+        <image class='ss_zan' mode='aspectFill' src="{{item.is_star==1?'/pic/zan_ed.png':'/pic/zan.png'}}"></image>
+        <view class='somll'>{{item.star_num>0?item.star_num:'0'}}</view>
+      </view>
+      <view style=' display: flex;flex-flow: row;align-items: center;width:230rpx;  justify-content: center;' catchtap="{{item.comment_num==0?'onComment':''}}" data-item='{{item}}' data-index='{{index}}'>
+        <image class='ss_accessment' mode='aspectFill' src='/pic/accessment.png'></image>
+        <view class='somll'>{{item.comment_num>0?item.comment_num:'0'}}</view>
+      </view>
+      <authorizeView bnt-type='share' class='ss_share' item-view="{{item}}" catchtap='ddd'>
+        <view class='ss_share_view'>
+          <image id='{{item.feed_id}}' style=' width: 48rpx;height: 48rpx;' mode='aspectFill' src='/pic/share.png'></image>
+          <view class='somll'>分享</view>
+        </view>
+      </authorizeView>
+    </view>
+  </view>
+
+
+
+
+</template>

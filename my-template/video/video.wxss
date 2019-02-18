@@ -1,0 +1,23 @@
+.video {
+  width: 95%;
+  height: 504rpx;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+}
+
+.video_image {
+  width: 100%;
+  height: 404rpx;
+  background-color: #eee;
+}
+
+.video-title {
+  font-size: 30rpx;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+  line-height: 36rpx;
+  padding: 10rpx 19rpx 49rpx 19rpx;
+}

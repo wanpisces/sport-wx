@@ -1,0 +1,50 @@
+<!--page/pack-index/pages/reply-more/reply-more.wxml-->
+<import src="/page/tmp/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<comment-view is-hidden="{{false}}" is-show="{{isCommentShow}}"  params="{{params}}" bind:onCommentBut="onCommentBut" placeholder="{{placeholder}}" refresh="{{refreshAuthorizeView}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="评论详情" tag="{{3}}" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view'>
+    <view id='j_page'>
+      <view class='topview'>
+        <view class='layer'>
+          <image mode='aspectFill' class='userImg' src='{{user_avatar}}'></image>
+          <view class='nameAndTime'>
+            <text class='name'>{{userName}}</text>
+            <text class='time'>{{create_time}}</text>
+          </view>
+          <!-- <form report-submit='true' bindsubmit='zan'> -->
+          <authorizeView style='flex-shrink: 0;flex-grow: 0;' class="authorizeView" id="authorizeView" user-info="{{true}}" user-phone="{{false}}" bind:onBut="zan">
+            <view disabled='{{staring}}' class='commentZan' hover-class='hoverClass' form-type='submit'>
+              <image mode='aspectFill' src="{{isStar==2?'/pic/xq_access_zan_touch.png':'/pic/xq_access_zan.png'}}"></image>
+              <text class='num'>{{star_num}}</text>
+            </view>
+          </authorizeView>
+          <!-- </form> -->
+          <authorizeView wx:if="{{false}}" bind:onBut='reply' style='flex-shrink: 0;flex-grow: 0;'>
+            <button class='commentReply' hover-class='hoverClass'>回复</button>
+          </authorizeView>
+        </view>
+      </view>
+      <view class='bottomView'>
+        <text >{{commentContent}}</text>
+      </view>
+      <view class='huifuView'>
+        <view catchtap='onItem' data-item='{{item}}' class='huifuItem' wx:for='{{list}}' wx:key='huifuKey'>
+          <view wx:if='{{item.is_at == 1}}'>
+            <text style="color:#2b79b5;">{{item.user_name}}</text>回复
+            <text style="color:#2b79b5;">{{item.comment_user_name}}</text>:
+            <text> {{item.comment_content}}</text>
+          </view>
+          <view wx:else>
+            <text style="color:#2b79b5;">{{item.user_name}}</text>:
+            <text>{{item.comment_content}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='loadMore'>
+        <template is='loadMore' data="{{loadData}}" />
+      </view>
+    </view>
+  </view>
+</view>

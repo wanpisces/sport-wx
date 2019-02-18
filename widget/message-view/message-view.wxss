@@ -1,0 +1,36 @@
+/* widget/marquee-view/marquee-view.wxss */
+@import "/libs/icon.wxss";
+
+.h_view {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.icon-view {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  width: 70rpx;
+  background: #fff9bc;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.example {
+  display: block;
+  width: 655rpx;
+  height: 80rpx;
+  z-index: 1;
+}
+
+.marquee_box {
+  width: 100%;
+  position: relative;
+}
+
+.marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+}

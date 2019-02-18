@@ -1,0 +1,154 @@
+/* page/pack-index/pages/evaluate/evaluate.wxss */
+
+.title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.labe {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 15rpx 10rpx 30rpx 15rpx;
+}
+
+.labe text {
+  font-size: 30rpx;
+  color: #353535;
+  margin-left: 6rpx;
+}
+
+.checkboxgroup {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 15rpx 0rpx 0rpx 0rpx;
+}
+
+.group {
+  padding: 5rpx;
+}
+
+.pj-tdv {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 15rpx 0rpx 20rpx 15rpx;
+}
+
+.pj_td {
+  border-radius: 6rpx;
+  padding: 8rpx 12rpx 8rpx 12rpx;
+  font-size: 24rpx;
+  margin-left: 8rpx;
+}
+
+.pj_td.on {
+  color: #fff;
+  background: #49ccfc;
+  border: 1rpx solid #49ccfc;
+}
+
+.pj_td.off {
+  color: #999;
+  background: #fff;
+  border: 1rpx solid #aeaeae;
+}
+
+.input-txt {
+  width: 720rpx;
+  height: 250rpx;
+  padding: 0rpx 15rpx 0rpx 15rpx;
+}
+
+.input-txt textarea {
+  width: 700rpx;
+  padding: 10rpx;
+  height: 230rpx;
+}
+
+.holder {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.input-img {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0rpx 15rpx 0rpx 15rpx;
+  width: 720rpx;
+}
+
+.img-view {
+  position: relative;
+}
+
+.img-add {
+  margin: 10rpx;
+}
+
+.img-cancel {
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+}
+
+.item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 710rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  line-height: 90rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+ .img1 {
+  width: 36rpx;
+  height: 36rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+ .itemv1 {
+  font-size: 30rpx;
+  color: #515151;
+  margin-left: 8rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.itemv2 {
+  font-size: 30rpx;
+  color: #515151;
+  margin-left: 8rpx;
+  text-align: right;
+  padding: 0 10rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  line-height: 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+ .img2 {
+  width: 32rpx;
+  height: 32rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.submit {
+  background: -webkit-linear-gradient(left, #FFD100, #FFAE00);
+  color: #202020;
+  border-radius: 45rpx;
+  height: 90rpx;
+  margin: 190rpx 75rpx 190rpx 75rpx;
+  padding: 0 120rpx;
+  font-weight: bold;
+  line-height: 90rpx;
+  text-align: center;
+}
+

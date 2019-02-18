@@ -1,0 +1,62 @@
+.page {
+  position: relative;
+}
+
+.v2 image {
+  display: block;
+  width: 85%;
+  height: 125rpx;
+  margin: auto;
+}
+
+.v2-btn {
+  width: 85%;
+  margin: auto;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.v2-btn .v2-active {
+  font-size: 24rpx;
+  color: #ffcd27;
+  width: 100rpx;
+  height: 44rpx;
+  background-color: #f6f6f6;
+  border-radius: 22rpx;
+  line-height: 44rpx;
+  padding: 0 30rpx;
+}
+
+.active-contain {
+  margin-top: 20rpx;
+}
+
+.active-contain image {
+  width: 100%;
+  height: 555rpx;
+}
+
+.active-btn {
+  width: 307rpx;
+  height: 77rpx;
+  border: 2rpx solid rgba(255, 209, 16, 1);
+  border-radius: 39rpx;
+  font-size: 35rpx;
+  line-height: 77rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #feb900;
+  margin: auto;
+  margin-top: 80rpx;
+}
+
+.active-end {
+  display: flex;
+  justify-content: center;
+  margin-top: 100rpx;
+}
+
+.active-end image {
+  width: 40%;
+}

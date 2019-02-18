@@ -1,0 +1,2 @@
+@import "../../../../my-template/news/news.wxss";
+@import "../../../../my-template/load/listTemplate.wxss";

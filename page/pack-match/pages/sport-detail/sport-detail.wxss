@@ -1,0 +1,482 @@
+@import "/libs/wxParse/wxParse.wxss";
+@import "/my-template/load/listTemplate.wxss";
+@import "/libs/icon.wxss";
+
+view {
+  word-break: normal;
+  overflow: visible;
+}
+
+.page_fixed {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.navigationBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sport-detail-info {
+  width: 100%;
+  /* height: 505rpx; *//* margin-top: 129rpx; */
+}
+
+.slide-image {
+  display: block;
+  width: 710rpx;
+  height: 350rpx;
+  /* background-color: #eee; */
+  margin: auto;
+}
+
+.swiper-view {
+  position: relative;
+  height: 390rpx;
+  width: 750rpx;
+  border-top: 1px solid #f2f2f2;
+  box-sizing: border-box;
+}
+
+.collect-sport {
+  position: absolute;
+  top: 46rpx;
+  right: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(25, 25, 25, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collect-sport>image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.swiper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 350rpx;
+  width: 710rpx;
+  margin: 20rpx 20rpx 0rpx 20rpx;
+}
+
+.sport-detail-contain {
+  width: 100%;
+  /* height: 134rpx; */
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sport-detail-left {
+  display: flex;
+  flex-flow: column;
+  margin-left: 20rpx;
+  width: 560rpx;
+}
+
+.sport-detail-title {
+  font-size: 32rpx;
+  color: rgba(53, 53, 53, 1);
+  margin: 10rpx 0;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sport-detail-icon {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: hidden;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.sport-detail-icon view {
+  display: flex;
+  height: 23rpx;
+  align-items: center;
+  margin-right: 28rpx;
+  padding-bottom: 32rpx;
+}
+
+.sport-detail-icon text {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 10rpx;
+  margin-right: 20rpx;
+}
+
+.sport-detail-icon image {
+  width: 24rpx;
+  height: 21rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.sport-detail-right>view {
+  width: 140rpx;
+  height: 52rpx;
+  /* background: rgba(255, 209, 0, 1); */
+  border-radius: 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #6a6a6a;
+  margin-right: 30rpx;
+}
+
+.sport-detail-right>view image {
+  width: 29rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.sport-detail-right>view text {
+  font-size: 24rpx;
+  line-height: 52rpx;
+  color: rgba(32, 32, 32, 1);
+}
+
+.sport-detail-list {
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  width: 706rpx;
+  /* min-height: 880rpx; */
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0.84;
+  border-radius: 20rpx 20rpx 0px 0px;
+  margin: 0 auto;
+}
+
+.sport-detail-white {
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  width: 706rpx;
+  /* min-height: 880rpx; */
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(235, 235, 235, 1);
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx 20rpx 0px 0px;
+}
+
+.detail-list {
+  width: 100%;
+  padding-bottom: 100rpx;
+  position: relative;
+}
+
+/* 选项卡 */
+
+.swiper-tab {
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-tab-list {
+  font-size: 32rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.swiper-tab-list:nth-child(2) {
+  margin: 0 80rpx;
+}
+
+.on {
+  font-size: 34rpx;
+  color: rgba(53, 53, 53, 1);
+  font-weight: 600;
+  border-bottom: 6rpx solid #ffd100;
+  border-radius: 3rpx;
+}
+
+.swiper-contain {
+  margin-top: 30rpx;
+  width: 100%;
+}
+
+.swiper-contain>view {
+  display: none;
+}
+
+.swiper-contain>.sport-select, .detail-team {
+  display: block;
+}
+
+.swiper-contain>.sport-select {
+  margin: 0 20rpx;
+}
+
+.detail-team {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail-team-view {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80rpx !important;
+}
+
+.detail-team-view>view {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: relative;
+  word-break: normal;
+  overflow: visible;
+}
+
+.detail-team-view>view>view {
+  font-size: 24rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.detail-team-view .detail_team-img {
+  width: 118rpx;
+  height: 119rpx;
+  border-radius: 50%;
+}
+
+.detail-team-view .detail_team-icon {
+  width: 64rpx;
+  height: 64rpx;
+  position: absolute;
+  top: -10rpx;
+  right: -20rpx;
+}
+
+.sport-team-end {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  position: fixed;
+  bottom: 120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10rpx 0;
+  /* background: rgba(255, 255, 255, 1); */
+  background-color: #ffdf4e;
+  width: 65%;
+  border-radius: 45rpx;
+}
+
+.sport-team-end image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.sport-team-end text {
+  font-size: 22rpx;
+  /* color: rgba(153, 153, 153, 1); */
+  color: #333;
+}
+
+.sport-detail-btn {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  position: fixed;
+  border-bottom: 10px solid rgba(0, 0, 0, 1);
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.detail-btn-share {
+  width: 260rpx;
+  height: 100rpx;
+  background: rgba(32, 32, 32, 1);
+  /* background-color: #8e8e8e; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-btn-share::after {
+  border: 0;
+}
+
+.detail-btn-share image {
+  width: 42rpx;
+  height: 38rpx;
+  margin-right: 16rpx;
+}
+
+.detail-btn-share text {
+  font-size: 30rpx;
+  color: rgba(255, 209, 0, 1);
+}
+
+.sport-detail-btn .detail-btn-apply {
+  width: 493rpx;
+  height: 100rpx;
+  background: linear-gradient(90deg, rgba(255, 209, 0, 1), rgba(255, 175, 0, 1));
+  font-size: 34rpx;
+  color: rgba(53, 53, 53, 1);
+  line-height: 100rpx;
+  text-align: center;
+  font-weight: 600;
+}
+
+.explain-item {
+  display: flex;
+  /* align-items: center; */
+  padding-bottom: 10rpx;
+}
+
+.explain-item view {
+  line-height: 60rpx;
+  color: #353535;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.explain-item text {
+  line-height: 60rpx;
+  color: #353535;
+  font-size: 26rpx;
+}
+
+.empty-view {
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: center;
+}
+
+.sport-team {
+  display: flex !important;
+  flex-flow: column;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.sport-all-list {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 32rpx;
+}
+
+/* 个人信息报名弹窗 */
+
+.personal_content_tip {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+
+.personal_content {
+  width: 666rpx;
+  height: 535rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 50%;
+  left: 42rpx;
+  transform: translateY(-50%);
+}
+
+.personal_content image {
+  width: 100%;
+  height: 185rpx;
+}
+
+.personal-title {
+  font-size: 50rpx;
+  color: #3b3b3b;
+  font-weight: 600;
+  position: absolute;
+  top: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 10rpx;
+}
+
+.personal-text {
+  font-size: 36rpx;
+  text-align: center;
+  font-weight: 600;
+  line-height: 60rpx;
+  margin: 30rpx 0;
+}
+
+.personal_btn {
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 30rpx;
+  border-top: 1rpx solid #f2f2f2;
+}
+
+.personal_cancel {
+  width: 203rpx;
+  height: 83rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 45rpx;
+  font-size: 30rpx;
+  line-height: 83rpx;
+  color: #999;
+  font-weight: 600;
+}
+
+.personal_sure {
+  width: 203rpx;
+  height: 83rpx;
+  background: linear-gradient(90deg, rgba(255, 209, 0, 1) 0%, rgba(255, 174, 0, 1) 100%);
+  border-radius: 45rpx;
+  font-size: 30rpx;
+  line-height: 83rpx;
+  color: #222;
+  font-weight: 600;
+}
+
+.emptyView2 {
+  background-color: transparent;
+}
+
+.wxParse-p {
+  background-color: transparent !important;
+}

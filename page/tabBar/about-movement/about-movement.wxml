@@ -1,0 +1,89 @@
+<!--page/tabBar/about-movement/about-movement.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/yd/yd.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<!-- <circular-menu class="circular-menu" /> -->
+<street-view bind:onclick='onStreetClick' wx:if="{{isLocationStreet}}" change-position="{{isChangePosition}}" location="{{nowLocation}}" />
+<view style='width:100%;min-height:100%;background:#fff;'>
+
+  <!-- 定位 -->
+  <view class='onNavBar' style="height:{{statusBarHeight+45}}px;background:#fff;">
+    <view class='title' style="margin-top:{{statusBarHeight+7.5}}px;" bindtap='positionEvt'>
+      <view class='iconfont icon-dingweiweizhizuobiaomianxing' style='font-size:35rpx;color:#FFD100'></view>
+      <view class='title-address'>{{locationAddress || '成都'}}</view>
+      <view class='iconfont icon-jiantou' style='font-size:24rpx;color:#353535;margin-bottom:-4rpx;'></view>
+    </view>
+  </view>
+  <view style=" position: relative;width:100%;background-color:#fff;margin-top:{{statusBarHeight+50}}px;margin-bottom:30rpx;">
+    <!-- banner图 -->
+    <swiper wx:if="{{banner.length>0}}" class="swiper-box" indicator-dots="{{false}}" indicator-active-color="#FFD100" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}" style="height:330rpx;" next-margin="20rpx" previous-margin="20rpx"
+      bindchange='changDot'>
+      <block style="z-index:1;" wx:for="{{banner}}" wx:key="kkey">
+        <swiper-item style="z-index:1;border-radius:20rpx;">
+          <image mode='aspectFill' bindtap='linkBanner' data-item='{{item}}' class='banner-image' src="{{item.banner_pic}}" style="height:330rpx;width:690rpx;" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{banner}}" wx:key="slider">
+        <view class="dot {{index == swiperCurrent?'actives':''}}"></view>
+      </block>
+    </view>
+  </view>
+  <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+  <view style='width:100%;background:#fff;'>
+    <!-- 滚动播放 -->
+    <view class='about-play' wx:if="{{autoplayList.length>0}}">
+      <view class='iconfont icon-xitongxiaoxi' style='color:#FFB200;font-size:25rpx;width:8%;'></view>
+      <swiper autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}" skip-hidden-item-layout="{{true}}" current="{{current}}" vertical="{{true}}" style='width:92%;height:82rpx; position: relative;'>
+        <block wx:for="{{autoplayList}}" wx:key="index">
+          <swiper-item>
+            <messageView class='notice' text="{{item}}" marquee-style="line-height: 80rpx;color: #282828;font-size: 28rpx;height:80rpx;" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 卡片筛选及列表 -->
+    <view wx:if="{{dataList}}" class='filter-view'>
+      <picker wx:if="{{isPicker}}" class='filter-item' bindchange="bindTypePickerChange" range="{{attrList[0]}}" range-key="name">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='txt'>{{typesOf}}</view>
+          <view class='sjx-view'></view>
+        </view>
+      </picker>
+      <picker wx:if="{{isPicker}}" class='filter-item' bindchange="bindFilterChange" range="{{filterArray}}" range-key="name" value="{{filterIndex}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='txt'>{{filterText}}</view>
+          <view class='sjx-view'></view>
+        </view>
+      </picker>
+      <picker wx:if="{{isPicker}}" class='filter-item' bindchange="bindFilterFormatChange" range="{{formatArray}}" range-key="name" value="{{formatIndex}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='txt'>{{formatText}}</view>
+          <view class='sjx-view'></view>
+        </view>
+      </picker>
+    </view>
+    <template is="yd" wx:for="{{dataList}}" wx:key="{{index}}" data="{{item}}" />
+    <template wx:if="{{dataList.length>0}}" is="loadMore2" data="{{...loadData}}" />
+    <view wx:elif="{{dataList}}" class='emptyView2' style="height:{{!!empty.height?empty.height:'auto'}}">
+      <image mode='aspectFill' style="width:277rpx;height: 277rpx;" src="{{empty.icon||'/pic/no-content.png'}}"></image>
+      <text style='margin:15rpx;color:#999;font-size:30rpx;'>暂无约战数据</text>
+    </view>
+  </view>
+  <view class='fixed-yd'>
+    <picker wx:if="{{isPicker}}" class='filter-item' bindchange="bindFilterYdChange" range="{{ydList[0]}}" range-key="name" value="{{formatIndex}}">
+      <view class='fixed-content'>
+        <view class='iconfont icon-yundong1' style='color:#fff;font-size:44rpx;'></view>
+        <view class='text'>发约战</view>
+      </view>
+    </picker>
+  </view>
+</view>
+<!-- 区域筛选 -->
+<!-- <picker wx:if="{{isPicker}}" class='filter-item' mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='txt'>{{!address||address=="全部"?'区域':address}}</view>
+          <view class='sjx-view'></view>
+        </view>
+      </picker> -->

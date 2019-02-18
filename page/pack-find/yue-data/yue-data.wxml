@@ -1,0 +1,230 @@
+<!--page/pack-find/yue-data/yue-data.wxml-->
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" title-name="计分板" img-url="{{bgUrl1}}" status-bar-height="{{statusBarHeight}}" bg-color="transparent" />
+  <view class='v2'>
+    <!-- <image mode='aspectFill' src="{{bgUrl2}}" class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image> -->
+
+    <image wx:if="{{dataList.attr_id == 2}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251736568193.png  " class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+    <image wx:elif="{{dataList.attr_id == 3}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251735466355.png " class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+    <image wx:else mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251737248924.png" class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+  </view>
+  <view class='data_view' style='top:{{statusBarHeight+45}}px;padding-top:70rpx;'>
+    <view class='data_view_tag'>
+      <view class='iconfont icon-fenxiang' style='font-size:25rpx;color:#353535;margin:0 8rpx;'></view>
+      <authorizeView bnt-type="share">
+        <view style='font-size:30rpx;color:#353535;line-height:56rpx;'>分享</view>
+      </authorizeView>
+    </view>
+    <view class='data_view_contain'>
+      <view>
+        <image class='yue-avator' mode='aspectFill' src='{{dataList.group_info.group_badge}}'></image>
+        <view class='yue-name' wx:if="{{dataList&&!dataList.group_info.group_name}}" style="color:#ff0000; font-size: 34rpx;">队伍已解散</view>
+        <view class='yue-name' wx:else>{{dataList.group_info.group_name}}</view>
+        <view wx:if="{{dataList.attr_id == 2 ||dataList.attr_id ==3}}" class='iconfont icon-qiuyi' style='font-size:60rpx;color:{{dataList.home_shirt}};text-align:center;'></view>
+      </view>
+      <view class='yue-vs'>
+        <!-- 比分 -->
+        <view wx:if="{{dataList.attr_id == 2 || dataList.attr_id == 3}}" class='yue-vs-score'> {{dataList.movement_result.home_score || '-'}}:{{dataList.movement_result.away_score || '-'}}</view>
+        <image wx:if="{{dataList.attr_id != 2 &&dataList.attr_id != 3}}" mode='aspectFill' src='/pic/VS_whtie.png'></image>
+        <view class='yue-success'>约战完结</view>
+      </view>
+      <view>
+        <image class='yue-avator' mode='aspectFill' src='{{dataList.away_info.group_badge}}'></image>
+        <view class='yue-name' wx:if="{{dataList&&!dataList.away_info.group_name}}" style="color:#ff0000; font-size: 34rpx;">队伍已解散</view>
+        <view wx:else class='yue-name'>{{dataList.away_info.group_name}}</view>
+        <view wx:if="{{dataList.attr_id == 2 ||dataList.attr_id ==3}}" class='iconfont icon-qiuyi' style='font-size:60rpx;color:{{dataList.away_shirt}};text-align:center;'></view>
+      </view>
+    </view>
+  </view>
+
+  <view class='yue-line'></view>
+  <view class='yue-tab'>
+    <view class='yue-team-title' bindtap='tabClick' data-id='1'>
+      主队
+      <view class='{{showLine==1?"yue-team-active":""}}'></view>
+    </view>
+    <view class='yue-team-line'></view>
+    <view class='yue-team-title' bindtap='tabClick' data-id='2'>
+      客队
+      <view class='{{showLine==2?"yue-team-active":""}}'></view>
+    </view>
+  </view>
+  <!-- 主队数据统计 -->
+  <view wx:if="{{showLine==1}}">
+    <!-- 足球类型 -->
+    <view wx:if="{{dataList.attr_id == 2}}">
+      <!-- <view style='display:flex;margin:0 18rpx;justify-content: space-between;padding:30rpx 0;font-size:32rpx;color:#C2C2C2 '>
+        <view>进球数：</view>
+        <view style='color:#FFD100'>{{dataList.home_score || ''}}个</view>
+      </view> -->
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view style='text-align:left;width:40%;'>名字</view>
+          <!-- <view>号码</view> -->
+          <view>进球</view>
+          <view>助攻</view>
+          <view>红/黄牌</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.home}}" wx:key="{{index}}">
+        <view class='yue-team-player' style='width:40%;'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1' style='display:flex;width:100%;'>
+            <text class='yue-user-name'>{{item.user_nickname}}</text>
+            <text class='yue-user-no'>#{{item.no}}</text>
+          </view>
+        </view>
+        <!-- wx:if="{{item.no ||item.goals_num ||  item.assists_num || item.red_card_num || item.yellow_card_num}}" -->
+        <!-- <view>{{item.no}}</view> -->
+        <view>{{item.goals_num}}</view>
+        <view>{{item.assists_num}}</view>
+        <view>{{item.red_card_num}}/{{item.yellow_card_num}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.home.length==0}}">暂未记录数据</view>
+    </view>
+    <!-- 篮球类型 -->
+    <view wx:elif="{{dataList.attr_id == 3}}">
+      <!-- <view style='display:flex;margin:0 18rpx;justify-content: space-between;padding:30rpx 0;font-size:32rpx;color:#C2C2C2 '>
+        <view>进球数：</view>
+        <view style='color:#FFD100'>{{dataList.home_score || ''}}个</view>
+      </view> -->
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view style='text-align:left;width:40%;'>名字</view>
+          <!-- <view>号码</view> -->
+          <view>得分</view>
+          <view>两分</view>
+          <view>三分</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.home}}" wx:key="{{index}}">
+        <view class='yue-team-player' style='width:40%;'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1' style='display:flex;width:100%;'>
+            <text class='yue-user-name'>{{item.user_nickname}}</text>
+            <text class='yue-user-no'>#{{item.no}}</text>
+          </view>
+        </view>
+        <!-- wx:if="{{item.no ||item.goals_num ||  item.assists_num || item.red_card_num || item.yellow_card_num}}" -->
+        <!-- <view>{{item.no}}</view> -->
+        <view>{{item.goals_num}}</view>
+        <view>{{item.two_point_num}}</view>
+        <view>{{item.three_point_num}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.home.length==0}}">暂未记录数据</view>
+    </view>
+    <!-- 其他类型 -->
+    <view wx:else>
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view>队员名称</view>
+          <view>类型</view>
+          <view>数量</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.home}}" wx:key="{{index}}">
+        <view class='yue-team-player'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1'>{{item.user_nickname}}</view>
+        </view>
+        <view>{{item.score_attr}}</view>
+        <view>{{item.score}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.home.length==0}}">暂未记录数据</view>
+    </view>
+  </view>
+  <!--客队数据统计 -->
+  <view wx:if="{{showLine==2}}">
+    <!-- 足球类型 -->
+    <view wx:if="{{dataList.attr_id == 2}}">
+      <!-- <view style='display:flex;margin:0 18rpx;justify-content: space-between;padding:30rpx 0;font-size:32rpx;color:#C2C2C2 '>
+        <view>进球数：</view>
+        <view style='color:#FFD100'>{{dataList.away_score || ''}}个</view>
+      </view> -->
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view style='text-align:left;width:40%;'>名字</view>
+          <!-- <view>号码</view> -->
+          <view>进球</view>
+          <view>助攻</view>
+          <view>红/黄牌</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.away}}" wx:key="{{index}}">
+        <view class='yue-team-player' style='width:40%;'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1' style='display:flex;width:100%;'>
+            <text class='yue-user-name'>{{item.user_nickname}}</text>
+            <text class='yue-user-no'>#{{item.no}}</text>
+          </view>
+        </view>
+        <!-- <view>{{item.no}}</view> -->
+        <view>{{item.goals_num}}</view>
+        <view>{{item.assists_num}}</view>
+        <view>{{item.red_card_num}}/{{item.yellow_card_num}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.away.length==0}}">暂未记录数据</view>
+    </view>
+    <!-- 篮球类型 -->
+    <view wx:elif="{{dataList.attr_id == 3}}">
+      <!-- <view style='display:flex;margin:0 18rpx;justify-content: space-between;padding:30rpx 0;font-size:32rpx;color:#C2C2C2 '>
+        <view>进球数：</view>
+        <view style='color:#FFD100'>{{dataList.home_score || ''}}个</view>
+      </view> -->
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view style='text-align:left;width:40%;'>名字</view>
+          <!-- <view>号码</view> -->
+          <view>得分</view>
+          <view>两分</view>
+          <view>三分</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.away}}" wx:key="{{index}}">
+        <view class='yue-team-player' style='width:40%;'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1' style='display:flex;width:100%;'>
+            <text class='yue-user-name'>{{item.user_nickname}}</text>
+            <text class='yue-user-no'>#{{item.no}}</text>
+          </view>
+        </view>
+        <view>{{item.goals_num}}</view>
+        <view>{{item.two_point_num}}</view>
+        <view>{{item.three_point_num}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.away.length==0}}">暂未记录数据</view>
+    </view>
+    <!-- 其他类型 -->
+    <view wx:else>
+      <view class='yue-m'>
+        <view class='yue-table'>
+          <view>队员名称</view>
+          <view>类型</view>
+          <view>数量</view>
+        </view>
+      </view>
+      <view class='yue-table-list' wx:for="{{dataList.movement_result.away}}" wx:key="{{index}}">
+        <view class='yue-team-player'>
+          <!-- <image src='{{item.user_avatar}}'></image> -->
+          <view class='yue-name-1'>{{item.user_nickname}}</view>
+        </view>
+        <view>{{item.score_attr}}</view>
+        <view>{{item.score}}</view>
+      </view>
+      <view class='noData' wx:if="{{dataList.movement_result.away.length==0}}">暂未记录数据</view>
+    </view>
+  </view>
+  <view wx:if="{{dataList.is_originator == 1 || dataList.is_contractor == 1}}" class='yue-button'>
+    <authorizeView style="width:100%;" bind:onBut="editEvt">
+      <view class='yue-btn-commissioned'>
+        <view class='iconfont icon-bianjiicon' style='font-size:32rpx;color:#535353;margin-right:10rpx;'></view>
+        <view style='font-size:32rpx;color:#353535;'>编 辑</view>
+      </view>
+    </authorizeView>
+  </view>
+</view>
+
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

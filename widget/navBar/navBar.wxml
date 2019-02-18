@@ -1,0 +1,14 @@
+<view class='navigationBarF' style="height:{{statusBarHeight+45}}px">
+  <view class='view_bar'>
+    <view class='statusBar' style="height:{{statusBarHeight}}px"></view>
+    <view class='navigationBar'>
+      <view class="{{curLabelIndex == index?'title active':'title'}}"
+      wx:for='{{labelList}}' 
+      wx:key='index'
+      data-index='{{index}}'
+      bindtap="switchTab">
+        <view>{{item}}</view>
+     </view>
+    </view>
+  </view>
+</view>

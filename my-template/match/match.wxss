@@ -1,0 +1,119 @@
+@import '/libs/icon.wxss';
+
+.temp-match {
+  margin: 20rpx 20rpx 40rpx 20rpx;
+  background: #fff;
+  padding-bottom: 20rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.temp-match-img {
+  width: 710rpx;
+  height: 338rpx;
+  background: #e5e5e5;
+}
+
+.temp-sub {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20rpx;
+}
+
+.temp-sub .temp-sub-base {
+  display: flex;
+  flex-flow: column;
+}
+
+.temp-sub-base .title {
+  color: #353535;
+  font-size: 32rpx;
+  margin-bottom: 12rpx;
+  width: 556rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.temp-sub-base .child {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: #999;
+  font-size: 24rpx;
+  width: 556rpx;
+}
+
+.temp-sub-base .child image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 8rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.temp-sub-base .child  text {
+  margin-right: 20rpx;
+}
+
+.temp-sub .tip {
+  height: 70rpx;
+  width: 134rpx;
+  background: #00b4ff;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.temp-sub .tip2 {
+  background: #ffaf00;
+}
+
+.temp-sub .tip3 {
+  background: #ccc;
+}
+
+.temp-sub .tip .triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 35rpx solid transparent;
+  border-left: 25rpx solid #fff;
+  border-bottom: 35rpx solid transparent;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: -1rpx;
+}
+
+.temp-sub .tip  .tip-txt {
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+/* 个人标签 */
+
+.match-label {
+  width: 92rpx;
+  height: 32rpx;
+  background: linear-gradient(142deg, rgba(255, 206, 0, 1) 0%, rgba(255, 178, 0, 1) 100%);
+  border-radius: 8rpx 0px 8rpx 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.match-label-text {
+  font-size: 16rpx;
+  color: #fff;
+  margin-left: 5rpx;
+}

@@ -1,0 +1,22 @@
+<view class="page">
+  <view class='v2' style='margin-top:{{statusBarHeight+45}}px'>
+    <image mode='aspectFill' src='/pic/title.png'></image>
+    <view class='v2-btn'>
+      <authorizeView>
+        <view class='v2-active'>活动内容</view>
+      </authorizeView>
+      <authorizeView>
+        <view class='v2-active'>活动规则</view>
+      </authorizeView>
+    </view>
+  </view>
+  <view class='active-contain'>
+    <image mode='widthFix' src='/img/pic.png'></image>
+    <authorizeView>
+      <view class='active-btn'>立即约战</view>
+    </authorizeView>
+  </view>
+  <view class='active-end'>
+    <image mode='widthFix' src='/pic/logo.png'></image>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<!--widget/teamModule/teamModule.wxml-->
+<view class='team-module'>
+  <view class='team-content'>
+    <navigator url='/page/pack-index/pages/team-page/team-page?group_id={{dataItem.group_id}}' class='team-left'>
+      <image mode='aspectFill' src='{{dataItem.group_badge}}'></image>
+      <view class='team-left-text'>
+        <view class='team-name'>{{dataItem.group_name}}</view>
+        <view class='team-dynamic'>{{dataItem.member_num}}位队员 · {{dataItem.feed_num}}条动态</view>
+        <view class='team-lable' wx:if="{{dataItem.attr_value}}">{{dataItem.attr_value}}</view>
+      </view>
+    </navigator>
+    <form bindsubmit='followTeam' data-follow='{{dataItem.is_follow}}' data-id='{{dataItem.group_id}}'>
+      <button class='attention' form-type='submit'>关注</button>
+      <!-- {{dataItem.is_follow == 1? "关注"|| ''}} -->
+    </form>
+  </view>
+</view>

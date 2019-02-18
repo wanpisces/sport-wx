@@ -1,0 +1,34 @@
+<!--page/pack-find/yue-more/yue-more.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/yd/yd.wxml" />
+<navigationBar class="navigationBar" title-name="我的约战列表" tag="{{2}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+<view class='find-team-fixed' style="top:{{statusBarHeight+45}}px;">
+  <!-- <navigationBar imgUrl="{{bgUrl2}}" /> -->
+  <view class='filter-wrap'>
+    <view class='filter-content'>
+      <view catchtap='bindTabChange' wx:for="{{currentData}}" data-id="{{item.id}}" class="{{current==item.id?'active':'active-after'}}" wx:key="{{index}}">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<view class='match-wrapper' style="margin-top:{{statusBarHeight+100}}px;">
+  <view wx:if="{{dataList.length>0}}" style="margin-top:20rpx;">
+    <template is="yd" wx:for="{{dataList}}" wx:key="{{index}}" data="{{item}}" />
+    <template is="loadMore" data="{{loadData}}" />
+  </view>
+  <!-- <view wx:if="{{dataList&&dataList.length==0}}">
+    <template is="emptyView" data="{{empty}}" />
+    <authorizeView user-info="{{true}}" refresh="{{refreshAuthorizeView}}" bind:onBut="findYdEvt">
+      <view class='headPortrait'> 找约动</view>
+    </authorizeView>
+  </view> -->
+
+  <view wx:if="{{dataList&&dataList.length==0}}" class='no-data'>
+    <view>
+      <image mode='aspectFill' src='/pic/no-content.png'></image>
+      <text>暂无数据</text>
+    </view>
+    <authorizeView user-info="{{true}}" refresh="{{refreshAuthorizeView}}" bind:onBut="findYdEvt">
+      <view class='headPortrait'> 找约战</view>
+    </authorizeView>
+  </view>
+</view>

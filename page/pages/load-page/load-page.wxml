@@ -1,0 +1,2 @@
+<!--page/pages/load-page/load-page.wxml-->
+<loadingView wx:if="{{isLoading}}" />

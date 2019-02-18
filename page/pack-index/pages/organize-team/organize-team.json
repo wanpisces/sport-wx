@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "viewPicker": "/widget/view-picker/view-picker",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "loadingView": "/widget/loading-view/loading-view"
+  }
+}

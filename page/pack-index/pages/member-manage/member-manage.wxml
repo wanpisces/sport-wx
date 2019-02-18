@@ -1,0 +1,321 @@
+<!--page/pack-index/pages/member-manage/member-manage.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="成员管理" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='tab_bar'>
+      <view id="tab1" catchtap='onTabBar' class="item_bar {{ckTabBarId=='tab1'?'tab_bared':''}}">
+        <view class="{{ckTabBarId=='tab1'?'tab_bar_viewed':''}}">已加入</view>
+        <text>（{{totalNum1}}）</text>
+      </view>
+      <view id="tab2" catchtap='onTabBar' class="item_bar {{ckTabBarId=='tab2'?'tab_bared':''}}">
+        <view class="{{ckTabBarId=='tab2'?'tab_bar_viewed':''}}">待审核</view>
+        <text>（{{totalNum2}}）</text>
+        <view wx:if="{{has_message == 1}}" class='dian'></view>
+      </view>
+      <view id="tab3" catchtap='onTabBar' class="item_bar {{ckTabBarId=='tab3'?'tab_bared':''}}">
+        <view class="{{ckTabBarId=='tab3'?'tab_bar_viewed':''}}">已拒绝</view>
+        <text>（{{totalNum3}}）</text>
+      </view>
+    </view>
+    <swiper style="height:{{minHeight}}px;width:100%;" current="{{tabIndex}}" bindchange="swiperChange">
+      <!--已加入  -->
+      <swiper-item>
+        <scroll-view scroll-y style="height:{{minHeight}}px">
+          <view wx:if="{{dataList1.length!=0}}">
+            <loadingView wx:if="{{isLoading1}}" />
+            <form report-submit='true' bindsubmit='onItem' wx:for="{{dataList1}}" wx:key="key1">
+              <view class='item'>
+                <view class='ss_userInfo'>
+                  <view class='u_logo_wrap'>
+                    <view class='u_logo'>
+                      <image class='ss_userInfo_logo' mode='aspectFill' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+                      <image mode='aspectFill' class='ss_userInfo_sex' src="{{item.user_gender == 1&&'/pic/famale.png'||item.user_gender == 2&&'/pic/male.png'||''}}"></image>
+                    </view>
+                    <view class='ss_userName'>
+                      <view>
+                        <view class='c_ss_userName1'>{{item.user_nickname}}</view>
+                        <view wx:if="{{item.is_admin == 1}}" class='ss_userName_creat'>创建者</view>
+                        <view wx:if="{{item.is_admin == 2 && item.is_leader == 1}}" class='ss_userName_creat'>队长</view>
+                      </view>
+                      <view class='c_ss_userName2'>
+                        <text>用户编号：{{item.user_code || '' }}</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view class='edit-member' wx:if="{{is_admin==1}}" bindtap='editMember' data-index='{{index}}'>
+                    <text wx:if="{{attr_id == 2 || attr_id == 3}}" class='iconfont icon-bianjiicon' style='color:6a6a6a;'></text> </view>
+                </view>
+                <!-- 足球，篮球 -->
+                <view wx:if="{{group_type == '足球' || group_type == '篮球'}}">
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || '--'}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>位置：{{item.role_vale || "--"}}</view>
+                    <text>号码：{{item.no || '--'}}号</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+
+                <!-- 常规类型 -->
+                <view wx:else>
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <!-- 这里新加入的功能 -->
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || ''}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+                <view style='height:1px;width:750rpx;background:#f2f2f2;'></view>
+                <!-- 队长权限 -->
+                <view wx:if="{{!identity}}" class='bnts'>
+                  <button class='bnt1' wx:if="{{item.is_admin == 2 && item.is_leader == 2 }}" catchtap='handleOutTeamer' data-id="{{item.group_member_id}}">淘汰成员</button>
+                </view>
+                <!-- 创建者权限 -->
+                <view wx:if="{{identity}}" class='bnts'>
+                  <button class='bnt2' wx:if="{{item.is_admin==2&&item.is_leader==2}}" catchtap='handleManager' data-id="{{item.group_member_id}}">设为队长</button>
+                  <button class='bnt2' wx:if="{{item.is_admin==2 && item.is_leader==1}}" catchtap='handleCancle' data-id="{{item.group_member_id}}">取消队长</button>
+                  <button class='bnt1' wx:if="{{item.is_admin!=1}}" catchtap='handleOutTeamer' data-id="{{item.group_member_id}}">淘汰成员</button>
+                </view>
+              </view>
+            </form>
+            <template is="loadMore" data="{{loadData1}}" />
+          </view>
+          <view wx:if="{{dataList1.length==0}}">
+            <template is="emptyView" data="{{empty}}" />
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!--待审核  -->
+      <swiper-item>
+        <scroll-view scroll-y style="height:{{minHeight}}px">
+          <view wx:if="{{dataList2.length!=0}}">
+            <loadingView wx:if="{{isLoading2}}" />
+            <form report-submit='true' bindsubmit='onItem' wx:for="{{dataList2}}" wx:key="key2">
+              <view class='item'>
+                <view class='ss_userInfo' style='justify-content:flex-start;'>
+                  <view class='u_logo'>
+                    <image class='ss_userInfo_logo' mode='aspectFill' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+                    <image mode='aspectFill' class='ss_userInfo_sex' src="{{item.user_gender == 1&&'/pic/famale.png'||item.user_gender == 2&&'/pic/male.png'||''}}"></image>
+                  </view>
+                  <view class='ss_userName'>
+                    <view>
+                      <view class='c_ss_userName1'>{{item.user_nickname}}</view>
+                      <view wx:if="{{item.is_admin == 1}}" class='ss_userName_creat'>创建者</view>
+                      <view wx:if="{{item.is_admin == 2 && item.is_leader == 1}}" class='ss_userName_creat'>队长</view>
+                    </view>
+                    <view class='c_ss_userName2'>
+                      <text>用户编号：{{item.user_code || '' }}</text>
+                    </view>
+                  </view>
+                </view>
+
+                <!-- <view>
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <view class='c_item'>
+                    <view>加入时间</view>
+                    <text>{{item.create_time}}</text>
+                  </view>
+                  <view wx:if="{{attr_id==2}}" class='c_item'>
+                    <view>位置：{{item.role_vale || "无角色"}}</view>
+                    <text>号码：{{item.no || ''}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>备注</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view> -->
+
+                <!-- 足球，篮球 -->
+                <view wx:if="{{group_type == '足球' || group_type == '篮球'}}">
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <!-- 这里新加入的功能 -->
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || '--'}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>位置：{{item.role_vale || "--"}}</view>
+                    <text>号码：{{item.no || '--'}}号</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+
+                <!-- 常规类型 -->
+                <view wx:else>
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <!-- 这里新加入的功能 -->
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || ''}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+                <view style='height:1px;width:750rpx;background:#f2f2f2;'></view>
+                <view class='bnts'>
+                  <button class='bnt1' catchtap='handleRefuse' data-id="{{item.group_member_id}}">拒绝</button>
+                  <button class='bnt2' catchtap='handleSuccese' data-id="{{item.group_member_id}}">通过</button>
+                </view>
+              </view>
+            </form>
+            <template is="loadMore" data="{{loadData2}}" />
+          </view>
+          <view wx:if="{{dataList2.length==0}}">
+            <template is="emptyView" data="{{empty}}" />
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 已拒绝 -->
+      <swiper-item>
+        <scroll-view scroll-y style="height:{{minHeight}}px">
+          <view wx:if="{{dataList3.length!=0}}">
+            <loadingView wx:if="{{isLoading3}}" />
+            <form report-submit='true' bindsubmit='onItem' wx:for="{{dataList3}}" wx:key="key3">
+              <view class='item'>
+                <view class='ss_userInfo' style='justify-content:flex-start;'>
+                  <view class='u_logo'>
+                    <image class='ss_userInfo_logo' mode='aspectFill' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+                    <image mode='aspectFill' class='ss_userInfo_sex' src="{{item.user_gender == 1&&'/pic/famale.png'||item.user_gender == 2&&'/pic/male.png'||''}}"></image>
+                  </view>
+                  <view class='ss_userName'>
+                    <view>
+                      <view class='c_ss_userName1'>{{item.user_nickname}}</view>
+                      <view wx:if="{{item.is_admin == 1}}" class='ss_userName_creat'>创建者</view>
+                      <view wx:if="{{item.is_admin == 2 && item.is_leader == 1}}" class='ss_userName_creat'>队长</view>
+                    </view>
+                    <view class='c_ss_userName2'>
+                      <text>用户编号：{{item.user_code || '' }}</text>
+                    </view>
+                  </view>
+                </view>
+                <!-- <view>
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <view class='c_item'>
+                    <view>加入时间</view>
+                    <text>{{item.create_time}}</text>
+                  </view>
+                  <view wx:if="{{attr_id==2}}" class='c_item'>
+                    <view>位置：{{item.role_vale || "无角色"}}</view>
+                    <text>号码：{{item.no || ''}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>备注</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view> -->
+                <!-- 足球，篮球 -->
+                <view wx:if="{{group_type == '足球' || group_type == '篮球'}}">
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || '--'}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>位置：{{item.role_vale || "--"}}</view>
+                    <text>号码：{{item.no || '--'}}号</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+
+                <!-- 常规类型 -->
+                <view wx:else>
+                  <view style='height:1px;width:700rpx;background:#f2f2f2;'></view>
+                  <!-- 这里新加入的功能 -->
+                  <view class='c_item'>
+                    <view>联系方式：{{item.user_phone || "--"}}</view>
+                    <text>加入时间：{{item.create_time || ''}}</text>
+                  </view>
+                  <view class='c_item'>
+                    <view>身高：{{item.user_height || "--"}}cm</view>
+                    <text>体重：{{item.user_weight || '--'}}kg</text>
+                  </view>
+                  <view class='c_item2' wx:if="{{item.is_admin !=1}}">
+                    <view>备注:</view>
+                    <text>{{item.apply_remark|| '无'}}</text>
+                  </view>
+                </view>
+                <view style='height:1px;width:750rpx;background:#f2f2f2;'></view>
+                <view class='bnts'>
+                  <!-- <button class='bnt1'>淘汰成员</button> -->
+                  <button class='bnt2' catchtap='handlePass' data-id="{{item.group_member_id}}">同意加入</button>
+                </view>
+              </view>
+            </form>
+            <template is="loadMore" data="{{loadData3}}" />
+          </view>
+          <view wx:if="{{dataList3.length==0}}">
+            <template is="emptyView" data="{{empty}}" />
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<!-- 修改成员弹框 -->
+<view class='edit-member-pop' wx:if="{{isEdit}}">
+  <view class='edit-member-main'>
+    <view class='edit-title'>修改信息</view>
+    <view class='close-btn' bindtap='closeEdit'>
+      <text class='iconfont icon-jiaochacross80' style='color:#808080;'></text> </view>
+    <view class=' edit-inpt-wrap'>
+      <text>号码：</text>
+      <input bindinput='getInputNo' type='number' value='{{editForm.no}}' maxlength='3' />
+    </view>
+    <view class='edit-inpt-wrap '>
+      <text>位置：</text>
+      <picker wx:if="{{attr_id == 2}}" bindchange="bindPickerSeat" value="{{index}}" range="{{roleList}}" range-key="name">
+        <view class="edit-picker">
+          {{seat||'请选择您的位置 '}}
+          <image src='/pic/list_arrow.png'></image>
+        </view>
+      </picker>
+      <picker wx:if="{{attr_id == 3}}" bindchange="bindPickerSeat" value="{{index}}" range="{{BaskList}}" range-key="name">
+        <view class="edit-picker">
+          {{seat||'请选择您的位置 '}}
+          <image src='/pic/list_arrow.png '></image>
+        </view>
+      </picker>
+    </view>
+    <view class='edit-btn ' bindtap='submitEdit'>确定</view>
+  </view>
+</view>

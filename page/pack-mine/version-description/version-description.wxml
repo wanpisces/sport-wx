@@ -1,0 +1,30 @@
+<!--page/pack-mine/pages/version-description/version-description.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" status-bar-height="{{statusBarHeight}}" title-name="版本说明" hover-class="none" />
+  <view class='data_view' style="width:750rpx;top:{{statusBarHeight+45}}px;">
+    <view class='logo-v'>
+      <image src='/pic/icon.png'>
+      </image>
+      <view>八分钟运动</view>
+      <text>{{version}}</text>
+    </view>
+    <view style='height:21rpx;background:#F4F4F4'></view>
+    <view style='width:750rpx;padding-bottom:150rpx;'>
+      <view class='item-view' wx:for="{{list}}" wx:key='iKey' catchtap='onItem' data-index='{{index}}'>
+        <view class='item-left'>
+          <view class='sub1'>{{item.version_num}}</view>
+          <text class='sub2 text-line2'>{{item.version_content}}</text>
+          <view class='sub3'>更新时间：{{item.update_time}}</view>
+        </view>
+        <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+      </view>
+      <view class='nodata' wx:if="{{list.length==0}}">
+        暂无更新内容
+      </view>
+    </view>
+    <view class='bottom'>
+      <text>copyright@2016-2026</text>
+      <text>四川大榕树数据技术有限公司</text>
+    </view>
+  </view>
+</view>

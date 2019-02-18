@@ -1,0 +1,231 @@
+<!--page/pack-index/pages/team-page/team-page.wxml-->
+<import src="/my-template/shuoshuo/shuoshuo.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<comment-view is-show="{{isCommentShow}}" params="{{params}}" refresh="{{refreshAuthorizeView}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="队伍主页" tag="{{2}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+  <view class='v2'>
+    <image mode='aspectFill' src="{{group_pic||bgUrl2}}" class='bg'></image>
+  </view>
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view catchlongpress='onBg' class='team_logo'>
+      <authorizeView bind:onBut="personalPage">
+        <view class='mine_page' style="{{member_state !=2?'opacity: 0;':'opacity: 1;'}}">我的主页</view>
+      </authorizeView>
+      <image mode='aspectFill' class='group_badge' src='{{group_badge}}'></image>
+      <!-- <authorizeView bnt-type="share"> -->
+      <image mode='aspectFill' src='/pic/invite_bg.png' class='share' catchtap='invitation'></image>
+      <!-- </authorizeView> -->
+    </view>
+    <view catchlongpress='onBg' class='team_brief'>
+      <view catchtap='teamDetail' style='display: flex;flex-flow: row nowrap;align-items: center;'>
+        <view style='color:#fff;font-size:34rpx;font-weight: bold;'>{{group_name}}</view>
+        <image style='width:36rpx;height:36rpx;transform:rotate(180deg);margin-left:20rpx;' mode='aspectFill' src='/pic/back_arrow.png'></image>
+      </view>
+      <view style='color:#fff;font-size:26rpx;margin-top: 20rpx;'>粉丝 {{atten_num}} | 队员 {{member_num}}</view>
+      <view style='color:#fff;font-size:26rpx;margin-top: 20rpx;'>简介：{{group_desc}}</view>
+    </view>
+    <!-- <view wx:if="{{notice.notice_id}}" class='notice'>
+      {{notice.notice_content}}
+    </view> -->
+    <marqueeView class='notice' wx:if="{{notice.notice_id}}" text="{{notice.notice_content}}" marquee-style="line-height: 80rpx;background: #ffdd8c;color: #ff731e;font-size: 28rpx;height:80rpx;" />
+    <view class='team_manage_view'>
+      <authorizeView wx:if="{{is_leader == 1}}" id="team_manage" bind:onBut="onBut">
+        <view class='team_manage'>
+          <image mode='aspectFill' src='/pic/manager.png'></image>
+          <view>队伍管理</view>
+          <view wx:if="{{has_message == 1}}" class='dian'></view>
+        </view>
+      </authorizeView>
+    </view>
+    <!-- <swiper style="background: #ffffff;width:100%;{{is_leader != 1?'padding-top:30rpx;':''}}" wx:if="{{movementList.length>0}}" current="{{current}}" circular="{{true}}" next-margin="170rpx" bindchange="bindchange">
+      <block wx:for="{{movementList}}" wx:key="swiperKey">
+        <swiper-item>
+          <navigator url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}'>
+            <view hover-stop-propagation="true" class='match'>
+              <view class='match_team'>
+                <view class='team1'>
+                  <image mode='aspectFill' src='{{item.group_info.group_badge}}'></image>
+                  <view>{{item.group_info.group_name}}</view>
+                </view>
+                <view class='to'>
+                  <image mode='aspectFill' src='/pic/VS_black.png'></image>
+                  <view>{{item.movement_state==1&&'等待应约'||item.movement_state==2&&'约战成功'||item.movement_state==3&&'约战结束'||item.movement_state==4&&'正常取消'||item.movement_state==5&&'违约取消'}}</view>
+                </view>
+                <view class='team2'>
+                  <image mode='aspectFill' src='{{item.away_info.group_badge}}'></image>
+                  <view>{{item.away_info.group_name}}</view>
+                </view>
+              </view>
+              <view class='match_details'>
+                <text>{{item.movement_rule}}</text>
+                <text>{{item.movement_type}}</text>
+                <text>{{item.movement_time}}</text>
+              </view>
+              <view class='match_addr'>
+                <image mode='aspectFill' src='/pic/location.png'></image>
+                <view>{{item.address}}</view>
+              </view>
+            </view>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper> -->
+    <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+    <view class='tabs'>
+      <view id='tab1' catchtap='onTabs' class='tab1'>
+        <view class="{{tabids==1?'cked':''}}">动态</view>
+      </view>
+      <view id='tab2' catchtap='onTabs' class='tab2'>
+        <view class="{{tabids==2?'cked':''}}">队员</view>
+      </view>
+      <!-- <view id='tab3' catchtap='onTabs' class='tab3'>
+        <view class="{{tabids==3?'cked':''}}">数据</view>
+      </view> -->
+    </view>
+    <view hidden='{{tabids!=1}}' class='team_dynamic'>
+      <template is='shuoshuo' wx:for="{{feedList}}" data="{{item,isNoGroup,index,mineUserId}}" wx:key="listKey" />
+      <view wx:if="{{feedList.length==0}}">
+        <template is='emptyView3' data="{{tip:'暂无队员动态，快来抢沙发呀！',tip2:'您的队伍有哪些功能?'}}" />
+      </view>
+      <view wx:else class='loadMore'>
+        <template is='loadMore' data="{{loadData}}" />
+      </view>
+    </view>
+    <view hidden='{{tabids!=2}}' class='team_member'>
+      <view class='team_member_item' wx:for="{{groupMemberList}}" wx:key="team_member_key" catchtap='personalPage2' data-item='{{item}}'>
+        <image class='user_logo' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+        <view class='team_member_item_view1'>
+          <text style='color:#353535;font-size:32rpx;'>{{item.user_nickname}}</text>
+        </view>
+        <!-- <view>
+          <text style='color:#353535;font-size:32rpx;'>前锋</text>
+          <text style='color:#999999;font-size:24rpx;margin-top: 15rpx;'>170CM</text>
+        </view>  -->
+        <view class='team_member_item_view2'>
+          <!-- <text style='color:#353535;font-size:32rpx;'>10号</text> -->
+          <text style='color:#999999;font-size:24rpx;margin-right: 8rpx;'>{{item.create_time}}</text>
+          <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+        </view>
+
+      </view>
+      <view class='loadMore'>
+        <template is='loadMore' data="{{loadData1}}" />
+      </view>
+    </view>
+    <view hidden='{{tabids!=3}}' class='team_data'>
+      <view style='color:#999999;font-size:28rpx;width:100%;text-align:center;line-height:90rpx;'>- 基本信息 -</view>
+      <view style='display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;'>
+        <view style='  display: flex;  flex-flow: column;justify-content: center;align-items: center;'>
+          <view class='team_data_item1'>
+            <view>队伍人数/</view>
+            <text>人</text>
+          </view>
+          <view class='team_data_item1'>
+            <view>平均年龄/</view>
+            <text>岁</text>
+          </view>
+          <view class='team_data_item1'>
+            <view>平均身高/</view>
+            <text>CM</text>
+          </view>
+          <view class='team_data_item1'>
+            <view>平均体重/</view>
+            <text>KG</text>
+          </view>
+        </view>
+        <view>
+          <view class='team_data_slider'>
+            <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#FFB40D" percent="{{groupCount.member_num*2}}" />
+            <view class='slider_view'>{{groupCount.member_num}}%</view>
+          </view>
+          <view class='team_data_slider'>
+            <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#8BCD36" percent="{{groupCount.avg_age*2}}" />
+            <view class='slider_view'>{{groupCount.avg_age}}%</view>
+          </view>
+          <view class='team_data_slider'>
+            <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#4AA5EC" percent="{{groupCount.avg_height*2}}" />
+            <view class='slider_view'>{{groupCount.avg_height}}%</view>
+          </view>
+          <view class='team_data_slider'>
+            <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#F05A41" percent="{{groupCount.avg_weight*2}}" />
+            <view class='slider_view'>{{groupCount.avg_weight}}%</view>
+          </view>
+        </view>
+      </view>
+      <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+      <view style='display: flex;flex-flow: row nowrap;justify-content: space-between;padding:20rpx 50rpx;'>
+        <view style='display: flex;flex-flow: column;align-items: center;'>
+          <view style='font-size:34rpx;color:#353535;'>{{groupCount.matches_num}}</view>
+          <view style='font-size:28rpx;color:#999999;margin-top: 10rpx;'>比赛场次</view>
+        </view>
+        <view style='display: flex;flex-flow: column;align-items: center;'>
+          <view style='font-size:34rpx;color:#353535;'>
+            <text style='font-size:34rpx;color:#D51B2C;'>{{groupCount.win_num}}</text>/{{groupCount.tie_num}}/{{groupCount.fail_num}}</view>
+          <view style='font-size:28rpx;color:#999999;margin-top: 10rpx;'>胜/平/负</view>
+        </view>
+        <view style='display: flex;flex-flow: column;align-items: center;'>
+          <view style='font-size:34rpx;color:#D51B2C;'>{{groupCount.avg_win}}%</view>
+          <view style='font-size:28rpx;color:#999999;margin-top: 10rpx;'>胜率</view>
+        </view>
+      </view>
+      <button class='look_match'>查看比赛信息</button>
+      <view style='display: flex;flex-flow: row nowrap;justify-content: space-between;padding:20rpx;'>
+        <view style='display: flex;flex-flow: row nowrap;align-items: center;'>
+          <image mode='aspectFill' style='width:30rpx;height:30rpx;' src='/pic/xq_access_zan_touch.png'></image>
+          <view style='font-size:32rpx;color:#353535;'>球队排行榜</view>
+        </view>
+        <view style='display: flex;flex-flow: row nowrap;align-items: center;'>
+          <view style='font-size:28rpx;color:#999999;'>进球数</view>
+          <image class='arrow' mode='aspectFill' src='/pic/arrow.png'></image>
+        </view>
+      </view>
+      <view wx:for="{{groupCount.rank_list}}" wx:key="jq_key" style='display: flex;flex-flow: row nowrap;padding:0 30rpx; align-items: center;' catchtap='personalPage2' data-item='{{item}}'>
+        <view style='flex-grow: 0;flex-shrink: 0;padding-right:30rpx;'>
+          <image wx:if="{{index==0}}" mode='aspectFill' src='/pic/first.png' style='width:30rpx;height:30rpx;'></image>
+          <image wx:elif="{{index==1}}" mode='aspectFill' src='/pic/second.png' style='width:30rpx;height:30rpx;'></image>
+          <image wx:elif="{{index==2}}" mode='aspectFill' src='/pic/third.png' style='width:30rpx;height:30rpx;'></image>
+          <view wx:else mode='aspectFill' style='font-size:30rpx;'>{{index}}</view>
+        </view>
+        <view style='display:flex;flex-flow: row nowrap; flex-grow: 1;flex-shrink: 1; align-items: center;padding:20rpx 20rpx 20rpx 0rpx; border-bottom:1rpx solid #f2f2f2;margin-left:20rpx;'>
+          <image mode='aspectFill' style='width:78rpx;height:78rpx;background:#f4f4f4;border-radius: 39rpx; flex-grow: 0;flex-shrink: 0;' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+          <view style='font-size:32rpx;color:#353535; flex-grow: 1;flex-shrink: 1;padding-left:10rpx;'>{{item.user_nickname}}</view>
+          <view style='font-size:28rpx;color:#999999; flex-grow: 0;flex-shrink: 0;'>进球数：{{item.goals_num}}</view>
+        </view>
+      </view>
+      <!-- <template is='shuoshuo' wx:for="{{[1,2,3]}}" wx:key="listKey" /> -->
+    </view>
+    <view wx:if="{{isload&&member_state==2}}" class='bottom_view'>
+      <authorizeView id="home" bind:onBut="onBut">
+        <view class='home'>
+          <image mode='aspectFill' src='/pic/team_home_icon.png'></image>
+          <view>首页</view>
+        </view>
+      </authorizeView>
+      <authorizeView id="add_ss" bind:onBut="onBut">
+        <view class='add'>
+          <image mode='aspectFill' src='/pic/foot_add.png'></image>
+        </view>
+      </authorizeView>
+      <authorizeView id='find' bind:onBut="onBut">
+        <view class='find'>
+          <image mode='aspectFill' src='/pic/team_sport_icon.png'></image>
+          <view>运动圈</view>
+        </view>
+      </authorizeView>
+    </view>
+    <view wx:elif="{{isload}}" class='onBottom2'>
+      <view catchtap='follow' class='cancel'>
+        {{is_atten==1?'取消关注':'关注'}}
+        <!-- <image mode='aspectFill' src="{{is_atten==1?'/pic/focused.png':'/pic/focuse.png'}}"></image> -->
+      </view>
+      <authorizeView refresh="{{refreshAuthorizeView}}" user-phone="{{true}}" user-info="{{true}}" bind:onBut="accept">
+        <view class="fabiao">{{member_state==2&&'已通过'||member_state==1&&'申请中'||'申请加入'}}</view>
+      </authorizeView>
+    </view>
+    <template is='loading' data="{{hidden:groupMemberList.length>0}}"> </template>
+  </view>
+</view>
+<view wx:if="{{isload&&member_state!=2}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

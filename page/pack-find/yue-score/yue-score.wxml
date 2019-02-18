@@ -1,0 +1,162 @@
+<!--page/pack-find/yue-score/yue-score.wxml-->
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="计分板" tag="{{2}}" status-bar-height="{{statusBarHeight}}" bg-color="transparent" />
+  <view class='v2'>
+    <!-- <image mode='aspectFill' src='{{bgUrl1}}' class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image> -->
+    <image wx:if="{{dataList.attr_id == 2}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251736568193.png  " class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+    <image wx:elif="{{dataList.attr_id == 3}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251735466355.png " class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+    <image wx:else mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251737248924.png" class='bg' style='height:{{bgh}}rpx;margin-top:{{statusBarHeight+45}}px'></image>
+  </view>
+  <!-- 约动战况 -->
+  <view class='data_view' style='top:{{statusBarHeight+45}}px;padding-top:70rpx;'>
+    <!-- <view class='data_view_tag'>
+      <view class='iconfont icon-fenxiang' style='font-size:25rpx;color:#353535;margin:0 8rpx;'></view>
+      <authorizeView bnt-type="share">
+        <view style='font-size:30rpx;color:#353535;line-height:56rpx;'>分享</view>
+      </authorizeView>
+    </view> -->
+    <view class='data_view_contain'>
+      <view catchtap='onTeam' data-id='{{dataList.group_info.group_id}}'>
+        <view class='yue-avator'>
+          <image src="{{dataList.group_info.group_badge}}"></image>
+        </view>
+        <view class='yue-name'>{{dataList.group_info.group_name}}</view>
+        <view wx:if="{{dataList.attr_id == 2 || dataList.attr_id == 3}}" class='iconfont icon-qiuyi' style='font-size:60rpx;color:{{dataList.home_shirt}};text-align:center;'></view>
+      </view>
+      <view>
+        <view class='yue-vs'>
+          <image mode='aspectFill' src='../../../pic/VS_whtie.png' class='vs-img'></image>
+        </view>
+        <view class='yue-sucess'>{{dataList.movement_state == 1?'等待应约':dataList.movement_state == 2?'约战成功':dataList.movement_state == 3?'约战完结':dataList.movement_state == 4?'正常取消':dataList.movement_state == 5?'违约取消':dataList.movement_state == 6?'约战进行时':''}}</view>
+      </view>
+      <view catchtap='onTeam' data-id='{{dataList.away_info.group_id}}'>
+        <view class='yue-avator'>
+          <image src="{{dataList.away_info.group_badge ||'/pic/jfb_add.png'}}"></image>
+        </view>
+        <view wx:if="{{dataList.away_info.group_name}}" class='yue-name'>{{dataList.away_info.group_name}}</view>
+        <view wx:else style="{{dataList.away_info.group_name?'':'color:#ff0000; font-size: 30rpx;  margin-top: 20rpx;'}}">队伍已解散</view>
+        <view wx:if="{{dataList.attr_id == 2 || dataList.attr_id == 3}}" class='iconfont icon-qiuyi' style='font-size:60rpx;color:{{dataList.away_shirt}};text-align:center;'></view>
+      </view>
+    </view>
+  </view>
+  <view class='yue-line'></view>
+  <!-- 进球数统计 -->
+  <view class='data-statistics'>
+    <view class='data-statistics-title'>数据统计</view>
+    <view wx:if="{{attr_id == 2}}" class='yue-count'>
+      <text>球队总进球：</text>
+      <input placeholder='请输入我方总进球' type="number" bindblur="getTotalScore" value="{{formData.score}}" maxlength='3'></input>
+      <text>个</text>
+    </view>
+    <view wx:if="{{attr_id == 3}}" class='yue-count'>
+      <text>球队总得分：</text>
+      <input placeholder='请输入我方总得分' type="number" bindblur="getTotalScore" value="{{formData.score}}" maxlength='3'></input>
+      <text>分</text>
+    </view>
+    <view class='yue-write'>
+      <!-- 篮球、足球 -->
+      <view class='yue-write-one' wx:if="{{attr_id == 2 || attr_id == 3}}">
+        <text>名称</text>
+        <text style='text-align:center;'>类型</text>
+        <text style='text-align:right;'>数量</text>
+      </view>
+      <!-- 其他类型 -->
+      <view wx:else class='yue-write-one'>
+        <text style='width:40%;'>名称</text>
+        <text style='text-align:left;'>类型</text>
+        <text style='text-align:right;'>数量</text>
+      </view>
+      <view class='yue-write-two' bindtap='addTeamData' data-id="{{attr_id}}">
+        <image mode='aspectFill' src='../../../pic/add.png' class='yue-add'></image>
+        添加
+      </view>
+    </view>
+  </view>
+  <!-- 足球队添加的内容 -->
+  <view style='margin-bottom:200rpx;'>
+    <view wx:if="{{attr_id == 2}}" class='yue-data' wx:for="{{teamArr}}" wx:key="{{index}}">
+      <view class='yue-write-data'>
+        <view style='justify-content:flex-start;width:40%'>
+          <picker bindchange="bindPickerChange" data-index='{{index}}' range-key="user_msg" value='{{0}}' range="{{array}}" style='width:100%;'>
+            <!-- <view class='select-rem'>{{array[item.indexD].user_nickname || '选择队员'}}</view> -->
+            <view class='select-rem' style='display:flex;'>
+              <text class='select-rem-name'>{{array[item.indexD].user_nickname || '选择队员'}}</text>
+              <text class='select-rem-no'>#{{array[item.indexD].no || ''}}</text>
+            </view>
+            <image mode='aspectFill' src='../../../pic/sjx.png' class='yue-sxj'></image>
+          </picker>
+        </view>
+        <view>
+          <picker bindchange="bindPickerChangeR" data-index='{{index}}' range-key="name" value='{{0}}' range="{{arrayR}}">
+            {{arrayR[item.indexR].name}}
+            <image mode='aspectFill' src='../../../pic/sjx.png' class='yue-sxj'></image>
+          </picker>
+        </view>
+        <view class='yue-w' style='justify-content:flex-end;'>
+          <input bindblur="getScore" type="number" class='yue-w-count' data-index='{{index}}' value='{{item.score}}' maxlength='3'></input>
+        </view>
+      </view>
+      <view class='yue-rubish'>
+        <!-- <image bindtap='deleteTeamer' data-index='{{index}}' mode='aspectFill' src='../../../pic/rubish.png'></image> -->
+        <view class='iconfont icon-delete' style='font-size:35rpx;color:#666;' bindtap='deleteTeamer' data-index='{{index}}'></view>
+      </view>
+    </view>
+    <!-- 篮球队添加的内容 -->
+    <view wx:if="{{attr_id == 3}}" class='yue-data' wx:for="{{teamArr}}" wx:key="{{index}}">
+      <view class='yue-write-data'>
+        <view style='justify-content:flex-start;width:40%'>
+          <picker bindchange="bindPickerChange" data-index='{{index}}' range-key="user_msg" value='{{0}}' range="{{array}}" style='width:100%;'>
+            <!-- <view class='select-rem'>{{array[item.indexD].user_nickname || '选择队员'}}</view> -->
+            <view class='select-rem' style='display:flex;'>
+              <text class='select-rem-name'>{{array[item.indexD].user_nickname || '选择队员'}}</text>
+              <text class='select-rem-no'>#{{array[item.indexD].no || ''}}</text>
+            </view>
+            <image mode='aspectFill' src='../../../pic/sjx.png' class='yue-sxj'></image>
+          </picker>
+        </view>
+        <view>
+          <picker bindchange="bindPickerChangeScore" data-index='{{index}}' range-key="name" value='{{0}}' range="{{arrayScore}}">
+            {{arrayScore[item.indexR].name}}
+            <image mode='aspectFill' src='../../../pic/sjx.png' class='yue-sxj'></image>
+          </picker>
+        </view>
+        <view class='yue-w' style='justify-content:flex-end;'>
+          <input bindblur="getScore" type="number" class='yue-w-count' data-index='{{index}}' value='{{item.score}}' maxlength='3'></input>
+        </view>
+      </view>
+      <view class='yue-rubish'>
+        <!-- <image bindtap='deleteTeamer' data-index='{{index}}' mode='aspectFill' src='../../../pic/rubish.png'></image> -->
+        <view class='iconfont icon-delete' style='font-size:35rpx;color:#666;' bindtap='deleteTeamer' data-index='{{index}}'></view>
+      </view>
+    </view>
+    <!-- 其他队伍添加的内容 -->
+    <view wx:if="{{attr_id != 2 && attr_id != 3}}" class='yue-data' wx:for="{{teamArr}}" wx:key="{{index}}">
+      <view class='yue-write-data'>
+        <view style='justify-content:flex-start;width:40%;'>
+          <picker bindchange="bindPickerChange" data-index='{{index}}' range-key="user_nickname" range="{{array}}" style='width:100%;'>
+            <view class='select-rem'>{{array[item.indexD].user_nickname || '选择队员'}}</view>
+            <image mode='aspectFill' src='../../../pic/sjx.png' class='yue-sxj'></image>
+          </picker>
+        </view>
+        <view class='yue-w'>
+          <input bindblur="getType" class='yue-w-count' data-index='{{index}}' value='{{item.score_attr}}' style='width:150rpx;' maxlength='4'></input>
+        </view>
+        <view class='yue-w' style='justify-content:flex-end;'>
+          <input bindblur="getScore" type="number" class='yue-w-count' data-index='{{index}}' value='{{item.score}}' maxlength='3'></input>
+        </view>
+      </view>
+      <view class='yue-rubish'>
+        <!-- <image bindtap='deleteTeamer' data-index='{{index}}' mode='aspectFill' src='../../../pic/rubish.png'></image> -->
+        <view class='iconfont icon-delete' style='font-size:35rpx;color:#666;' bindtap='deleteTeamer' data-index='{{index}}'></view>
+      </view>
+    </view>
+  </view>
+  <view class='yue-data-btn'>
+    <button wx:if="{{dataList.is_confirm == 1 && (dataList.is_originator == 1 || dataList.is_contractor == 1)}}" class='yue-edit' catchtap='submitFormEdit'>修 改</button>
+    <view wx:else class='dataList_btn'>
+      <button class='yue-skip' catchtap='submitSkip'>跳 过</button>
+      <button class='yue-sure' catchtap='submitForm'>提交数据</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<!--widget/or-code/or-code.wxml-->
+<view catchtouchmove="preventD">
+  <view class='bg' catchtap='exit'></view>
+  <view class='v_view'>
+    <canvas class='canvas-or' canvas-id='canvas-or'></canvas>
+    <view class='or-btn'>
+      <button class='bnt' bindtap='getCodeEvt' open-type="{{shareTpye}}">
+        <image mode='aspectFill' src='/pic/wechat.png'></image>
+        <view>微信好友</view>
+      </button>
+      <view catchtap='exit' class='bnt'>
+        <image catchtap='save' mode='aspectFill' src='/pic/save.png'></image>
+        <view>保存到相册</view>
+      </view>
+    </view>
+  </view>
+</view>

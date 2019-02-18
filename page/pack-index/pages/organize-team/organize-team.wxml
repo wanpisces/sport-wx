@@ -1,0 +1,77 @@
+<!--page/pack-index/pages/organize-team/organize-team.wxml-->
+<viewPicker wx:if="{{isViewPicker}}" list-data="{{colorList}}" bind:onclick="bindViewPicker" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" title-name="{{isEdit?'编辑队伍详情':'创建队伍'}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+  <view class='v2'>
+    <image mode='aspectFill' src='{{bgUrl2}}' class='bg'></image>
+  </view>
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <image mode='aspectFill' catchtap='bindTeamlogo' src="{{group_badge?group_badge:teamLogo}}" class='team_logo'></image>
+    <view class='data_view_change'>点击更换队徽</view>
+    <view class='item'>
+      <view class='name'>* 队伍名称</view>
+      <input bindinput="onGroupName" name="group_name" maxlength="{{10}}" value='{{group_name}}' placeholder='取个好听的名字吧（10个字以内)' placeholder-class='inputPlaceholder'></input>
+    </view>
+
+    <view class='item'>
+      <view class='name'>* 成立时间</view>
+      <picker name="group_time" mode="date" value="{{0}}" end="{{date}}" bindchange="bindDateChange">
+        <view class="{{group_time || teamDate?'picker':'picker_no'}}">
+          <view> {{teamDate ||group_time||'请选择成立时间'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <view class='name'>* 所在地区</view>
+      <picker mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <view class="{{address?'picker':'picker_no'}}">
+          <view> {{address||'请选择所在区域'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <view class='name'>* 联系方式</view>
+      <input bindinput="onGroupPhone" name="group_phone" value='{{group_tel}}' placeholder='请输入联系方式' placeholder-class='inputPlaceholder'></input>
+    </view>
+    <view class='item'>
+      <view class='name'>* 队伍规模</view>
+      <picker name="group_scale" mode="selector" range='{{teamSacle}}' bindchange="bindScaleChange" range-key='name' value='{{teamNumIndex}}'>
+        <view class="{{teamNum ||group_scale?'picker':'picker_no'}}">
+          <view> {{teamNum||group_scale||'请选择队伍规模'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <view class='name'>队伍简介</view>
+      <input bindinput="onGroupDesc" name="group_desc" value='{{group_desc}}' maxlength="{{17}}" placeholder='一句话介绍球队' placeholder-class='inputPlaceholder'></input>
+    </view>
+    <view class='itemColor'>
+      <view class='name'>主场球衣</view>
+      <view class='team_color' id='color1' catchtap='onColors'>
+        <!-- <view class='color_view' style="background:{{color1||home_shirt}};"></view> -->
+        <view wx:if="{{ color1 != '#FFFFFF'}}" class='iconfont icon-qiuyi' style="font-size:60rpx;color:{{color1}};text-align:right;"></view>
+        <view wx:if="{{color1 == '#FFFFFF'}}" class='iconfont icon-qiuyi-baise' style="font-size:60rpx;text-align:right;"></view>
+      </view>
+    </view>
+    <view class='itemColor'>
+      <view class='name'>客场球衣</view>
+      <view class='team_color' id='color2' catchtap='onColors'>
+        <!-- <view class='color_view' style="background:{{color2||away_kit}};"></view> -->
+        <view wx:if="{{color2 != '#FFFFFF'}}" class='iconfont icon-qiuyi' style="font-size:60rpx;color:{{color2}};text-align:right;"></view>
+        <view wx:if="{{color2 == '#FFFFFF'}}" class='iconfont icon-qiuyi-baise' style="font-size:60rpx;text-align:right;"></view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='name'>常用场馆</view>
+      <input bindinput="onVenuesName" name="venues_name" maxlength="{{17}}" value='{{group_venues_name}}' placeholder='输入场馆名称' placeholder-class='inputPlaceholder'></input>
+    </view>
+    <authorizeView bind:onBut="onNext">
+      <view class='next'>{{isEdit?'完成':'下一步'}}</view>
+    </authorizeView>
+  </view>
+
+</view>

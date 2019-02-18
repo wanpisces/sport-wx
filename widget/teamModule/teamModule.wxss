@@ -1,0 +1,73 @@
+/* widget/teamModule/teamModule.wxss */
+.team-module{
+  margin-bottom: 23rpx;
+  padding: 0 30rpx;
+}
+.team-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15rpx;
+  height: 150rpx;
+  box-shadow: 0 0 10rpx 0rpx #edebeb;
+  border-radius: 4rpx;
+}
+.team-left{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.team-left image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.team-left-text{
+  margin-left: 30rpx;
+  max-width: 350rpx;
+}
+.team-name{
+  margin: 12rpx 0 10rpx 0;
+  max-width: 350rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  color: #353535;
+}
+.team-dynamic{
+  font-size: 26rpx;
+  color: #666666;
+}
+.team-lable{
+  position: absolute;
+  right: -65rpx;
+  top: 0;
+  padding: 0 8rpx;
+  height: 30rpx;
+  line-height: 25rpx;
+  font-size: 22rpx;
+  color: #fff;
+  background: #282828;
+}
+.attention{
+  width: 90rpx;
+  height: 42rpx;
+  font-size: 28rpx;
+  color: #222;
+  background: #FFE600;
+  line-height: 43rpx;
+  border-radius: 4rpx;
+}
+button{
+  padding: 0;
+  
+}
+button::after{
+  border: none;
+}
+
+
+
+
+
+

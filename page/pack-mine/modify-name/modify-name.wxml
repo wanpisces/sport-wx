@@ -1,0 +1,21 @@
+<!--page/pack-mine/modify-name/modify-name.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" title-name="{{title}}" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <!-- <view class='v2'>
+    <image mode='aspectFill' src='/img/bg.png' class='bg'></image>
+  </view> -->
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view style='width:100%;height:1rpx;background:#e1e1e1;border-radius:10rpx;'></view>
+
+    <view class='item'>
+      <view class='name'>{{t_key}}</view>
+      <view class='c_item'>
+        <input bindinput="bindInputValue" value='{{name}}' maxlength="{{id=='name'?13:3}}" type="{{id=='name'?'text':'number'}}" placeholder='请输入您的{{t_key}}' placeholder-class='inputPlaceholder'></input>
+        <view class='tip'>{{tip}}</view>
+      </view>
+    </view>
+    <authorizeView user-info="{{true}}" user-phone="{{true}}" bind:onBut="onSave">
+      <view class='next'>修改</view>
+    </authorizeView>
+  </view>
+</view>

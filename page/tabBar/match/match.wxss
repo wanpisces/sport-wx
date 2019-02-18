@@ -1,0 +1,257 @@
+/* page/tabBar/match/match.wxss */
+@import "/my-template/match/match.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.search-view {
+  width: 480rpx;
+  margin-left: 13rpx;
+  height: 33px;
+  background: #f2f2f2;
+  border-radius: 16.5px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+.search-view image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.search-view input {
+  font-size: 26rpx;
+  padding-left: 18rpx;
+  height: 30px;
+}
+
+.search-placeholder-style {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.scroll-view-H {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  padding: 4px 10rpx;
+  /* border-top: 1px solid #f2f2f2; */
+  border-bottom: 1px solid #f8f8f8;
+  box-sizing: border-box;
+}
+
+.view-scroll {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.scroll-item {
+  height: 30px;
+  margin: 0px 10rpx;
+  padding: 0 20rpx;
+  border-radius: 15px;
+  color: #999;
+  line-height: 30px;
+  font-size: 32rpx;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.scroll-item-ed {
+  background: #ffd100;
+  color: #353535;
+  font-weight: bold;
+}
+
+.swiper-view {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.title-bar {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-bar-sub1 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.title-bar-sub1 image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+}
+
+.title-bar-sub1 input {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.title-bar-sub2 {
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.title-bar-sub3{
+  padding:0 20rpx;
+  font-size: 28rpx;
+  color: #ffd100;
+}
+.picker {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.picker view {
+  width: 0;
+  height: 0;
+  border-width: 10rpx 10rpx 0;
+  border-style: solid;
+  border-color: #aeaeae transparent transparent; /*灰 透明 透明 */
+}
+
+.picker text {
+  font-size: 26rpx;
+  color: #999;
+  margin-right: 8rpx;
+}
+
+.empty-view {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.historical-search-view{
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 1001;
+  width: 100%;
+}
+.item-txt {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 95rpx;
+  line-height: 60rpx;
+}
+.item-txt image{
+  margin-left: 25rpx;
+}
+
+.item-txt text {
+  font-size: 32rpx;
+  color: rgba(53, 53, 53, 1);
+  margin-left: 10rpx;
+  flex-grow:0;
+}
+.delete{
+  font-size: 28rpx;
+  width: 108rpx;
+  /* color: rgba(73, 204, 252, 1); */
+  text-align: center;
+  color: rgba(53, 53, 53, 1);
+  background: #fff;
+  margin: 0rpx;
+  padding: 0rpx;
+  flex-grow:0;
+}
+button[class="delete"]::after {
+  border: 0;
+}
+
+.item-data {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 27rpx;
+}
+
+.itemdatabouttom {
+  border-radius: 25rpx;
+  background: #f8f8f8;
+  margin:  15rpx ;
+  padding: 8rpx 25rpx 8rpx 25rpx;
+  color: #353535;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height:34rpx;
+}
+button[class="itemdatabouttom"]::after {
+  border: 0;
+}
+.refresh-button {
+  position: fixed;
+  z-index: 10;
+  right: 40rpx;
+  bottom: 76rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.20);
+}
+
+.refresh-button-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: -29rpx;
+  margin-left: -29rpx;
+}
+
+.refresh-button-img-rotate {
+  animation: refreshImgRotate 0.8s linear infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes refreshImgRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes refreshImgRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

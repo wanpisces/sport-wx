@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "loadingView": "/widget/loading-view/loading-view",
+    "authorizeView": "/widget/authorize-view/authorize-view"
+  }
+}

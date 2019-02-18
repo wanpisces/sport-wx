@@ -1,0 +1,257 @@
+<!--page/pack-find/yue-sport/yue-sport.wxml-->
+<loadingView wx:if="{{isLoading}}" />
+<view class="{{messageTip || commission || contractTip?'pages-fixed':'pages'}}">
+  <navigationBar class='navigationBar' title-name="详情" tag="{{2}}" status-bar-height="{{statusBarHeight}}" bg-color="transparent" />
+  <view class='v2'>
+    <!-- margin-top:{{statusBarHeight+45}}px; -->
+    <image wx:if="{{dataList.attr_id == 2}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251736568193.png  " class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+    <image wx:elif="{{dataList.attr_id == 3}}" mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251735466355.png " class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+    <image wx:else mode='aspectFill' src="https://img.sport.darongshutech.com/image_201810251737248924.png" class='bg' style='height:{{bgh}}rpx;margin-bottom:10rpx;'></image>
+  </view>
+
+  <!-- 约动战况 -->
+  <view class='data_view' style='top:{{statusBarHeight+45}}px;padding-top:70rpx;'>
+    <view class='data_view_tag'>
+      <view class='iconfont icon-fenxiang' style='font-size:25rpx;color:#353535;margin:0 8rpx;'></view>
+      <authorizeView id="share" bnt-type="share">
+        <view style='font-size:30rpx;color:#353535;line-height:56rpx;'>分享</view>
+      </authorizeView>
+    </view>
+    <view class='data_view_contain'>
+      <view catchtap='onTeam' data-id='{{dataList.group_info.group_id}}'>
+        <image mode='aspectFill' class='yue-avator' src="{{dataList.group_info.group_badge || '/pic/jfb_add.png'}}"></image>
+        <view wx:if="{{(dataList.movement_state == 2 || dataList.movement_state == 3 ||  dataList.movement_state == 5 ||  dataList.movement_state == 6)&&!dataList.group_info.group_name}}" class='yue-name' style="{{dataList.group_info.group_name?'':'color:#ff0000; font-size: 34rpx;'}}">{{item.group_info.group_name || '队伍已解散'}}</view>
+        <view wx:else class='yue-name'>{{dataList.group_info.group_name}}</view>
+        <view wx:if="{{dataList.attr_id == 2 || dataList.attr_id == 3}}" class='iconfont icon-qiuyi' style='font-size:60rpx;color:{{dataList.home_shirt}};text-align:center;'></view>
+      </view>
+      <view>
+        <!-- 比分 -->
+        <view class='yue-vs' wx:if="{{dataList.attr_id == 2 || dataList.attr_id == 3}}">
+          <view wx:if="{{dataList.movement_state ==3 || dataList.is_confirm == 1}}" style='font-size:50rpx; font-weight:600;'>{{dataList.home_score|| '-'}}:{{dataList.away_score||'-'}}</view>
+          <image mode='aspectFill' src='../../../pic/VS_whtie.png' class='vs-img' wx:else></image>
+        </view>
+        <view class='yue-vs' wx:if="{{dataList.attr_id && dataList.attr_id != 2 && dataList.attr_id != 3}}">
+          <image mode='aspectFill' src='../../../pic/VS_whtie.png' class='vs-img' wx:if="{{ dataList.attr_id != 2 &&dataList.attr_id != 3}}"></image>
+        </view>
+        <view class='yue-sucess'>{{dataList.movement_state==1?"等待应约":dataList.movement_state==2?"约战成功":dataList.movement_state==3?"约战完结":dataList.movement_state==4?"正常取消":dataList.movement_state==5?'违约取消':dataList.movement_state==6?'约战进行时':''}}</view>
+      </view>
+      <view catchtap='onTeam' data-id='{{dataList.away_info.group_id}}'>
+        <image class='yue-avator' mode='aspectFill' wx:if="{{dataList.movement_state==2||dataList.movement_state==3|| dataList.movement_state==4 || dataList.movement_state==5 || dataList.movement_state==6}}" src='{{dataList.away_info.group_badge || "/pic/jfb_add.png"}}'></image>
+        <view class='yue-name' wx:if="{{dataList.movement_state !=1}}">{{dataList.away_info.group_name || ''}} </view>
+        <image class='yue-avator3' wx:if="{{dataList.movement_state == 1}}" mode='aspectFill' src='/pic/jfb_add.png'></image>
+        <view class='yue-name' style='color:#FFB40D' wx:if="{{dataList.movement_state==1&&dataList.away_info.is_member==2&&dataList.group_info.is_member==1}}">等待应约</view>
+        <view class='yue-name' style='color:#FFB40D' wx:if="{{dataList.movement_state==1&&dataList.away_info.is_member==2&&dataList.group_info.is_member==2}}">我要应战</view>
+        <view class='yue-name' style='color:#FFB40D' wx:if="{{dataList.movement_state==4}}">等待应约</view>
+        <view wx:if="{{(dataList.movement_state == 2 || dataList.movement_state == 3 ||  dataList.movement_state == 5 ||  dataList.movement_state == 6)&&!dataList.away_info.group_name}}" style="{{dataList.away_info.group_name?'':'color:#ff0000; font-size: 34rpx;'}}">{{item.away_info.group_name || '队伍已解散'}}</view>
+        <view wx:if="{{(dataList.attr_id == 2 || dataList.attr_id == 3 )&& dataList.away_shirt && dataList.movement_state!=4}}" class='iconfont icon-qiuyi' style="font-size:60rpx;color:{{dataList.away_shirt}};text-align:center;"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 约动详情 -->
+  <view class='yue-rules'>
+    <view>
+      <text>类型：</text>
+      <text>{{dataList.attr_name}}</text>
+    </view>
+    <view>
+      <text>赛制性质：</text>
+      <text>{{dataList.movement_rule}} | {{dataList.movement_type}}</text>
+      <!-- <text style='margin-left:30rpx;'>{{dataList.movement_type}}</text> -->
+    </view>
+    <view>
+      <text>费用情况：</text>
+      <text>{{dataList.movement_fee}}</text>
+    </view>
+    <view>
+      <text>时间：</text>
+      <text>{{dataList.movement_date}}  {{dataList.movement_time}}</text>
+    </view>
+    <view bindtap='openMap'>
+      <text>地点：</text>
+      <text style='width:80%;'>
+        <text>{{dataList.address}}{{dataList.venue || ''}}</text>
+      <text class='iconfont icon-dingweiweizhizuobiaomianxing' style='font-size:34rpx;color:#FFD100;margin-left:10rpx;'></text>
+      </text>
+    </view>
+    <view>
+      <text>备注：</text>
+      <text style='width:80%;'>{{dataList.movement_remark || ''}}</text>
+    </view>
+  </view>
+  <view class='yue-line2'></view>
+  <!--  -->
+  <!-- 留言和电话 -->
+  <view wx:if="{{(dataList.movement_state == 2 || dataList.movement_state == 3 || dataList.movement_state == 6)&& (dataList.is_originator == 1 ||dataList.is_contractor == 1) }}" class='yue-modele'>
+    <view class='yue-modele-message' bindtap='messageEvt'>
+      <view class='iconfont icon-liuyan' style='font-size:40rpx;color:#FFD100;'></view>
+      <view class='yue-text'>留言</view>
+      <view class='yue-text-line'></view>
+    </view>
+    <view class='yue-modele-phone' bindtap='phoneEvt'>
+      <view class='iconfont icon-shouji' style='font-size:35rpx;color:#FFD100;'></view>
+      <view class='yue-text'>电话</view>
+    </view>
+  </view>
+  <view wx:if="{{(dataList.movement_state == 2 || dataList.movement_state == 3 || dataList.movement_state == 6)&& (dataList.is_originator == 1 ||dataList.is_contractor == 1) }}" class='yue-line2'></view>
+  <!-- 计分板 -->
+  <view wx:if="{{dataList.movement_state == 3 || dataList.is_confirm == 1}}" class='yue-scorecard'>
+    <view class='yue-scorecard-title'>计分板:</view>
+    <view bindtap='lookDataNum' class='yue-scorecard-checkNum'>查看数据
+      <image mode='aspectFill' src='/pic/list_arrow.png'></image>
+    </view>
+  </view>
+  <!-- 约动流程 -->
+  <view wx:if="{{dataList.movement_state ==1 || dataList.movement_state ==2 || dataList.movement_state ==3 || dataList.movement_state ==6}}" class='yue-process'>
+    <view class='yue-process-1'>约战流程：</view>
+    <view class='yue-process-icon'>
+      <view class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <!-- 待约战情况 -->
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 1 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <!-- 约战成功的情况 -->
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 2 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <!-- 约动进行时的情况 -->
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon--xiaoxuxian' style='font-size:40rpx;color:#fff;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 6 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#eee;text-align:center;'></view>
+      <!-- 约动结束的情况 -->
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-dotted_line' style='font-size:40rpx;color:#FFD100;text-align:center;'></view>
+      <view wx:if="{{dataList.movement_state == 3 }}" class='iconfont icon-step_yellow' style='font-size:30rpx;color:#FFD100;text-align:center;'></view>
+    </view>
+    <view class='yue-process-contain'>
+      <view class='yue-process-text'>发起约战</view>
+      <view class='yue-process-text'>等待应约</view>
+      <view class='yue-process-text'>约战成功</view>
+      <view class='yue-process-text'>约战进行时</view>
+      <view class='yue-process-text'>约战完结</view>
+    </view>
+  </view>
+
+  <!-- 等待应约 （发起方） -->
+  <view wx:if="{{dataList.movement_state == 1 && dataList.is_originator == 1}}" class='yue-button'>
+    <authorizeView style="width:40%;" bind:onBut="initiatorCancel">
+      <view class='yue-btn-cancel'>
+        <view class='iconfont icon-quxiao' style='font-size:30rpx;color:#fff;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#fff;'>取消约战</view>
+      </view>
+    </authorizeView>
+    <authorizeView style="width:60%;" bind:onBut="editYdEvt">
+      <view class=' yue-btn-edit '>
+        <view class=' iconfont icon-bianjiicon' style='font-size:30rpx;color:#353535;margin-right:10rpx; '></view>
+        <view style='font-size:30rpx;color:#353535;'>重新编辑</view>
+      </view>
+    </authorizeView>
+  </view>
+  <!-- 我要应约 (应约方)-->
+  <view wx:if="{{dataList.movement_state == 1 && dataList.group_info.is_admin == 2 && dataList.group_info.is_leader == 2 && dataList.group_info.is_member == 2}}" class='yue-button'>
+    <authorizeView style="width:100%;" bind:onBut="commissionedEvt">
+      <view class='yue-btn-commissioned'>
+        <view class='iconfont icon-yuemian' style='font-size:30rpx;color:#353535;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#353535;'>我要应约</view>
+      </view>
+    </authorizeView>
+  </view>
+  <!-- 约动成功（发起方） -->
+  <view wx:if="{{dataList.movement_state == 2 && dataList.is_originator == 1}}" class='yue-button'>
+    <authorizeView style="width:40%;" bind:onBut="contractCancel">
+      <view class='yue-btn-cancel'>
+        <view class='iconfont icon-quxiao' style='font-size:30rpx;color:#fff;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#fff;'>取消约战</view>
+      </view>
+    </authorizeView>
+    <authorizeView style="width:60%;" bind:onBut="refuseYd">
+      <view class=' yue-btn-edit '>
+        <view class=' iconfont icon-jujue' style='font-size:40rpx;color:#353535;margin-right:10rpx; '></view>
+        <view style='font-size:30rpx;color:#353535;'>拒绝应约方</view>
+      </view>
+    </authorizeView>
+  </view>
+  <!-- 应约成功，取消约动 （应约方）-->
+  <view wx:if="{{dataList.movement_state == 2 && dataList.is_contractor == 1}}" class='yue-button'>
+    <authorizeView style="width:100%;" bind:onBut="contractCancel">
+      <view class='yue-btn-commissioned'>
+        <view class='iconfont icon-quxiao' style='font-size:30rpx;color:#353535;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#353535;'>取消约战</view>
+      </view>
+    </authorizeView>
+  </view>
+  <!-- 约动进行时(发起方） -->
+  <view wx:if="{{(dataList.movement_state == 6 && dataList.is_contractor == 1 && dataList.is_confirm == 2) ||  (dataList.movement_state == 6 && dataList.is_originator == 1 && dataList.is_confirm == 2)}}" class='yue-button'>
+    <authorizeView style="width:40%;" bind:onBut="contractCancel">
+      <view class='yue-btn-cancel'>
+        <view class='iconfont icon-quxiao' style='font-size:30rpx;color:#fff;margin-right:10rpx;'></view>
+        <view style='font-size:30rpx;color:#fff;'>取消约战</view>
+      </view>
+    </authorizeView>
+    <authorizeView style="width:60%;" bind:onBut="finishYd">
+      <view class=' yue-btn-edit '>
+        <view class=' iconfont icon-dui' style='font-size:35rpx;color:#353535;margin-right:10rpx; '></view>
+        <view style='font-size:30rpx;color:#353535;'>完成约战</view>
+      </view>
+    </authorizeView>
+  </view>
+</view>
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome '>
+  <image mode='aspectFill ' src='/pic/go_home.png '></image>
+</view>
+
+<!-- 留言弹窗 -->
+<view wx:if="{{messageTip}}" class='message'>
+  <view class='message-contain'>
+    <textarea bindinput="bindmessageinput" name='textarea' maxlength='{{20}}' placeholder='请输入留言，限制字数20个'></textarea>
+    <view class='message-info'>{{message.length || 0}}/20</view>
+    <view class='announce-bnt'>
+      <button style='color:#999;background:#eee;box-shadow:none;' bindtap='submitMessage' data-title="cancel">取消</button>
+      <button style='color:#353535;' bindtap='submitMessage' data-title="sure">确认发送</button>
+    </view>
+  </view>
+</view>
+<!-- 违约原因弹窗 -->
+<view wx:if="{{contractTip}}" class='message'>
+  <view class='message-contain'>
+    <textarea bindinput="bindcontractinput" name='textarea' maxlength='{{20}}' placeholder='请输入约战取消的原因，限制字数20个'></textarea>
+    <view class='message-info'>{{contract.length || 0}}/20</view>
+    <view class='announce-bnt'>
+      <button style='color:#999;background:#eee;box-shadow:none;' bindtap='submitContract' data-title="cancel">取消</button>
+      <button style='color:#353535;' bindtap='submitContract' data-title="sure">确 认</button>
+    </view>
+  </view>
+</view>
+<!-- 应约弹窗 -->
+<view wx:if="{{commission}}" class='message'>
+  <view class='message-contain' style='height:870rpx;'>
+    <image mode='aspectFill' src='/pic/yunduo.png' style='width:690rpx;height:200rpx;border-radius:30rpx;'></image>
+    <view class='iconfont icon-PKduizhan' style='font-size:60rpx;color:#fff;position:absolute;top:30rpx;left:50%;transform: translateX(-50%);'></view>
+    <view style='font-size:36rpx;color:#353535;position:absolute;top:100rpx;left:50%;transform: translateX(-50%);font-weight:600;'>请选择应约队伍</view>
+    <view class='yue-select-team'>
+      <view wx:for="{{commissionList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='selectTeamEvt'>
+        <view style='font-size:35rpx;color:#666;margin-left:35rpx;'>{{item.group_name}}</view>
+        <view class='iconfont .icon-dui' style="font-size:40rpx;color:{{selectIndex == index?'#FFD101':'#666'}};margin-right:35rpx;"></view>
+      </view>
+    </view>
+    <view style='font-size:28rpx;color:#999;margin:30rpx;'>温馨提示：迎战后可主动联系主队，如因为天气情况、个人原因等，请主动告知对方。</view>
+    <view class='announce-bnt'>
+      <button style='color:#999;background:#eee;box-shadow:none;' bindtap='submitCommission' data-title="cancel">取消</button>
+      <button style='color:#353535;' bindtap='submitCommission' data-title="sure">确定应战</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,146 @@
+<!--page/pack-mine/mine-create/mine-create.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team2/team2.wxml" />
+<!-- <import src="/my-template/team3/team3.wxml" /> -->
+<!-- <loadingView wx:if="{{isLoading}}" /> -->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" bg-color="#FFD100" title-name="{{!!user_name?user_name:'我'}}的队伍" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='create-header' style="top:{{statusBarHeight+45}}px;">
+      <view class='create-view'>
+        <image src='/pic/black_bg.png'></image>
+      </view>
+      <view class='create-avator'>
+        <image mode='aspectFill' src="{{user.user_avatar}}"></image>
+      </view>
+      <view class="swiper-tab">
+        <view class='swiper-tab-content'>
+          <view class="swiper-tab-list {{detail_tab.currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">我创建的</view>
+          <view class="swiper-tab-list {{detail_tab.currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">我加入的</view>
+        </view>
+        <view wx:if="{{createTeam.length>0 && detail_tab.currentTab==0}}" class='new-team'>
+          <found-team class="img-style" animation="{{animTranspond}}" bindtap="transpond">
+            <view class='txt'>
+              <text>+</text> 新的队伍</view>
+          </found-team>
+        </view>
+        <view wx:if="{{joinTeam.length>0 && detail_tab.currentTab==1}}" class='checkMore' bindtap='checkMoreMyTeam'>
+          <text>更多</text>
+          <image src='/pic/list_arrow.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='team_list' style="margin-top:{{statusBarHeight+100}}px">
+      <view class='detail-list'>
+        <!-- <view class="swiper-tab">
+          <view class='swiper-tab-content'>
+            <view class="swiper-tab-list {{detail_tab.currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">我创建的</view>
+            <view class="swiper-tab-list {{detail_tab.currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">我加入的</view>
+          </view>
+          <view wx:if="{{createTeam.length>0 && detail_tab.currentTab==0}}" class='new-team'>
+            <found-team class="img-style" animation="{{animTranspond}}" bindtap="transpond">
+              <view class='txt'>
+                <text>+</text> 新的队伍</view>
+            </found-team>
+          </view>
+          <view wx:if="{{joinTeam.length>0 && detail_tab.currentTab==1}}" class='checkMore' bindtap='checkMoreMyTeam'>
+            <text>更多</text>
+            <image src='/pic/list_arrow.png'></image>
+          </view>
+        </view> -->
+        <view class='swiper-contain'>
+          <!-- 我创建的队伍 -->
+          <view wx:if="{{detail_tab.currentTab==0}}" class='sport-select'>
+            <view>
+              <view class='team-list-wrapper' wx:if="{{createTeam.length!=0}}">
+                <template is="team2" wx:for="{{createTeam}}" data="{{item,index}}" wx:key="index">
+                </template>
+                <template is="loadMore" data="{{loadData}}" />
+              </view>
+              <!-- 无创建队伍的情况 -->
+              <view wx:else class='no-data' style='margin-top:40%;'>
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>还没有属于你的队伍哦\n赶快去创建吧~</text>
+                  <view>
+                    <authorizeView wx:if="{{!isUserInfo || !isPhone||attrList[0].length==0}}" user-phone="{{true}}" user-info="{{true}}">
+                      <view class='on-new'>立即创建队伍</view>
+                    </authorizeView>
+                    <picker wx:else mode="selector" bindchange="bindMultiPickerChange" range="{{attrList[0]}}" range-key="name">
+                      <view class='on-new'>立即创建队伍</view>
+                    </picker>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- 回到首页 -->
+            <view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+              <image mode='aspectFill' src='/pic/go_home.png'></image>
+            </view>
+          </view>
+          <!-- 我加入的队伍 -->
+          <view wx:if="{{detail_tab.currentTab==1}}" class='sport-select'>
+            <view>
+              <view class='team-list-wrapper' wx:if="{{joinTeam.length!=0}}">
+                <template is="team2" wx:for="{{joinTeam}}" data="{{item,index}}" wx:key="index">
+                </template>
+                <!-- <template is="loadMore" data="{{visitLoadData}}" /> -->
+              </view>
+              <!-- 无加入队伍的情况 -->
+              <view wx:else class='no-data'>
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无我加入的队伍</text>
+                  <view class='on-new' catchtap='onNewTeam'>立即寻找队伍</view>
+                </view>
+              </view>
+            </view>
+            <view style='width100%;height:20rpx;background:#F2F2F2;'></view>
+            <!-- 活跃推荐 -->
+            <view class='hot-contain' wx:if="{{joinTeam.length == 0}}">
+              <view class='team-dynamics'>活跃推荐
+                <view class='checkMore' bindtap='checkMoreTeam'>
+                  <text>更多</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </view>
+              <view wx:if="{{hotSearchList.length>0}}" class='team-module'>
+                <template is="team_other" wx:for="{{hotSearchList}}" wx:key="{{index}}" data="{{item,index}}">
+                </template>
+              </view>
+              <view wx:if="{{hotSearchList.length==0}}">
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无推荐队伍</text>
+                </view>
+              </view>
+            </view>
+            <!-- 队伍广场 -->
+            <view class='hot-contain' wx:else>
+              <view class='team-dynamics'>队伍广场
+                <view class='checkMore' bindtap='checkMoreTeam'>
+                  <text>更多</text>
+                  <image src='/pic/list_arrow.png'></image>
+                </view>
+              </view>
+              <view wx:if="{{moreTeam.length>0}}" class='team-module'>
+                <template is="team_other" wx:for="{{moreTeam}}" wx:key="{{index}}" data="{{item,index}}">
+                </template>
+              </view>
+              <view wx:if="{{moreTeam.length==0}}">
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无更多队伍</text>
+                </view>
+              </view>
+            </view>
+            <!-- 回到首页 -->
+            <view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+              <image mode='aspectFill' src='/pic/go_home.png'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

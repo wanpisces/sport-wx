@@ -1,0 +1,7 @@
+<template name="video">
+  <view class="video">
+    <video wx:if="{{splendTip.material_type == '3'}}" src="{{splendTip.material_url}}" controls class='video_image'></video>
+    <image wx:if="{{splendTip.material_type == '2'}}" src="{{splendTip.material_url}}" class='video_image'></image>
+    <view class="video-title">{{splendTip.material_title}}</view>
+  </view>
+</template>

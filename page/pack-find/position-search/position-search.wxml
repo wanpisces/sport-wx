@@ -1,0 +1,37 @@
+<loadingView wx:if="{{isLoading}}" />
+<import src="/my-template/position/position.wxml" />
+<view class="pages">
+  <navigationBar title-name="搜索" tag="{{2}}" status-bar-height="{{statusBarHeight}}" />
+  <view style='padding-top:20rpx;'>
+    <view class='position-search'>
+      <view class='iconfont icon-sousuo-copy' style='font-size:30rpx;color:#6e6e6e;margin:0 10rpx 0 30rpx;'></view>
+      <input bindinput='bindinput' value='{{keyword}}' placeholder='请输入关键字' style='font-size:28rpx;color:#6e6e6e;'></input>
+    </view>
+    <!-- 历史搜索 -->
+    <!-- <view class='position-address'>
+      <view class='position-address-title'>
+        <view style='font-size: 26rpx;color: #acacad;line-height: 86rpx;'>历史搜索</view>
+        <view class='iconfont icon-delete' style='font-size:30rpx;color:#ACACAD;'></view>
+      </view>
+      <template is="position" />
+    </view> -->
+    <view class='position-address'>
+      <view class='position-address-title'>
+        <view style='font-size: 26rpx;color: #acacad;line-height: 86rpx;'>{{keyword?'搜索结果':'历史搜索'}}</view>
+      </view>
+      <view class='emp' wx:if="{{!(keyword&&list&&list.length>0||!keyword&&streetHistory&&streetHistory.length>0)}}">
+        {{keyword&&(!list||list.length==0)?'未查询到相关数据':'暂无历史记录'}}
+      </view>
+      <view wx:if="{{!keyword}}">
+        <template wx:for="{{streetHistory}}" wx:key="key" is="position" data="{{item,index,index1}}" />
+      </view>
+      <view wx:else>
+        <template wx:for="{{list}}" wx:key="key" is="position" data="{{item,index,index1}}" />
+      </view>
+    </view>
+    <authorizeView style="width:100%;" bind:onBut="onSubmit">
+      <view class='position-select'>确认选择
+      </view>
+    </authorizeView>
+  </view>
+</view>

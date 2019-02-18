@@ -1,0 +1,33 @@
+/* widget/filterTab/filterTab.wxss */
+
+.filter-wrap {
+  padding: 0 12rpx;
+  height: 90rpx;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.filter-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80rpx;
+  height: 100%;
+  border-bottom: 1px solid #fff;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.filter-item image {
+  position: relative;
+  top: -3rpx;
+  margin-left: 13rpx;
+  width: 15rpx;
+  height: 10rpx;
+}

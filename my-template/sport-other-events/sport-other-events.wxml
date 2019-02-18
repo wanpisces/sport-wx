@@ -1,0 +1,76 @@
+<!-- 赛程 -->
+<template name="sport-other-events">
+  <view class='sport-other-events'>
+    <view class='other-events-time'>
+      <text></text>
+      <view>{{item.turn_info.match_date }}</view>
+      <view>{{item.turn_info.match_weekday }}</view>
+    </view>
+    <view class='other-events-container' wx:for="{{item.turn_list}}" wx:for-item="turn_list" wx:key="{{index}}">
+      <view class='container-time'>{{turn_list.match_info.match_starttime}}</view>
+      <!-- 队伍名称 -->
+      <view class='container-group'>
+        <view class='container-group-name'>
+          <image mode='aspectFill' src="{{competition_tag == 1?turn_list.home_group.home_group_badge:turn_list.home_user.home_user_avatar}}"></image>
+          <view class='group-name'>{{competition_tag == 1?turn_list.home_group.home_group_name:turn_list.home_user.home_user_name}}</view>
+        </view>
+        <view class='container-group-name'>
+          <image mode='aspectFill' src="{{competition_tag == 1?turn_list.away_group.away_group_badge:turn_list.away_user.away_user_avatar}}"></image>
+          <view class='group-name'>{{competition_tag == 1?turn_list.away_group.away_group_name:turn_list.away_user.away_user_name}}</view>
+        </view>
+      </view>
+      <!-- 队伍排名 -->
+      <view class='container-ranging'>
+        <view class='container-group-name'>
+          <view class='group-ring'>{{competition_tag == 1?turn_list.home_group.home_group_score ||0:turn_list.home_user.home_user_score||0}}</view>
+        </view>
+        <view class='container-group-name'>
+          <view class='group-ring'>{{competition_tag == 1?turn_list.away_group.away_group_score || 0:turn_list.away_user.away_user_score || 0}}</view>
+        </view>
+      </view>
+      <view class='container-result'>{{turn_list.match_info.match_status==1?'未开始':turn_list.match_info.match_status==2?'进行中':'已完成'}}</view>
+    </view>
+  </view>
+</template>
+
+<!-- 杯赛排行 -->
+<template name="sport-other-ranging">
+  <view class='sport-other-ranging'>
+    <view class='other-ranging'>
+      <view class='other-ranging-one'>A组</view>
+      <view>胜/平/负</view>
+      <view>积分</view>
+    </view>
+    <view wx:for="{{rankingsLabel}}" wx:key="{{index}}" class='other-ranging-container'>
+      <view class='other-home-group'>
+        <view class='home-groop-name'>
+          <view class='home-group-one'>{{index+1}}</view>
+          <view class='home-group-two'>
+            <image mode='aspectFill' src="{{competition_tag == 1?item.group_badge:item.user_avatar}}"></image>
+            <view>{{competition_tag == 1?item.group_name:item.user_name}}</view>
+          </view>
+        </view>
+        <view class='home-groop-ranking'>{{item.win_num}} / {{item.tie_num}} / {{item.fail_num}}</view>
+        <view class='home-groop-score'>{{item.score}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+
+<!-- 联赛排行 -->
+<template name="sport-league-ranging">
+  <view class='other-ranging-container'>
+    <view class='other-home-group'>
+      <view class='home-groop-name'>
+        <view class='home-group-one'>{{index+1}}</view>
+        <view class='home-group-two'>
+          <image mode='aspectFill' src="{{competition_tag == 1?item.group_badge:item.user_avatar}}"></image>
+          <view>{{competition_tag == 1?item.group_name:item.user_name}}</view>
+        </view>
+      </view>
+      <view class='home-groop-ranking'>{{item.win_num}} / {{item.tie_num}} / {{item.fail_num}}</view>
+      <view class='home-groop-score'>{{item.total_score}}</view>
+    </view>
+  </view>
+</template>

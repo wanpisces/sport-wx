@@ -1,0 +1,13 @@
+<!--page/pack-mine/pages/update-details/update-details.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" status-bar-height="{{statusBarHeight}}" title-name="更新详情" hover-class="none" />
+  <view class='data_view' style="width:750rpx;top:{{statusBarHeight+45}}px;  display: flex;flex-flow: column; align-items: flex-start">
+    <view style='padding:20rpx;  width: 100%;box-sizing: border-box;'>
+      <view class='sub1'>{{details.version_num}}</view>
+      <view style='padding-left:10rpx;'>
+        <text class='sub2'>{{details.version_content}}</text>
+      </view>
+      <view class='sub3'>更新时间：{{details.update_time}}</view>
+    </view>
+  </view>
+</view>

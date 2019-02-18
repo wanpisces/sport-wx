@@ -1,0 +1,14 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#000",
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "wxzx-progress": "/widget/wxzx-progress/wxzx-progress",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "marqueeView": "/widget/marquee-view/marquee-view",
+    "comment-view": "/widget/comment-view/comment-view",
+    "ORcode": "/widget/or-code/or-code",
+    "invitingCard": "/widget/inviting-card/inviting-card"
+  }
+}

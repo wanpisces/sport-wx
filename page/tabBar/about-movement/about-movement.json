@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#000",
+  "backgroundColorBottom": "#fff",
+  "usingComponents": {
+    "street-view": "/widget/street/street",
+    "loadingView": "/widget/loading-view/loading-view",
+    "messageView": "/widget/message-view/message-view",
+    "circular-menu": "/widget/circular-menu/circular-menu"
+  }
+}

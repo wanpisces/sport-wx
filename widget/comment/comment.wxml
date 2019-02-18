@@ -1,0 +1,78 @@
+<!-- 评论列表页面 -->
+<view class='row-item'>
+  <view class='label'>
+    <view class='label-red'></view>
+    <view class='label-title'>精彩评论</view>
+    <view class='label-tips'>{{!!commentNum?commentNum:0}} 条</view>
+  </view>
+  <view class='line1'></view>
+  <view class='comment-wrapper'>
+    <block wx:for="{{commmentData}}" wx:key='commmentKey' wx:for-index="idx">
+      <view class='comment-item'>
+        <view class='avatar'>
+          <image src='{{item.userAvater}}'></image>
+        </view>
+        <view class='body'>
+          <text class='account'>{{item.userPhone}}</text>
+          <text class='time'>{{item._commentTime}}</text>
+        </view>
+        <view class='operator'>
+          <button class='item' bindtap='bindCommentFavorite' data-idx='{{idx}}' data-status='{{item.isStar}}' data-num="{{item.starNum}}" data-commentid='{{item.commentID}}'>
+            <image src='{{item.isStar == 1? "/pic/article_zan_red.png":"/pic/article_zan_grey.png"}}'></image>
+            <view>{{item.starNum}}</view>
+          </button>
+        </view>
+      </view>
+      <view class='content'>
+        <text>{{item.commentContent}}</text>
+      </view>
+      <view class='reply'>
+        <view class='item' wx:for='{{item.reply}}' wx:key='replyKey'>
+          <view class='commentuser'>
+            <text>{{item.commentUser}}</text>回复：
+          </view>
+          <text class='commentcontent'>{{item.commentContent}} </text>
+        </view>
+      </view>
+      <view class='line1'></view>
+    </block>
+  </view>
+  <view class='bottom-view'> </view>
+</view>
+
+
+<!-- 底部评论框 -->
+<view class='message-wrapper'>
+   <block wx:if="{{showCommentBox}}">
+  <view class='input-wrapper'>
+    <view class="btn-back" bindtap='bindBack'>
+        <image src='/pic/icon_back_black.png' style='width:22rpx;height:22rpx;'></image>
+    </view>
+    <input name="input" class='input-txt' placeholder="添加你的评论" focus='{{focus}}' bindinput='bindInputMessage' cursor-spacing='10px'/>
+    <view data-content='{{content}}' class='btn-send' bindtap='bindSendMessage'>发送</view>
+  </view>
+  </block>
+  <block  wx:if="{{!showCommentBox}}">
+  <view class='view-wrapper'>
+    <view class='input-box' bindtap='bindComment'>
+      <image src='/pic/write_words.png'></image>
+      <text>添加你的评论</text>
+    </view>
+
+    <view class='operator'>
+      <button class='item' bindtap='bindFavorite' data-status='{{isStar}}' data-num="{{starNum}}">
+        <image src='{{isStar == 1? "/pic/article_zan_red.png":"/pic/article_zan_grey.png"}}'></image>
+        <text>{{starNum}}</text>
+      </button>
+      <button class='item1' bindtap='bindCollect' data-status='{{isFavorite}}' data-num="{{favoriteNum}}">
+        <image src='{{isFavorite == 1? "/pic/collect_icon_red.png":"/pic/collect_icon_grey.png"}}'></image>
+        <text>{{favoriteNum}}</text>
+      </button>
+
+      <button class='item2' open-type="share">
+        <image src='/pic/share_icon.png'></image>
+      </button>
+    </view>
+  </view>
+  </block>
+</view>

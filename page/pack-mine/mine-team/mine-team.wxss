@@ -1,0 +1,220 @@
+/* page/pack-mine/mine-create/mine-create.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/team2/team2.wxss";
+
+/* @import "/my-template/team3/team3.wxss"; */
+
+.pages {
+  position: relative;
+}
+
+.create-view {
+  width: 750rpx;
+}
+
+.create-header {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  z-index: 3;
+  padding-bottom: 30rpx;
+}
+
+.create-view image {
+  width: 100%;
+  height: 120rpx;
+}
+
+.create-avator {
+  margin: -85rpx auto 0;
+  text-align: center;
+}
+
+.create-avator image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.team-list-wrapper {
+  /* margin-top: 40rpx; *//* padding-bottom: 100rpx; */
+  position: relative;
+}
+
+.bottom {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  line-height: 98rpx;
+  z-index: 400;
+}
+
+.share {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 98rpx;
+  font-size: 36rpx;
+  color: #222;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 192, 0, 1), rgba(255, 174, 0, 1));
+  /* border-radius: 49rpx;
+  margin: 51rpx 0; */
+}
+
+.share>image {
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 8rpx;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.empty-view {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 70rpx 0 50rpx 0;
+}
+
+.on-new {
+  font-size: 30rpx;
+  color: #ffd100;
+  line-height: 68rpx;
+  border-radius: 120rpx;
+  padding: 0 30rpx;
+  border: 1px solid #ffd100;
+  margin-top: 20rpx;
+}
+
+/* 选项卡 */
+
+.team_list {
+  width: 100%;
+}
+
+.detail-list {
+  width: 100%;
+  background-color: #fff;
+  /* padding-bottom: 70rpx; */
+  position: relative;
+}
+
+.swiper-tab {
+  width: 710rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.swiper-tab-content {
+  display: flex;
+}
+
+.swiper-tab-list {
+  font-size: 28rpx;
+  line-height: 52rpx;
+  color: #666;
+}
+
+.swiper-tab-list:nth-child(2) {
+  margin: 0 30rpx;
+}
+
+.on {
+  width: 150rpx;
+  height: 52rpx;
+  background: rgba(255, 209, 0, 1);
+  border-radius: 26rpx;
+  color: #202020;
+  font-size: 28rpx;
+}
+
+.swiper-contain {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.swiper-contain>view {
+  display: none;
+}
+
+.swiper-contain>.sport-select, .detail-team {
+  display: block;
+}
+
+.detail-team {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail-team-view {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80rpx !important;
+}
+
+.txt {
+  font-size: 24rpx;
+  color: #353535;
+  width: 160rpx;
+  height: 50rpx;
+  border: 1rpx solid #fed309;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.txt>text {
+  display: block;
+  font-size: 30rpx;
+  color: #ffd100;
+  line-height: 50rpx;
+  margin-right: 10rpx;
+}
+
+.team-dynamics {
+  display: flex;
+  justify-content: space-between;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  color: #353535;
+  padding: 0 32rpx;
+  background: #fff;
+}
+
+.checkMore {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.checkMore>image {
+  width: 32rpx;
+  height: 32rpx;
+}

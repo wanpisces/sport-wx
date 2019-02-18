@@ -1,0 +1,78 @@
+<!--page/pack-index/pages/personal-dynamics/personal-dynamics.wxml-->
+<import src="/my-template/comment/comment.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<comment-view is-hidden="{{false}}" is-show="{{isCommentShow}}"  params="{{params}}" bind:onCommentBut="onCommentBut" placeholder="{{placeholder}}" refresh="{{refreshAuthorizeView}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="动态详情" tag="{{3}}" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='shuoshuo'>
+      <view class='ss_userInfo'>
+        <view class='u_logo'>
+          <image class='ss_userInfo_logo' mode='aspectFill' src="{{data.user_avatar||'/pic/default_logo.png'}}"></image>
+          <image mode='aspectFill' wx:if="{{data.user_gender>0}}" style="{{data.user_gender == 1&&'background:#24AFFF;'||data.user_gender == 2&&'background:#ff9bb0;'||'background:#e5e5e5;'}}" class='ss_userInfo_sex' src="{{data.user_gender == 1&&'/pic/famale.png'||data.user_gender == 2&&'/pic/male.png'||''}}"></image>
+        </view>
+
+        <view class='ss_userName'>
+          <view class='c_ss_userName1'>{{data.user_nickname||'游客'}}</view>
+          <view class='c_ss_userName2'>
+            <text>{{data.create_time}}</text>
+            <view wx:if="{{mineUserId == data.user_id}}" catchtap='onDelete' class='delete'>删除</view>
+            <!-- <image wx:if="{{data.address}}" mode='aspectFill' src='/pic/location.png'></image>
+            <view  wx:if="{{data.address}}">{{data.address}}</view> -->
+          </view>
+        </view>
+        <authorizeView id="share" class='share' bind:onBut="onClick" bnt-type="share">
+          <image class='share_logo' mode='aspectFill' src='/pic/share.png'></image>
+        </authorizeView>
+      </view>
+      <text class='ss_content'>{{data.feed_content}}</text>
+      <view class='ss_imgs'>
+        <view wx:for="{{data.feed_pic}}" wx:key="imgKey" catchtap='lookImage' data-url='{{item}}' data-i='{{data.feed_pic}}'>
+          <image mode='aspectFill' src='{{item}}'></image>
+        </view>
+      </view>
+      <view wx:if="{{data.group_info.group_id&&!isNoGroup}}" catchtap='onTeamDetail' data-id='{{data.group_info.group_id}}' class='ss_club'>
+        <image mode='aspectFill' class='club_img' src='{{data.group_info.group_badge}}'></image>
+        <view class='club_name'>
+          <view class='clubName'>{{data.group_info.group_name}}<view class='groupAttr_value'>{{data.group_info.attr_value}}</view></view>
+          <view class='clubNum'>
+            <image wx:if="{{false}}" mode='aspectFill'></image>
+            <view>{{data.group_info.member_num}}位队员</view>
+          </view>
+        </view>
+        <image mode='aspectFill' class='next' src='/pic/arrow.png'></image>
+      </view>
+      <view wx:if="{{data.address}}" class='addrs'>
+        <image mode='aspectFill' src='/pic/location.png'></image>
+        <view>{{data.address}} </view>
+      </view>
+      <view class='ss_bntImg'>
+        <authorizeView id="accessment" bind:onBut="onClick">
+          <view style=' display: flex;flex-flow: row;align-items: center; justify-content: center;'>
+            <image class='ss_accessment' mode='aspectFill' src='/pic/accessment.png'></image>
+            <view class='somll'>{{comment_num>0?comment_num:'0'}}</view>
+          </view>
+        </authorizeView>
+        <authorizeView id="zan" bind:onBut="onClick">
+          <view style=' display: flex;flex-flow: row;align-items: center;  justify-content: center;'>
+            <image class='ss_zan' mode='aspectFill' src="{{is_star==1?'/pic/zan_ed.png':'/pic/zan.png'}}"></image>
+            <view class='somll'>{{star_num>0?star_num:'0'}}</view>
+          </view>
+        </authorizeView>
+      </view>
+    </view>
+    <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+    <view class='zan_num'>{{star_num}}人赞了</view>
+    <view class='join_num_img'>
+      <image class='img5' wx:for="{{star_list}}" wx:key="imgKey" mode='aspectFill' src='{{item.user_avatar}}'></image>
+    </view>
+    <template is='comment' data="{{dataList}}" />
+    <view class='loadMore'>
+      <template is='loadMore' data="{{loadData}}" />
+    </view>
+  </view>
+</view>
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

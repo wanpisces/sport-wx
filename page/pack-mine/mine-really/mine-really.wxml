@@ -1,0 +1,109 @@
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{1}}" bg-color="#202020" title-name="实名认证" status-bar-height="{{statusBarHeight}}" />
+  <view class='navigationBar-bg'>
+    <image mode='aspectFill' src='https://img.sport.darongshutech.com/image_201811201425341520.png'></image>
+  </view>
+  <view class='really-contain' style='margin-top:margin:{{45+statusBarHeight}}px;'>
+    <view class='really-title'>
+      <view class='really-title-h'>基本信息
+        <text class='really-icon'>*</text>
+        <text class='really-person'>（请填写真实的个人信息，认证通过后无法修改）</text>
+      </view>
+      <view class='really-title-input'>
+        <text>真实姓名</text>
+        <input wx:if="{{auditState =='0'}}" placeholder='请输入真实姓名' bindinput='reallyNameEvt' value='{{really_userInfo.reallyName}}'></input>
+        <!-- <input wx:elif="{{ auditState =='3'}}" placeholder='请输入真实姓名' value='{{really_userInfo.really_name}}'></input> -->
+        <text wx:else>{{really_userInfo.really_name}}</text>
+      </view>
+      <view class='really-title-input'>
+        <text>身份证号</text>
+        <input wx:if="{{auditState =='0'}}" placeholder='请输入身份证号' bindinput='reallyNumEvt' value='{{really_userInfo.reallyNum}}'></input>
+        <!-- <input wx:elif="{{auditState =='3'}}" placeholder='请输入身份证号' value='{{really_userInfo.really_num}}'></input> -->
+        <text wx:else>{{really_userInfo.really_num}}</text>
+      </view>
+    </view>
+    <view class='really-idPhone'>
+      <view class='really-title-h'>请上传本人白底证件照
+        <text class='really-person'>（用于正式比赛审核签到）</text>
+      </view>
+      <view>
+        <view class='really-idPhone-image'>
+          <view class='idPhone-image'>
+            <image mode='aspectFit' src='https://img.sport.darongshutech.com/image_201811201422473119.png' class='idPhone-image-big'></image>
+          </view>
+        </view>
+        <view bindtap='chooseImgEvt' data-title='headimg'>
+          <view class='idPhone-image-if' wx:if="{{really_userInfo.head_img}}">
+            <image mode='aspectFill' src='{{really_userInfo.head_img}}'></image>
+            <!-- <view>
+            <text wx:if="{{auditState == '3'}}">审核失败</text>
+            <text wx:elif="{{auditState == '2'}}">审核通过</text>
+            <text wx:elif="{{auditState == '1'}}">审核中</text>
+          </view> -->
+          </view>
+          <view wx:else class='really-idPhone-image'>
+            <view class='idPhone-image' wx:if="{{idPhoneState}}">
+              <view>
+                <image mode='aspectFit' src='/pic/pic.png'></image>
+                <text>点击上传</text>
+              </view>
+            </view>
+            <view class='idPhone-image-if' wx:else>
+              <image mode='aspectFill' src='{{really_userInfo.really_headImg}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='really-text'>
+      <view class='really-title-h'>上传身份证照片
+        <text class='really-icon'>*</text>
+        <text wx:if="{{auditState == '1' || auditState == '2' || auditState == '3'}}" class='really-person'>（已上传）</text>
+        <text wx:else class='really-person'>（所传照片需真实清晰才能通过审核）</text>
+      </view>
+      <view wx:if="{{auditState == '1'}}" class='really-auditState'>
+        <image src='/pic/audit_loading.png'></image>
+      </view>
+      <view wx:elif="{{auditState == '2'}}" class='really-auditState'>
+        <image src='/pic/audit_pass.png'></image>
+      </view>
+      <view wx:elif="{{auditState == '3'}}" class='really-auditState'>
+        <image src='/pic/audit_fail.png'></image>
+      </view>
+      <view wx:else>
+        <view class='really-text-image' bindtap='chooseImgEvt' data-title='indentFront'>
+          <view wx:if="{{imageOneState}}" class='really-img'>
+            <image mode='aspectFit' src='/pic/pic.png'></image>
+            <text>身份证人像面</text>
+          </view>
+          <view wx:else class='really-phone'>
+            <image src='{{really_userInfo.really_phoneImg}}' class='really-phone-img'></image>
+          </view>
+        </view>
+        <view class='really-text-image' bindtap='chooseImgEvt' data-title='indentReverse'>
+          <view wx:if="{{imageTwoState}}" class='really-img'>
+            <image mode='aspectFit' src='/pic/pic.png'></image>
+            <text>身份证国徽面</text>
+          </view>
+          <view wx:else class='really-phone'>
+            <image src='{{really_userInfo.really_reserveImg}}' class='really-phone-img'></image>
+          </view>
+        </view>
+      </view>
+      <view class='really-end'>
+        <view wx:if="{{auditState == '3'}}" class='really-submitThree'>
+          <text></text>
+          <view>失败原因：{{audit_remark}}</view>
+        </view>
+        <authorizeView bind:onBut="submitInfoEvt" data-title="submit">
+          <view wx:if="{{auditState =='0'}}" class='really-submit'>提交</view>
+        </authorizeView>
+        <authorizeView bind:onBut="submitInfoEvt" data-title="resubmit">
+          <view wx:if="{{auditState == '3'}}" class='really-reSubmit'>重新提交</view>
+        </authorizeView>
+      </view>
+    </view>
+  </view>
+</view>

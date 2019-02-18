@@ -1,0 +1,61 @@
+<!--page/pack-index/pages/improve-personal-information/information.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="创建队伍" tag="{{2}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='notice'>
+      * 完善个人运动信息即可创建成功~
+    </view>
+    <view class='item'>
+      <view class='name'>身高</view>
+      <view class='c_item' catchtap="{{isHeight?'onDisabled':''}}">
+        <input bindinput="bindHeight" disabled='{{isHeight}}' value='{{mUserHeight}}' type="number" placeholder='请输入您的身高' placeholder-class='inputPlaceholder'></input>
+        <view class='tip'>cm</view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='name'>体重</view>
+      <view class='c_item' catchtap="{{isWeight?'onDisabled':''}}">
+        <input bindinput="bindWeight" disabled='{{isWeight}}' value='{{mUserWeight}}' type="number" placeholder='请输入您的体重' placeholder-class='inputPlaceholder'></input>
+        <view class='tip'>kg</view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='name'>生日</view>
+      <picker mode="date" catchtap="{{isBirth?'onDisabled':''}}" value="{{date}}" disabled='{{isBirth}}' start="1900-01-01" end="{{date}}" bindchange="bindDateChange">
+        <view class="{{teamDate?'picker':'picker_no'}}">
+          <view>{{teamDate||'请选择您的生日'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item'>
+      <view class='name'>号码</view>
+      <view class='c_item'>
+        <input bindinput="bindNo" type="number" placeholder='请输入您的队号' placeholder-class='inputPlaceholder'></input>
+        <view class='tip'>号</view>
+      </view>
+    </view>
+    <view wx:if="{{attr_id == 2}}" class='item'>
+      <view class='name'>位置</view>
+      <picker bindchange="bindPickerSeat" value="{{index}}" range="{{roleList}}" range-key="name">
+        <view class="{{seat?'picker':'picker_no'}}">
+          <view>{{seat||'请选择您的位置'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <view wx:if="{{attr_id == 3}}" class='item'>
+      <view class='name'>位置</view>
+      <picker bindchange="bindPickerSeat" value="{{index}}" range="{{BaskList}}" range-key="name">
+        <view class="{{seat?'picker':'picker_no'}}">
+          <view>{{seat||'请选择您的位置'}}</view>
+          <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+        </view>
+      </picker>
+    </view>
+    <authorizeView user-info="{{true}}" user-phone="{{true}}" bind:onBut="onNext">
+      <view class='next'>完成创建</view>
+    </authorizeView>
+  </view>
+</view>
+

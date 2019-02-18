@@ -1,0 +1,10 @@
+{
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "navigationBar": "/widget/navBar/navBar",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "addNews": "/widget/addNews/addNews",
+    "loadingView": "/widget/loading-view/loading-view"
+  }
+}

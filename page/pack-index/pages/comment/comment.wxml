@@ -1,0 +1,16 @@
+<!--page/pack-index/pages/comment/comment.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="发布评论" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view style='width:100%;height:1rpx;background:#e1e1e1;border-radius:10rpx;'></view>
+    <view class='input-txt'>
+      <textarea bindinput="bindinput" value='{{commentStr}}' name='textarea' maxlength='500' placeholder-class='holder' placeholder="{{comment_user_name&&'回复:'+comment_user_name||'写评论...'}}"></textarea>
+    </view>
+    <view class='onBottom'>
+      <view catchtap='cancel' class='cancel'>取消</view>
+      <authorizeView refresh="{{refreshAuthorizeView}}"  user-phone="{{true}}" user-info="{{true}}" bind:onBut="{{isloading?'':'comment'}}">
+        <view style="{{isloading?'background:#a2a2a2;':''}}" class="fabiao"> 发表评论</view>
+      </authorizeView>
+    </view>
+  </view>
+</view>

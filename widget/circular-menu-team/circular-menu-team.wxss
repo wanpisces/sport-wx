@@ -1,0 +1,43 @@
+/* widget/circular-menu/circular-menu.wxss */
+
+.circular-menu-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+
+.img-plus-style {
+  height: 56px;
+  width: 56px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.img-style {
+  /* height: 56px;
+  width: 56px; */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  opacity: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.img-style image {
+  height: 56px;
+  width: 56px;
+}
+
+.txt {
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 2px;
+}

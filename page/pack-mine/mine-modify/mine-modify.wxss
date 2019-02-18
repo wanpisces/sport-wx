@@ -1,0 +1,56 @@
+/* page/pack-mine/mine-modify/mine-modify.wxss */
+
+.mine-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  height: 80rpx;
+  padding: 20rpx 20rpx;
+  border-bottom: 1rpx #f2f2f2 solid;
+  font-size: 30rpx;
+  width: 710rpx;
+}
+
+.mine-avator {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  border: 1rpx #f2f2f2 solid;
+  background: #f2f2f2;
+}
+
+.mine-bg {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  border: 1rpx #f2f2f2 solid;
+  background: #f2f2f2;
+}
+
+.goToImg {
+  width: 34rpx;
+  height: 34rpx;
+  padding: 0 20rpx 0 6rpx;
+}
+
+.mine-right {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+}
+
+.mine-button {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  line-height: 1;
+  background: #fff;
+}
+
+.mine-button::after {
+  border: 0;
+}

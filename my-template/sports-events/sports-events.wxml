@@ -1,0 +1,203 @@
+<!-- 杯赛赛程 -->
+<template name='events'>
+  <view class='temp-events' catchtap='onItemMatch' data-item='{{item}}'>
+    <view class='temp-events-sub1'>
+      <view class='team1' style='width:230rpx;'>
+        <image wx:if="{{item.home_group_id>0}}" mode='aspectFill' src='{{item.home_group.group_badge}}' style="background:{{!item.home_group.group_badge?'#f2f2f2':''}};"></image>
+        <view wx:else class='iconfont icon-jiaochacross80' style='font-size:90rpx;color:#999'></view>
+        <view>{{item.home_group_id>0?item.home_group.group_name||'--':'轮空'}}</view>
+      </view>
+      <view class='and'>
+        <view style='color:#353535;font-size:28rpx;'>{{item.match_type==1?'第'+item.match_turn+'轮':item.knockout_type==0?item.match_season:item.knockout_type==1?'决赛':'1/'+item.knockout_type+'决赛'}}</view>
+        <view wx:if="{{item.is_end==1}}">
+          <image wx:if="{{item.home_group_id == 0 || item.away_group_id == 0}}" src='/pic/VS_black.png'></image>
+          <!-- {{item.match_type==2&&item.knockout_type==0?'1/'+item.knockout_type+'决赛':'第'+item.match_turn+'轮'}} -->
+          <view wx:else style='background:#FFD100;color:#282828;font-size:26rpx;height:52rpx;width:150rpx;border-radius:26rpx;margin:20rpx 0;line-height:52rpx;text-align: center;'>{{item.home_score||0}} : {{item.away_score||0}}</view>
+        </view>
+        <image wx:else src='/pic/VS_black.png'></image>
+        <!-- <view  style='color:#999999;font-size:24rpx;'>未开始</view> -->
+      </view>
+      <view class='team2' style='width:230rpx;'>
+        <image wx:if="{{item.away_group_id>0}}" mode='aspectFill' src='{{item.away_group.group_badge}}' style="background:{{!item.away_group.group_badge?'#f2f2f2':''}};"></image>
+        <view wx:else class='iconfont icon-jiaochacross80' style='font-size:90rpx;color:#999'></view>
+        <view>{{item.away_group_id>0?item.away_group.group_name||'--':'轮空'}}</view>
+      </view>
+    </view>
+    <view class='temp-events-sub2'>
+      <view class='ch1'>
+        <image mode='aspectFill' src='/pic/time.png'></image>
+        <view>{{item.match_starttime&&item.away_group_id>0&&item.home_group_id>0?item.match_starttime:'待定'}}</view>
+      </view>
+      <view class='ch2'>
+        <image mode='aspectFill' src='/pic/address.png'></image>
+        <view>{{item.address&&item.away_group_id>0&&item.home_group_id>0?item.address:'待定'}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 联赛赛程 -->
+<template name='leagueEvents'>
+  <view class='temp-events' catchtap='onItemMatch' data-item='{{item}}'>
+    <view class='temp-events-sub1'>
+      <view class='team1' style='width:230rpx;'>
+        <image wx:if="{{item.home_group.home_group_id>0}}" mode='aspectFill' src='{{item.home_group.home_group_badge}}' style="background:{{!item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+        <view wx:else class='iconfont icon-jiaochacross80' style='font-size:90rpx;color:#999'></view>
+        <view>{{item.home_group.home_group_id>0?item.home_group.home_group_name||'--':'轮空'}}</view>
+      </view>
+      <view class='and'>
+        <view style='color:#353535;font-size:28rpx;'>{{'第'+ item.match_info.match_turn+'轮'}}</view>
+        <view wx:if="{{item.is_end==1 || item.match_info.match_status == 3}}">
+          <image wx:if="{{item.home_group.home_group_id == 0 || item.away_group.away_group_id == 0}}" src='/pic/VS_black.png'></image>
+          <view wx:else style='background:#FFD100;color:#282828;font-size:26rpx;height:52rpx;width:150rpx;border-radius:26rpx;margin:20rpx 0;line-height:52rpx;text-align: center;'>{{item.home_group.home_group_score||0}} : {{item.away_group.away_group_score||0}}</view>
+        </view>
+        <image wx:else src='/pic/VS_black.png'></image>
+      </view>
+      <view class='team2' style='width:230rpx;'>
+        <image wx:if="{{item.away_group.away_group_id>0}}" mode='aspectFill' src='{{item.away_group.away_group_badge}}' style="background:{{!item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+        <view wx:else class='iconfont icon-jiaochacross80' style='font-size:90rpx;color:#999'></view>
+        <view>{{item.away_group.away_group_id>0?item.away_group.away_group_name||'--':'轮空'}}</view>
+      </view>
+    </view>
+    <view class='temp-events-sub2'>
+      <view class='ch1'>
+        <image mode='aspectFill' src='/pic/time.png'></image>
+        <view>{{item.match_info.match_starttime&&item.away_group.away_group_id>0&&item.home_group.home_group_id>0?item.match_info.match_starttime:'待定'}}</view>
+      </view>
+      <view class='ch2'>
+        <image mode='aspectFill' src='/pic/address.png'></image>
+        <view>{{item.match_info.match_address&&item.away_group.away_group_id>0&&item.home_group.home_group_id>0?item.match_info.match_address:'待定'}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!-- 积分榜杯赛 -->
+<template name='scoreboard'>
+  <view class="temp-scoreboard {{scoreboardTable.ranking =='排名'?'temp-scoreboard-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{scoreboardTable.ranking||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{scoreboardTable.ranking !='排名'}}" src='{{scoreboardTable.group_badge}}' style="background:{{!scoreboardTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style='flex-grow: 1;flex-shrink: 1;  text-align: left;'>{{scoreboardTable.group_name||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardTable.season||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardTable.win_num||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardTable.tie_num||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardTable.fail_num||'--'}}</view>
+    <view style='width:80rpx;'>{{scoreboardTable.goal_num||'--'}}</view>
+    <view style='width:100rpx;'>{{scoreboardTable.score||'--'}}</view>
+  </view>
+</template>
+
+<!-- 积分榜联赛 -->
+<template name='leagueScoreboard'>
+  <view class="temp-scoreboard {{scoreboardLeagueTable.rank_no =='排行'?'temp-scoreboard-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{scoreboardLeagueTable.rank_no||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{scoreboardLeagueTable.rank_no !='排名'}}" src='{{scoreboardLeagueTable.group_badge}}' style="background:{{!scoreboardLeagueTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style='flex-grow: 1;flex-shrink: 1;  text-align: left;'>{{scoreboardLeagueTable.group_name||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardLeagueTable.total_num||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardLeagueTable.win_num||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardLeagueTable.tie_num||'--'}}</view>
+    <view style='width:50rpx;'>{{scoreboardLeagueTable.fail_num||'--'}}</view>
+    <view style='width:80rpx;'>{{scoreboardLeagueTable.goal_num||'--'}}</view>
+    <view style='width:100rpx;'>{{scoreboardLeagueTable.total_score||'--'}}</view>
+  </view>
+</template>
+<!-- 射手榜杯赛 -->
+<template name='shoot'>
+  <view class="temp-shoot {{shootTable.ranking =='排名'?'temp-shoot-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{shootTable.ranking||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{shootTable.ranking !='排名'}}" src='{{shootTable.user_avatar}}' style="background:{{!shootTable.user_avatar?'#e5e5e5':''}};"></image>
+    <view style="text-align: left;{{shootTable.ranking =='排名'?'width:248rpx;':'width:200rpx;'}}">{{shootTable.user_realname||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{shootTable.ranking !='排名'}}" src='{{shootTable.group_badge}}' style="background:{{!shootTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style="flex-grow: 1;flex-shrink: 1;  text-align: left;">{{shootTable.group_name||'--'}}</view>
+    <view style='width:100rpx;'>{{shootTable.goal_num||'--'}}</view>
+  </view>
+</template>
+<!-- 射手榜联赛 -->
+<template name='leagueShoot'>
+  <view class="temp-shoot {{shootLeagueTable.rank_no =='排名'?'temp-shoot-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{shootLeagueTable.rank_no||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{shootLeagueTable.rank_no !='排名'}}" src='{{shootLeagueTable.user_avatar}}' style="background:{{!shootLeagueTable.user_avatar?'#e5e5e5':''}};"></image>
+    <view style="text-align: left;{{shootLeagueTable.rank_no =='排名'?'width:248rpx;':'width:200rpx;'}}">{{shootLeagueTable.user_name||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{shootLeagueTable.rank_no !='排名'}}" src='{{shootLeagueTable.group_badge}}' style="background:{{!shootLeagueTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style="flex-grow: 1;flex-shrink: 1;  text-align: left;">{{shootLeagueTable.group_name||'--'}}</view>
+    <view style='width:100rpx;'>{{shootLeagueTable.goal_num||'--'}}</view>
+  </view>
+</template>
+<!-- 助攻榜杯赛 -->
+<template name='assists'>
+  <view class="temp-assists {{assistsTable.ranking =='排名'?'temp-assists-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{assistsTable.ranking||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{assistsTable.ranking !='排名'}}" src='{{assistsTable.user_avatar}}' style="background:{{!assistsTable.user_avatar?'#e5e5e5':''}};"></image>
+    <view style="text-align: left;{{assistsTable.ranking =='排名'?'width:248rpx;':'width:200rpx;'}}">{{assistsTable.user_realname||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{assistsTable.ranking !='排名'}}" src='{{assistsTable.group_badge}}' style="background:{{!assistsTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style="flex-grow: 1;flex-shrink: 1;  text-align: left;">{{assistsTable.group_name||'--'}}</view>
+    <view style='width:100rpx;'>{{assistsTable.assists_num||'--'}}</view>
+  </view>
+</template>
+<!-- 助攻榜联赛 -->
+<template name='leagueAssists'>
+  <view class="temp-assists {{assistsLeagueTable.rank_no =='排名'?'temp-assists-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{assistsLeagueTable.rank_no||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{assistsLeagueTable.rank_no !='排名'}}" src='{{assistsLeagueTable.user_avatar}}' style="background:{{!assistsLeagueTable.user_avatar?'#e5e5e5':''}};"></image>
+    <view style="text-align: left;{{assistsLeagueTable.rank_no =='排名'?'width:248rpx;':'width:200rpx;'}}">{{assistsLeagueTable.user_name||'--'}}</view>
+    <image mode='aspectFill' wx:if="{{assistsLeagueTable.rank_no !='排名'}}" src='{{assistsLeagueTable.group_badge}}' style="background:{{!assistsLeagueTable.group_badge?'#e5e5e5':''}};"></image>
+    <view style="flex-grow: 1;flex-shrink: 1;  text-align: left;">{{assistsLeagueTable.group_name||'--'}}</view>
+    <view style='width:100rpx;'>{{assistsLeagueTable.assist_num||'--'}}</view>
+  </view>
+</template>
+<!-- 停赛榜杯赛 -->
+<template name='ryBrand1'>
+  <view class="temp-ryBrand1 {{ryBrand1.group_name =='球队'?'temp-ryBrand1-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <!-- <image wx:if="{{ryBrand1[0] !='球员'}}" style='width: 38rpx;height: 38rpx;border-radius: 19rpx;background: #999;'></image> -->
+    <view style='text-align: left;flex-grow: 1;flex-shrink: 1;'>{{ryBrand1.group_name||'--'}}</view>
+    <view style="width:160rpx;">{{ryBrand1.user_realname||ryBrand1.user_name || '--'}}</view>
+    <view style="width:100rpx;">{{ryBrand1.no||ryBrand1.user_no || '--'}}</view>
+    <view style="width:160rpx;  display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+      <image wx:if="{{ryBrand1.group_name !='球队'&&ryBrand1.card_info.yellow_card &&ryBrand1.card_info.yellow_card!=0}}" style='width:23rpx;height:32rpx;background:#FFD100;'></image>
+      <text wx:if="{{ryBrand1.card_info.yellow_card &&ryBrand1.card_info.yellow_card!=0}}" style='text-align: left;'>{{ryBrand1.card_info.yellow_card||'--'}}</text>
+      <image wx:if="{{ryBrand1.group_name !='球队'&&ryBrand1.card_info.red_card &&ryBrand1.card_info.red_card!=0}}" style='width:23rpx;height:32rpx;background:#E60012;'></image>
+      <text wx:if="{{ryBrand1.card_info.red_card &&ryBrand1.card_info.red_card!=0}}" style='text-align: left;'>{{ryBrand1.card_info.red_card||'--'}}</text>
+      <text wx:if="{{(!ryBrand1.card_info.red_card ||ryBrand1.card_info.red_card==0)&&(!ryBrand1.card_info.yellow_card ||ryBrand1.card_info.yellow_card==0)}}" style='text-align: left;'>--</text>
+    </view>
+    <view style='width:100rpx;'>{{ryBrand1.next||'--'}}</view>
+  </view>
+</template>
+
+<!-- 球员累计 -->
+<template name='ryBrand2'>
+  <view class="temp-ryBrand2 {{ryBrand2.ranking =='排名' || ryBrand2.rank_no == '排名'?'temp-ryBrand2-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{ryBrand2.ranking||ryBrand2.rank_no||'--'}}</view>
+    <!-- <image wx:if="{{ryBrand2[0] !='排名'}}" style='width: 38rpx;height: 38rpx;border-radius: 19rpx;background: #999;'></image> -->
+    <view style='text-align: left;flex-grow: 1;flex-shrink: 1;'>{{ryBrand2.group_name||'--'}}</view>
+    <view style="width:160rpx;">{{ryBrand2.user_realname||ryBrand2.user_name || '--'}}</view>
+    <view style="width:100rpx;">{{ryBrand2.no||ryBrand2.user_no ||'--'}}</view>
+    <view style="width:100rpx;  display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+      <image wx:if="{{(ryBrand2.ranking !='排名' || ryBrand2.rank_no !='排名')&&ryBrand2.yellow_card &&ryBrand2.yellow_card!=0}}" style='width:23rpx;height:32rpx;background:#FFD100;'></image>
+      <text wx:if="{{ryBrand2.yellow_card &&ryBrand2.yellow_card!=0}}" style='text-align: left;'>{{ryBrand2.yellow_card||'--'}}</text>
+      <text wx:if="{{(!ryBrand2.yellow_card ||ryBrand2.yellow_card==0)}}" style='text-align: left;'>--</text>
+    </view>
+    <view style="width:100rpx;  display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+      <image wx:if="{{(ryBrand2.ranking !='排名' || ryBrand2.rank_no !='排名') &&ryBrand2.red_card &&ryBrand2.red_card!=0 }}" style='width:23rpx;height:32rpx;background:#E60012;'></image>
+      <text wx:if="{{ryBrand2.red_card &&ryBrand2.red_card!=0}}" style='text-align: left;'>{{ryBrand2.red_card||'--'}}</text>
+      <text wx:if="{{(!ryBrand2.red_card ||ryBrand2.red_card==0)}}" style='text-align: left;'>--</text>
+    </view>
+  </view>
+</template>
+<!-- 球队累计 -->
+<template name='ryBrand3'>
+  <view class="temp-ryBrand3 {{ryBrand3.ranking =='排名'|| ryBrand3.rank_no =='排名'?'temp-ryBrand3-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='width:100rpx;'>{{ryBrand3.ranking|| ryBrand3.rank_no|| '--'}}</view>
+    <!-- wx:if="{{ryBrand3.ranking !='排名' || ryBrand3.rank_no !='排名'}}" -->
+    <image mode='aspectFill' wx:if="{{ryBrand3.ranking !='排名' || ryBrand3.rank_no !='排名'}}" src="{{ryBrand3.group_badge}}" style="background:{{!assistsTable.group_badge?'#e5e5e5':''}};width: 38rpx;height: 38rpx;border-radius: 19rpx;background: #999;"></image>
+    <view style='text-align: left;flex-grow: 1;flex-shrink: 1;'>{{ryBrand3.group_name||'--'}}</view>
+    <view style="width:130rpx;  display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+      <image wx:if="{{(ryBrand3.ranking !='排名'|| ryBrand3.rank_no !='排名')&&ryBrand3.yellow_card &&ryBrand3.yellow_card!=0}}" style='width:23rpx;height:32rpx;background:#FFD100;'></image>
+      <text wx:if="{{ryBrand3.yellow_card &&ryBrand3.yellow_card!=0}}" style='text-align: left;'>{{ryBrand3.yellow_card||'--'}}</text>
+      <text wx:if="{{(!ryBrand3.yellow_card ||ryBrand3.yellow_card==0)}}" style='text-align: left;'>--</text>
+    </view>
+    <view style="width:130rpx;  display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+      <image wx:if="{{(ryBrand3.ranking !='排名'|| ryBrand3.rank_no !='排名')&&ryBrand3.red_card &&ryBrand3.red_card!=0}}" style='width:23rpx;height:32rpx;background:#E60012;'></image>
+      <text wx:if="{{ryBrand3.red_card &&ryBrand3.red_card!=0}}" style='text-align: left;'>{{ryBrand3.red_card||'--'}}</text>
+      <text wx:if="{{(!ryBrand3.red_card ||ryBrand3.red_card==0)}}" style='text-align: left;'>--</text>
+    </view>
+  </view>
+</template>

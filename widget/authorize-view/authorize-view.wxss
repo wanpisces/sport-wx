@@ -1,0 +1,15 @@
+/* widget/authorize-view/authorize-view.wxss */
+
+.bnt {
+  width: auto;
+  height: auto;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 0;
+}
+
+.bnt::after {
+  border: 0;
+}

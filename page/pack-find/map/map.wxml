@@ -1,0 +1,7 @@
+<import src="/my-template/position/position.wxml" />
+<view class="pages">
+  <navigationBar title-name="位置" tag="{{2}}" status-bar-height="{{statusBarHeight}}" />
+  <view>
+    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" show-compass="true" show-location="true" enable-zoom="true" enable-scroll="true" style="width: 100%; height: {{minHeight}}px;"></map>
+  </view>
+</view>

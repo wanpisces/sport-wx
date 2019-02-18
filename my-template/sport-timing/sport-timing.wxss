@@ -1,0 +1,54 @@
+.sport-timing {
+  width: 690rpx;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.timing-contant {
+  height: 102rpx;
+  display: flex;
+  margin: 0 30rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.sport-timing:nth-last-child(2) .timing-contant:last-child {
+  border-bottom: none;
+}
+
+.timing-contant-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timing-rank {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.contant-name-header {
+  display: flex;
+  align-items: center;
+  margin-left: 40rpx;
+}
+
+.contant-name-header image {
+  width: 42rpx;
+  height: 42rpx;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 50%;
+  margin-right: 9rpx;
+}
+
+.contant-name-header text {
+  font-size: 24rpx;
+  color: #353535;
+}
+
+.timing-time {
+  font-size: 24rpx;
+  color: #353535;
+}

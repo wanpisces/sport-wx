@@ -1,0 +1,86 @@
+/* page/pack-index/pages/announcements/announcements.wxss */
+.title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.labe {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 15rpx 10rpx 30rpx 15rpx;
+}
+
+.labe text {
+  font-size: 30rpx;
+  color: #353535;
+  margin-left: 6rpx;
+}
+
+.checkboxgroup {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 15rpx 0rpx 0rpx 0rpx;
+}
+
+.group {
+  padding: 5rpx;
+}
+
+.pj-tdv {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 15rpx 0rpx 20rpx 15rpx;
+}
+
+.pj_td {
+  border-radius: 6rpx;
+  padding: 8rpx 12rpx 8rpx 12rpx;
+  font-size: 24rpx;
+  margin-left: 8rpx;
+}
+
+.pj_td.on {
+  color: #fff;
+  background: #49ccfc;
+  border: 1rpx solid #49ccfc;
+}
+
+.pj_td.off {
+  color: #999;
+  background: #fff;
+  border: 1rpx solid #aeaeae;
+}
+
+.input-txt {
+  width: 720rpx;
+  height: 250rpx;
+  padding: 30rpx 15rpx 0rpx 15rpx;
+}
+
+.input-txt textarea {
+  width: 700rpx;
+  padding: 10rpx;
+  height: 230rpx;
+  background: #f4f4f4;
+}
+
+.holder {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.submit {
+  background: -webkit-linear-gradient(left, #FFD100, #FFAE00);
+  color: #282828;
+  border-radius: 45rpx;
+  height: 90rpx;
+  margin: 190rpx 75rpx 190rpx 75rpx;
+  width: 600rpx;
+  font-weight: bold;
+  line-height: 90rpx;
+  text-align: center;
+}

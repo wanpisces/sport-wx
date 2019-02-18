@@ -1,0 +1,12 @@
+<template name='record'>
+  <view class="temp-record {{recordTable.group_name =='球队'?'temp-record-ed':''}}" style="background:{{(index+1)%2==1?'#fff':''}}">
+    <view style='flex-grow: 1;flex-shrink: 1;  text-align: left;padding-left:20rpx;'>{{recordTable.group_name||'--'}}</view>
+    <view style='width:80rpx;'>{{recordTable.score||'--'}}</view>
+    <view style='width:50rpx;'>{{recordTable.win_num||'--'}}</view>
+    <view style='width:50rpx;'>{{recordTable.fail_num||'--'}}</view>
+    <view style='width:50rpx;'>{{recordTable.tie_num||'--'}}</view>
+    <view style='width:120rpx;'>{{recordTable.goal_num||'--'}}</view>
+    <view style='width:80rpx;'>{{recordTable.red_card||'--'}}</view>
+    <view style='width:80rpx;'>{{recordTable.yellow_card||'--'}}</view>
+  </view>
+</template>

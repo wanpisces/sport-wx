@@ -1,0 +1,172 @@
+<!--page/pack-match/pages/sports-record-end/sports-record-end.wxml-->
+<import src='/my-template/sports-record/sports-record.wxml' />
+<navigationBar class='navigation-bar' title-name="赛事" tag="{{2}}" status-bar-height="{{statusBarHeight}}">
+</navigationBar>
+<view class='sports-record' style='padding-top:{{statusBarHeight+45}}px;'>
+  <view class='sports-record-sub1'>
+    <navigator url='/page/pack-index/pages/team-page/team-page?group_id={{item.home_group.group_id || item.home_group.home_group_id }}'>
+      <view class='team1' style='width:260rpx;'>
+        <image mode='aspectFill' src='{{item.home_group.group_badge || item.home_group.home_group_badge}}' style="background:{{!item.home_group.group_badge || item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+        <view>{{item.home_group.group_name|| item.home_group.home_group_name || '--'}}</view>
+      </view>
+    </navigator>
+    <view class='and'>
+      <view style='color:#fff;font-size:28rpx;'>{{item.match_type==1?'第'+item.match_turn+'轮':item.knockout_type==0?item.match_season:item.knockout_type==1?'决赛':'1/'+item.knockout_type+'决赛'}}</view>
+      <view wx:if="{{item.is_end==1  || item.match_info.match_status == 3}}" style='background:#FFD100;color:#282828;font-size:26rpx;height:52rpx;width:150rpx;border-radius:26rpx;margin:20rpx 0;line-height:52rpx;text-align: center;'>{{item.home_score|| item.home_group.home_group_score || 0}} : {{item.away_score|| item.away_group.away_group_score || 0}}</view>
+      <image wx:else src='/pic/VS_black.png'></image>
+      <!-- <view style='color:#fff;font-size:24rpx;'>未开始</view> -->
+    </view>
+    <navigator url='/page/pack-index/pages/team-page/team-page?group_id={{item.away_group.group_id || item.away_group.away_group_id}}'>
+      <view class='team2' style='width:260rpx;'>
+        <image mode='aspectFill' src='{{item.away_group.group_badge || item.away_group.away_group_badge}}' style="background:{{!item.away_group.group_badge || item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+        <view>{{item.away_group.group_name||item.away_group.away_group_name ||'--'}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class='sports-record-sub2'>
+    <view class='ch1'>
+      <image mode='aspectFill' src='/pic/time.png'></image>
+      <view>{{item.match_starttime || item.match_info.match_starttime}}</view>
+    </view>
+    <view mode='aspectFill' class='ch2'>
+      <image src='/pic/address.png'></image>
+      <view>{{item.address||item.match_info.match_address ||'待定'}}</view>
+    </view>
+  </view>
+</view>
+<view class='record-data' style='min-height:{{recordHeight}}px;'>
+  <view class='label'>
+    <view catchtap='bindLabelClick' wx:for="{{labelList}}" wx:key="labelKey" data-index='{{index}}' class="sub {{checkLabelIndex == index?'subed':''}}">{{item.value}}
+      <view class="line {{checkLabelIndex == index?'lineed':''}}"></view>
+    </view>
+  </view>
+
+  <view class='record-view' style='margin-bottom:60rpx;' hidden="{{checkLabelIndex!=0}}">
+    <view style='font-size:30rpx;color:#6E6E6E;margin-top:60rpx;'>
+      <text style='color:#C8CAC9'>—</text> 首发
+      <text style='color:#C8CAC9'>—</text> </view>
+    <view class='emblem-view'>
+      <image class='emblem' mode='aspectFill' src='{{item.home_group.group_badge || item.home_group.home_group_badge}}' style="background:{{!item.home_group.group_badge || item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+      <image mode='aspectFill' class='vs' src='/pic/VS_black.png'></image>
+      <image class='emblem' mode='aspectFill' src='{{item.away_group.group_badge || item.away_group.away_group_badge}}' style="background:{{!item.away_group.group_badge || item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+    </view>
+    <view style='display: flex;flex-flow: row nowrap;justify-content: space-between;align-items: flex-start; width:100%;'>
+      <view class='record1'>
+        <view class='record-item1' wx:for="{{labelList[0].home_group.starter}}" wx:key="record1">
+          <view class='place' style="background:#4A7DE7;">{{item.role}}</view>
+          <view class='name'>{{item.no}}-{{item.user_realname||item.user_nickname||'--'}}</view>
+        </view>
+      </view>
+      <view class='record2'>
+        <view class='record-item1' wx:for="{{labelList[0].away_group.starter}}" wx:key="record2">
+          <view class='place' style="background:#058F44;">{{item.role}}</view>
+          <view class='name'>{{item.no}}-{{item.user_realname||item.user_nickname||'--'}}</view>
+        </view>
+      </view>
+    </view>
+    <view style='font-size:30rpx;color:#6E6E6E;margin-top:60rpx;'>
+      <text style='color:#C8CAC9'>—</text> 替补
+      <text style='color:#C8CAC9'>—</text> </view>
+    <view class='emblem-view'>
+      <image class='emblem' mode='aspectFill' src='{{item.home_group.group_badge ||item.home_group.home_group_badge}}' style="background:{{!item.home_group.group_badge || item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+      <image mode='aspectFill' class='vs' src='/pic/VS_black.png'></image>
+      <image class='emblem' mode='aspectFill' src='{{item.away_group.group_badge || item.away_group.away_group_badge}}' style="background:{{!item.away_group.group_badge ||item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+    </view>
+    <view style='display: flex;flex-flow: row nowrap;justify-content: space-between;align-items: flex-start; width:100%;'>
+      <view class='record1'>
+        <view class='record-item1' wx:for="{{labelList[0].home_group.substitute}}" wx:key="record1">
+          <view class='place' style="background:#4A7DE7;">{{item.role}}</view>
+          <view class='name'>{{item.no}}-{{item.user_realname||item.user_nickname||'--'}}</view>
+        </view>
+      </view>
+      <view class='record2'>
+        <view class='record-item1' wx:for="{{labelList[0].away_group.substitute}}" wx:key="record2">
+          <view class='place' style="background:#058F44;">{{item.role}}</view>
+          <view class='name'>{{item.no}}-{{item.user_realname||item.user_nickname||'--'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='record-view2' hidden="{{checkLabelIndex!=1}}">
+    <view class='emblem-view' style='margin-top:60rpx;'>
+      <image class='emblem' mode='aspectFill' src='{{item.home_group.group_badge || item.home_group.home_group_badge}}' style="background:{{!item.home_group.group_badge || item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+      <image mode='aspectFill' class='vs' src='/pic/VS_black.png'></image>
+      <image class='emblem' mode='aspectFill' src='{{item.away_group.group_badge || item.away_group.away_group_badge}}' style="background:{{!item.away_group.group_badge ||item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+    </view>
+    <view class='count-view' wx:for="{{labelList[1].list}}" wx:key="labelList1">
+      <view class='num'>{{item.num1}}</view>
+      <wxzx-progress width="{{200}}" background-color="#FF5400" strokeWidth="{{10}}" active-color="#e5e5e5" percent="{{100-item.perNum}}" />
+      <view class='name'>{{item.txt}}</view>
+      <wxzx-progress width="{{200}}" strokeWidth="{{10}}" active-color="#4A7DE7" percent="{{item.num2==0?0:100-item.perNum}}" />
+      <view class='num' style='text-align: right;'>{{item.num2}}</view>
+    </view>
+  </view>
+  <view class='record-view3' style='margin-bottom:60rpx;' hidden="{{checkLabelIndex!=2}}">
+    <view class='emblem-view' style='margin-top:60rpx;'>
+      <image class='emblem' mode='aspectFill' src='{{item.home_group.group_badge || item.home_group.home_group_badge}}' style="background:{{!item.home_group.group_badge || item.home_group.home_group_badge?'#f2f2f2':''}};"></image>
+      <image mode='aspectFill' class='vs' src='/pic/VS_black.png'></image>
+      <image class='emblem' mode='aspectFill' src='{{item.away_group.group_badge || item.away_group.away_group_badge}}' style="background:{{!item.away_group.group_badge || item.away_group.away_group_badge?'#f2f2f2':''}};"></image>
+    </view>
+    <view class='explain'>
+      <view>
+        <image mode='aspectFill' class='image1' src='/pic/match_goal.png'></image>
+        <text>进球</text>
+      </view>
+      <view>
+        <image mode='aspectFill' class='image1' src='/pic/match_penalty.png'></image>
+        <text>点球</text>
+      </view>
+      <view>
+        <image mode='aspectFill' class='image1' src='/pic/match_notin.png'></image>
+        <text>点球未进</text>
+      </view>
+      <view>
+        <image class='image2' style='background:#FF1202;'></image>
+        <text>红牌</text>
+      </view>
+      <view>
+        <image class='image2' style='background:#F8E71C;'></image>
+        <text>黄牌</text>
+      </view>
+    </view>
+    <view class='event-start'>
+      <view>开始</view>
+    </view>
+    <view class='time-axis-item' wx:for="{{labelList[2].list}}" wx:key="timeKey">
+      <view class='event-left'>
+        <!-- labelList[2].list -->
+        <view wx:if="{{item.the_group == 1}}" class='item'>
+          <image class='event-image' mode='aspectFill' src='{{item.user_avatar}}'></image>
+          <text>{{item.user_nickname}}</text>
+          <image wx:if="{{item.type==1}}" class='event-image' mode='aspectFill' src='/pic/match_goal.png'></image>
+          <image wx:elif="{{item.type==2 && item.goal_in== 2}}" class='event-image' mode='aspectFill' src='/pic/match_notin.png'></image>
+          <image wx:elif="{{item.type==2 && item.goal_in== 1}}" class='event-image' mode='aspectFill' src='/pic/match_penalty.png'></image>
+          <view wx:elif="{{item.type==12}}" style='width: 24rpx;height: 32rpx;margin: 0 2rpx;border-radius: 4rpx;background:#FF1202;'></view>
+          <view wx:elif="{{item.type==13}}" style='width: 24rpx;height: 32rpx;margin: 0 2rpx;border-radius: 4rpx;background:#F8E71C;'></view>
+          <view wx:else style='font-size: 24rpx;color: #353535;'>{{item.type_value}}</view>
+        </view>
+      </view>
+      <view class='time'>
+        <view class='time-line'></view>
+        <view wx:if="{{item.type == -1}}" class='txt2'>{{item.time}}</view>
+        <view wx:else class='txt'>{{item.time}}'</view>
+        <view class='time-line'></view>
+      </view>
+      <view class='event-right'>
+        <view wx:if="{{item.the_group == 2}}" class='item'>
+          <image class='event-image' mode='aspectFill' src='{{item.user_avatar}}'></image>
+          <text>{{item.user_nickname}}</text>
+          <image wx:if="{{item.type==1}}" class='event-image' mode='aspectFill' src='/pic/match_goal.png'></image>
+          <image wx:elif="{{item.type==2 && item.goal_in== 2}}" class='event-image' mode='aspectFill' src='/pic/match_notin.png'></image>
+          <image wx:elif="{{item.type==2 && item.goal_in== 1}}" class='event-image' mode='aspectFill' src='/pic/match_penalty.png'></image>
+          <view wx:elif="{{item.type==12}}" style='width: 24rpx;height: 32rpx;margin: 0 2rpx;border-radius: 4rpx;background:#FF1202;'></view>
+          <view wx:elif="{{item.type==13}}" style='width: 24rpx;height: 32rpx;margin: 0 2rpx;border-radius: 4rpx;background:#F8E71C;'></view>
+          <view wx:else style='font-size: 24rpx;color: #353535;'>{{item.type_value}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='event-end'>
+      <view>结束</view>
+    </view>
+  </view>
+</view>

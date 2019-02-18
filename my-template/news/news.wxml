@@ -1,0 +1,103 @@
+<!-- 无图和大图资讯item  -->
+<template name="news_item1">
+  <navigator url="/page/pages/new-detail/new-detail?news_id={{material_id}}">
+    <view class='news_item1'>
+      <text class='title'>{{material_title}}</text>
+      <image wx:if="{{material_pic_type >= 2}}" class='bigImage' mode='aspectFill' style="{{material_pic?'':' background: #f6f6f6;'}}" src='{{material_pic}}'></image>
+      <view class='view_buttom'>
+        <text wx:if='{{is_top == 1}}' class='top'>置顶</text>
+        <view class='source'>{{material_source||'本地'}}</view>
+        <view class='comment'>
+          <!-- <image mode='aspectFill' src='/pic/accessment.png'></image> -->
+          <text>评论 {{comment_num}}</text>
+        </view>
+        <view class='read'>
+          <!-- <image mode='aspectFill' src='/pic/read.png'></image> -->
+          <text>浏览 {{visit_num}}</text>
+        </view>
+        <text class='time'>{{create_time}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
+<!-- --------------  -->
+<!-- 小图资讯item  -->
+<template name="news_item2">
+  <navigator url="/page/pages/new-detail/new-detail?news_id={{material_id}}">
+    <view class='news_item2'>
+      <view class='top_view'>
+        <image class='bigImage' mode='aspectFill' src='{{material_pic}}' style="{{material_pic?'':' background: #f6f6f6;'}}"></image>
+        <view class='left_view'>
+          <text class='title'>{{material_title}}</text>
+          <view class='view_buttom'>
+            <text wx:if='{{is_top == 1}}' class='top'>置顶</text>
+            <text class='source' style='width:100rpx;'>{{material_source||'本地'}}</text>
+            <view class='comment'>
+              <!-- <image mode='aspectFill' src='/pic/accessment.png'></image> -->
+              <text>评论 {{comment_num}}</text>
+            </view>
+            <view class='read'>
+              <!-- <image mode='aspectFill' src='/pic/read.png'></image> -->
+              <text>浏览 {{visit_num}}</text>
+              <!-- <text class='time'>{{create_time}}</text> -->
+            </view>
+          </view>
+        </view>
+      </view>
+      <text class='time'>{{create_time}}</text>
+    </view>
+  </navigator>
+</template>
+<!-- --------------  -->
+
+<!-- 收藏里的无图和大图资讯item  -->
+<template name="collection_news_item1">
+  <!-- <navigator url="/page/pages/new-detail/new-detail?news_id={{material_id}}"> -->
+  <view bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" catchtap='onItem' catchlongtap='onLongItem' data-index='{{index}}' data-material_id='{{material_id}}' class='news_item1'>
+    <text class='title'>{{material_title}}</text>
+    <image wx:if="{{material_pic_type >= 2}}" class='bigImage' mode='aspectFill' style="{{material_pic?'':' background: #f6f6f6;'}}" src='{{material_pic}}'></image>
+    <view class='view_buttom'>
+      <text wx:if='{{is_top == 1}}' class='top'>置顶</text>
+      <view class='source'>{{material_source||'本地'}}</view>
+      <view class='comment'>
+        <!-- <image mode='aspectFill' src='/pic/accessment.png'></image> -->
+        <text>评论 {{comment_num}}</text>
+      </view>
+      <view class='read'>
+        <!-- <image mode='aspectFill' src='/pic/read.png'></image> -->
+        <text>浏览 {{visit_num}}</text>
+      </view>
+      <text class='time'>{{create_time}}</text>
+    </view>
+  </view>
+  <!-- </navigator> -->
+</template>
+<!-- --------------  -->
+<!-- 收藏里的小图资讯item  -->
+<template name="collection_news_item2">
+  <!-- <navigator url="/page/pages/new-detail/new-detail?news_id={{material_id}}"> -->
+  <view bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" catchtap='onItem' catchlongtap='onLongItem' data-index='{{index}}' data-material_id='{{material_id}}' class='news_item2'>
+    <view class='top_view'>
+      <image class='bigImage' mode='aspectFill' src='{{material_pic}}' style="{{material_pic?'':' background: #f6f6f6;'}}"></image>
+      <view class='left_view'>
+        <text class='title'>{{material_title}}</text>
+        <view class='view_buttom'>
+          <text wx:if='{{is_top == 1}}' class='top'>置顶</text>
+          <text class='source' style='width:100rpx;'>{{material_source||'本地'}}</text>
+          <view class='comment'>
+            <!-- <image mode='aspectFill' src='/pic/accessment.png'></image> -->
+            <text>评论 {{comment_num}}</text>
+          </view>
+          <view class='read'>
+            <!-- <image mode='aspectFill' src='/pic/read.png'></image> -->
+            <text>浏览 {{visit_num}}</text>
+            <!-- <text class='time'>{{create_time}}</text> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    <text class='time'>{{create_time}}</text>
+  </view>
+  <!-- </navigator> -->
+</template>
+<!-- --------------  -->

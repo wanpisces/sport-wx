@@ -1,0 +1,144 @@
+/* page/tabBar/find/find.wxss */
+@import "/my-template/news/news.wxss";
+@import "/my-template/shuoshuo/shuoshuo.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+  /* margin-bottom: 55rpx; */
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.data_view1 {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.swiper1 {
+  /* overflow: hidden; */
+}
+
+.swiper-nav {
+  margin: 15rpx;
+  position: relative;
+}
+
+.swiper-img {
+  border-radius: 15rpx;
+  height: 380rpx;
+  overflow: hidden;
+  text-align: center;
+  /* background: #ffd100; */
+  /* position: relative; */
+}
+
+.swiper-title {
+  position: absolute;
+  left: 0;
+  top: 310rpx;
+  height: 70rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #fff;
+  border-radius: 15rpx;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* 标准的语法 */
+}
+
+.swiper-title-1 {
+  margin-left: 15rpx;
+}
+
+.swiper-title-2 {
+  margin-right: 15rpx;
+}
+
+.swiper-img-1 {
+  width: 720rpx;
+  height: 380rpx;
+}
+
+.find-nav {
+  margin: 15rpx 0 25rpx 0;
+  display: flex;
+}
+
+.find-nav>view {
+  width: 25%;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.find-nav-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.find-nav-icon {
+  width: 50%;
+  height: 50rpx;
+  border: 1px red solid;
+  margin: 0 auto;
+}
+
+.find-line {
+  background: #eee;
+  height: 25rpx;
+}
+
+.find-bottom {
+  height: 98rpx;
+  width: 100%;
+}
+
+.yue-fresh {
+  position: fixed;
+  bottom: 100rpx;
+  right: 55rpx;
+  z-index: 100;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-box-shadow: 4rpx 10rpx 16rpx #eee;
+  -webkit-box-shadow: 4rpx 10rpx 16rpx #eee;
+  box-shadow: 4rpx 10rpx 16rpx #eee;
+  background: #fff;
+}
+
+.yue-fresh  image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.mymove{
+  animation: spin 1s linear infinite;
+} 
+@keyframes spin {
+   0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

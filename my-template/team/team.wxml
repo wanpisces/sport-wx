@@ -1,0 +1,16 @@
+<template name="team">
+  <view hover-stop-propagation="{{true}}" class='team'>
+    <image mode='aspectFill' class='teamImg' src='{{item.group_badge}}'></image>
+    <view class='teamDetails'>
+      <view class='teamName'>
+        <view class='teamName_v1'>{{item.group_name || ''}}</view>
+        <view class='teamName_v2'>{{item.attr_value || ''}}</view>
+        <view wx:if="{{item.is_leader == 1 && item.is_admin == 2}}" class='teamName_v2' style='border:none;background:#ffd100;'>队长</view>
+        <view wx:if="{{item.is_admin == 1}}" class='teamName_v2' style='border:none;background:#ffd100;'>创建者</view>
+      </view>
+      <view class='teamNum'>{{item.member_num || 0}}位队员·{{item.feed_num || '0'}}条动态·{{item.atten_num || '0'}}人关注</view>
+      <view class='team-adress'>{{item.area || ''}}</view>
+    </view>
+    <image class='arrow' mode='aspectFill' src='/pic/list_arrow.png'> </image>
+  </view>
+</template>

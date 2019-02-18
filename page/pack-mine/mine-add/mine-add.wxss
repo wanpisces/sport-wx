@@ -1,0 +1,101 @@
+/* page/pack-mine/mine-add/mine-add.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/team2/team2.wxss";
+.pages {
+  position: relative;
+}
+
+.create-header {
+  width: 100%;
+}
+
+.create-view {
+  width: 100%;
+}
+
+.create-view image {
+  width: 100%;
+  height: 200rpx;
+}
+
+.create-avator {
+  margin: -85rpx auto 0;
+  text-align: center;
+}
+
+.create-avator image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.team-list-wrapper {
+  margin-top: 40rpx;
+  width: 100%;
+  padding-bottom: 100rpx;
+}
+
+
+.bottom {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #FFD100;
+  line-height: 98rpx;
+  z-index: 400;
+}
+
+.share {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 750rpx;
+  height: 98rpx;
+  font-size: 36rpx;
+  color: #222;
+  font-weight: bold;
+}
+
+.share>image {
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 8rpx;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+.empty-view {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+}
+.on-new{
+  font-size: 30rpx;
+  color: #FFD100;
+  line-height: 86rpx;
+  border-radius: 43rpx;
+  padding: 0 30rpx;
+  border: 1px solid #FFD100;
+  margin-top: 20rpx;
+}

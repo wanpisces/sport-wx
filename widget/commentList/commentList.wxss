@@ -1,0 +1,317 @@
+/* page/widget/commentList/commentList.wxss */
+
+.title {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 15rpx 0;
+  align-items: flex-end;
+}
+
+.title .name {
+  font-size: 30rpx;
+  color: #353535;
+  margin-left: 20rpx;
+  font-weight: 600;
+}
+
+.title .num {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 15rpx;
+}
+
+.commentEmpty {
+  font-size: 30rpx;
+  padding: 20rpx;
+  color: #999;
+  font-weight: 500;
+}
+
+.commentList {
+  display: flex;
+  flex-flow: column;
+}
+
+.commentList .item {
+  display: flex;
+  flex-flow: column;
+  padding: 30rpx 0;
+  margin: 0 5rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.commentList .item  .topview {
+  display: flex;
+  flex-flow: row column;
+  align-items: center;
+  position: relative;
+}
+
+.commentList .item  .topview .layer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 740rpx;
+}
+
+.commentList .item  .topview .layer .userImg {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  margin-left: 15rpx;
+}
+
+.commentList .item  .topview .layer .nameAndTime {
+  display: flex;
+  flex-flow: column;
+  margin-left: 13rpx;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+  height: 82rpx;
+}
+
+.commentList .item  .topview .layer .nameAndTime .name {
+  font-size: 28rpx;
+  color: #2b79b5;
+}
+
+.commentList .item  .topview .layer .nameAndTime .time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.commentList .item  .topview .layer .commentZan {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0;
+  padding: 10rpx 14rpx;
+  background: #fff;
+  border-radius: 0;
+}
+
+.commentList .item  .topview .layer .commentZan image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.commentList .item  .topview .layer .hoverClass {
+  background: #f8f8f8;
+}
+
+.commentList .item  .topview .layer .commentZan .num {
+  font-size: 24rpx;
+  color: #bcbcbc;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+
+.commentList .item  .topview .layer .more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 14rpx 0 0;
+  padding: 12rpx 14rpx 8rpx 14rpx;
+  border-radius: 0;
+  background: #fff;
+  line-height: 1;
+}
+
+.commentList .item  .topview .layer .more::after {
+  border: 0;
+}
+
+.commentList .item  .topview .layer .more .hoverClass2 {
+  background: #f8f8f8;
+}
+
+.commentList .item  .topview .layer .more  .huifu {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+/* .commentList .item  .topview .layer .more  image {
+  line-height: 1;
+  width: 28rpx;
+  height: 28rpx;
+} */
+
+/* 
+.commentList .item  .topview .layer2 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 64rpx;
+}
+
+.commentList .item  .topview .layer2 .view1 {
+  background: #000;
+  opacity: 0.8;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentList .item  .topview .layer2 .view1 .huifu {
+  color: #fff;
+  font-size: 24rpx;
+  padding: 10rpx 25rpx;
+}
+
+.commentList .item  .topview .layer2 .view2 {
+  width: 0;
+  height: 0;
+  border-top: 6rpx solid transparent;
+  border-left: 12rpx solid #000;
+  border-bottom: 6rpx solid transparent;
+  opacity: 0.8;
+} */
+
+.commentList .item .bottomView {
+  font-size: 28rpx;
+  color: #353535;
+  margin: 15rpx 68rpx 0 110rpx;
+}
+
+.commentList .item .huifuView {
+  display: flex;
+  flex-flow: column;
+  background: #f2f2f2;
+  margin: 15rpx 68rpx 0 110rpx;
+  padding: 10rpx 0;
+}
+
+.commentList .item .huifuView .huifuItem {
+  font-size: 26rpx;
+  color: #353535;
+  padding: 10rpx;
+}
+
+.commentList .item .huifuView .lookMore {
+  font-size: 24rpx;
+  color: #b7b7b7;
+  padding: 10rpx;
+  margin: 0;
+  border-radius: 0;
+  background: #f2f2f2;
+  line-height: 1;
+  text-align: left;
+  width: auto;
+}
+
+.commentList .item .huifuView .lookMoreHove {
+  background: #f8f8f8;
+}
+
+.commentList .item .huifuView .lookMore::after {
+  border: 0;
+  width: auto;
+}
+
+.commentList .item .huifuView .lookMore text {
+  font-size: 24rpx;
+  color: #2ea3fc;
+}
+
+.comment {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  width: 100%;
+  height: 126rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 -2rpx 0 #f2f2f2;
+  box-sizing: border-box;
+}
+
+.commentBg {
+  background: #f4f4f4;
+}
+
+.comment .commentInput {
+  margin: 22rpx 25rpx 22rpx 15rpx;
+  padding: 15rpx;
+  flex-grow: 1;
+  background: #f4f4f4;
+  border-radius: 10rpx;
+}
+
+.comment .inputBg {
+  background: #fff;
+}
+
+.comment .placeHolderStyle {
+  font-size: 28rpx;
+  color: #bdbdbd;
+}
+
+.comment .authorizeView1 {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.comment .authorizeView1 .bnt {
+  padding: 16rpx 25rpx;
+  margin: 0;
+  border-radius: 0;
+  background: #fff;
+  line-height: 1;
+}
+
+.comment .authorizeView1 .bnted {
+  background: #f8f8f8;
+}
+
+.comment .authorizeView1 .bnt .share {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.comment .authorizeView2 {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.comment  .authorizeView2 .bnt2 {
+  padding: 16rpx 25rpx;
+  margin: 0;
+  border-radius: 0;
+  background: #fff;
+  line-height: 1;
+  margin-right: 20rpx;
+}
+
+.comment  .authorizeView2 .bnted2 {
+  background: #f8f8f8;
+}
+
+.comment  .authorizeView2 .bnt2 .collect {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.comment .authorizeView3 {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.comment .authorizeView3 .bnt3 {
+  padding: 16rpx 25rpx;
+  margin: 0;
+  border-radius: 8rpx;
+  background: #0eb6ed;
+  line-height: 1;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  color: #fff;
+}

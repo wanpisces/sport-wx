@@ -1,0 +1,117 @@
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/group-match/group-match.wxml" />
+<view class="{{applyState || hintState?'pages-fixed':'pages'}}">
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#202020" title-name="川大四院羽毛球友谊赛" status-bar-height="{{statusBarHeight}}" />
+  <view class='navigationBar-bg' style="margin-top:{{statusBarHeight+45}}px;">
+    <image src='https://img.sport.darongshutech.com/确定banner.png'></image>
+    <view class='data_view_tag'>
+      <view class='iconfont icon-fenxiang' style='font-size:25rpx;color:#353535;margin:0 8rpx;'></view>
+      <authorizeView bnt-type="share">
+        <view style='font-size:30rpx;color:#353535;line-height:56rpx;'>分享</view>
+      </authorizeView>
+    </view>
+  </view>
+  <!-- 分组 -->
+  <view class='group'>
+    <block wx:for="{{grouping}}" wx:key="{{index}}">
+      <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" bind:onBut="groupSelect" data-index="{{index}}" style="width:25%;display:flex;justify-content:space-around;">
+        <view class="{{selectIndex == index?'select':'btn'}}">{{item}}组</view>
+      </authorizeView>
+    </block>
+  </view>
+  <!-- 分组情况 -->
+  <view class='group-detail' wx:if="{{dataList.length>0}}">
+    <template is="badminton" wx:for="{{dataList}}" data="{{item,index}}" wx:key="index" />
+    <template is="loadMore3" />
+  </view>
+  <view wx:else>
+    <view class='empty-view'>
+      <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+      <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无数据</text>
+    </view>
+  </view>
+</view>
+<!-- 确认个人信息弹窗 -->
+<view wx:if="{{applyState}}">
+  <view class='apply-bg'>
+    <view class='apply-content'>
+      <image mode='aspectFill' src='/pic/yunduo.png' style='width:667rpx;height:180rpx;border-radius:30rpx;'></image>
+      <view class='apply-title'>请确认个人信息</view>
+      <authorizeView refresh="{{refreshAuthorizeView}}" is-immediately-back="{{true}}" user-info="{{true}}" bind:onBut="cancelTip" style="position: absolute;right:30rpx;top:30rpx;">
+        <view class='iconfont icon-tianjia1' style='color:#fff;font-size:45rpx;'></view>
+      </authorizeView>
+      <view class='apply-text'>
+        <view>
+          <view>学院：</view>
+          <picker bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' range="{{college}}" bindchange="changeCollege">
+            <view class='release-content-right'>{{college_name}}
+              <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+        <view>
+          <view>性别：</view>
+          <picker bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{gender}}" bindchange="changeGender">
+            <view class='release-content-right'>{{sex}}
+              <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+        <view>
+          <view>姓名：</view>
+          <picker bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{userList}}" range-key="name" bindchange='changeName'>
+            <view class='release-content-right'>{{user_name}}
+              <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+            </view>
+          </picker>
+        </view>
+        <view>
+          <view>手机：</view>
+          <view wx:if="{{!isAuit}}" class='release-content-right'>
+            <authorizeView user-phone="{{true}}" refresh="{{refreshAuthorizeView}}" user-info="{{true}}" is-immediately-back="{{true}}" bind:onBut="getPhoneNumber">
+              <view>
+                <text>点击授权手机号</text>
+                <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+              </view>
+            </authorizeView>
+          </view>
+          <view wx:else class='release-content-right'>
+            <input value='{{user_phone}}' style='text-align:right;margin-right:20rpx;' type='number' bindinput='getPhoneInfo'></input>
+          </view>
+        </view>
+        <view wx:if="{{isAuit}}" class='tip'>
+          <text class='iconfont icon-zhuyi' style='font-size:30rpx;color:#FFB300'></text> 手机号码需与报名时填写一致！
+        </view>
+      </view>
+      <view class='apply-btn'>
+        <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" bind:onBut="submitInfo">
+          <view>提交信息</view>
+        </authorizeView>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 信息提示框 -->
+<view wx:if="{{hintState}}">
+  <view class='apply-bg'>
+    <view class='apply-content' style="height:620rpx;">
+      <image mode='aspectFill' src='/pic/yunduo.png' style='width:667rpx;height:180rpx;border-radius:30rpx;'></image>
+      <view class='apply-title'>温馨提示</view>
+      <view class='apply-line'>
+        <view class='apply-join'>欢迎加入
+          <text>{{group_no || ''}}</text> 队</view>
+        <view class='apply-join-text'>您的小伙伴已就位，快去撩TA吧！</view>
+      </view>
+      <view class='apply-btn knows'>
+        <authorizeView refresh="{{refreshAuthorizeView}}" user-info="{{true}}" bind:onBut="shutDown">
+          <view>我知道了（{{countDownNum}}s）</view>
+        </authorizeView>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 回到首页 -->
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

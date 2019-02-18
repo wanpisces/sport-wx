@@ -1,0 +1,18 @@
+<!--page/pack-index/pages/invite-friends/invite-friends.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" bg-color="#444444" title-name="邀请队员" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view2' style="height:{{height}}px;top:{{statusBarHeight+45}}px;">
+    <canvas class='canvas_view' canvas-id='canvasimg'></canvas>
+    <!-- <image class='share-img' mode='aspectFit'  src='{{shareImg}}'></image> -->
+    <view class='share-save'>
+      <button open-type='share'>
+        <image src='/pic/wechat.png'></image>
+        微信好友
+      </button>
+      <button bindtap='savePhoto'>
+        <image src='/pic/save.png'></image>
+        保存到相册
+      </button>
+    </view>
+  </view>
+</view>

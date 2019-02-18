@@ -1,0 +1,24 @@
+<!--page/tabBar/movement-circle/movement-circle.wxml-->
+<import src="/my-template/shuoshuo/shuoshuo.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<comment-view is-show="{{isCommentShow}}" bind:onCommentBut="onCommentBut" params="{{params}}" refresh="{{refreshAuthorizeView}}" />
+<view class='navBar' style="height:{{statusBarHeight+45}}px;">
+  <view class='title' style='margin-top:{{statusBarHeight}}px;'>运动圈</view>
+</view>
+<view wx:if="{{feedList.length!=0}}" style='margin-top:{{statusBarHeight+48}}px;'>
+  <!-- <view hidden="{{feedList.length<3&&isCommentShow}}" style='height:300px;'>
+  </view> -->
+  <view wx:for="{{feedList}}" wx:key="listKey" style="{{feedList.length<3&&!isCommentShow&&index==0?'padding-top:200px;':'padding-top:0px;'}}" >
+   <template is='shuoshuo'   data="{{item,index,mineUserId}}" />
+  </view>
+ 
+  <template wx:if="{{feedList}}" is="loadMore2" data="{{...loadData}}" />
+  <!-- <view class='find-bottom'></view> -->
+</view>
+<view wx:if="{{feedList.length==0}}">
+  <!-- <image src='../../../pic/'></image> -->
+  <template is="emptyView" data="{{empty}}" />
+</view>
+<view class='bottom-view'>
+  <image catchtap='addShuoShuo' mode='aspectFill' src='/pic/foot_add.png'></image>
+</view>

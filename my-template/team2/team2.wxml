@@ -1,0 +1,43 @@
+<!-- 我创建的队伍，我加入的队伍 -->
+<template name="team2">
+  <view class="item-view">
+    <navigator hover-stop-propagation="{{true}}" url="/page/pack-index/pages/team-page/team-page?group_id={{item.group_id}}" class='item-view-content'>
+      <!-- style='margin:0 {{item.moveRight}}rpx 0 {{item.moveLeft}}rpx;' -->
+      <view hover-stop-propagation="{{true}}" class='team-content' style='margin-left:{{item.moveLeft}}rpx' bindtouchstart="touchStart" bindtouchmove='touchMove' data-index="{{index}}">
+        <view class='team-left'>
+          <image mode='aspectFill' src='{{item.group_badge}}'></image>
+          <view class='team-left-text'>
+            <view class='team-name'>{{item.group_name}}
+              <view wx:if="{{item.attr_value}}" class='team-lable'>{{item.attr_value}}</view>
+            </view>
+            <view class='team-dynamic'>{{item.member_num}}位队员·{{item.atten_num || '0'}}人关注·{{item.visit_num || '0'}}人访问</view>
+            <view class='team-adress'>{{item.area}}</view>
+          </view>
+        </view>
+        <view style="font-size:26rpx;color:{{item.audit_status==1?'#FFD100':item.audit_status==2?'#64B35C':'#999999'}};" wx:if="{{item.audit_status}}">{{item.audit_status==1?'申请中':item.audit_status==2?'已加入':'已拒绝'}}</view>
+      </view>
+    </navigator>
+    <button class='team-share' open-type='share' data-index="{{index}}">
+      <view class='iconfont icon-fenxiang3' style='font-size:52rpx;color:#FFD100;text-align:center;margin-top:30rpx;'></view>
+      <view style='font-size:22rpx;color:#fff;'>分享</view>
+    </button>
+  </view>
+</template>
+
+<!-- 活跃推荐，队伍广场 （我的队伍页面）-->
+<template name="team_other">
+  <navigator hover-stop-propagation="{{true}}" url="/page/pack-index/pages/team-page/team-page?group_id={{item.group_id}}" class="item-view">
+    <view hover-stop-propagation="{{true}}" class='team-content-other'>
+      <view class='team-left'>
+        <image mode='aspectFill' src='{{item.group_badge}}'></image>
+        <view class='team-left-text'>
+          <view class='team-name'>{{item.group_name}}
+            <view wx:if="{{item.attr_value}}" class='team-lable'>{{item.attr_value}}</view>
+          </view>
+          <view class='team-dynamic'>{{item.member_num}}位队员·{{item.atten_num || '0'}}人关注·{{item.visit_num || '0'}}人访问</view>
+          <view class='team-adress'>{{item.area}}</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

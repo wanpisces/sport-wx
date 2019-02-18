@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "found-team": "/widget/found-team/found-team"
+  }
+}

@@ -1,0 +1,77 @@
+<!--page/pack-mine/mine-modify/mine-modify.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{3}}" is-back="{{true}}" title-name="个人信息修改" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='mine-flex'>
+      <view>头像</view>
+      <view class='mine-right' bindtap='handleUploadImg'>
+        <image mode='aspectFill' class='mine-avator' src="{{user.user_avatar}}"></image>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </view>
+    <view class='mine-flex' id='name' catchtap='handleUpload' data-name="{{user.user_nickname}}">
+      <view>名字</view>
+      <view class='mine-right'>
+        <text>{{user.user_nickname}}</text>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </view>
+    <view class='mine-flex'>
+      <view>出生日期</view>
+      <picker mode="date" value="{{date}}" start="1900-01-01" end="{{date}}" bindchange="bindDateChange">
+        <view class='mine-right'>
+          <text>{{user.user_birth||'未知'}}</text>
+          <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='mine-flex'>
+      <view>性别</view>
+      <picker bindchange="bindPickerChange" value="{{ user.user_gender||0}}" range="{{objectArray}}" mode="selector">
+        <view class='mine-right'>
+          <text>{{objectArray[ user.user_gender||0]}} </text>
+          <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='mine-flex' id='height' catchtap='handleUpload' data-name="{{user.user_height}}">
+      <view>身高</view>
+      <view class='mine-right'>
+        <text>{{user.user_height&&user.user_height+'CM'||'未知'}}</text>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </view>
+    <view class='mine-flex' id='weight' catchtap='handleUpload' data-name="{{user.user_weight}}">
+      <view>体重</view>
+      <view class='mine-right'>
+        <text>{{user.user_weight&&user.user_weight+'KG'||'未知'}}</text>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </view>
+    </view>
+    <view class='mine-flex' data-name="{{user.user_weight}}">
+      <view>联系方式</view>
+      <button class='mine-button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <text>{{user.user_phone||'点击获取联系方式'}}</text>
+        <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+      </button>
+    </view>
+    <!-- <view class='mine-flex'>
+      <view>身高</view>
+      <picker bindchange="bindPickerChangeHeight" value="{{heightIndex}}" range="{{heightList}}" mode="selector">
+        <view class='mine-right'>
+          <text>{{user.user_height}}CM </text>
+          <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='mine-flex'>
+      <view>体重</view>
+      <picker bindchange="bindPickerChangeWeight" value="{{weightIndex}}" range="{{weightList}}" mode="selector">
+        <view class='mine-right'>
+          <text>{{user.user_weight}}KG </text>
+          <image mode='aspectFill' class='goToImg' src='/pic/arrow.png'></image>
+        </view>
+      </picker>
+    </view> -->
+  </view>
+</view>

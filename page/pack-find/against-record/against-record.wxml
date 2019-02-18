@@ -1,0 +1,15 @@
+<!--page/pack-find/against-record/against-record.wxml-->
+<view class='record-wrapper'>
+  <navigationBar class='navigationBar' tag="{{2}}" status-bar-height="{{statusBarHeight}}" title-name="违约记录" hover-class="none" />
+  <form class='record-form' style="margin-top:{{statusBarHeight+45}}px;" bindsubmit="formSubmit">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <view class="radio" wx:for="{{items}}" wx:key="{{index}}">
+        <radio color='#FFD100' value="{{item.id}}" />{{item.name}}
+      </view>
+    </radio-group>
+    <view class="btn-area">
+      <button formType="submit">提交</button>
+      <view class='cancel-info'>提交系统将自动取消约战</view>
+    </view>
+  </form>
+</view>

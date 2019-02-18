@@ -1,0 +1,33 @@
+/* page/pack-mine/pages/update-details/update-details.wxss */
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  background: #282828;
+}
+
+.page-v {
+  display: flex;
+  flex-flow: column;
+}
+
+ .sub1 {
+  font-size: 32rpx;
+  color: #101010;
+  font-weight: bold;
+}
+
+.sub2 {
+  font-size: 30rpx;
+  color: #101010;
+  margin-top: 16rpx;
+}
+
+.sub3 {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 16rpx;
+}

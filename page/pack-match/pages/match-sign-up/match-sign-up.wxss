@@ -1,0 +1,274 @@
+/* page/pack-match/pages/match-sign-up/match-sign-up.wxss */
+@import "../../../../my-template/load/listTemplate.wxss";
+@import '/libs/icon.wxss';
+
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.swiper {
+  height: 420rpx;
+  width: 750rpx;
+}
+
+.slide-image {
+  display: block;
+  width: 750rpx;
+  height: 420rpx;
+  background-color: #eee;
+  margin: auto;
+}
+
+.radio-group {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  line-height: 90rpx;
+  padding: 0 20rpx;
+}
+
+.radio-item {
+  color: #353535;
+  font-size: 30rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+radio {
+  box-sizing: border-box;
+  background: #fff;
+}
+
+radio .wx-radio-input {
+  border-radius: 50%; /* 圆角 */
+  width: 30rpx;
+  height: 30rpx;
+  border: 1px solid #e5e5e5;
+  vertical-align: text-top;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+radio .wx-radio-input.wx-radio-input-checked {
+  border: 1px solid #ffb200;
+  background: #ffb200;
+  box-sizing: border-box;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  background: #ffb200;
+  border: 1px solid #ffb200;
+  border-radius: 50%; /* 圆角 */
+  width: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 20rpx; /* 对勾大小 20rpx */
+  color: #fff; /* 对勾颜色 白色 *//* background: transparent; */
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.team {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.team-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 325rpx;
+  margin: 20rpx 25rpx;
+}
+
+.team-item .img {
+  width: 90rpx;
+  height: 90rpx;
+  /* overflow: hidden; */
+  position: relative;
+    
+}
+
+.team-item text {
+  font-size: 24rpx;
+  color: #353535;
+  margin-top: 12rpx;
+}
+
+.lookMore {
+  width: 300rpx;
+  margin: 0 225rpx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.lookMore text {
+  color: #cbcbcb;
+  font-size: 24rpx;
+  margin-bottom: 6rpx;
+}
+
+.sport-team-end {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  position: fixed;
+  bottom: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20rpx 0;
+  background: rgba(255, 255, 255, 1);
+  z-index: 10;
+}
+
+.sport-team-end image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.sport-team-end text {
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.sport-detail-btn {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  position: fixed;
+  border-bottom: 10px solid rgba(0, 0, 0, 1);
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.detail-btn-share {
+  width: 259rpx;
+  height: 100rpx;
+  background: rgba(32, 32, 32, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-btn-share::after {
+  border: 0;
+}
+
+.detail-btn-share image {
+  width: 42rpx;
+  height: 38rpx;
+  margin-right: 16rpx;
+}
+
+.detail-btn-share text {
+  font-size: 30rpx;
+  color: rgba(255, 209, 0, 1);
+}
+
+.sport-detail-btn .detail-btn-apply {
+  width: 491rpx;
+  height: 100rpx;
+  background: linear-gradient(90deg, rgba(255, 209, 0, 1), rgba(255, 175, 0, 1));
+  font-size: 34rpx;
+  color: rgba(53, 53, 53, 1);
+  line-height: 100rpx;
+  text-align: center;
+  font-weight: 600;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+/* 须知和规程 */
+
+.sport-hidden {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sport-visible {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sport-tip {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.sport-tip  .sport-contain {
+  width: 100%;
+  height: 65%;
+  overflow: scroll;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.back_icon {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+
+.back_icon>text {
+  display: block;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.sport-select {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.sport-select>.sport-select-view, .explain-item>view {
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  color: #353535;
+}
+
+.explain-item>text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  font-weight: normal;
+}

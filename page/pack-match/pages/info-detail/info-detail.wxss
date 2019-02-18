@@ -1,0 +1,109 @@
+@import "../../../../my-template/load/listTemplate.wxss";
+
+.info-detail-info {
+  width: 91%;
+  margin: auto;
+}
+
+.info-detail-info>text {
+  display: block;
+  font-size: 36rpx;
+  color: rgba(53, 53, 53, 1);
+  line-height: 46rpx;
+  font-weight: 600;
+}
+
+.detail-icon {
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin: 20rpx 0 40rpx 0;
+}
+
+.detail-icon>view {
+  margin-right: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.detail-icon>view:first-child image {
+  width: 26rpx;
+  height: 24rpx;
+}
+
+.detail-icon>view:nth-child(2) image {
+  width: 32rpx;
+  height: 21rpx;
+}
+
+.detail-icon>view:nth-child(3) image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.detail-icon>view image {
+  display: block;
+  margin-right: 12rpx;
+}
+
+.detail-icon>view text {
+  display: block;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(172, 172, 172, 1);
+  line-height: 60rpx;
+}
+
+.detail-icon>text {
+  font-size: 26rpx;
+  color: rgba(187, 187, 187, 1);
+  line-height: 60rpx;
+  position: absolute;
+  right: 0;
+}
+
+.info-detail-info>image {
+  width: 100%;
+}
+
+.detail-text {
+  font-size: 34rpx;
+  color: rgba(53, 53, 53, 1);
+  line-height: 53rpx;
+  text-indent: 2em;
+  padding-bottom: 50rpx;
+}
+
+.detail-btn {
+  display: flex;
+  align-items: center;
+  margin: 47rpx 0;
+}
+
+.detail-btn view {
+  width: 130rpx;
+  height: 48rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 8rpx;
+  margin-right: 19rpx;
+  font-size: 24rpx;
+  color: rgba(102, 102, 102, 1);
+  line-height: 48rpx;
+}
+
+.info-detail-score {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding-top: 20rpx;
+}
+
+.detail-comment {
+  width: 100%;
+  background-color: #fff;
+}
+
+.info_detail_emply {
+  width: 100%;
+  background-color: #fff;
+  margin-top: -20rpx;
+}

@@ -1,0 +1,46 @@
+<!--page/pack-find/find-team/find-team.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team2/team2.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<navigationBar class='navigationBar' tag="{{2}}" bg-color="#202020" status-bar-height="{{statusBarHeight}}" title-name="我的加入" />
+<view class='find-team-fixed' style="top:{{statusBarHeight+45}}px;">
+  <view class='find-search'>
+    <view catchtap='search'>
+      <!-- <image src='/pic/search.png' mode='scaleToFill'></image> -->
+      <text class='iconfont icon-sousuo-copy' style='font-size:35rpx;'></text>
+      <text>搜索已加入的队伍</text>
+    </view>
+  </view>
+  <view class='filter-wrap'>
+    <view class='filter-content'>
+      <picker class='filter-item' mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{address||'区域'}}</view>
+          <view class='iconfont icon-xiala' style='font-size:20rpx;color:#272727;margin-left:10rpx;'></view>
+        </view>
+      </picker>
+      <picker mode="selector" class='filter-item' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{0}}" range-key="name" range="{{typeArray[0]}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{typesOf}}</view>
+          <view class='iconfont icon-xiala' style='font-size:20rpx;color:#272727;margin-left:10rpx;'></view>
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class='team-wrapper' style="padding-top:{{statusBarHeight+165}}px;" wx:if="{{dataList.length>0}}">
+  <view class='team-module'>
+    <!-- <template is="team3" data="{{...item}}" /> -->
+    <template is="team2" wx:for="{{dataList}}" data="{{item,index}}" wx:key="index">
+    </template>
+  </view>
+  <template is="loadMore2" data="{{...loadData}}" />
+</view>
+<view wx:if="{{dataList.length == 0}}">
+  <template is="emptyView" data="{{empty}}" />
+</view>
+
+
+
+
+<!-- <template is="emptyView2" data="{{...loadData}}" /> -->

@@ -1,0 +1,92 @@
+<!--page/pack-find/yue-move/yue-move.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<navigationBar class="navigationBar" title-name="约战广场" status-bar-height="{{statusBarHeight}}" tag="{{2}}" />
+<view class='find-team-fixed' style="top:{{statusBarHeight+45}}px;">
+  <view class='find-search'>
+    <view catchtap='search'>
+      <image src='/pic/search.png' mode='scaleToFill'></image>
+      <text>快速搜索你想要了解的队伍约战信息</text>
+    </view>
+  </view>
+  <view class='filter-wrap'>
+    <view class='filter-content'>
+      <picker class='filter-item' mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <!-- <view class="{{address?'picker':'picker_no'}}"> -->
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{address||'区域'}}</view>
+          <!-- <image src='/pic/sjx.png'></image> -->
+          <view class='sjx-view'></view>
+        </view>
+      </picker>
+      <!-- <picker mode="multiSelector" class='filter-item' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{0}}" range-key="name" range="{{typeArray}}">
+        {{typesOf}}
+        <image src='/pic/sjx.png'></image>
+      </picker> -->
+      <view style='width:2px;height:20px;background:#fff;'></view>
+      <picker class='filter-item' bindchange="bindFilterChange" range="{{filterArray}}" range-key="name" value="{{filterIndex}}">
+        <view style='  display: flex;flex-flow: row nowrap;  align-items: center;'>
+          <view class='sjx-name'> {{filterText}}</view>
+          <!-- <image src='/pic/sjx.png'></image> -->
+          <view class='sjx-view'></view>
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class='match-wrapper' style="margin-top:{{statusBarHeight+165}}px;">
+  <view wx:if="{{dataList.length>0}}">
+    <navigator wx:for="{{dataList}}" wx:key="{{index}}" url='/page/pack-find/yue-sport/yue-sport?soccer_movement_id={{item.soccer_movement_id}}'>
+      <view hover-stop-propagation="true" class='match'>
+        <view class='match_team'>
+          <view class='team1'>
+            <image src='{{item.group_info.group_badge|| "/pic/jfb_add.png"}}'></image>
+            <view>{{item.group_info.group_name}}</view>
+          </view>
+          <view class='to'>
+            <image src='../../../pic/VS_black.png'></image>
+            <view wx:if="{{item.movement_state == 1}}">等待应约</view>
+            <view wx:if="{{item.movement_state == 2}}">约战成功</view>
+            <view wx:if="{{item.movement_state == 3}}">约战结束</view>
+            <view wx:if="{{item.movement_state == 4 || item.movement_state == 5}}">约战取消</view>
+          </view>
+          <view class='team2'>
+            <!-- <image src='{{item.away_info.group_badge|| "/pic/jfb_add.png"}}'></image>
+            <view>{{item.away_info.group_name|| '等待应约'}}</view> -->
+            <image src='{{item.away_info.group_badge || "/pic/jfb_add.png"}}' mode='scaleToFill'></image>
+            <view wx:if="{{item.movement_state == 1}}">{{item.away_info.group_name || '等待应约'}}</view>
+            <view wx:else style="{{item.away_info.group_name?'':'color:#ff0000;'}}">{{item.away_info.group_name || '队伍已解散'}}</view>
+          </view>
+        </view>
+        <view class='match_details'>
+          <text>{{item.movement_rule}}</text>
+          <text>{{item.movement_type}}</text>
+          <text>{{item.movement_time}}</text>
+        </view>
+        <view class='match_addr'>
+          <image src='../../../pic/location.png'></image>
+          <view>{{item.address}}</view>
+        </view>
+      </view>
+    </navigator>
+    <template is="loadMore2" data="{{...loadData}}" />
+  </view>
+  <view wx:if="{{!dataList.length}}">
+    <template is="emptyView" data="{{empty}}" />
+  </view>
+</view>
+
+<view class='yue-btn'>
+  <view>
+    <authorizeView id="feedback" bind:onBut="{{chooseData.length>0?'':'onTeam'}}" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+      <view wx:if="{{chooseData.length>0}}">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{chooseData}}" range-key="group_name">
+          <image mode='aspectFill' src='/pic/yd_btn.png' class='yue-btn'></image>
+        </picker>
+      </view>
+      <view wx:else>
+        <image mode='aspectFill' src='/pic/yd_btn.png' class='yue-btn'></image>
+      </view>
+    </authorizeView>
+  </view>
+</view>

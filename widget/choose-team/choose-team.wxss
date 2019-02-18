@@ -1,0 +1,84 @@
+/* widget/choose-team/choose-team.wxss */
+
+.choose-team {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+.choose-1 {
+  margin: 25vh 10% 0 10%;
+  color: red;
+  border-radius: 23rpx;
+  background: white;
+  /* padding-bottom:20rpx;  */
+}
+
+.choose-title {
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  /* padding: 20rpx; */
+  /* border-bottom: 1px #f2f2f2 solid; */
+}
+
+.choose-title>image {
+  width: 100%;
+  height: 180rpx;
+}
+
+.choose-team-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx #f2f2f2 solid;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.choose-img {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.choose-tips {
+  font-size: 26rpx;
+  padding: 20rpx;
+  color: #999;
+  /* border-bottom: 1rpx #f2f2f2 solid; */
+}
+
+.choose-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 20rpx;
+}
+
+.choose-btn view {
+  text-align: center;
+  width: 20%;
+  /* padding: 20rpx 0; */
+  font-size: 28rpx;
+  color: #999;
+  border-radius: 10rpx;
+  padding:15rpx 10rpx
+}
+
+.choose-btn view:nth-child(1) {
+  border:1rpx #ffe600 solid;
+  /* border-left: 1rpx #f2f2f2 solid; */
+}
+.choose-btn view:nth-child(2) {
+  color: #ffe600;
+   border: 1rpx #FFD101 solid; 
+}

@@ -1,0 +1,20 @@
+<!--page/pack-index/pages/wl-drumbeating/wl-drumbeating.wxml-->
+<ORcode wx:if="{{isOrCode}}" group-id="{{groupId}}" rpx-topx="{{rpxTopx}}" bind:exit="orExit" bind:onCode="getCode" shareTpye="{{shareType || ''}}" />
+<invitingCard wx:if="{{isInvitingCard}}" group-id="{{groupId}}" avatar-url="{{avatarUrl}}" rpx-topx="{{rpxTopx}}" bind:exit="cardExit" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="运动邀请" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view catchtap='onInvitingCard' class='item'>
+      <image class='img1' mode='aspectFill' src='/pic/card.png'></image>
+      <view>制作邀请卡</view>
+      <image class='img2' mode='aspectFill' src='/pic/list_arrow.png'></image>
+    </view>
+    <view style='width:700rpx;height:1px;background:#f2f2f2'></view>
+    <view catchtap='onOrCode' class='item'>
+      <image class='img1' mode='aspectFill' src='/pic/code.png'></image>
+      <view>队伍二维码生成</view>
+      <image class='img2' mode='aspectFill' src='/pic/list_arrow.png'></image>
+    </view>
+    <view style='width:700rpx;height:1px;background:#f2f2f2'></view>
+  </view>
+</view>

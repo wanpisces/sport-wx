@@ -1,0 +1,65 @@
+/* page/pack-mine/modify-name/modify-name.wxss */
+
+.data_view {
+  position: absolute;
+  height: 93vh;
+  background: #f2f2f2;
+  width: 100%;
+}
+
+.item {
+  margin: 20rpx;
+  display: flex;
+  flex-flow: column;
+  background: #fff;
+  width: 710rpx;
+}
+
+.name {
+  font-size: 34rpx;
+  line-height: 90rpx;
+  padding: 0 20rpx;
+  color: #000;
+}
+
+.item .c_item {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 2rpx solid #f2f2f2;
+  line-height: 90rpx;
+  align-items: center;
+}
+
+.item .c_item input {
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 28rpx;
+  padding: 20rpx;
+  color: #353535;
+}
+
+.item .c_item .inputPlaceholder {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.item .c_item .tip {
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  padding: 20rpx;
+  color: #353535;
+}
+
+.next {
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00);
+  color: #222;
+  font-weight: bolder;
+  font-size: 35rpx;
+  margin: 80rpx 0rpx;
+  padding: 0rpx 150rpx;
+  box-shadow: 0rpx 0rpx 16rpx rgba(179, 33, 36, 0.24);
+}

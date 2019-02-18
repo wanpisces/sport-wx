@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "authorizeView": "/widget/authorize-view/authorize-view"
+  }
+}

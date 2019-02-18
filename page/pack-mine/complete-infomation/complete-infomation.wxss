@@ -1,0 +1,142 @@
+/* page/pack-mine/complete-infomation/complete-infomation.wxss */
+
+.section {
+  margin: 0 50rpx;
+  padding-top: 28rpx;
+  width: 650rpx;
+  border-bottom: 1px solid #bebebe;
+}
+
+.section-one {
+  margin-top: 15rpx;
+}
+
+.section-title {
+  font-size: 34rpx;
+  color: #000;
+}
+
+.section-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15rpx;
+}
+
+.section-content input {
+  width: 500rpx;
+  font-size: 28rpx;
+  color: #353535;
+}
+
+.section-content text {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #353535;
+}
+
+.btn-area {
+  margin-top: 80rpx;
+}
+
+.btn-area button {
+  width: 450rpx;
+  height: 90rpx;
+  border-radius: 40rpx;
+  font-size: 35rpx;
+  color: #222;
+  box-shadow: 0px 0px 16px rgba(179, 33, 36, 0.24);
+  background: -webkit-gradient(linear, left 0, right 0, from(#ffd100), to(#ffae00));
+}
+
+.btn-area button::after {
+  border: none;
+  outline: none;
+}
+
+.item {
+  margin: 0 52rpx;
+  display: flex;
+  flex-flow: column;
+  padding: 28rpx 0 4rpx;
+  border-bottom: 1px solid #bebebe;
+}
+
+.name {
+  width: 100%;
+  font-size: 34rpx;
+  color: #000;
+}
+
+item picker {
+  width: 100%;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.item .picker {
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 60rpx;
+  margin-top: 15rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .picker_no {
+  font-size: 28rpx;
+  line-height: 60rpx;
+  margin-top: 15rpx;
+  color: #999;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .picker_no .arrow, .item .picker .arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+/* .item picker {
+  width: 100%;
+  line-height: 90rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.item .picker {
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 60rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item .picker_no {
+  font-size: 28rpx;
+  color: #999;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.item .picker_no .arrow ,.item .picker .arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+.arrow {
+  width: 36rpx;
+  height: 36rpx;
+} */

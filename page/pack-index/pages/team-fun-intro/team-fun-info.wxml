@@ -1,0 +1,8 @@
+<!--page/pack-index/pages/team-fun-intro/team-fun-info.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="队伍功能介绍" tag="{{2}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <image mode='widthFix' style='width:100%;' src='https://img.sqydt.darongshutech.com/image_201805291704387099.png'></image>
+  </view>
+</view>

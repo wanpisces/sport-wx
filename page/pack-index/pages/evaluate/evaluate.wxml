@@ -1,0 +1,40 @@
+<!--page/pack-index/pages/evaluate/evaluate.wxml-->
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="动态发布"  tag="{{3}}"  status-bar-height="{{statusBarHeight}}" />
+  <!-- <view class='v2'>
+    <image mode='aspectFill' src='/img/bg.png' class='bg'></image>
+  </view> -->
+  <view class='data_view'  style="top:{{statusBarHeight+45}}px;">
+    <view style='width:100%;height:1rpx;background:#e1e1e1;border-radius:10rpx;'></view>
+    <view class='input-txt'>
+      <textarea bindinput="bindinput" name='textarea' maxlength='-1' placeholder-class='holder' placeholder='分享运动新鲜事儿~'></textarea>
+    </view>
+    <view class='input-img'>
+      <view wx:for='{{imgs}}' wx:key='itemkey'>
+        <view class='img-view'>
+          <image class='img-add' mode='aspectFill' style='width:160rpx;height:160rpx;' src="{{item==''?'/pic/camera1.png':item}}" bindtap='onClicks' id='addImgs'></image>
+          <image wx:if="{{item!=''}}" class='img-cancel' mode='aspectFill' style='width:44rpx;height:44rpx;' src="/pic/cancel_img.png" bindtap='onClicks' id='cancelImg' data-index='{{index}}'></image>
+        </view>
+
+      </view>
+    </view>
+    <view style='width:100%;height:20rpx;background:#f4f4f4;'></view>
+    <view class='item' catchtap='onAddress'>
+      <image class='img1' mode='aspectFill' src='/pic/publish_address.png'></image>
+      <view class='itemv1'>所在位置</view>
+      <view class='itemv2'>{{address||'请选择所在位置'}}</view>
+      <image mode='aspectFill' class='img2' src='/pic/list_arrow.png'></image>
+    </view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range-key='name' range="{{array}}" wx:if="{{mType==1}}">
+      <view class='item'>
+        <image class='img1' mode='aspectFill' src='/pic/publish_sb.png'></image>
+        <view class='itemv1'>谁可以看</view>
+        <view class='itemv2'>{{whoLook||array[0].name}}</view>
+        <image mode='aspectFill' class='img2' src='/pic/list_arrow.png'></image>
+      </view>
+    </picker>
+    <authorizeView bind:onBut="{{isloading?'':'submit'}}" refresh="{{refreshAuthorizeView}}"  user-phone="{{true}}" user-info="{{true}}">
+      <view class='submit' style="{{isloading?'background:#a2a2a2;':''}}" form-type='submit' hover-class='none'>确认发布</view>
+    </authorizeView>
+  </view>
+</view>

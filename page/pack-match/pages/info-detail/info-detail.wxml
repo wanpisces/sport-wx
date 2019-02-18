@@ -1,0 +1,42 @@
+<import src="../../../../my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='page'>
+  <!-- 导航栏 -->
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#fff" title-name="资讯详情" status-bar-height="{{statusBarHeight}}" />
+  <view style='margin-top:80px;'>
+    <!-- 资讯详情信息 -->
+    <view class='info-detail-info'>
+      <text>{{info_detail.material_title}}</text>
+      <view class='detail-icon'>
+        <view>
+          <image src='/pic/xq_accessment.png'></image>
+          <text>{{info_detail.comment_num}}</text>
+        </view>
+        <view>
+          <image src='/pic/news_see.png'></image>
+          <text>{{info_detail.visit_num}}</text>
+        </view>
+        <view>
+          <image src='/pic/xq_zan.png'></image>
+          <text>{{info_detail.star_num}}</text>
+        </view>
+        <text>{{info_detail.create_time}}</text>
+      </view>
+      <image src='{{info_detail.material_pic}}' mode='aspectFill'></image>
+      <view class='detail-text'>{{info_detail.material_content}}</view>
+      <!-- <view class='detail-btn'>
+        <block wx:for="{{info_detail.btn}}" wx:key="{{index}}">
+          <authorizeView>
+            <view>{{item}}</view>
+          </authorizeView>
+        </block>
+      </view> -->
+    </view>
+    <view class='info-detail-score'>
+      <view class='detail-comment'>
+        <commentList branch-id="{{infoDetail_list.material_id}}" comment-num="{{infoDetail_list.total_num}}" refresh="{{refreshAuthorizeView}}" comment-list="{{comment_list}}" user-phone="{{userPhone}}" is-collect="{{info_detail.is_favorites}}" isStar="{{info_detail.is_star}}"
+          loadData="{{infoDetail_list.loadData}}" />
+      </view>
+    </view>
+  </view>
+</view>

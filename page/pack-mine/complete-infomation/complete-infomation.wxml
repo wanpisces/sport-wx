@@ -1,0 +1,64 @@
+<!--page/pack-mine/complete-infomation/complete-infomation.wxml-->
+<!--page/pack-mine/mine-message/mine-message.wxml-->
+
+<view class='pages'>
+  <navigationBar class='navigationBar' title-name="完善个人信息" tag="{{3}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <form class='form-wrapper' bindsubmit="formSubmit">
+      <view wx:if="{{attr_id == 2 || attr_id == 3}}" class="section section-one">
+        <view class="section-title">队员号码</view>
+        <view class='section-content'>
+          <input bindinput="bindNo" type="number" name="no" placeholder="请输入您的队员号码" />
+          <text>号</text>
+        </view>
+      </view>
+      <view wx:if="{{attr_id == 2 || attr_id == 3}}" class='item'>
+        <view class='name'>位置</view>
+        <picker bindchange="bindPickerSeat" value="{{index}}" range="{{roleList}}" range-key="name">
+          <view class="{{seat?'picker':'picker_no'}}">
+            <view>{{seat||'请选择您的位置'}}</view>
+            <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+          </view>
+        </picker>
+      </view>
+      <view  class="section">
+        <view class="section-title">身高</view>
+        <view class='section-content' catchtap="{{isHeight?'onDisabled':''}}">
+          <input type="number" value='{{mUserHeight}}' disabled='{{isHeight}}' name="user_height" placeholder="请输入您的身高" />
+          <text>cm</text>
+        </view>
+      </view>
+      <view  class="section">
+        <view class="section-title">体重</view>
+        <view class='section-content' catchtap="{{isWeight?'onDisabled':''}}">
+          <input type="number" value='{{mUserWeight}}' disabled='{{isWeight}}' name="user_weight" placeholder="请输入您的体重" />
+          <text>kg</text>
+        </view>
+      </view>
+      <view class='item'>
+        <view class='name'>生日</view>
+        <picker mode="date" name="user_birth" catchtap="{{isBirth?'onDisabled':''}}" value="{{date}}" disabled='{{isBirth}}' start="1900-01-01" end="{{date}}" bindchange="bindDateChange">
+          <view class="{{teamDate?'picker':'picker_no'}}">
+            <view>{{teamDate||'请选择您的生日'}}</view>
+            <image mode='aspectFill' src='/pic/arrow.png' class='arrow'></image>
+          </view>
+        </picker>
+      </view>
+      <view class="section">
+        <view class="section-title">联系方式</view>
+        <view class='section-content'>
+          <input name="user_phone" type="number" value='{{user_phone}}' maxlength='{{11}}' placeholder="请输入你的电话号码" />
+        </view>
+      </view>
+      <view class="section">
+        <view class="section-title">申请备注</view>
+        <view class='section-content'>
+          <input name="apply_remark" placeholder="请输入你的加入信息（选填）" />
+        </view>
+      </view>
+      <view class="btn-area">
+        <button formType="submit">提交申请</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,148 @@
+/* page/widget/street/street.wxss */
+@import '/libs/icon.wxss';
+
+.w_view {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000;
+  opacity: 0.5;
+  background: #000;
+  overflow: hidden;
+  animation: animation_w 1s;
+}
+
+@keyframes animation_w {
+  from {
+    opacity: 0.0;
+    background: #fff;
+  }
+
+  to {
+    opacity: 0.5;
+    background: #000;
+  }
+}
+
+.box_view {
+  position: fixed;
+  top: 40%;
+  left: 13%;
+  width: 74%;
+  max-height: 50%;
+  background: #fff;
+  z-index: 1001;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 40rpx;
+  animation: animation_b 1s;
+}
+
+@keyframes animation_b {
+  from {
+    opacity: 0.0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.title2 {
+  font-size: 30rpx;
+  color: #000;
+  width: 100%;
+  text-align: center;
+  margin-top: 55rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.box_view .bntv {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.box_view .bntv .onStreet {
+  font-size: 28rpx;
+  color: #999;
+  padding: 0 20rpx;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.box_view .bntv .bnt1 {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.box_view .bntv .bnt1 view {
+  line-height: 40rpx;
+}
+
+.bnt1 .group-name {
+  color: #353535;
+  font-size: 32rpx;
+  padding: 0;
+  margin: 0;
+}
+
+.buts {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 56rpx;
+  width: 100%;
+  margin-bottom: 42rpx;
+  margin-top: 56rpx;
+  box-sizing: border-box;
+}
+
+.buts view {
+  padding: 0 35rpx;
+  font-weight: bold;
+}
+
+.box_view .submit {
+  font-size: 28rpx;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  color: #222;
+  line-height: 74rpx;
+  border-radius: 37rpx;
+  text-align: center;
+}
+
+.box_view .close {
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  color: #222;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 74rpx;
+  border-radius: 37rpx;
+}
+
+.closeImg {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 1002;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: -140rpx;
+}

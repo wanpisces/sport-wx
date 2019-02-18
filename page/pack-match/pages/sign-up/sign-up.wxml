@@ -1,0 +1,159 @@
+<!--page/pack-match/pages/sign-up/sign-up.wxml-->
+<navigationBar class='navigation-bar' title-name="填写报名信息" tag="{{3}}" status-bar-height="{{statusBarHeight}}">
+</navigationBar>
+<view class='tip' style='margin-top:{{statusBarHeight+45}}px;'>
+  *温馨提示：需以队长身份提交申请
+</view>
+<view wx:if="{{!is_enlist||from_page}}" class='release-content'>
+  <view wx:if="{{!isGroup}}">
+    <view style='flex-grow: 0;flex-shrink: 0;'>队伍</view>
+    <picker disabled='{{is_enlist}}' bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{teamList}}" range-key="group_name">
+      <view class='release-content-right'>{{group_name||'请选择队伍'}}
+        <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <view style='flex-grow: 0;flex-shrink: 0;'>姓名</view>
+    <view class='release-content-right'>{{teamList[index].group_info.user_info.user_realname||teamList[index].group_info.user_info.user_nickname||'请先选择队伍'}}</view>
+  </view>
+  <view>
+    <view style='flex-grow: 0;flex-shrink: 0;'>性别</view>
+    <view class='release-content-right'>{{teamList[index].group_info.user_info.user_gender==1&&'男'||teamList[index].group_info.user_info.user_gender==2&&'女'||'请先选择队伍'}}</view>
+  </view>
+  <view wx:if="{{attr_id == 2 || attr_id == 3}}">
+    <view style='flex-grow: 0;flex-shrink: 0;'>我的位置</view>
+    <view class='release-content-right'>{{teamList[index].group_info.user_info.role?teamList[index].group_info.user_info.role:'请先选择队伍'}}</view>
+  </view>
+  <view>
+
+    <!-- disabled='{{is_enlist}}' -->
+    <view style='flex-grow: 0;flex-shrink: 0;'>联系方式</view>
+    <input bindinput="bindinput" value='{{user_tel}}' type='number' maxlength="{{11}}" class='release-content-input-right' placeholder="{{user_tel?user_tel:'请输入联系方式'}}" placeholder-class='release-content-right'></input>
+    <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+  </view>
+</view>
+<view wx:if="{{!is_enlist||from_page}}" style='display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;margin:20rpx 0;'>
+  <view style='display: flex;  flex-flow: column;justify-content: center;align-items: center;'>
+    <view class='team_data_item1'>
+      <view>平均年龄/</view>
+      <text>岁</text>
+    </view>
+    <view class='team_data_item1'>
+      <view>平均身高/</view>
+      <text>CM</text>
+    </view>
+    <view class='team_data_item1'>
+      <view>平均体重/</view>
+      <text>KG</text>
+    </view>
+  </view>
+  <view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#8BCD36" percent="{{teamList[index].group_info.group_soccer.avg_age_per>100?100:teamList[index].group_info.group_soccer.avg_age_per}}" />
+      <view class='slider_view'>{{teamList[index].group_info.group_soccer.avg_age||0}}</view>
+    </view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#4AA5EC" percent="{{teamList[index].group_info.group_soccer.avg_height_per>100?100:teamList[index].group_info.group_soccer.avg_height_per}}" />
+      <view class='slider_view'>{{teamList[index].group_info.group_soccer.avg_height||0}}</view>
+    </view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#F05A41" percent="{{teamList[index].group_info.group_soccer.avg_weight_per>100?100:teamList[index].group_info.group_soccer.avg_weight_per}}" />
+      <view class='slider_view'>{{teamList[index].group_info.group_soccer.avg_weight||0}}</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{is_enlist&&!from_page}}" class='release-content'>
+  <view wx:if="{{!isGroup}}">
+    <view style='flex-grow: 0;flex-shrink: 0;'>队伍</view>
+    <picker disabled='{{is_enlist}}' bindchange="bindPickerChangeGroup" style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' style='flex-grow: 1;flex-shrink: 1; justify-content: flex-end;' value="{{index}}" range="{{teamList}}" range-key="group_name">
+      <view class='release-content-right'>{{group_info.group_name||'请选择队伍'}}
+        <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <view style='flex-grow: 0;flex-shrink: 0;'>姓名</view>
+    <view class='release-content-right'>{{user_info.user_realname||user_info.user_nickname||'请先选择队伍'}}</view>
+  </view>
+  <view>
+    <view style='flex-grow: 0;flex-shrink: 0;'>性别</view>
+    <view class='release-content-right'>{{user_info.user_gender==1&&'男'||user_info.user_gender==2&&'女'||'请先选择队伍'}}</view>
+  </view>
+  <view wx:if="{{attr_id == 2 || attr_id == 3}}">
+    <view style='flex-grow: 0;flex-shrink: 0;'>我的位置</view>
+    <view class='release-content-right'>{{user_info.role?user_info.role:'请先选择队伍'}}</view>
+  </view>
+  <view>
+    <view style='flex-grow: 0;flex-shrink: 0;'>联系方式</view>
+    <input bindinput="bindinput" value='{{user_tel}}' type='number' maxlength="{{11}}" class='release-content-input-right' placeholder="{{user_tel?user_tel:'请输入联系方式'}}" placeholder-class='release-content-right'></input>
+    <image mode='aspectFill' src='/pic/list_arrow.png' class='release-content-img'></image>
+  </view>
+</view>
+<view wx:if="{{is_enlist&&!from_page}}" style='display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;margin:20rpx 0;'>
+  <view style='display: flex;  flex-flow: column;justify-content: center;align-items: center;'>
+    <view class='team_data_item1'>
+      <view>平均年龄/</view>
+      <text>岁</text>
+    </view>
+    <view class='team_data_item1'>
+      <view>平均身高/</view>
+      <text>CM</text>
+    </view>
+    <view class='team_data_item1'>
+      <view>平均体重/</view>
+      <text>KG</text>
+    </view>
+  </view>
+  <view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#8BCD36" percent="{{group_soccer.avg_age_per>100?100:group_soccer.avg_age_per}}" />
+      <view class='slider_view'>{{group_soccer.avg_age||0}}</view>
+    </view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#4AA5EC" percent="{{group_soccer.avg_height_per>100?100:group_soccer.avg_height_per}}" />
+      <view class='slider_view'>{{group_soccer.avg_height||0}}</view>
+    </view>
+    <view class='team_data_slider'>
+      <wxzx-progress width="{{200}}" strokeWidth="{{25}}" active-color="#F05A41" percent="{{group_soccer.avg_weight_per>100?100:group_soccer.avg_weight_per}}" />
+      <view class='slider_view'>{{group_soccer.avg_weight||0}}</view>
+    </view>
+  </view>
+</view>
+<view style='width:100%;height:20rpx;background:#EFEFF4;'>
+</view>
+<view class='title'>
+  参赛队员
+  <text>（{{userList1&&userList1.length||0}}/{{allow_max_team_member_num==0?'不限':allow_max_team_member_num}}）</text>
+</view>
+<view class='member-list-view'>
+  <view class='member-view' wx:for="{{userList1}}" wx:key="memberKey1">
+    <view class='member'>
+      <image mode='aspectFill' src='{{item.user_avatar}}'></image>
+      <view>{{item.user_realname||item.user_nickname}}</view>
+    </view>
+    <image catchtap='onSubtract' mode='aspectFill' wx:if="{{user_id != item.user_id}}" class='member-handle-image' src='/pic/member-delete.png' data-index='{{index}}'></image>
+  </view>
+  <view wx:if="{{!userList1}}" class='no-data'>请先选择队伍</view>
+</view>
+<view class='title'>
+  待选队员
+  <text>（{{userList2&&userList2.length||0}}）</text>
+</view>
+<view class='member-list-view' style='margin-bottom:130rpx;'>
+  <view class='member-view' wx:for="{{userList2}}" wx:key="memberKey1">
+    <view class='member'>
+      <image mode='aspectFill' src='{{item.user_avatar}}'></image>
+      <view>{{item.user_realname||item.user_nickname}}</view>
+    </view>
+    <!-- wx:if="{{need_realname==2 ||item.audit_status==2}}" -->
+    <image catchtap='onAdd' mode='aspectFill' class='member-handle-image' src='/pic/member-add.png' data-index='{{index}}'></image>
+  </view>
+  <view wx:if="{{!userList2}}" class='no-data'>请先选择队伍</view>
+  <view wx:elif="{{userList2.length==0}}" class='no-data'>暂无待选人员</view>
+</view>
+<view class='submit-view'>
+  <authorizeView bind:onBut="{{isloading || !groupId?'':'submit'}}" refresh="{{refreshAuthorizeView}}" user-phone="{{true}}" user-info="{{true}}">
+    <view class='submit' style="{{isloading || !groupId?'background:#a2a2a2;':''}}" form-type='submit' hover-class='none'>{{is_enlist && !from_page?'重新提交报名':'提交报名'}}</view>
+  </authorizeView>
+</view>

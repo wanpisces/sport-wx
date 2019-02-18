@@ -1,0 +1,72 @@
+/* widget/navigationBar/navigationBar.wxss */
+
+.navigationBarF {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+
+.view_bar0 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.view_bar0 view {
+  line-height: 45px;
+  font-size: 34rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+
+.view_bar0 image {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 30rpx 30rpx;
+}
+
+.view_bar1 {
+  display: flex;
+  flex-flow: row nowrap;
+  background: #fff;
+  align-items: center;
+  height: 45px;
+}
+
+.view_bar1 view {
+  line-height: 45px;
+  font-size: 34rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.view_bar1 image {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 30rpx 30rpx;
+}
+
+.view_bar2 {
+  display: flex;
+  flex-flow: row nowrap;
+  background: #fff;
+  align-items: center;
+}
+
+.view_bar2 view {
+  line-height: 45px;
+  font-size: 34rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.view_bar2 image {
+  width: 36rpx;
+  height: 36rpx;
+  padding: 0rpx 30rpx;
+}

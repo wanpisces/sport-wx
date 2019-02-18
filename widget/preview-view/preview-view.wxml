@@ -1,0 +1,6 @@
+<view class="preview" hidden='{{previewState}}'>
+  <image mode='aspectFill' src='{{bigImg}}' class='preview-bigImg'></image>
+  <authorizeView bnt-type="share">
+    <image mode='aspectFill' src='/pic/team_share2.png' class='preview-icon'></image>
+  </authorizeView>
+</view>

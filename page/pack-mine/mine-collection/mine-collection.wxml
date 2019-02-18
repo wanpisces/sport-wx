@@ -1,0 +1,36 @@
+<!--page/pack-mine/mine-collection/mine-collection.wxml-->
+<import src="/my-template/news/news.wxml" />
+<import src="/my-template/match/match.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<navigationBar class='navigationBar' tag="{{3}}" title-name="我的收藏" status-bar-height="{{statusBarHeight}}" hover-class="none" />
+<scroll-view scroll-x='ture' class='scroll-view-H' style='width:100%;top:{{statusBarHeight+45}}px;'>
+  <view class='view-scroll'>
+    <view catchtap='bindLabelClick' wx:for="{{labelList}}" wx:key="{{item.value}}" class="scroll-item {{checkLabelIndex==index?'scroll-item-ed':''}}" data-index='{{index}}'>{{item.value}}</view>
+  </view>
+</scroll-view>
+
+<swiper class='swiper-view' current='{{swiperCurrent}}' bindchange="bindSwiperChange" duration="{{500}}" skip-hidden-item-layout='true' style='height:{{swiperHeight}}px;top:{{statusBarHeight+90}}px;'>
+  <swiper-item>
+    <scroll-view bindscrolltolower="bindscrolltolower" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+      <template is='collection-match' wx:for="{{labelList[checkLabelIndex].list}}" wx:key="itemKey" data="{{...item,index}}" bindTap="bindItemClick"/>
+      <view class='empty-view' wx:if="{{labelList[checkLabelIndex].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+        <template is="emptyView2" data="{{empty}}" />
+      </view>
+      <template wx:else is='loadMore3' data="{{...labelList[checkLabelIndex].loadData}}" />
+    </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <scroll-view bindscrolltolower="bindscrolltolower" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+      <block wx:for="{{labelList[checkLabelIndex].list}}" catchlongtap='onLongItem' wx:for-item="hotInfo" wx:key="newItemKey">
+
+        <template wx:if="{{hotInfo.material_pic_type == 0 ||hotInfo.material_pic_type == 2 }}" is="collection_news_item1" data="{{...hotInfo,index}}"></template>
+        <template wx:if="{{hotInfo.material_pic_type == 1}}" is="collection_news_item2" data="{{...hotInfo,index}}"></template>
+
+      </block>
+      <view class='empty-view' wx:if="{{labelList[checkLabelIndex].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+        <template is="emptyView2" data="{{empty}}" />
+      </view>
+      <template wx:else is='loadMore3' data="{{...labelList[checkLabelIndex].loadData}}" />
+    </scroll-view>
+  </swiper-item>
+</swiper>

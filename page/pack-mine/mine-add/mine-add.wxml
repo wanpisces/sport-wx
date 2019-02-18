@@ -1,0 +1,39 @@
+<!--page/pack-mine/mine-add/mine-add.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team2/team2.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" bg-color="#282828" title-name="{{!!user_name?user_name:'我'}}加入的队伍" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='create-header'>
+      <view class='create-view'>
+        <image src='/pic/black_bg.png'></image>
+      </view>
+      <view class='create-avator'>
+        <image mode='aspectFill' src="{{user_avatar}}"></image>
+      </view>
+    </view>
+    <view class='team-list-wrapper' wx:if="{{dataList.length!=0}}">
+      <template is="team2" wx:for="{{dataList}}" data="{{item,isColoseShare,ckId,index}}" wx:key="index">
+      </template>
+      <template wx:if="{{dataList}}" is="loadMore" data="{{loadData}}" />
+    </view>
+    <view wx:if="{{dataList.length==0}}" class='no-data'>
+      <view class='empty-view'>
+        <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+        <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无我加入的队伍</text>
+        <view class='on-new' catchtap='onNewTeam'>立即寻找队伍</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{dataList.length!=0}}" class='bottom'>
+  <authorizeView bind:onBut="{{ckId==-1?'onButShare':''}}" open-type="{{ckId!=-1?'share':''}}">
+    <view class='share'>
+      <image wx:if="{{isColoseShare||ckId==-1}}" mode='aspectFill' src='/pic/team_share.png'></image>
+      {{!isColoseShare&&ckId!=-1?'确定':'分享'}}</view>
+  </authorizeView>
+</view>
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

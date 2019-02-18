@@ -1,0 +1,11 @@
+<view class='page'>
+  <!-- 导航栏 -->
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#fff" title-name="{{share.material_title}}" status-bar-height="{{statusBarHeight}}" />
+  <view class='share-url'>
+    <video wx:if="{{share.material_type == '3'}}" src="{{share.material_url}}" controls class='share_image'></video>
+    <image wx:if="{{share.material_type == '2'}}" src="{{share.material_url}}" class='share_image'></image>
+    <view class="share-title">
+      <text>{{share.material_title}}</text>
+    </view>
+  </view>
+</view>

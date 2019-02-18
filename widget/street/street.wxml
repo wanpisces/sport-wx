@@ -1,0 +1,23 @@
+<!--page/widget/street/street.wxml-->
+<view catchtouchmove="preventD">
+  <view class='w_view' />
+  <view class='box_view'>
+
+    <view class='title2'>{{changePosition?'您的地理位置发生改变了！':'您当前的定位为'}}</view>
+    <view class='bntv'>
+      <view wx:if="{{location}}" class='bnt1'>
+        <view class='iconfont icon-dingweiweizhizuobiaomianxing' style='font-size:32rpx;color:#FFD100;margin-right:14rpx;'></view>
+        <view class='group-name'>{{location.address}}</view>
+      </view>
+      <view wx:else class='onStreet'>未查询到已开通的相关街道</view>
+    </view>
+    <view class='buts'>
+      <view id='select' class='close' catchtap='onClicks'>切换位置</view>
+      <view id='submit' class='submit' catchtap='onClicks' data-item="{{location}}">
+        确认位置
+      </view>
+    </view>
+    <image id='colse' catchtap='onClicks' class='closeImg' mode='aspectFill' src='/pic/tip.png'></image>
+  </view>
+
+</view>

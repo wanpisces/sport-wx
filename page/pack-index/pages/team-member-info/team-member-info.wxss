@@ -1,0 +1,202 @@
+/* page/pack-index/pages/team-member-info/team-member-info.wxss */
+@import "/my-template/shuoshuo/shuoshuo.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 440rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.member-avator {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 90rpx;
+  border: 1rpx #e5e5e5 solid;
+  overflow: hidden;
+  margin-top: 70rpx;
+}
+
+.member-avator image {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.member-name {
+  /* display: flex;
+  justify-content: flex-end; */
+  position: relative;
+  margin-top: 20rpx;
+  color: #fff;
+  font-size: 34rpx;
+}
+
+.member-sex {
+  position: absolute;
+  right: -30rpx;
+  top: -10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.member-sex image {
+  padding: 8rpx;
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 18rpx;
+}
+
+.authorizeView {
+  position: absolute;
+  top: 50rpx;
+  right: 20rpx;
+}
+
+.authorizeView image {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.member-group {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 20rpx;
+  font-size: 24rpx;
+  width: 710rpx;
+  color: #999;
+  padding-left: 16rpx;
+}
+
+.member-group .viewtotal {
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  text-align: right;
+  /* flex-flow: row nowrap; *//* width: 100%; *//* box-sizing: border-box; */
+  align-items: center;
+}
+
+.img5 {
+  width: 60rpx;
+  height: 60rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 30rpx;
+  border: 1rpx solid #fff;
+  margin-left: -20rpx;
+  background: #f4f4f4;
+}
+
+.member-info {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.member-conten1 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.member-conten1>view {
+  width: 25%;
+  /* border: 1px red solid;  */
+  text-align: center;
+  padding: 10rpx 0;
+}
+
+.member-conten1-1 {
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 10rpx 0;
+}
+
+.member-conten1-2 {
+  color: #999;
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+
+.member-line {
+  height: 20rpx;
+  background: #f2f2f2;
+}
+
+.member-name1 {
+  font-size: 24rpx;
+  color: #999;
+  padding: 20rpx 20rpx;
+  border-bottom: 1rpx #f2f2f2 solid;
+}
+
+.shareGoHome {
+  position: fixed;
+  bottom: 100rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.callPhone {
+  position: fixed;
+  bottom: 260rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.callPhoneImg {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+
+.item {
+  margin: 0 20rpx;
+  display: flex;
+  flex-flow: column;
+  width: 710rpx;
+}
+
+.name {
+  width: 100%;
+  font-size: 34rpx;
+  line-height: 90rpx;
+  color: #000;
+}

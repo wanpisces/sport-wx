@@ -1,0 +1,351 @@
+/* page/pack-index/pages/member-manage/member-manage.wxss */
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1001;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.dian {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 16rpx;
+  background: #ed1548;
+}
+
+.data_view {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.tab_bar {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 45px;
+  z-index: 1001;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.item_bar {
+  width: 33.3%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_bar view {
+  font-size: 30rpx;
+  color: #666;
+  font-weight: bold;
+}
+
+.item_bar text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.tab_bared {
+  border-bottom: 6rpx solid #ffd100;
+}
+
+.tab_bar_viewed {
+  color: #353535;
+}
+
+.item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+
+.ss_userInfo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30rpx 20rpx;
+  box-sizing: border-box;
+  height: 130rpx;
+}
+
+.u_logo_wrap {
+  display: flex;
+  flex-flow: row;
+}
+
+.edit-member {
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.u_logo {
+  height: 60rpx;
+  width: 75rpx;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.ss_userInfo_logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 45rpx;
+  border: 1rpx solid #ffd100;
+}
+
+.ss_userInfo_sex {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 30rpx;
+}
+
+.ss_userName>view {
+  display: flex;
+  margin-left: 29rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.ss_userName_creat {
+  width: 69rpx;
+  height: 29rpx;
+  background-color: #fed309;
+  border-radius: 15rpx;
+  font-size: 18rpx;
+  color: #282828;
+  text-align: center;
+  margin-left: 10rpx;
+  line-height: 29rpx;
+}
+
+.ss_userName .c_ss_userName1 {
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.ss_userName .c_ss_userName2 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+
+.ss_userName .c_ss_userName2 text {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.c_item {
+  display: flex;
+  width: 650rpx;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-top: 15rpx;
+}
+
+.c_item:last-child {
+  padding-bottom: 15rpx;
+}
+
+.c_item view {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.c_item text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.c_item2 {
+  display: flex;
+  width: 650rpx;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  margin: 15rpx 0;
+  align-items: center;
+}
+
+.c_item2 view {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.c_item2 text {
+  font-size: 22rpx;
+  margin-left: 15rpx;
+  color: #999;
+}
+
+.bnts {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.bnt1 {
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  margin: 20rpx;
+  border: 1px solid #dcdcdc;
+  font-size: 28rpx;
+  color: #282828;
+  /* font-weight: bold; */
+  box-shadow: 0px 0px 2rpx rgba(179, 33, 36, 0.1);
+}
+
+.bnt2 {
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  background: #fff;
+  padding: 0 25rpx;
+  margin: 20rpx;
+  border: 1px solid #ffcd00;
+  font-size: 28rpx;
+  color: #ffcd00;
+  /* font-weight: bold; */
+}
+
+.bnt1:after, .btn2:after {
+  border: none;
+}
+
+button::after {
+  border: none;
+}
+
+/* 修改成员信息弹框 */
+
+.edit-member-pop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-member-main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  position: relative;
+  padding: 42rpx 0 48rpx;
+  width: 666rpx;
+  background: #fff;
+  border-radius: 20rpx;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+
+.close-btn text {
+  font-size: 40rpx;
+  color: #353535;
+}
+
+.edit-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 36rpx;
+  color: #353535;
+  margin-bottom: 37rpx;
+}
+
+.edit-inpt-wrap {
+  display: flex;
+  align-items: center;
+  margin: 26rpx auto;
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.edit-inpt-wrap input, .edit-picker {
+  margin-left: 10rpx;
+  width: 434rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  border: 1px solid rgba(217, 217, 217, 1);
+  border-radius: 12rpx;
+  text-align: center;
+  position: relative;
+}
+
+.edit-picker image {
+  position: absolute;
+  top: 18rpx;
+  right: 18rpx;
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.edit-btn {
+  margin: auto;
+  text-align: center;
+  width: 242rpx;
+  height: 83rpx;
+  line-height: 83rpx;
+  background: linear-gradient(90deg, rgba(255, 209, 0, 1) 0%, rgba(255, 174, 0, 1) 100%);
+  border-radius: 45rpx;
+  font-size: 30rpx;
+  color: #222;
+  margin-top: 44rpx;
+}
+
+.edit-picker {
+  text-align: center;
+}

@@ -1,0 +1,113 @@
+/* my-template/team4/team4.wxss */
+
+.organzer-item {
+  width: 710rpx;
+  padding: 18rpx 0 22rpx;
+  border: 1px solid rgba(242, 242, 242, 1);
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+  transform: translateX(-94rpx);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -webkit-transform: translateX(-94rpx);
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0rpx 25rpx 30rpx 20rpx;
+  height: 190rpx;
+  box-sizing: border-box;
+}
+
+.organizer-tag {
+  text-align: center;
+  margin-bottom: 25rpx;
+  width: 108rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  color: #282828;
+  background: #ffd100;
+  border-radius: 0 25rpx 25rpx 0;
+}
+
+.organizer-content-wrap {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  padding: 0 10rpx 0 20rpx;
+}
+
+.clo-line {
+  margin-top: 8rpx;
+  width: 1px;
+  height: 40rpx;
+  background: #e5e5e5;
+}
+
+.organizer-content-left {
+  width: 75%;
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #353535;
+}
+
+.check-more {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.check-more image {
+  width: 25rpx;
+  height: 25rpx;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -moz-transform: rotate(90deg); /* Firefox */
+  -webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+  -o-transform: rotate(90deg);
+}
+
+.organizer-content-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+  height: 50rpx;
+  font-size: 24rpx;
+  color: #ffb100;
+}
+
+.organizer-content-right>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.ck-box {
+  width: 44rpx;
+  height: 44rpx;
+  padding: 15rpx;
+  margin: 0 0 0 20rpx;
+  transform: translateX(-94rpx);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -webkit-transform: translateX(-94rpx);
+}
+
+.ck-box image {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.item-view {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: hidden;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 0 5rpx;
+  /* margin-bottom: 40rpx; */
+}
+
+.share-item .ck-box, .share-item .organzer-item {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+}

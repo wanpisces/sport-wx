@@ -1,0 +1,14 @@
+<template name="team3">
+  <navigator url="/page/pack-index/pages/team-page/team-page?group_id={{group_id}}" hover-class='none' class='team-content'>
+    <view class='team-left'>
+      <image mode='aspectFill' src='{{group_badge}}'></image>
+      <view class='team-left-text'>
+        <view class='team-name'>{{group_name}}
+          <view class='team-lable' wx:if="{{attr_value}}">{{attr_value}}</view>
+        </view>
+        <view class='team-dynamic'>{{member_num}}位队员 · {{atten_num || '0'}}人关注 · {{visit_num || '0'}}人访问</view>
+        <view class='team-adress'>{{area}}</view>
+      </view>
+    </view>
+  </navigator>
+</template>

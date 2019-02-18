@@ -1,0 +1,10 @@
+<!--widget/addNews/addNews.wxml-->
+<view  class='com-add'>
+   <view> 
+      <authorizeView id="feedback" bind:onBut="onClick" user-info="{{true}}" refresh="{{refreshAuthorizeView}}">
+        <view>
+          <image mode='aspectFill' src='/pic/found.png' class='com-found'></image>
+        </view>
+       </authorizeView>
+   </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "ORcode": "/widget/or-code/or-code",
+    "invitingCard": "/widget/inviting-card/inviting-card",
+    "authorizeView": "/widget/authorize-view/authorize-view"
+  }
+}

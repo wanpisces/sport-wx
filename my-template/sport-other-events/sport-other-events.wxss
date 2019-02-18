@@ -1,0 +1,176 @@
+.sport-other-events {
+  width: 690rpx;
+  margin: 0 auto;
+}
+
+.other-events-time {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 40rpx 0 -10rpx 0;
+}
+
+.other-events-time text {
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  background-color: #ffd100;
+  margin-right: 20rpx;
+}
+
+.other-events-time view {
+  font-size: 26rpx;
+  color: #353535;
+  font-weight: 600;
+  margin-right: 20rpx;
+}
+
+.other-events-container {
+  width: 100%;
+  height: 220rpx;
+  border-radius: 6rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.container-group-name {
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.container-group-name image {
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #999;
+  border-radius: 50%;
+  margin-right: 12rpx;
+}
+
+.container-group-name view {
+  font-size: 30rpx;
+  color: #353535;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.container-group-name .group-name {
+  width: 200rpx;
+}
+
+.container-group-name .group-ring {
+  text-align: right;
+}
+
+.container-result {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.sport-other-ranging {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 6rpx;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+}
+
+.other-ranging {
+  width: 100%;
+  height: 66rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  border-bottom: 4rpx solid #f2f2f2;
+}
+
+.other-ranging view {
+  font-size: 24rpx;
+  color: #353535;
+  font-weight: 600;
+  width: 20%;
+  text-align: center;
+}
+
+.other-ranging .other-ranging-one {
+  width: 60%;
+  text-align: left;
+}
+
+.other-ranging view:last-child {
+  text-align: right;
+}
+
+.other-ranging-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.other-home-group, .other-away-group {
+  height: 102rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0 20rpx;
+}
+
+.other-home-group {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.home-groop-name {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+.home-group-one {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 40rpx;
+}
+
+.home-group-two {
+  display: flex;
+  align-items: center;
+}
+
+.home-group-two image {
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #999;
+  border-radius: 50%;
+}
+
+.home-group-two  view {
+  width: 150rpx;
+  font-size: 24rpx;
+  color: #353535;
+  margin-left: 9rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.home-groop-ranking, .home-groop-score {
+  width: 20%;
+  font-size: 24rpx;
+  color: #353535;
+}
+
+.home-groop-ranking {
+  text-align: center;
+}
+
+.home-groop-score {
+  text-align: right;
+}

@@ -1,0 +1,18 @@
+<loadingView wx:if="{{isLoading}}" />
+<import src="/my-template/position/position.wxml" />
+<view class="pages">
+  <navigationBar title-name="常用位置" tag="{{2}}" status-bar-height="{{statusBarHeight}}" />
+  <view style='padding-top:20rpx;'>
+    <view wx:for="{{userLocations}}" wx:key="key3" class="searchListItemed3">
+      <view class='item'>
+        <view style='color:#101010;'>{{item.name||'--'}}</view>
+        <text>{{item.address||'---------'}}</text>
+      </view>
+      <view class='iconfont icon-tianjia1' catchtap='onDelete' data-index='{{index}}' style='font-size:40rpx;color:#CCCCCC;'></view>
+    </view>
+    <view class='add-view' hidden="{{userLocations.length>=3}}" catchtap='onAdd'>
+      <view class='iconfont icon-tianjia' style='font-size:40rpx;color:#FFD100;'></view>
+      <view style='color:#FFD100;font-size:30rpx;margin-left:20rpx;'>添加位置</view>
+    </view>
+  </view>
+</view>

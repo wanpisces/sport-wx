@@ -1,0 +1,20 @@
+<!--widget/filterTab/filterTab.wxml-->
+<view class='filter-wrap'>
+  <view class='filter-content'>
+    <!-- <picker class='filter-item' mode="region" bindchange="bindRegionChange" value="{{region}}">
+      {{reginText}}<image src='../../../../../pic/sjx.png'></image>
+    </picker> -->
+    <picker class='filter-item' mode="multiSelector" bindchange="bindAreaPickerChange" bindcolumnchange="bindAreaPickerColumnChange" value="{{areaIndex}}" range="{{areaList}}" range-key="name">
+        <view class="{{address?'picker':'picker_no'}}">
+          <view> {{address||'区域'}}</view>
+          <image src='../../../../../pic/sjx.png'></image>
+        </view>
+      </picker>
+    <picker class='filter-item' bindchange="bindTypeChange" range="{{typeArray}}" value="{{typeIndex}}">
+      {{typesOf}}<image src='../../../../../pic/sjx.png'></image>
+    </picker>
+    <picker class='filter-item'  bindchange="bindFilterChange" range="{{filterArray}}" value="{{filterIndex}}">
+      筛选<image src='../../../../../pic/sjx.png'></image>
+    </picker>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<!-- 全屏 -->
+<template name="emptyView">
+  <view class='emptyView'>
+    <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='{{empty.icon}}'></image>
+    <text style='margin:15rpx;color:#999;font-size:30rpx;'>{{empty.txt}}</text>
+  </view>
+
+</template>
+<!-- 不是全屏 -->
+<template name="emptyView2">
+  <view class='emptyView2' style="height:{{!!empty.height?empty.height:'auto'}}">
+    <image mode='aspectFill' style="{{empty.icon == '../../pic/no.png'?'width:56rpx;height: 56rpx;':'width:212rpx;height: 167rpx;'}}" src='{{empty.icon}}'></image>
+    <text style='margin:15rpx;color:#999;font-size:30rpx;'>{{empty.txt}}</text>
+  </view>
+
+</template>
+<template name='loadMore'>
+  <view >
+    <view class="sk-three-bounce" hidden="{{!loadData.searchLoading}}">
+      <view class="sk-child sk-bounce1"></view>
+      <view class="sk-child sk-bounce2"></view>
+      <view class="sk-child sk-bounce3"></view>
+      <text>正在载入更多...</text>
+    </view>
+    <view class="loading-complete" hidden="{{loadData.searchLoading && !loadData.searchLoadingComplete}}">
+      <text >我是有底线哒~</text>
+    </view>
+  </view>
+</template>

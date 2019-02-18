@@ -1,0 +1,179 @@
+/* page/pack-index/pages/reply-more/reply-more.wxss */
+@import "/page/tmp/load/listTemplate.wxss";
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.topview {
+  display: flex;
+  flex-flow: row column;
+  align-items: center;
+  position: relative;
+}
+
+.topview .layer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 740rpx;
+}
+
+.topview .layer .userImg {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  margin-left: 15rpx;
+}
+
+.topview .layer .nameAndTime {
+  display: flex;
+  flex-flow: column;
+  margin-left: 13rpx;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+  height: 82rpx;
+}
+
+.topview .layer .nameAndTime .name {
+  font-size: 28rpx;
+  color: #2b79b5;
+}
+
+.topview .layer .nameAndTime .time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.topview .layer .commentZan {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0;
+  padding: 10rpx 14rpx;
+  background: #fff;
+  border-radius: 0;
+}
+
+
+.topview .layer .commentZan image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.topview .layer .hoverClass {
+  background: #f8f8f8;
+}
+
+.topview .layer .commentZan .num {
+  font-size: 24rpx;
+  color: #bcbcbc;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+
+.topview .layer .commentReply {
+  margin: 0;
+  padding: 10rpx 14rpx;
+  background: #fff;
+  border-radius: 0;
+  font-size: 30rpx;
+  color: #353535;
+}
+.topview .layer .commentReply::after{
+  border: 0;
+}
+
+.topview .layer .more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 14rpx 0 0;
+  padding: 12rpx 14rpx 8rpx 14rpx;
+  border-radius: 0;
+  background: #fff;
+  line-height: 1;
+}
+
+.topview .layer .more::after {
+  border: 0;
+}
+
+.topview .layer .more .hoverClass2 {
+  background: #f8f8f8;
+}
+
+.topview .layer .more  .huifu {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.bottomView {
+  font-size: 28rpx;
+  color: #353535;
+  margin: 15rpx 68rpx 0 110rpx;
+}
+
+.commentList .item .huifuView {
+  display: flex;
+  flex-flow: column;
+  background: #f2f2f2;
+  margin: 15rpx 68rpx 0 110rpx;
+  padding: 10rpx 0;
+}
+
+.huifuView {
+  display: flex;
+  flex-flow: column;
+  background: #f2f2f2;
+  margin: 15rpx 68rpx 0 110rpx;
+  padding: 10rpx 0;
+}
+
+.huifuView .huifuItem {
+  font-size: 26rpx;
+  color: #353535;
+  padding: 10rpx;
+}
+.loadMore{
+  padding-bottom: 50px;
+}

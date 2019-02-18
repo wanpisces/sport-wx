@@ -1,0 +1,8 @@
+@import "/libs/icon.wxss";
+@import "/my-template/position/position.wxss";
+
+.pages {
+  min-height: 100%;
+  position: relative;
+  background-color: #f2f2f2;
+}

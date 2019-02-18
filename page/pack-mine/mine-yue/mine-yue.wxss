@@ -1,0 +1,167 @@
+/* page/pack-mine/mine-yue/mine-yue.wxss */
+@import "/my-template/load/listTemplate.wxss";
+@import "/my-template/yd/yd.wxss";
+@import "/libs/icon.wxss";
+@import "/my-template/team4/team4.wxss";
+
+.create-view {
+  width: 750rpx;
+}
+
+.create-view image {
+  width: 100%;
+  height: 120rpx;
+}
+
+.create-avator {
+  margin: -85rpx auto 0;
+  text-align: center;
+}
+
+.create-avator image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+/* 选项卡 */
+
+.team_list {
+  width: 100%;
+  /* background-color: #efeff4; */
+  background-color: #fff;
+  margin-top: 10rpx;
+  /* margin-bottom: 100rpx; */
+}
+
+.detail-list {
+  width: 100%;
+  background-color: #fff;
+  /* padding-bottom: 70rpx; */
+  position: relative;
+}
+
+.swiper-tab {
+  width: 710rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: white;
+  display: flex;
+}
+
+.swiper-tab-list {
+  font-size: 28rpx;
+  line-height: 52rpx;
+  color: #666;
+}
+
+.swiper-tab-list:nth-child(2) {
+  margin: 0 30rpx;
+}
+
+.on {
+  padding: 0 20rpx;
+  height: 52rpx;
+  background: rgba(255, 209, 0, 1);
+  border-radius: 26rpx;
+  color: #202020;
+  font-size: 28rpx;
+}
+
+.swiper-contain {
+  margin-top: 30rpx;
+  width: 100%;
+}
+
+/* 筛选 */
+
+.filter-view {
+  width: 100%;
+  height: 93rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.filter-item .txt {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.filter-item .sjx-view {
+  margin-top: 10rpx;
+  margin-left: 13rpx;
+  width: 0;
+  height: 0;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+.no-data {
+  margin-top: 30%;
+}
+
+.no-data image {
+  display: block;
+  width: 212rpx;
+  height: 167rpx;
+  margin: 0 auto;
+}
+
+.no-data text {
+  display: block;
+  margin: 15rpx;
+  color: #999;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.headPortrait {
+  width: 220rpx;
+  height: 68rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 209, 1, 1);
+  border-radius: 120rpx;
+  line-height: 68rpx;
+  font-size: 34rpx;
+  text-align: center;
+  color: #ffd100;
+  margin: 0 auto;
+}
+
+.bottom {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  line-height: 98rpx;
+  z-index: 400;
+}
+
+.share {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 98rpx;
+  font-size: 36rpx;
+  color: #222;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 192, 0, 1), rgba(255, 174, 0, 1));
+  /* border-radius: 49rpx;
+  margin: 51rpx 0; */
+}
+
+.share>image {
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 8rpx;
+}
+
+.yd-match {
+  height: 300rpx;
+}

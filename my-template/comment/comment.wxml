@@ -1,0 +1,50 @@
+<template name="comment">
+  <view class='item' wx:for="{{dataList}}" wx:key="listKey">
+    <view class='topview'>
+      <view class='layer'>
+        <image mode='aspectFill' class='userImg' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+        <view class='nameAndTime'>
+          <text class='name'>{{item.user_name}}</text>
+          <text class='time'>{{item.create_time}}</text>
+        </view>
+        <authorizeView bind:onBut='plZan' data-index='{{index}}' data-item='{{item}}'>
+          <view class='commentZan' hover-class='hoverClass'>
+            <image mode='aspectFill' src="{{item.is_star==2?'/pic/xq_access_zan_touch.png':'/pic/xq_access_zan.png'}}"></image>
+            <text class='num'>{{item.star_num}}</text>
+          </view>
+        </authorizeView>
+
+        <button class='more' hover-class='hoverClass2' catchtap='huifu' data-index='{{index}}' data-item='{{item}}'>
+          <!-- <image mode='aspectFill' src='/pic/xq_access_more.png'></image> -->
+          <text class='huifu'>回复</text>
+        </button>
+
+      </view>
+      <!-- <view wx:if="{{index == checkId && isChecked}}" class='layer2'>
+        <view class='view1'>
+          <text class='huifu'>回复</text>
+        </view>
+        <view class='view2'></view>
+      </view> -->
+    </view>
+    <text class='bottomView'>{{item.comment_content}}</text>
+    <view wx:if="{{item.child.list.length>0}}" class='huifuView'>
+      <view catchtap='onHuiFuChild' data-item='{{childItem}}' data-pitem='{{item}}' class='huifuItem' wx:for='{{item.child.list}}' wx:key='huifuKey' wx:for-item="childItem">
+        <view wx:if='{{childItem.is_at == 1}}'>
+          <text style="color:#2b79b5;">{{childItem.user_name}}</text>回复
+          <text style="color:#2b79b5;">{{childItem.comment_user_name}}</text>:
+          <text> {{childItem.comment_content}}</text>
+        </view>
+        <view wx:else>
+          <text style="color:#2b79b5;">{{childItem.user_name}}</text> :
+          <text> {{childItem.comment_content}}</text>
+        </view>
+      </view>
+      <button catchtap='lookMore' data-index='{{index}}' hidden='{{item.child.left_num<=0}}' size="default" type="primary" class='lookMore'>
+        剩余
+        <text>{{item.child.left_num}}条</text>回复
+      </button>
+
+    </view>
+  </view>
+</template>

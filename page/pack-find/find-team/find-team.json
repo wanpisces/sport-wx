@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#000",
+  "usingComponents": {
+    "filterTab": "/widget/filterTab/filterTab",
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "loadingView": "/widget/loading-view/loading-view"
+  }
+}

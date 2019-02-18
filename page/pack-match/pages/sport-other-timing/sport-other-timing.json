@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "loadingView": "/widget/loading-view/loading-view",
+    "videoView": "/widget/video-view/video-view"
+  }
+}

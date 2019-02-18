@@ -1,0 +1,18 @@
+<import src="../../../../my-template/load/listTemplate.wxml" />
+<loadingView wx:if="{{isLoading}}" />
+<view class="page">
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#fff" title-name="赛场资讯" status-bar-height="{{statusBarHeight}}" />
+  <view style='margin-top:85px'>
+    <view wx:if="{{hotInfo.length>0}}">
+      <import src="../../../../my-template/news/news.wxml" />
+      <block wx:for="{{hotInfo}}" wx:for-item="hotInfo" wx:key="{{index}}">
+        <template wx:if="{{hotInfo.material_pic_type == 0 ||hotInfo.material_pic_type == 2 }}" is="news_item1" data="{{...hotInfo}}"></template>
+        <template wx:if="{{hotInfo.material_pic_type == 1}}" is="news_item2" data="{{...hotInfo}}"></template>
+      </block>
+      <template is='loadMore3' data="{{...hotInfoList.loadData}}" />
+    </view>
+    <view wx:else>
+      <template is='emptyView' data="{{empty}}" />
+    </view>
+  </view>
+</view>

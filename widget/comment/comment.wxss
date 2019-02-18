@@ -1,0 +1,343 @@
+/* 底部操作栏 */
+@import '/app.wxss';
+
+.message-wrapper {
+  max-width: 100%;
+  border: 1px solid #ececec;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #fff;
+  font-size: 32rpx;
+}
+
+.message-wrapper .input-wrapper, .message-wrapper .view-wrapper {
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100rpx;
+}
+
+.input-wrapper {
+  background-color: #f6f6f6;
+}
+
+.input-wrapper .btn-back {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.input-wrapper .btn-back image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.input-wrapper .input-txt {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding-left: 10rpx;
+  width: 70%;
+  height: 60rpx !important;
+  line-height: 60rpx;
+}
+
+.input-wrapper .btn-send {
+  width: 14%;
+  margin: 0 20rpx;
+  text-align: center;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 10rpx;
+  background-color: #44ccfc;
+  color: #fff;
+}
+
+.view-wrapper {
+  background-color: #fff;
+}
+
+.view-wrapper .input-box {
+  width: 60%;
+  border-right: 1px solid #ececec;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.view-wrapper .input-box image {
+  width: 61rpx;
+  height: 48rpx;
+}
+
+.view-wrapper .input-box text {
+  color: #898989;
+  font-size: 30rpx;
+  margin-left: 15rpx;
+  line-height: 60rpx;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  border-radius: 10rpx;
+  padding-left: 8rpx;
+  width: 100%;
+}
+
+.view-wrapper .operator {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rpx;
+}
+
+.view-wrapper .operator .item {
+  background: transparent;
+  width: 32%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-wrapper .operator .item::after {
+  border: 0px solid red;
+}
+
+.view-wrapper .operator .item image {
+  width: 42rpx;
+  height: 40rpx;
+}
+
+.view-wrapper .operator .item text {
+  display: block;
+  position: absolute;
+  font-size: 28rpx;
+  right: 0;
+  top: -20rpx;
+  color: #888;
+}
+
+.view-wrapper .operator .item1 {
+  background: transparent;
+  width: 32%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-wrapper .operator .item1::after {
+  border: 0px solid red;
+}
+
+.view-wrapper .operator .item1 image {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.view-wrapper .operator .item1 text {
+  display: block;
+  position: absolute;
+  font-size: 28rpx;
+  right: 0;
+  top: -20rpx;
+  color: #888;
+}
+
+.view-wrapper .operator .item2 {
+  background: transparent;
+  width: 32%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-wrapper .operator .item2::after {
+  border: 0px solid red;
+}
+
+.view-wrapper .operator .item2 image {
+  width: 41rpx;
+  height: 40rpx;
+}
+
+.view-wrapper .operator .item2 text {
+  display: block;
+  position: absolute;
+  font-size: 28rpx;
+  right: 0;
+  top: -20rpx;
+  color: #888;
+}
+/* 评论列表页 */
+
+.row-item  .label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 28rpx;
+  width: 730rpx;
+  margin: 10rpx;
+}
+
+.label .label-title {
+  font-size: 32rpx;
+  color: #353535;
+  flex-grow: 1;
+  margin-left: 10rpx;
+}
+
+.label .label-tips {
+  font-size: 30rpx;
+  color: #fb4748;
+  padding: 10rpx;
+}
+
+.row-item .comment-wrapper {
+  font-size: 30rpx;
+  color: #8d8d8d;
+}
+
+.comment-wrapper .comment-item {
+  height: 110rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.comment-wrapper .comment-item .avatar {
+  flex-shrink: 0;
+}
+
+.comment-wrapper .comment-item .avatar image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  background-color: transparent;
+}
+
+.comment-wrapper .comment-item .body {
+  height: 90rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+  display: flex;
+  flex-flow: column;
+}
+
+.comment-wrapper .comment-item .body .account {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+  text-align: center left;
+  color: #353535;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: box;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.comment-wrapper .comment-item .body .time {
+  font-size: 24rpx;
+  line-height: 40rpx;
+  text-align: center left;
+  color: #707070;
+}
+
+/* 评论列表操作 */
+
+.comment-wrapper .comment-item .operator {
+  position: relative;
+  padding: 20rpx 10rpx 0 10rpx;
+}
+
+.comment-wrapper .comment-item .operator .item {
+  background: transparent;
+  height: 50rpx;
+  width: 55rpx;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.comment-wrapper .comment-item .operator .item::after {
+  border: 0px solid red;
+}
+
+.comment-wrapper .comment-item .operator .item image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.comment-wrapper .comment-item .operator .item view {
+  line-height: 50rpx;
+  width: 100%;
+  position: absolute;
+  font-size: 26rpx;
+  text-align: right;
+  right: 0;
+  top: -10rpx;
+  color: #707070;
+}
+
+.comment-wrapper .content {
+  margin: 0 10rpx 15rpx 110rpx;
+  color: #353535;
+  font-size: 28rpx;
+}
+
+.reply {
+  display: flex;
+  flex-flow: column;
+}
+
+.reply .item {
+  display: flex;
+  flex-flow: column;
+  margin-left: 50rpx;
+  background: #f1f1f1;
+  margin-bottom: 10rpx;
+}
+.reply .item .commentuser{
+  color: #353535;
+  font-size: 28rpx;
+  padding: 10rpx 10rpx 0 10rpx;
+}
+.reply .item .commentcontent{
+    color: #353535;
+  font-size: 28rpx;
+  padding: 10rpx;
+}
+.bottom-view{
+  height: 120rpx;
+  width: 100%;
+}

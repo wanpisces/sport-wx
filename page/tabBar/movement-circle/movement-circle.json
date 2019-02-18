@@ -1,0 +1,10 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#000",
+  "backgroundColorBottom": "#fff",
+  "usingComponents": {
+    "authorizeView": "/widget/authorize-view/authorize-view",
+    "comment-view":"/widget/comment-view/comment-view"
+  }
+}

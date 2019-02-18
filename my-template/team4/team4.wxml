@@ -1,0 +1,31 @@
+<!--my-template/team4/team4.wxml-->
+<template name="team4">
+  <navigator hover-stop-propagation="{{true}}" url="/page/pack-organizer/yd-detail/yd-detail?movement_id={{item.movement_id}}" class="item-view {{isColoseShare?'':'share-item'}}">
+    <view hover-stop-propagation="{{true}}" catchtap='onCkShare' class='ck-box' data-index='{{index}}' data-item='{{item}}'>
+      <image src="{{index == ckId?'/pic/team_pick_icon.png':'/pic/team_not_pick_icon.png'}}"></image>
+    </view>
+    <view hover-stop-propagation="{{true}}" class="organzer-item">
+      <view class='organizer-tag'>{{item.organization_status ==1?"我组织的":"我参与的"}}</view>
+      <view class='organizer-content-wrap'>
+        <view class='organizer-content-left word-wrap'>{{item.movement_name}}
+        </view>
+        <view class='clo-line'></view>
+        <view class='organizer-content-right'>{{item.movement_state==1?"报名中":item.movement_state==2?"已开启":item.movement_state==3?"已取消":"待定中"}}
+          <image src='/pic/arrow.png'></image>
+        </view>
+      </view>
+    </view>
+  </navigator>
+
+  <!-- <navigator url="/page/pack-organizer/yd-detail/yd-detail?movement_id={{item.movement_id}}" class='organzer-item' wx:for="{{dataList1}}" wx:key="{{index}}">
+    <view class='organizer-tag'>{{item.organization_status ==1?"我组织的":"我参与的"}}</view>
+    <view class='organizer-content-wrap'>
+      <view class='organizer-content-left word-wrap'>{{item.movement_name}}
+      </view>
+      <view class='clo-line'></view>
+      <view class='organizer-content-right'>{{item.movement_state==1?"报名中":item.movement_state==2?"已开启":item.movement_state==3?"已取消":"待定中"}}
+        <image src='/pic/arrow.png'></image>
+      </view>
+    </view>
+  </navigator> -->
+</template>

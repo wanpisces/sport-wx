@@ -1,0 +1,78 @@
+<loadingView wx:if="{{isLoading}}" />
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" bg-color="#FED946" title-name="" status-bar-height="{{statusBarHeight}}" />
+  <view style='margin-top:{{statusBarHeight+45}}px;'>
+    <image src='/pic/match-userInfo.png' mode='aspectFill' class='image-bg'></image>
+    <view class='match-userInfo'>
+      <image src='/pic/match-hi.png' mode='aspectFill'></image>
+      <view>{{is_enlist == 2?'完善资料':'我的资料'}}</view>
+    </view>
+    <view class='userInfo' bindtap='editHeaderImg'>
+      <image mode='aspectFill' src="{{ataver}}" class='image-ataver'></image>
+      <view class='ataver-text'>点击更换头像</view>
+    </view>
+  </view>
+  <view style='margin-top:130rpx;'>
+    <view class='userInfo-detail'>
+      <text class='userInfo-sign'>*</text>
+      <view class='userInfo-space'>
+        <view>姓名</view>
+        <input placeholder='请填写姓名' bindinput='getInfo' data-title="user_nickname" value='{{user_nickname}}'></input>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <text class='userInfo-sign'>*</text>
+      <view class='userInfo-space'>
+        <view>性别</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="{{item.checked?'radio-select':'radio'}}" wx:for="{{genderList}}" wx:key="{{index}}">
+            <radio value="{{item.value}}" color="#feb800" checked="{{item.checked}}" /> {{item.sex}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <text class='userInfo-sign'>*</text>
+      <view class='userInfo-space'>
+        <view>学校</view>
+        <picker bindchange="bindSchoolChange" value="{{index}}" range="{{schoolList}}" range-key="education_name" style='width:80%;'>
+          <view class='user-picker'>
+            <view class="userInfo-space-picker" style="{{education_name?'color:#353535;':'color:#999;'}}">{{education_name || '请选择学校'}}</view>
+            <text class='iconfont icon-xiayiye' style='font-size:32rpx;color:#999;'></text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <view class='userInfo-space special'>
+        <view>学院</view>
+        <input placeholder='请填写学院' bindinput='getInfo' data-title="college" value="{{college || ''}}"></input>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <view class='userInfo-space special'>
+        <view>专业</view>
+        <input placeholder='请填写专业' bindinput='getInfo' data-title="major" value="{{major || ''}}"></input>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <text class='userInfo-sign'>*</text>
+      <view class='userInfo-space'>
+        <view>学号</view>
+        <input placeholder='请填写学号' bindinput='getInfo' data-title="student_id" type='number' value="{{student_id || ''}}"></input>
+      </view>
+    </view>
+    <view class='userInfo-detail'>
+      <text class='userInfo-sign'>*</text>
+      <view class='userInfo-space'>
+        <view>电话</view>
+        <input placeholder='请填写电话' bindinput='getInfo' data-title="user_phone" type='number' value="{{user_phone || ''}}"></input>
+      </view>
+    </view>
+  </view>
+  <view>
+    <authorizeView bind:onBut="submitUserInfo">
+      <view class='userInfo-submit'>{{is_enlist == 2?'提交报名':'重新提交报名'}}</view>
+    </authorizeView>
+  </view>
+</view>

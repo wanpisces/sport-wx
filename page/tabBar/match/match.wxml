@@ -1,0 +1,90 @@
+<!--page/tabBar/match/match.wxml-->
+<import src="/my-template/match/match.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<view class='navigation-bar' style='height:{{statusBarHeight+45}}px;'>
+  <!-- <view class='search-view' style='margin-top:{{statusBarHeight+6}}px;'>
+    <image mode='aspectFill' src='/pic/search.png'></image>
+    <input disabled="true" placeholder="搜索赛事" placeholder-style="search-placeholder-style"></input>
+  </view> -->
+  <view style='font-size:34rpx;color:#000;margin-left:25rpx;font-weight: bold;margin-top:{{statusBarHeight+6}}px; line-height: 33px;'>赛事</view>
+</view>
+<scroll-view scroll-x='ture' class='scroll-view-H' style='width:100%;top:{{statusBarHeight+45}}px;'>
+  <view class='view-scroll'>
+    <view catchtap='bindLabelClick' wx:for="{{labelList}}" wx:key="{{item.value}}" class="scroll-item {{checkLabelIndex==index?'scroll-item-ed':''}}" data-index='{{index}}'>{{item.value}}</view>
+  </view>
+</scroll-view>
+<view class='title-bar' style='width:100%;top:{{statusBarHeight+85}}px;'>
+  <view class='title-bar-sub1'>
+    <image mode='aspectFill' src='/pic/game_search.png'></image>
+    <!-- <view style='font-size:26rpx;color:#999;'>搜索赛事</view> -->
+    <input bindfocus='bindfocus' bindconfirm='bindconfirm' value="{{!inputFocus?'':value}}" placeholder="搜索赛事" placeholder-style="search-placeholder-style" confirm-type='search'></input>
+  </view>
+  <view wx:if="{{!inputFocus}}" class='title-bar-sub2'>
+    <picker wx:if="{{checkLabelIndex == 0}}" bindchange="bindMatchChange" range="{{matchArray}}" range-key="name" value="{{0}}">
+      <view class="picker">
+        <text>{{matchText}}</text>
+        <view></view>
+      </view>
+    </picker>
+    <picker style='margin-left:30rpx;' mode="multiSelector" bindchange="bindCityPickerChange" bindcolumnchange="bindCityPickerColumnChange" value="{{cityIndex}}" range="{{cityList}}" range-key="name">
+      <view class="picker">
+        <text>{{!address||address=="全部"?'区域':address}}</text>
+        <view></view>
+      </view>
+    </picker>
+    <picker style='margin-left:30rpx;' bindchange="bindFilterChange" range="{{filterArray}}" range-key="name" value="{{filterIndex}}">
+      <view class="picker">
+        <text>{{filterText}}</text>
+        <view></view>
+      </view>
+    </picker>
+  </view>
+  <view wx:else catchtap='onCancel' class='title-bar-sub3'>
+    取消
+  </view>
+</view>
+<swiper class='swiper-view' current='{{swiperCurrent}}' bindchange="bindSwiperChange" duration="{{500}}" skip-hidden-item-layout='true' style='height:{{swiperHeight}}px;top:{{statusBarHeight+125}}px;'>
+  <block wx:for="{{labelList}}" wx:key="swiperKey" style='height:{{swiperHeight}}px;'>
+    <swiper-item>
+      <scroll-view scroll-into-view="{{labelList[checkLabelIndex].into_view}}" bindscrolltolower="bindscrolltolower" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+        <view id='scrollTop' style='width:100%;height:1rpx;background:rgba(0,0,0,0);'></view>
+        <template is='match' wx:for="{{labelList[checkLabelIndex].list}}" wx:key="itemKey" data="{{...item,index}}" />
+        <view class='empty-view' wx:if="{{labelList[checkLabelIndex].list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+          <template is="emptyView2" data="{{empty}}" />
+        </view>
+        <template wx:else is='loadMore3' data="{{...labelList[checkLabelIndex].loadData}}" />
+      </scroll-view>
+    </swiper-item>
+  </block>
+</swiper>
+<view wx:if="{{inputFocus}}" class='historical-search-view' style='height:{{swiperHeight}}px;top:{{statusBarHeight+125}}px;'>
+  <view wx:if="{{!inputConfirm}}">
+    <view class='item-txt'>
+      <image style='width:32rpx;height:32rpx;flex-grow:0' src='/pic/hinstoryt_search_icon.png' mode='aspectFill'></image>
+      <text>历史搜索</text>
+      <view style='flex-grow:1'></view>
+      <form bindsubmit='bindDelete' report-submit='true'>
+        <button class='delete' style='flex-grow:0' hover-class='none' formType="submit">清空</button>
+      </form>
+    </view>
+    <view style='height:1rpx;width:100%;background:rgba(244,244,244,1);'></view>
+    <view class='item-data'>
+      <form wx:for="{{history}}" bindsubmit='bindItem2' report-submit='true' wx:key='itemKey3' data-index='{{index}}'>
+        <button class='itemdatabouttom' hover-class='none' formType="submit">
+          {{item}}
+        </button>
+      </form>
+    </view>
+  </view>
+  <scroll-view wx:else bindscrolltolower="bindscrolltolower" scroll-y='ture' style='background:#F2f2f2;height:{{swiperHeight}}px;'>
+    <template is='match' wx:for="{{list}}" wx:key="itemKey" data="{{...item,index}}" />
+    <view class='empty-view' wx:if="{{list.length==0}}" style='min-height:{{swiperHeight}}px;'>
+      <template is="emptyView2" data="{{empty}}" />
+    </view>
+    <template wx:else is='loadMore3' data="{{loadData}}" />
+  </scroll-view>
+</view>
+
+<view bindtap="onTapButtonRefresh" class="refresh-button {{isScrolling?'opacity-button':''}}">
+  <image class="refresh-button-img {{rotateRefreshImg?'refresh-button-img-rotate':''}}" src="/pic/refresh.png"></image>
+</view>

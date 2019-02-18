@@ -1,0 +1,17 @@
+<!--widget/inviting-card/inviting-card.wxml-->
+<view catchtouchmove="preventD">
+  <view class='bg' catchtap='exit'></view>
+  <view class='v_view'>
+    <!-- <view class='code'> -->
+    <canvas canvas-id="canvas_code" class='canvas_view'>
+    </canvas>
+    <!-- </view> -->
+    <view catchtap='exit' class='bnt'>
+      <button catchtap='onRandom' class='bnt1'>随机背景</button>
+      <view catchtap='save' class='save'>
+        保存到相册
+      </view>
+      <button class='bnt2' catchtap='uploadImg'>上传背景</button>
+    </view>
+  </view>
+</view>

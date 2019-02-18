@@ -1,0 +1,167 @@
+/* my-template/mydynamic/mydynamic.wxss */
+.shuoshuo {
+  display: flex;
+  flex-flow: column;
+  background: #fff;
+  width: 750rpx;
+  padding: 30rpx 20rpx 10rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #F2F2F2;
+}
+
+.shuoshuo .ss_userInfo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.shuoshuo .ss_userInfo image {
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 45rpx;
+  border: 1rpx solid #ffd100;
+}
+
+.shuoshuo .ss_userName {
+  display: flex;
+  flex-flow: column;
+  margin-left: 15rpx;
+}
+
+.shuoshuo .ss_userName view {
+  font-size: 30rpx;
+  color: #353535;
+}
+
+/* .shuoshuo .ss_userName text {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #999;
+} */
+.ss-location{
+  width: 10rpx;
+  height: 10rpx;
+}
+.ss-bottom{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 20rpx;
+}
+
+
+.shuoshuo .ss_content {
+  font-size: 30rpx;
+  color: #353535;
+  padding: 20rpx 0;
+}
+
+.shuoshuo .ss_imgs {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.shuoshuo .ss_imgs view {
+  width: 33.3%;
+  height: 225rpx;
+}
+
+.shuoshuo .ss_imgs view image {
+  background: #e5e5e5;
+  width: 96%;
+  height: 96%;
+  margin: 2%;
+}
+
+.shuoshuo .ss_club {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 96%;
+  margin-top: 20rpx;
+  padding: 2%;
+  align-items: center;
+  background: #eee;
+  border-radius: 8rpx;
+}
+
+.shuoshuo .ss_club .club_img {
+  height: 120rpx;
+  width: 120rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 8rpx;
+  background: #ffd100;
+}
+
+.shuoshuo .ss_club .next {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.shuoshuo .ss_club .club_name {
+  display: flex;
+  flex-flow: column;
+  font-size: 32rpx;
+  padding: 0 30rpx;
+  flex-shrink: 1;
+  flex-grow: 1;
+  height: 120rpx;
+  justify-content: space-between;
+}
+
+.shuoshuo .ss_club .club_name .clubName {
+  color: #353535;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.shuoshuo .ss_club .club_name .clubNum {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.shuoshuo .ss_club .club_name .clubNum image {
+  width: 24rpx;
+  color: 24rpx;
+}
+
+.shuoshuo .ss_club .club_name .clubNum view {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.shuoshuo .ss_bntImg {
+  display: flex;
+  flex-flow: row;
+  padding: 10rpx 0;
+}
+
+.shuoshuo .ss_bntImg .ss_accessment {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+}
+
+.shuoshuo .ss_bntImg .ss_zan {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 10rpx;
+  margin-left: 30rpx;
+}
+.ss-address{
+  font-size: 24rpx;
+  color: #353535
+}
+.ss-bottom-address{
+  border: none !important;
+  width: 30rpx !important;
+  height: 30rpx !important;
+
+}

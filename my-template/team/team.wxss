@@ -1,0 +1,78 @@
+.team {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0rpx 30rpx 24rpx 30rpx;
+  padding: 10rpx 15rpx;
+  box-shadow: 0px 0px 10px #f2f2f2;
+  border-radius: 8rpx;
+}
+
+.team .teamImg {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 8rpx;
+  background: #e5e5e5;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.team .teamDetails {
+  padding: 0rpx 30rpx;
+  height: 140rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.team .teamDetails .teamName {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.team .teamDetails .teamName .teamName_v1 {
+  font-size: 32rpx;
+  color: #353535;
+  margin-top: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.team .teamDetails .teamName .teamName_v2 {
+  font-size: 22rpx;
+  height: 30rpx;
+  line-height: 28rpx;
+  border-radius: 6rpx;
+  color: #282828;
+  margin-left: 5rpx;
+  padding: 0rpx 8rpx;
+  box-sizing: border-box;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border: 1rpx solid #ffd100;
+}
+
+.team .teamDetails .teamNum {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* .team .teamState {
+  font-size: 26rpx;
+  color: #ffd100;
+  flex-grow: 0;
+  flex-shrink: 0;
+} */
+
+.team .arrow {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.team-adress {
+  font-size: 24rpx;
+  color: #666;
+}

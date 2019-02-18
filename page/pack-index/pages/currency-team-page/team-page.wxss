@@ -1,0 +1,477 @@
+/* page/pack-index/pages/team-page/team-page.wxss */
+@import "/my-template/shuoshuo/shuoshuo.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.pages {
+  position: relative;
+}
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.v1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.bg {
+  width: 750rpx;
+  height: 600rpx;
+}
+
+.data_view {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.team_logo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 60rpx 0rpx 0rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.team_logo .mine_page {
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 26rpx;
+  color: #fff;
+  width: 149rpx;
+  line-height: 50rpx;
+  margin: 10rpx;
+  border-radius: 25rpx;
+}
+
+.team_logo .group_badge {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 60rpx;
+  background: #f4f4f4;
+}
+
+.team_logo .share {
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 70rpx;
+  width: 169rpx;
+  height: 75rpx;
+  border-radius: 0;
+}
+
+.team_brief {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 30rpx 100rpx;
+  box-sizing: border-box;
+}
+
+.notice {
+  width: 100%;
+  line-height: 80rpx;
+  background: #ffdd8c;
+  color: #ff731e;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0rpx 25rpx;
+  box-sizing: border-box;
+}
+
+.team_manage {
+  margin: 30rpx;
+  line-height: 90rpx;
+  width: 690rpx;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 2rpx solid #000;
+}
+.team_manage_view{
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  background: #fff;
+}
+
+.team_manage image {
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.team_manage view {
+  font-size: 32rpx;
+  color: #222;
+  margin-left: 8rpx;
+}
+.dian{
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 16rpx;
+  background: #ED1548;
+  margin-right: 10rpx;
+  margin-top: -20rpx;
+}
+
+.match {
+  width: 520rpx;
+  height: 260rpx;
+  box-shadow: 0rpx 0rpx 6rpx #e2e2e2;
+  border-radius: 8rpx;
+  margin-left: 30rpx;
+  margin-top: 5rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.match_team {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rpx 40rpx 20rpx 40rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+  border-left: 20rpx solid #fff;
+  border-right: 20rpx solid #fff;
+}
+
+.match_team .team1, .match_team .team2 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.match_team .team1 image, .match_team .team2 image {
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 30rpx;
+  background: #f4f4f4;
+}
+
+.match_team .team1 view, .match_team .team2 view {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #353535;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match_team .to {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.match_team .to image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.match_team .to view {
+  line-height: 40rpx;
+  background: #ffd100;
+  font-size: 22rpx;
+  color: #282828;
+  border-radius: 20rpx;
+  padding: 0 20rpx;
+  margin-top: 25rpx;
+}
+
+.match_details {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  margin-top: 18rpx;
+}
+
+.match_details text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.match_addr {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 20rpx;
+  padding: 0 40rpx;
+}
+
+.match_addr image {
+  width: 28rpx;
+  height: 28rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.match_addr view {
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 8rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabs {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.tabs .tab1, .tabs .tab2, .tabs .tab3 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.tabs .tab1 view, .tabs .tab2 view, .tabs .tab3 view {
+  line-height: 45px;
+  font-size: 32rpx;
+  text-align: center;
+  color: #353535;
+  font-weight: bold;
+}
+
+.tabs .tab1 .cked, .tabs .tab2 .cked, .tabs .tab3 .cked {
+  border-bottom: 6rpx solid #ffd100;
+  text-align: center;
+}
+
+.team_dynamic, .team_member, .team_data {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 160rpx;
+}
+
+.team_member_item {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 20rpx;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.team_member_item_view2 {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 20rpx;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.team_member_item_view1 {
+  display: block;
+  margin-left: 20rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team_member_item .user_logo {
+  height: 78rpx;
+  width: 78rpx;
+  border-radius: 39rpx;
+  background: #f4f4f4;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.arrow {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.team_data_item1 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  padding: 10rpx;
+  height: 40rpx;
+}
+
+.team_data_item1 view {
+  font-size: 28rpx;
+  color: #353535;
+}
+
+.team_data_item1 text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.team_data_slider {
+  height: 40rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.team_data_slider .slider_view {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.look_match {
+  padding: 0;
+  line-height: 52rpx;
+  font-size: 28rpx;
+  color: #999;
+  background: #fff;
+  margin: 10rpx 200rpx;
+}
+
+.bottom_view {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 94rpx;
+  background: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -1rpx 0 0 #e5e5e5;
+}
+
+.add {
+  /* position: absolute; */
+  height: 150rpx;
+  background: rgba(0, 0, 0, 0);
+  margin-bottom: 34rpx;
+}
+
+.add image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.home, .find {
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50rpx;
+  height: 100%;
+}
+
+.home image, .find image {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.home view, .find view {
+  color: #515151;
+  font-size: 24rpx;
+  line-height: 1;
+  padding: 0;
+  margin: 12rpx 0 0 0;
+}
+
+.onBottom2 {
+  display: flex;
+  flex-flow: row nowrap;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+}
+
+.fabiao {
+  background: #ffd100;
+  width: 100%;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.onBottom2 authorizeView {
+  width: 66.7%;
+  height: 90rpx;
+}
+
+.cancel {
+  width: 33.3%;
+  line-height: 90rpx;
+  background: #202020;
+  color: #ffd100;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel image {
+  height: 54rpx;
+  width: 54rpx;
+}
+
+
+
+.shareGoHome{
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  z-index: 2001;
+}
+
+.shareGoHome image{
+  width: 120rpx;
+  height: 120rpx;
+}

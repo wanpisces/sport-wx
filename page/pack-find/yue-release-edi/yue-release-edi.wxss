@@ -1,0 +1,94 @@
+/* page/pack-find/yue-release-edi/yue-release-edi.wxss */
+.pages {
+  position: relative;
+  width: 100%;
+}
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  color: #000;
+}
+.data_view {
+  position: fixed;
+  width: 100%;
+  top: 65px;
+  left: 0;
+  z-index: 2;
+  /* display: flex; */
+  /* flex-flow: column;
+  justify-content: flex-start;*/
+  /* align-items: center; 
+  text-indent: 30rpx; */
+}
+.release-tips{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background:#FFDD8C ;
+  color: #FF731E;
+  font-size: 24rpx;
+  text-indent: 18rpx;
+}
+.release-content{
+  width: 100%;
+}
+ .release-content>view{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin:0  18rpx;
+   padding: 25rpx 0;
+   border-bottom: 1rpx #F2F2F2  solid;
+   font-size:32rpx;
+   color: #353535;
+} 
+.release-content-right{
+  color: #999999;
+  font-size: 28rpx;
+  display: flex;
+
+}
+.release-line{
+  height: 20rpx;
+  background: #EEEEEE;
+  width: 100%
+}
+.release-note{
+  margin: 20rpx 18rpx;
+  font-size: 32rpx;
+  width: 95%;
+}
+.release-note-text{
+  margin-top: 20rpx;
+  background: #EEEEEE;
+  width: 94%;
+  height: 150rpx;
+  border-radius:10rpx; 
+  padding: 20rpx 3%;
+  color: #999999;
+  font-size: 24rpx;
+}
+.release-sure{
+  margin-top: 250rpx;
+  width: 450rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+  border-radius:50rpx; 
+  box-shadow:0px 0px 16px rgba(179,33,36,0.24);
+  background: -webkit-linear-gradient(left,#FFD100,#FFAE00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left,#FFD100,#FFAE00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left,#FFD100,#FFAE00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left,#FFD100,#FFAE00); /* 标准的语法 */
+}
+button::after{
+  border: none;
+  outline: none
+}
+.release-content-img{
+  width: 40rpx;
+  height: 40rpx;
+}

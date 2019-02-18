@@ -1,0 +1,99 @@
+<loadingView wx:if="{{isLoading}}" />
+<view class='page'>
+  <!-- 导航栏 -->
+  <navigationBar class='navigationBar' tag="{{3}}" bg-color="#fff" title-name="赛事总结" status-bar-height="{{statusBarHeight}}" />
+  <!-- 足球排行 -->
+  <view class='sport-ranking' style="margin-top:{{statusBarHeight+45}}px;{{sport_ranking.length==2?'padding:0 100rpx;':''}}">
+    <block wx:for="{{sport_ranking}}" wx:key="{{index}}">
+      <view>
+        <image mode='aspectFill' src='{{item.group_badge}}' class='sport-ranking-headimg'></image>
+        <text>{{item.group_name}}</text>
+        <image mode='aspectFill' src='{{item.icon}}' class='sport-ranking-icon'></image>
+      </view>
+    </block>
+  </view>
+  <!-- 最佳射手 -->
+  <view class='sport-ranking-shooter'>
+    <view class='sport-ranking-title'>最佳射手</view>
+    <view class='sport-ranking-contain'>
+      <image mode='aspectFill' src='{{sport_shooter.user_avatar}}'></image>
+      <view class='sport-ranking-name'>
+        <view>{{sport_shooter.user_realname}}</view>
+        <text>{{sport_shooter.group_name}}</text>
+      </view>
+      <view class='sport-ranking-num'>
+        <image mode='aspectFill' src='/pic/match_goal_red.png'></image>
+        <text>×{{sport_shooter.goal || '0'}}</text>
+        <!-- <image mode='aspectFill' src='/pic/list_arrow.png'></image> -->
+      </view>
+    </view>
+  </view>
+  <!-- 最佳助攻 -->
+  <view class='sport-ranking-shooter'>
+    <view class='sport-ranking-title'>最佳助攻</view>
+    <view class='sport-ranking-contain'>
+      <image mode='aspectFill' src='{{sport_attack.user_avatar}}'></image>
+      <view class='sport-ranking-name'>
+        <view>{{sport_attack.user_realname}}</view>
+        <text>{{sport_attack.group_name}}</text>
+      </view>
+      <view class='sport-ranking-num'>
+        <view class='iconfont icon-fabu-tiqiu' style='font-size:35rpx;color:#ffd100;'></view>
+        <text>×{{sport_attack.assists || '0'}}</text>
+        <!-- <image mode='aspectFill' src='/pic/list_arrow.png'></image> -->
+      </view>
+    </view>
+  </view>
+  <!-- 最佳球队 -->
+  <view class='sport-ranking-team'>
+    <view class='sport-ranking-title'>最佳球队</view>
+    <view class='sport-team-contain'>
+      <view class='sport-team'>
+        <image mode='aspectFill' src='{{best_goal_group.group_badge}}'></image>
+        <text>{{best_goal_group.group_name}}</text>
+        <view>
+          <text>最多进球：</text>
+          <text>{{best_goal_group.goal_num || '0'}}</text>
+        </view>
+      </view>
+      <view class='sport-team'>
+        <image mode='aspectFill' src='{{lose_goal_group.group_badge}}'></image>
+        <text>{{lose_goal_group.group_name}}</text>
+        <view>
+          <text>最少失球：</text>
+          <text>{{lose_goal_group.lose_num || '0'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 赛事数据 -->
+  <view class='sport-data'>
+    <view class='sport-ranking-title'>赛事数据</view>
+    <view class='sport-data-num'>
+      <view>
+        <text>{{sport_data.total || '0'}}</text>
+        <text>总进球</text>
+      </view>
+      <view data-title="moreNum" bindtap='sportInfoEvt'>
+        <image mode='aspectFill' src='/pic/more_data.png'></image>
+        <text>更多数据</text>
+      </view>
+      <view>
+        <text>{{sport_data.aver_num || '0'}}</text>
+        <text>场均进球</text>
+      </view>
+    </view>
+  </view>
+  <view class='sport-info'>
+    <view>
+      <view class='sport-info-line' data-title="hotInfo" bindtap='sportInfoEvt'>
+        <image src='/pic/sport_info.png' mode='aspectFill'></image>
+        <view>赛场资讯</view>
+      </view>
+    </view>
+    <view data-title="videoInfo" bindtap='sportInfoEvt'>
+      <image src='/pic/sport_video.png' mode='aspectFill'></image>
+      <view>精彩荟萃</view>
+    </view>
+  </view>
+</view>

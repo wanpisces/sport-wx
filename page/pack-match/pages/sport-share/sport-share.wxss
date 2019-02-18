@@ -1,0 +1,26 @@
+.share-url {
+  width: 100%;
+  height: 100%;
+  margin-top: 161rpx;
+}
+
+.share_image {
+  width: 100%;
+  height: 700rpx;
+  margin-top: 15%;
+}
+
+.share-title {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+}
+
+.share-title>text {
+  display: block;
+  font-size: 30rpx;
+  text-align: left;
+  color: rgba(0, 0, 0, 1);
+  line-height: 100rpx;
+  margin-left: 30rpx;
+}

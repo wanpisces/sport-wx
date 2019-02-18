@@ -1,0 +1,59 @@
+/* page/pack-find/against-record/against-record.wxss */
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  background: #282828;
+}
+
+.record-wrapper {
+  padding-top: 65px;
+}
+
+.record-form {
+  display: block;
+  margin-top: 50rpx;
+}
+
+.radio {
+  padding-left: 60rpx;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.radio radio {
+  margin-right: 20px;
+  zoom: 0.6;
+  -ms-zoom: 0.6;
+}
+
+button::after {
+  border: none;
+  outline: none;
+}
+
+.btn-area button {
+  margin: 60rpx auto 15rpx;
+  width: 600rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #ffd100, #ffae00); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #ffd100, #ffae00); /* Firefox 3.6 - 15 */
+  background: linear-gradient(left, #ffd100, #ffae00); /* 标准的语法 */
+  box-shadow: 0px 0px 16px rgba(179, 33, 36, 0.24);
+  text-align: center;
+}
+
+.cancel-info {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+}

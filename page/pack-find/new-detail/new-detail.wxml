@@ -1,0 +1,60 @@
+<!--page/pack-find/new-detail/new-detail.wxml-->
+<import src="/page/tmp/load/listTemplate.wxml" />
+<import src="/libs/wxParse/wxParse.wxml" />
+<!-- <view class='pages'> -->
+<loadingView wx:if="{{isLoading}}" />
+<navigationBar class='navigationBar' is-back="{{true}}" title-name="资讯详情" tag="{{3}}" status-bar-height="{{statusBarHeight}}" />
+<!-- <view class='data_view' style="top:{{statusBarHeight+45}}px;"> -->
+<view id='j_page' style="padding-top:{{statusBarHeight+45}}px;">
+  <view class='title'>
+    <view class='title_txt'>{{news_title}}</view>
+    <view class='state'>
+      <image mode='aspectFill' class='img1' src='/pic/xq_accessment.png'></image>
+      <text class='tv1'>{{comment_num}}</text>
+      <image mode='aspectFill' class='img2' src='/pic/xq_read.png'></image>
+      <text class='tv1'>{{visit_num}}</text>
+      <image mode='aspectFill' class='img3' src='/pic/xq_zan.png'></image>
+      <text class='tv1'>{{star_num}}</text>
+      <view class='tv3'>{{create_time}}</view>
+    </view>
+  </view>
+  <view class='detail-container'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <view class='explain'>
+    <view class='label'>
+      <view wx:for="{{tags}}" class='item' wx:key='itemKey'>
+        {{item}}
+      </view>
+    </view>
+    <view wx:if="{{isShowView}}" class='buts'>
+      <!-- <form report-submit='true' bindsubmit='praise'> -->
+      <authorizeView class="authorizeView" id="authorizeView" user-info="{{true}}" user-phone="{{false}}" bind:onBut="praise">
+        <view class='praise'>
+          <view style="{{isStar == 1?'border: 1rpx solid #FE646F;':'border: 1rpx solid #DADADA;'}}">
+            <image mode='aspectFill' src="{{isStar == 1?'/pic/zan_touch.png':'/pic/zan.png'}}"></image>
+          </view>
+          <text style="{{isStar == 1?'color:#FE646F;':'color:#515151;'}}">{{isStar == 1?'已点赞':'点个赞'}}</text>
+        </view>
+      </authorizeView>
+      <!-- </form> -->
+      <form report-submit='true' bindsubmit='gohome'>
+        <view class='home'>
+          <button disabled="{{staring}}" style="{{isHome == 0?'border: 1rpx solid #DADADA;':'  border: 1rpx solid #2EA3FC;'}}" hover-class='none' form-type='submit'>
+            <image mode='aspectFill' src="{{isHome == 0?'/pic/index.png':'/pic/back_index.png'}}"></image>
+          </button>
+          <text style="{{isHome == 0?'color:#515151;':'color:#2EA3FC;'}}">回首页</text>
+        </view>
+      </form>
+    </view>
+  </view>
+  <commentList branch-id="{{newsID}}" comment-num="{{comment_num}}" refresh="{{refreshAuthorizeView}}" comment-list="{{dataList}}" user-phone="{{userPhone}}" is-collect="{{isCollect}}" />
+  <view class='loadMore'>
+    <template is='loadMore' data="{{loadData}}" />
+  </view>
+</view>
+<!-- </view> -->
+<!-- </view> -->
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>

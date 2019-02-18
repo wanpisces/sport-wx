@@ -1,0 +1,82 @@
+<!--page/widget/commentList/commentList.wxml-->
+<view class='title'>
+  <text class='name'>全部评论</text>
+  <text class='num'>({{commentNum}}条)</text>
+</view>
+<view class='commentEmpty' wx:if="{{commentList.length==0}}">
+  暂无评论
+</view>
+<view wx:else class='commentList'>
+  <view class='item' wx:for="{{commentList}}" wx:key='commentListKey'>
+    <view class='topview'>
+      <view class='layer'>
+        <image mode='aspectFill' class='userImg' src='{{item.user_avatar}}'></image>
+        <view class='nameAndTime'>
+          <text class='name'>{{item.user_name}}</text>
+          <text class='time'>{{item.create_time}}</text>
+        </view>
+        <!-- <form report-submit='true' bindsubmit='zan'> -->
+        <authorizeView refresh="{{refresh}}" class="authorizeView3" id="authorizeView3" user-info="{{true}}" user-phone="{{false}}" bind:onBut="zan" data-index='{{index}}' data-item='{{item}}'>
+          <view disabled='{{staring}}' class='commentZan'>
+            <image mode='aspectFill' src="{{item.is_star==2?'/pic/xq_access_zan_touch.png':'/pic/xq_access_zan.png'}}"></image>
+            <text class='num'>{{item.star_num}}</text>
+          </view>
+        </authorizeView>
+        <!-- </form> -->
+        <form report-submit='true' bindsubmit='huifu'>
+          <button class='more' hover-class='hoverClass2' form-type='submit' data-index='{{index}}' data-item='{{item}}'>
+            <!-- <image mode='aspectFill' src='/pic/xq_access_more.png'></image> -->
+            <text class='huifu'>回复</text>
+          </button>
+        </form>
+      </view>
+      <!-- <view wx:if="{{index == checkId && isChecked}}" class='layer2'>
+        <view class='view1'>
+          <text class='huifu'>回复</text>
+        </view>
+        <view class='view2'></view>
+      </view> -->
+    </view>
+    <text class='bottomView'>{{item.comment_content}}</text>
+    <view wx:if="{{item.child.list.length>0}}" class='huifuView'>
+      <view catchtap='onItem' data-item='{{childItem}}' data-pitem='{{item}}' class='huifuItem' wx:for='{{item.child.list}}' wx:key='huifuKey' wx:for-item="childItem">
+        <view wx:if='{{childItem.is_at == 1}}'>
+          <text style="color:#2b79b5;">{{childItem.user_name}}</text>回复
+          <text style="color:#2b79b5;">{{childItem.comment_user_name}}</text>: {{childItem.comment_content}}</view>
+        <view wx:else>
+          <text style="color:#2b79b5;">{{childItem.user_name}}</text> : {{childItem.comment_content}}</view>
+      </view>
+
+      <form bindsubmit="formSubmit" report-submit='true'>
+        <button formType="submit" data-index='{{index}}' hidden='{{item.child.left_num<=0}}' size="default" type="primary" class='lookMore'>
+          剩余
+          <text>{{item.child.left_num}}条</text>回复
+        </button>
+      </form>
+    </view>
+  </view>
+</view>
+<!-- <form report-submit='true' bindsubmit='butSubmit'> -->
+<view class="comment {{isFocus?'commentBg':''}}">
+  <input name="input" focus="{{isFocus}}" confirm-type='send' bindinput="bindinput" bindfocus="bindfocus" bindblur="bindblur" bindconfirm="bindconfirm" class="commentInput {{isFocus?'inputBg':''}}" placeholder="{{!!userName?'回复'+userName:'期待你的神评论'}}" placeholder-style='placeHolderStyle'
+    value='{{inputValue}}'></input>
+  <authorizeView refresh="{{refresh}}" item-view="{{params}}" wx:if='{{tag!=2 && !isFocus}}' class="authorizeView1" id="authorizeView1" user-info="{{true}}" user-phone="{{false}}" bnt-type="share">
+    <view id='share' class='bnt' style="{{tag==2?'margin-right:25rpx;':''}}">
+      <image mode='aspectFill' src='/pic/share02.png' class='share'></image>
+    </view>
+  </authorizeView>
+  <authorizeView refresh="{{refresh}}" wx:if="{{tag!=2 && !isFocus}}" disabled="{{favoritesing}}" class="authorizeView2" id="authorizeView2" user-info="{{true}}" user-phone="{{false}}" bind:onBut="bntCollect">
+    <view id='collect' class='bnt2'>
+      <image mode='aspectFill' src="{{isCollect == 1?'/pic/collected.png':'/pic/collect.png'}}" class='collect'></image>
+    </view>
+  </authorizeView>
+  <!-- <button wx:if="{{!isAuthorzeUserInfo}}" open-type="getUserInfo" bindgetuserinfo="userInfoHandler" id='submit' hidden='{{!isFocus}}' class='bnt3' hover-class='bnted3' >
+      发送
+    </button>  -->
+  <authorizeView refresh="{{refresh}}" class="authorizeView3" id="authorizeView3" user-info="{{true}}" user-phone="{{true}}" bind:onBut="butSubmit2">
+    <view id='submit' hidden='{{!isFocus}}' class='bnt3' hover-class='bnted3'>
+      发送
+    </view>
+  </authorizeView>
+</view>
+<!-- </form> -->

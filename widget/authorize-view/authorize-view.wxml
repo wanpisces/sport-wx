@@ -1,0 +1,7 @@
+<!--widget/authorize-view/authorize-view.wxml-->
+<form report-submit='true' bindsubmit='butSubmit'>
+  <button class='bnt' data-item='{{itemView}}' form-type="{{isAuthorize || refresh == 1 && !userPhone || refresh == 2 && !userInfo || refresh==3?'submit':''}}" bindgetuserinfo="getUserInfo" lang="zh_CN" bindgetphonenumber="getPhoneNumber" open-type="{{refresh == 0 ? openType : (refresh == 1 && (openType =='getUserInfo'||openType =='getPhoneNumber')&& userPhone&&'getPhoneNumber' || bntType)||(refresh == 2 && openType =='getUserInfo'&& userInfo &&'getUserInfo' || bntType)||(refresh == 3?bntType:'') || bntType}}">
+    <slot></slot>
+
+  </button>
+</form>

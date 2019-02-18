@@ -1,0 +1,121 @@
+<!--page/pack-index/pages/team-member-info/team-member-info.wxml-->
+<import src="/my-template/shuoshuo/shuoshuo.wxml" />
+<import src="/my-template/load/listTemplate.wxml" />
+<comment-view is-show="{{isCommentShow}}" params="{{params}}" refresh="{{refreshAuthorizeView}}" />
+<view>
+  <navigationBar class='navigationBar' title-name="个人主页" tag="{{2}}" bg-color="#282828" status-bar-height="{{statusBarHeight}}" />
+  <view class='v2'>
+    <image mode='aspectFill' src='{{bgUrl2}}' class='bg'></image>
+  </view>
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='member-avator'>
+      <image src='{{user_avatar}}'></image>
+    </view>
+    <view class='member-name'>
+      <view>{{user_nickname}}</view>
+      <view wx:if="{{user_gender>0}}" class='member-sex'>
+        <image mode='aspectFill' class='ss_userInfo_sex' src="{{user_gender == 1&&'/pic/famale.png'||user_gender == 2&&'/pic/male.png'||''}}"></image>
+      </view>
+
+    </view>
+    <authorizeView class="authorizeView" bnt-type="{{but_type}}" refresh="{{refreshAuthorizeView}}">
+      <image mode='aspectFill' src='/pic/share.png'></image>
+    </authorizeView>
+  </view>
+  <view wx:if="{{isOneself}}" style='border-bottom:1rpx #F2F2F2 solid;padding-bottom:15rpx'>
+    <view class='member-group'>
+      <view style='margin-left:20rpx' style="{{index !=0 ?'margin-left:-10rpx;':''}}" wx:for="{{visitor.list}}" wx:key="imgKey">
+        <image class='img5' mode='aspectFill' src="{{item.user_avatar||'/pic/default_logo.png'}}"></image>
+      </view>
+      <view class='viewtotal'>{{visitor.total}}人看过我</view>
+    </view>
+    <view class='member-info'>{{isOneself?'我的':user_nickname}}信息</view>
+  </view>
+  <!-- 足球 -->
+  <view wx:if="{{group_info.attr_id == 2}}" class='member-conten1'>
+    <view>
+      <view class='member-conten1-1'> {{group_member_soccer.role||'-'}}</view>
+      <view class='member-conten1-2'>位置</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_soccer.no||'-'}}</view>
+      <view class='member-conten1-2'>队号</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_soccer.user_height||'-'}}</view>
+      <view class='member-conten1-2'> 身高</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_soccer.user_weight||'-'}}</view>
+      <view class='member-conten1-2'>体重</view>
+    </view>
+  </view>
+  <!-- 篮球 -->
+  <view wx:elif="{{group_info.attr_id == 3}}" class='member-conten1'>
+    <view>
+      <view class='member-conten1-1'> {{group_member_basketball.role||'-'}}</view>
+      <view class='member-conten1-2'>位置</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_basketball.no||'-'}}</view>
+      <view class='member-conten1-2'>队号</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_basketball.user_height||'-'}}</view>
+      <view class='member-conten1-2'> 身高</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_basketball.user_weight||'-'}}</view>
+      <view class='member-conten1-2'>体重</view>
+    </view>
+  </view>
+  <!-- 常规类型 -->
+  <view wx:else class='member-conten1' style='justify-content: space-around'>
+    <view>
+      <view class='member-conten1-1'>{{user_height||'-'}}</view>
+      <view class='member-conten1-2'> 身高</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{user_weight||'-'}}</view>
+      <view class='member-conten1-2'>体重</view>
+    </view>
+  </view>
+  <!-- <view wx:if="{{group_info.attr_id == 2}}" class='member-line'></view> -->
+  <!-- <view wx:if="{{group_info.attr_id == 2}}" class='member-name1'>{{isOneself?'我的':user_nickname}}比赛信息</view> -->
+  <!-- <view wx:if="{{group_info.attr_id == 2}}" class='member-conten1'>
+    <view>
+      <view class='member-conten1-1'> {{group_member_soccer.matches_num||'-'}}</view>
+      <view class='member-conten1-2'>比赛</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_soccer.goals_num||'-'}}</view>
+      <view class='member-conten1-2'>进球</view>
+    </view>
+    <view>
+      <view class='member-conten1-1'>{{group_member_soccer.assists_num||'-'}}</view>
+      <view class='member-conten1-2'> 助攻</view>
+    </view> -->
+  <!-- <view>
+      <view class='member-conten1-1'>{{group_member_soccer.red_card_num||'-'}}/{{group_member_soccer.yellow_card_num||'-'}}</view>
+      <view class='member-conten1-2'>红/黄牌</view>
+    </view> -->
+  <!-- </view> -->
+  <view class='member-line'></view>
+  <view class='member-name1'>{{isOneself?'我的':user_nickname}}动态</view>
+  <view wx:if="{{true}}">
+    <template is='shuoshuo' wx:for="{{feedList}}" data="{{item,index,mineUserId}}" wx:key="listKey" />
+    <view wx:if="{{feedList.length==0}}">
+      <template is='emptyView3' data="{{tip:'暂无动态，快去队伍抢沙发呀！'}}" />
+    </view>
+    <view wx:else class='loadMore'>
+      <template is='loadMore' data="{{loadData}}" />
+    </view>
+  </view>
+  <template is='loading' data="{{hidden:user_nickname}}"> </template>
+</view>
+<view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+  <image mode='aspectFill' src='/pic/go_home.png'></image>
+</view>
+<authorizeView refresh="{{refreshAuthorizeView}}" data-phone="{{user_phone}}" style="{{isShare?'bottom:260rpx;':'bottom:100rpx;'}}" wx:if="{{is_same==1&&!isOneself}}" bind:onBut="onCallPhone" class='callPhone'>
+  <image class='callPhoneImg' mode='aspectFill' src='/pic/phone_btn.png'></image>
+</authorizeView>

@@ -1,0 +1,42 @@
+/* page/pack-mine/mine-dynamic/mine-dynamic.wxss */
+@import "/my-template/shuoshuo/shuoshuo.wxss";
+@import "/my-template/load/listTemplate.wxss";
+
+.tabs {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border-bottom: 1px solid #f2f2f2;
+  position: fixed;
+  z-index: 1001;
+}
+
+.tabs .tab1, .tabs .tab2, .tabs .tab3 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.tabs .tab1 view, .tabs .tab2 view, .tabs .tab3 view {
+  line-height: 42px;
+  font-size: 32rpx;
+  text-align: center;
+  color: #666666;
+  font-weight: bold;
+  border-bottom: 6rpx solid #fff;
+}
+
+.tabs .tab1 .cked, .tabs .tab2 .cked, .tabs .tab3 .cked {
+  border-bottom: 6rpx solid #ffd100;
+  text-align: center;
+  color: #353535;
+}
+.userTeam{
+  margin-top: 45px;
+}

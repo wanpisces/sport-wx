@@ -1,0 +1,43 @@
+<!--my-template/mydynamic/mydynamic.wxml-->
+<template name="shuoshuo">
+  <navigator url='/page/pack-index/pages/personal-dynamics/personal-dynamics'>
+    <view hover-stop-propagation='true' class='shuoshuo'>
+      <view class='ss_userInfo'>
+        <image mode='aspectFill' src='https://wx.qlogo.cn/mmopen/vi_32/EXRgoWXzOPJBUg34RarTQLlLBJINribnwWkjn5WyHLbM1marShpZfdWV0WzS19cak3gQ0SZXz0BticugfuP9gsSA/132'></image>
+        <view class='ss_userName'>
+          <view>梅西·足球</view>
+          <view class='ss-bottom'>
+            <view>1分钟前 </view>
+            <view style='margin-left:50rpx'>
+            <image class='ss-bottom-address' src='../../../../pic/location.png'></image>
+            成都足球公园
+            </view>
+           
+          </view>
+        </view>
+      </view>
+      <view class='ss_content'>走，切踢球！</view>
+      <view class='ss_imgs'>
+        <view wx:for="{{[1,2,3,4,5]}}" wx:key="imgKey">
+          <image mode='aspectFill'></image>
+        </view>
+      </view>
+      <!-- <view class='ss_club'>
+        <image mode='aspectFill' class='club_img'></image>
+        <view class='club_name'>
+          <view class='clubName'>成都天府软件园足球俱乐部</view>
+          <view class='clubNum'>
+            <image wx:if="{{false}}" mode='aspectFill'></image>
+            <view>18位队员</view>
+          </view>
+        </view>
+        <image mode='aspectFill' class='next' src='/pic/arrow.png'></image>
+      </view> -->
+      <view class='ss_bntImg'>
+        <image class='ss_accessment' mode='aspectFill' src='/pic/accessment.png'></image>
+        <image class='ss_zan' mode='aspectFill' src='/pic/zan.png'></image>
+      </view>
+    </view>
+  </navigator>
+
+</template>

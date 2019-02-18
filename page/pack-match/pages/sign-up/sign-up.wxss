@@ -1,0 +1,168 @@
+/* page/pack-match/pages/sign-up/sign-up.wxss */
+
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.tip {
+  height: 80rpx;
+  width: 100%;
+  color: #ff731e;
+  padding: 0 20rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  background: #ffdd8c;
+  font-size: 28rpx;
+}
+
+.release-content {
+  width: 100%;
+}
+
+.release-content>view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 100rpx;
+  border-bottom: 1rpx #f2f2f2 solid;
+  font-size: 34rpx;
+  color: #000;
+  margin: 0 25rpx;
+}
+
+.release-content-right {
+  color: #999;
+  font-size: 28rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  line-height: 100rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.release-content-input-right {
+  color: #999;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: right;
+}
+
+.release-content-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.team_data_item1 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  padding: 10rpx;
+  height: 40rpx;
+}
+
+.team_data_item1 view {
+  font-size: 28rpx;
+  color: #353535;
+}
+
+.team_data_item1 text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.team_data_slider {
+  height: 40rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.team_data_slider .slider_view {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.title {
+  color: #000;
+  font-size: 34rpx;
+  padding: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.title text {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.member-list-view {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.member-view {
+  position: relative;
+  width: 25%;
+  margin-bottom: 30rpx;
+}
+
+.member-view .member {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.member-view .member image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  margin-bottom: 20rpx;
+  background: #f2f2f2;
+}
+
+.member-view .member view {
+  color: #353535;
+  font-size: 24rpx;
+}
+
+.member-handle-image {
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+  width: 28rpx;
+  height: 28rpx;
+  padding: 0 0 50rpx 50rpx;
+}
+
+.submit-view {
+  position: fixed;
+  left: 150rpx;
+  bottom: 20rpx;
+}
+
+.submit {
+  background: -webkit-linear-gradient(left, #ffd100, #ffae00);
+  color: #fff;
+  border-radius: 45rpx;
+  height: 90rpx;
+  width: 450rpx;
+  font-weight: bold;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.no-data {
+  width: 100%;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}

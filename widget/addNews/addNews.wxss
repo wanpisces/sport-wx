@@ -1,0 +1,20 @@
+/* widget/addNews/addNews.wxss */
+.com-add{
+  position: fixed;
+  bottom:100rpx;
+  right: 50rpx;
+  z-index: 100;
+   width: 95rpx;
+  height: 95rpx;
+  border-radius:95rpx; 
+  -moz-box-shadow:4rpx 10rpx 16rpx #eee; -webkit-box-shadow:4rpx 10rpx 16rpx #eee; box-shadow:4rpx 10rpx 16rpx #eee;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background: #FFD100
+}
+.com-found{
+  width: 100rpx;
+  height: 100rpx;
+}

@@ -1,0 +1,14 @@
+<template name="sport-timing">
+  <view class='sport-timing'>
+    <view class='timing-contant'>
+      <view class='timing-contant-name'>
+        <text class='timing-rank'>{{rankingsLabel.rand_no}}</text>
+        <view class='contant-name-header'>
+          <image mode='aspectFill' src="{{rankingsLabel.user_avatar || ''}}"></image>
+          <text>{{rankingsLabel.user_name}}</text>
+        </view>
+      </view>
+      <view class='timing-time'>{{rankingsLabel.match_record || '--'}}</view>
+    </view>
+  </view>
+</template>

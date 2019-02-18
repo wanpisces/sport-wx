@@ -1,0 +1,20 @@
+<!--widget/circular-menu/circular-menu.wxml-->
+<view class="{{isPopping?'circular-menu-bg':''}}">
+  <view class="img-style" animation="{{animCollect}}" bindtap="findTeam">
+    <image src="/pic/up_find_team.png" animation="{{animCollectImg}}"></image>
+    <view wx:if="{{isPopping}}" class='txt'>找队伍</view>
+  </view>
+  <!-- <view class="img-style" animation="{{animTranspond}}" bindtap="transpond">
+    <image src="/pic/up_send_play.png" animation="{{animTranspondImg}}"></image>
+    <view wx:if="{{isPopping}}" class='txt'>发约动</view>
+  </view> -->
+
+  <about-work class="img-style" animation="{{animTranspond}}" bindtap="transpond">
+    <view style='display: flex;flex-flow: column;align-items: center;'>
+      <image src="/pic/up_send_play.png" animation="{{animTranspondImg}}"></image>
+      <view wx:if="{{isPopping}}" class='txt'>发约战</view>
+    </view>
+  </about-work>
+  <!-- <image src="/pic/input.png" class="img-style" animation="{{animInput}}" bindtap="input"></image> -->
+  <image src="{{isPopping?'/pic/up_close.png':'/pic/foot_add.png'}}" class="img-plus-style" animation="{{animPlus}}" bindtap="plus"></image>
+</view>

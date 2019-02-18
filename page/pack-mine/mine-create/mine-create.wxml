@@ -1,0 +1,84 @@
+<!--page/pack-mine/mine-create/mine-create.wxml-->
+<import src="/my-template/load/listTemplate.wxml" />
+<import src="/my-template/team2/team2.wxml" />
+<!-- <loadingView wx:if="{{isLoading}}" /> -->
+<view class='pages'>
+  <navigationBar class='navigationBar' tag="{{2}}" bg-color="#FFD100" title-name="{{!!user_name?user_name:'我'}}的队伍" status-bar-height="{{statusBarHeight}}" />
+  <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+    <view class='create-header'>
+      <view class='create-view'>
+        <image src='/pic/black_bg.png'></image>
+      </view>
+      <view class='create-avator'>
+        <image mode='aspectFill' src="{{user_avatar}}"></image>
+      </view>
+    </view>
+    <view class='team_list'>
+      <view class='detail-list'>
+        <view class="swiper-tab">
+          <view class="swiper-tab-list {{detail_tab.currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">我创建的</view>
+          <view class="swiper-tab-list {{detail_tab.currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">我加入的</view>
+        </view>
+        <view class='swiper-contain'>
+          <!-- 我创建的队伍 -->
+          <view wx:if="{{detail_tab.currentTab==0}}" class='sport-select'>
+            <view>
+              <view class='team-list-wrapper' wx:if="{{dataList.length!=0}}">
+                <template is="team2" wx:for="{{dataList}}" data="{{item,isColoseShare,ckId,index}}" wx:key="index">
+                </template>
+                <template is="loadMore" data="{{loadData}}" />
+              </view>
+              <view wx:else class='no-data'>
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>还没有属于你的队伍哦\n赶快去创建吧~</text>
+                  <found-team>
+                    <!-- <view class='on-new' catchtap='onNewTeam'>立即创建队伍</view> -->
+                    <view class='on-new'>立即创建队伍</view>
+                  </found-team>
+                </view>
+              </view>
+            </view>
+            <view wx:if="{{dataList.length!=0}}" class='bottom'>
+              <authorizeView bind:onBut="{{ckId==-1?'onButShare':''}}" open-type="{{ckId!=-1?'share':''}}">
+                <view class='share'>
+                  <image wx:if="{{isColoseShare||ckId==-1}}" mode='aspectFill' src='/pic/team_share.png'></image>
+                  {{!isColoseShare&&ckId!=-1?'确定':'分享'}}</view>
+              </authorizeView>
+            </view>
+            <view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+              <image mode='aspectFill' src='/pic/go_home.png'></image>
+            </view>
+          </view>
+          <!-- 我加入的队伍 -->
+          <view wx:if="{{detail_tab.currentTab==1}}" class='sport-select'>
+            <view>
+              <view class='team-list-wrapper' wx:if="{{joinTeam.length!=0}}">
+                <template is="team2" wx:for="{{joinTeam}}" data="{{item,isColoseShare,ckId,index}}" wx:key="index">
+                </template>
+                <template is="loadMore" data="{{visitLoadData}}" />
+              </view>
+              <view wx:else class='no-data'>
+                <view class='empty-view'>
+                  <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='/pic/no-content.png'></image>
+                  <text style='margin:15rpx;color:#999;font-size:30rpx;  text-align: center;'>暂无我加入的队伍</text>
+                  <view class='on-new' catchtap='onNewTeam'>立即寻找队伍</view>
+                </view>
+              </view>
+            </view>
+            <view wx:if="{{joinTeam.length!=0}}" class='bottom'>
+              <authorizeView bind:onBut="{{ckId==-1?'onButShare':''}}" open-type="{{ckId!=-1?'share':''}}">
+                <view class='share'>
+                  <image wx:if="{{isColoseShare||ckId==-1}}" mode='aspectFill' src='/pic/team_share.png'></image>
+                  {{!isColoseShare&&ckId!=-1?'确定':'分享'}}</view>
+              </authorizeView>
+            </view>
+            <view wx:if="{{isShare}}" catchtap='goHome' class='shareGoHome'>
+              <image mode='aspectFill' src='/pic/go_home.png'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

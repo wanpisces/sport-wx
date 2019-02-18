@@ -1,0 +1,137 @@
+/* page/pack-mine/mine-settings/mine-settings.wxss */
+
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  background: #282828;
+}
+
+.page-v {
+  padding-top: 70px;
+  display: flex;
+  flex-flow: column;
+}
+
+.logo-v {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 333rpx;
+}
+
+.logo-v image {
+  width: 180rpx;
+  height: 143rpx;
+}
+
+.logo-v view {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  line-height: 40rpx;
+}
+
+.logo-v text {
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+}
+
+.item-v {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 20rpx;
+  align-items: center;
+  width: 710rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.item-v-1 {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 35px;
+}
+
+.item-v view {
+  flex-grow: 1;
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 60rpx;
+}
+
+.item-v text {
+  flex-grow: 0;
+  font-size: 26rpx;
+  color: #5d5d5d;
+  line-height: 60rpx;
+}
+
+.arrow {
+  height: 34rpx;
+  width: 34rpx;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.contact-but {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+button[class='contact-but']::after {
+  border: 0;
+}
+
+.about-us {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0rpx 50rpx 50rpx 50rpx;
+  width: 650rpx;
+  line-height: 46rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.item-but {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 20rpx;
+  width: 750rpx;
+  margin: 0;
+  background: #fff;
+  border-radius: 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.item-but::after {
+  border: 0;
+}
+
+.item-but view {
+  flex-grow: 1;
+  font-size: 30rpx;
+  color: #353535;
+  text-align: left;
+  line-height: 60rpx;
+}

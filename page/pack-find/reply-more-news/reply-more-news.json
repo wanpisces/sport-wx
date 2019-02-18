@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "更多回复",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "navigationBar": "/widget/navigationBar/navigationBar",
+    "authorizeView": "/widget/authorize-view/authorize-view"
+  }
+}

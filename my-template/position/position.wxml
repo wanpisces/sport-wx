@@ -1,0 +1,11 @@
+<template name="position">
+  <view id="{{id}}" class='position-location' catchtap='onItem' data-index="{{index}}" data-item="{{item}}">
+    <view style='margin-left:30rpx;'>
+      <view style='font-size:30rpx;color:#353535;'>{{item.title||item.name}}</view>
+      <view style='font-size:26rpx;color:#ACACAD;margin-top:10rpx;'>{{item.address}}</view>
+    </view>
+    <view wx:if="{{id=='tag3'}}" class='iconfont icon-wancheng1' style="font-size:30rpx;margin-right:30rpx;color:{{index3==index?'#FFD100':'#ffffff'}};"></view>
+    <view wx:else class='iconfont icon-wancheng1' style="font-size:30rpx;margin-right:30rpx;color:{{index2==index||index1==index?'#FFD100':'#ffffff'}};"></view>
+
+  </view>
+</template>

@@ -1,0 +1,6 @@
+<view class="pages">
+  <navigationBar title-name="活动详情" tag="{{3}}" status-bar-height="{{statusBarHeight}}" />
+  <view>
+    <image mode='widthFix' src='https://img.sport.darongshutech.com/image_201812261143338603.png' style='width:100%;'></image>
+  </view>
+</view>

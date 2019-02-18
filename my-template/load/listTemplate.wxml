@@ -1,0 +1,74 @@
+<!-- 全屏 -->
+<template name="emptyView">
+  <view class='emptyView'>
+    <image mode='aspectFill' style='width:212rpx;height: 167rpx;' src='{{empty.icon}}'></image>
+    <text style='display:block;margin:15rpx;color:#999;font-size:30rpx;'>{{empty.txt}}</text>
+  </view>
+
+</template>
+<!-- 不是全屏 -->
+<template name="emptyView2">
+  <view class='emptyView2' style="height:{{!!empty.height?empty.height:'auto'}}">
+    <image mode='aspectFill' style="width:277rpx;height: 277rpx;" src="{{empty.icon||'/pic/no-content.png'}}"></image>
+    <text style='display:block;margin:15rpx;color:#999;font-size:30rpx;'>{{empty.txt||tip}}</text>
+  </view>
+
+</template>
+<template name="emptyView3">
+  <view class='emptyView3'>
+    <image mode='aspectFill' style="width:277rpx;height: 277rpx;" src="{{icon||'/pic/no-content.png'}}"></image>
+    <text style='color:#999;font-size:30rpx;'>{{tip}}</text>
+    <view catchtap='onIntro' wx:if="{{!!tip2}}" style='color:#353535;font-size:30rpx;padding-top:10rpx;border-bottom: 1px solid #353535;'>{{tip2}}</view>
+  </view>
+
+</template>
+<template name='loadMore'>
+  <view>
+    <view class="sk-three-bounce" hidden="{{!loadData.searchLoading}}">
+      <view class="sk-child sk-bounce1"></view>
+      <view class="sk-child sk-bounce2"></view>
+      <view class="sk-child sk-bounce3"></view>
+      <text>正在载入更多...</text>
+    </view>
+    <view class="loading-complete" hidden="{{loadData.searchLoading && !loadData.searchLoadingComplete}}">
+      <text>我是有底线哒~</text>
+    </view>
+  </view>
+</template>
+<template name='loadMore2'>
+  <view>
+    <view class="sk-three-bounce" wx:if="{{isMore}}">
+      <view class="sk-child sk-bounce1"></view>
+      <view class="sk-child sk-bounce2"></view>
+      <view class="sk-child sk-bounce3"></view>
+      <text>正在载入更多...</text>
+    </view>
+    <view class="loading-complete" wx:if="{{isFinish}}">
+      <text>我是有底线哒~</text>
+    </view>
+  </view>
+</template>
+<template name='loadMore3'>
+  <view>
+    <view class="sk-three-bounce" hidden="{{!searchLoading}}">
+      <view class="sk-child sk-bounce1"></view>
+      <view class="sk-child sk-bounce2"></view>
+      <view class="sk-child sk-bounce3"></view>
+      <text>正在载入更多...</text>
+    </view>
+    <view class="loading-complete" hidden="{{searchLoading && !searchLoadingComplete}}">
+      <text>我是有底线哒~</text>
+    </view>
+  </view>
+</template>
+<!--全屏加载框  -->
+<template name='loading'>
+  <view class='loading-view' hidden="{{hidden}}">
+    <view class="load-bounce">
+      <view class="load-child load-bounce1"></view>
+      <view class="load-child load-bounce2"></view>
+      <view class="load-child load-bounce3"></view>
+    </view>
+    <view class='loading-txt'>八分钟运动</view>
+  </view>
+</template>

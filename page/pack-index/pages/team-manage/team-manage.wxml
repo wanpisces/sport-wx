@@ -1,0 +1,37 @@
+<!--page/pack-index/pages/team-manage/team-manage.wxml-->
+<form report-submit='true' bindsubmit='onClick'>
+  <view class='pages'>
+    <navigationBar class='navigationBar' title-name="队伍管理" img-url="/img/bg.png" status-bar-height="{{statusBarHeight}}" />
+    <view class='data_view' style="top:{{statusBarHeight+45}}px;">
+      <view class='team_name'>
+        <text>{{group_name}}</text>
+        <image wx:if="{{false}}" src='/pic/name_edit.png'></image>
+      </view>
+      <view class='team_num'>
+        <text>队伍编号：{{group_sn}}</text>
+      </view>
+      <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+      <view class='team_item'>
+        <button id='bjdw' form-type='submit' class='item' style='border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4;'>
+          <image mode='aspectFill' src='/pic/teamxq_edit.png'></image>
+          <view>编辑队伍详情</view>
+        </button>
+        <button id="cygl" form-type='submit' class='item' style='border-bottom: 1px solid #f4f4f4;'>
+          <image mode='aspectFill' src='/pic/teamxq_edit.png'></image>
+          <view>成员管理</view>
+          <view wx:if="{{has_message == 1}}" class='dian'></view>
+        </button>
+        <button id='wlxc' form-type='submit' class='item' style='border-right: 1px solid #f4f4f4;'>
+          <image mode='aspectFill' src='/pic/teamxq_edit.png'></image>
+          <view>运动邀请</view>
+        </button>
+        <button id='fbgg' form-type='submit' class='item'>
+          <image mode='aspectFill' src='/pic/teamxq_edit.png'></image>
+          <view>发布公告</view>
+        </button>
+      </view>
+      <view style='width:100%;height:20rpx;background:#f2f2f2;'></view>
+      <button wx:if="{{!isCurrency}}" id='fbyd' form-type='submit' class='next'>发布约战</button>
+    </view>
+  </view>
+</form>

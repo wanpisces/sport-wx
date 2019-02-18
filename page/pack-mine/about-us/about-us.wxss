@@ -1,0 +1,79 @@
+/* page/pack-mine/about-us/about-us.wxss */
+.navigationBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 1000;
+  background: #282828;
+}
+.main-wrapper{
+  padding-top: 70px;
+}
+.logo-v {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 333rpx;
+}
+
+.logo-v image {
+  width: 180rpx;
+  height:143rpx;
+}
+
+.logo-v view {
+  margin-top: 20rpx;
+  font-size: 34rpx;
+  line-height: 40rpx;
+}
+
+.introduce {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0rpx 50rpx 100rpx 50rpx;
+  width:650rpx;
+  line-height: 46rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.introduce text{
+  word-break: break-word;
+}
+
+.saoma {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.saoma image {
+  width: 260rpx;
+  height: 260rpx;
+}
+
+.saoma text {
+  font-size: 26rpx;
+  color: #353535;
+  margin-top: 10rpx;
+}
+
+.bottomTxt {
+  position: fixed;
+  bottom: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomTxt text {
+  font-size: 24rpx;
+  color: #999;
+}
